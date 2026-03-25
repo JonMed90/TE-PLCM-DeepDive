@@ -1,0 +1,1316 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Demand Clear Filters",
+  "name": "Bookmarkbe1ae25438fae7db3f9f",
+  "options": {
+    "targetVisualNames": []
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSectionf811620ac5379e3c62ec",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "Filter98a3ea614165e32c4573",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "g",
+                "Entity": "Dim_GIM",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "g"
+                                }
+                              },
+                              "Property": "Business Unit"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "null"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'Trauma Other'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "HierarchyLevel": {
+              "Expression": {
+                "Hierarchy": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Hierarchy": "GIM Hierarchy"
+                }
+              },
+              "Level": "Product Line"
+            }
+          },
+          "howCreated": 1,
+          "cachedDisplayNames": [
+            {
+              "id": {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Dim_GIM"
+                          }
+                        },
+                        "Property": "Business Unit"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "null"
+                      }
+                    }
+                  }
+                }
+              },
+              "displayName": "(Blank)"
+            },
+            {
+              "id": {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Dim_GIM"
+                          }
+                        },
+                        "Property": "Business Unit"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Trauma Other'"
+                      }
+                    }
+                  }
+                }
+              },
+              "displayName": "Trauma Other"
+            }
+          ]
+        }
+      ]
+    },
+    "sections": {
+      "ReportSectionf811620ac5379e3c62ec": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "Filter649fc37320f5ee86bdf1",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Business Unit"
+                }
+              },
+              "howCreated": 5
+            },
+            {
+              "name": "Filterae64fb240bb4bc511b40",
+              "type": "Categorical",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "s",
+                    "Entity": "Scenario",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "s"
+                                }
+                              },
+                              "Property": "Target"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'Forecast'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenario"
+                    }
+                  },
+                  "Property": "Target"
+                }
+              },
+              "howCreated": 1
+            }
+          ]
+        },
+        "visualContainers": {
+          "6ecd26d789b23484aa66": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "a9fa5ac71cd37e1e89cf": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3d7ff9c4af99333eba1d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Calendar"
+                        }
+                      },
+                      "Property": "MonthEnding"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a001f1c96443773f1b77",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ce16e66d76545add3c17",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "lineChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Calendar"
+                        }
+                      },
+                      "Property": "MonthEnding"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Calendar"
+                        }
+                      },
+                      "Property": "MonthEnding"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "9d14096020da85715e8c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3741121ca482ccdbb6d8",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5efc46d7c9846a52927e",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ace598e65b823ee51b45",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f3cd6dcaa827ac50b8a6",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Standard Catalog Number"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f9d6dcc8a9a47d451c8c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Calendar"
+                        }
+                      },
+                      "Property": "MonthEnding"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "836b5157d60685eabbd3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "05ed74bc681fc550271a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Dynamic Sales KPI"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Dynamic Sales KPI"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Rows": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  },
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  },
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  },
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Standard Catalog Number"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  }
+                ],
+                "Columns": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Calendar"
+                        }
+                      },
+                      "Property": "MonthEnding"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "08ed32450dee39a83f5b": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "ccb725bd6ebf40df0bde": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "927db7d71ecc5a48aa1c": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "88e2c1d82a8363d967a2": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "a2d3d8d03a1abbb8ab41": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "242f8cbac3b2e6d67c4c",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7084fcd3a01248949906",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "bd8ea2ae108c1075eebb",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6c39d3a3b2ca85cb61d2",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Standard Catalog Number"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ff6015ed43770c9712bd",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "donutChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Revenue"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "fbe6bb20b5c25c251c19": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5cf6059a7a97fe62e186",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        },
+                        "isInvertedSelectionMode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "5cd953960445474e7545": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "21f532c4d5c3b103c72e",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "777e9bff8abddb4e3bb8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3bfd2750c16a9c6ca208",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        },
+                        "isInvertedSelectionMode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "2c6af04dc0de984b845d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "09cce58f26031232bb0b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "StandardCatalogNumber"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "FilterByList507A2DBEC31244C8AAABDE9BA541F723",
+              "objects": {}
+            }
+          },
+          "22da365e367ddc0c44b6": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "04e0632c7159fdddad42",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "LifeCycleCode"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "LifeCycleCode"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "d3eb59cb9922a4bb9e54": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c8b5c0a36dd58507aa92",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Stocking Type Code"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Stocking Type Code"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "77cd6183deb18826149b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "15aa566b66eed8fc8559",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "867ee298875cd3270018": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e426125efcba752878f3",
+                  "type": "Categorical",
+                  "expression": {
+                    "GroupRef": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Global PLCM Decision (Brand) (groups)",
+                      "GroupedColumns": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "Dim_GIM"
+                              }
+                            },
+                            "Property": "Global PLCM Decision (Brand)"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "GroupRef": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Global PLCM Decision (Brand) (groups)",
+                      "GroupedColumns": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "Dim_GIM"
+                              }
+                            },
+                            "Property": "Global PLCM Decision (Brand)"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "2aeea093b094413737a0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6b8f20c4f7be7092d5b7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_KPI"
+                        }
+                      },
+                      "Property": "KPI"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "k",
+                                "Entity": "Dim_KPI",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "k"
+                                            }
+                                          },
+                                          "Property": "KPI"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Revenue'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_KPI"
+                        }
+                      },
+                      "Property": "KPI"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

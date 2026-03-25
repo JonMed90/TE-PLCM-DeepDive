@@ -1,0 +1,163 @@
+table Fact_TaskAssignments
+	lineageTag: 7544b646-840f-4bb1-8507-39857ca70dca
+
+	measure 'Departments (by Code)' = ```
+			
+			
+			CONCATENATEX(
+			
+			        // Distinct department values in current context
+			        VALUES( Fact_TaskAssignments[Role Name] )
+			        // Keep existing filters (TaskId, Phase, etc.) and add the responsibility code
+			
+			    ,
+			    Fact_TaskAssignments[Role Name],
+			    ", ",
+			    Fact_TaskAssignments[Role Name],  // optional sort by name
+			    ASC
+			)
+			
+			```
+		lineageTag: 9d101b4e-de9e-4e7d-b7ad-043319de7845
+
+	measure 'Department (Responsible)' = Calculate( [Departments (by Code)], Fact_TaskAssignments[Assignment Type] = "Responsible")
+		lineageTag: 573beb4a-0eed-468c-be24-15b1d2b224e5
+
+	measure 'Department (Accountable)' = Calculate( [Departments (by Code)], Fact_TaskAssignments[Assignment Type] = "Accountable")
+		lineageTag: eb9de7fc-1ff5-436b-a659-debcb3e5b074
+
+	measure ModernTooltipHTML =
+			
+			VAR TaskName = SELECTEDVALUE('Dim_PhaseActivity'[Process/Tasks])
+			VAR TaskDetail = SELECTEDVALUE('dim_PhaseActivity'[Detail])
+			VAR Role = SELECTEDVALUE('dim_Role'[Role Name])
+			VAR RespType = SELECTEDVALUE('Fact_TaskAssignments'[Assignment Type])
+			
+			RETURN
+			"<!DOCTYPE html>
+			<html>
+			<head>
+			<style>
+			    .card {
+			        font-family: 'Segoe UI', sans-serif;
+			        background: #ffffff;
+			        border-radius: 12px;
+			        padding: 15px;
+			        border-left: 8px solid #0078D4; /* PLM Blue */
+			        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+			        max-width: 300px;
+			    }
+			    .header {
+			        font-size: 12px;
+			        color: #666;
+			        text-transform: uppercase;
+			        font-weight: bold;
+			        margin-bottom: 5px;
+			    }
+			    .title {
+			        font-size: 16px;
+			        color: #222;
+			        font-weight: 700;
+			        margin-bottom: 10px;
+			    }
+			    .detail {
+			        font-size: 13px;
+			        color: #444;
+			        line-height: 1.4;
+			        background: #f9f9f9;
+			        padding: 8px;
+			        border-radius: 5px;
+			    }
+			    .badge {
+			        display: inline-block;
+			        margin-top: 10px;
+			        padding: 4px 10px;
+			        background: #0078D4;
+			        color: white;
+			        border-radius: 15px;
+			        font-size: 11px;
+			        font-weight: 600;
+			    }
+			</style>
+			</head>
+			<body>
+			    <div class='card'>
+			        <div class='header'>Activity Detail</div>
+			        <div class='title'>" & TaskName & "</div>
+			        <div class='detail'>" & IF(ISBLANK(TaskDetail), "No additional details provided.", TaskDetail) & "</div>
+			        <div class='badge'>" & Role & " - " & RespType & "</div>
+			    </div>
+			</body>
+			</html>"
+		lineageTag: 0311339a-d4ba-4cad-b428-276a3847c9b0
+
+	column TaskId
+		dataType: string
+		isHidden
+		lineageTag: 7268947a-5b74-4226-9e9e-df1183c73cd7
+		summarizeBy: none
+		sourceColumn: TaskId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phase ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3d9b96cb-d2ba-4058-a0fd-6a945cea194b
+		summarizeBy: none
+		sourceColumn: Phase ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Phase Activity ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9b15ea9a-cc19-431d-b0ac-561dac378fd9
+		summarizeBy: none
+		sourceColumn: Phase Activity ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Assignment Type'
+		dataType: string
+		lineageTag: 00b24c59-1869-4530-b4d1-69a3296bab6e
+		summarizeBy: none
+		sourceColumn: Assignment Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Role Name'
+		dataType: string
+		lineageTag: 068a68c1-8fae-428f-8fd9-1aa151c1ed56
+		summarizeBy: none
+		sourceColumn: Role Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_TaskAssignments = m
+		mode: import
+		queryGroup: 'PLCM RACI Playbook'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c" = Workspaces{[workspaceId="7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
+				    #"1830a663-42fe-4d9a-bc4b-93a6ae5df183" = #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"{[dataflowId="1830a663-42fe-4d9a-bc4b-93a6ae5df183"]}[Data],
+				    fact_TaskAssignments_ = #"1830a663-42fe-4d9a-bc4b-93a6ae5df183"{[entity="fact_Assignments",version=""]}[Data]
+				in
+				    fact_TaskAssignments_
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "4c2ff6bfeeb47db2bf0e",
+  "position": {
+    "x": 26,
+    "y": 140,
+    "z": 5000,
+    "height": 551.02607232968887,
+    "width": 1228.2474604710378,
+    "tabOrder": 4000
+  },
+  "visualGroup": {
+    "displayName": "Playbook Group",
+    "groupMode": "ScaleMode"
+  }
+}

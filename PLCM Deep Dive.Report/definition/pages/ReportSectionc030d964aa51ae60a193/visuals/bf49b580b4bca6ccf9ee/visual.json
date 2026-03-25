@@ -1,0 +1,846 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "bf49b580b4bca6ccf9ee",
+  "position": {
+    "x": 257.62539682539682,
+    "y": 438.04444444444442,
+    "z": 1000,
+    "height": 247.87301587301587,
+    "width": 1006.1206349206349,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Business Unit"
+                }
+              },
+              "queryRef": "Dim_GIM.cyproductgroup",
+              "nativeQueryRef": "Business Unit",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Brand"
+                }
+              },
+              "queryRef": "Dim_GIM.brand",
+              "nativeQueryRef": "Brand",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "SubBrand"
+                }
+              },
+              "queryRef": "Dim_GIM.subbrand",
+              "nativeQueryRef": "SubBrand",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Catalog Number"
+                }
+              },
+              "queryRef": "Dim_GIM.catalognumber",
+              "nativeQueryRef": "Catalog Number",
+              "active": false
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Regions"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "Regions.Region",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Dynamic Global PLCM Decision"
+                }
+              },
+              "queryRef": "GIM.Dynamic Global PLCM Decision",
+              "displayName": "PLCM Decision (SubBrand)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Inventory QoH"
+                }
+              },
+              "queryRef": "Inventory.Inventory Qty",
+              "displayName": "Qty OnHand"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ext Statutory Cost"
+                }
+              },
+              "queryRef": "Measures Table.Inventory Value$"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "TTM Units"
+                }
+              },
+              "queryRef": "Measures Table.TTM Units"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "TTM COGS"
+                }
+              },
+              "queryRef": "Measures Table.TTM COGS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "TTM Revenue"
+                }
+              },
+              "queryRef": "Measures Table.TTM Revenue"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "DSI (COGS)"
+                }
+              },
+              "queryRef": "Measures Table.DSI (COGS)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Ext Statutory Cost"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Dim_GIM.cyproductgroup"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Business Unit"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Dim_GIM.brand"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Brand"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Dim_GIM.subbrand"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "SubBrand"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Dim_GIM.catalognumber"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Catalog Number"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Regions.Region"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Trauma'"
+                  }
+                }
+              ],
+              "isToggled": true,
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'T2'"
+                      }
+                    }
+                  ],
+                  "children": [
+                    {
+                      "identityValues": [
+                        {
+                          "Literal": {
+                            "Value": "'INSTRUMENTS'"
+                          }
+                        }
+                      ],
+                      "isToggled": true,
+                      "children": [
+                        {
+                          "identityValues": [
+                            {
+                              "Literal": {
+                                "Value": "'18061095'"
+                              }
+                            }
+                          ],
+                          "isToggled": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Sports Medicine'"
+                  }
+                }
+              ],
+              "isToggled": true,
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'G-FORCE'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                },
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'GRAVITY'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Trauma Other'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "86.79148380974974D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(PPR Tracker Status.GIM Flag)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "271.6293045506662D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.Brand_SubBrand_Key"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "178.22010042304194D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.SubBrand"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Sum(GIM.ManufacturingcostUSD)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "PLCM Roadmap.Last Order"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "PLCM Roadmap.Last Sale"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "PLCM Roadmap.Phase Out"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "67.76284073052098D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PLCM Roadmap.Product Launch"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.05617977528091D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PLCM Roadmap.Registration Initiation"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.45453368019824D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PLCM Roadmap.Go-to SKU (Replacement)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.Product Hierarchy.Standard Catalog Number"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.Product Hierarchy.Product Line"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.Product Hierarchy.Brand"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.Product Hierarchy.SubBrand"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "65D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PLCM_Roadmap.RegionSKU"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Regions.Region"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "58D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PLCM_Roadmap.Last Sale"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.Dynamic Global PLCM Decision"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Inventory.Inventory Qty"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Measures Table.Inventory Value$"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Measures Table.TTM Units"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Measures Table.TTM COGS"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Measures Table.TTM Revenue"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Measures Table.DSI (COGS)"
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "layout": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outline'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ee5a8cef9c257249ae96",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "48124d406c7e8e70b020",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Brand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1e27074be83643289e0c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "SubBrand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9b757bd69810db7ba19d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8882a907d3130d87c652",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Regions"
+              }
+            },
+            "Property": "Region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "70f75ba32029ebed6c03",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Dynamic Global PLCM Decision"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ade44af7246569843e0d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Inventory QoH"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f522b91e40ad0d38e5cb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Ext Statutory Cost"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "732484c94530b90792e5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "TTM Units"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "79c1e7aa6e25a2cee858",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "TTM COGS"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5ced062716065ee29c0b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "TTM Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a425f19ed1ad6852d078",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "DSI (COGS)"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

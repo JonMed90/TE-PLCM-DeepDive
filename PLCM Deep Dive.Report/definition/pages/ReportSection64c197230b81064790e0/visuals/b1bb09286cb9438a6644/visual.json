@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "b1bb09286cb9438a6644",
+  "position": {
+    "x": 0,
+    "y": 235.87431289936993,
+    "z": 6000,
+    "height": 60,
+    "width": 240,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "PLCM Phaseout Batch"
+                }
+              },
+              "queryRef": "Consolidated List.PLCM Phaseout Batch",
+              "nativeQueryRef": "PLCM Phaseout Batch",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "selection": [
+        {
+          "properties": {
+            "selectAllCheckboxEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "selfFilterEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "4040382c904ed267d89b",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "610929e0b9abc0be0700",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "PLCM Phaseout Batch"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

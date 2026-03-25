@@ -1,0 +1,351 @@
+table _Measures
+	lineageTag: 70681fca-55e8-49f7-82d4-ee08b62e19e9
+
+	measure COGS = SUM(Fact_Sales[COGS])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: b8cac9ab-2b7f-4c0c-bab8-e107d89f6eaf
+
+		changedProperty = FormatString
+
+	measure '# ConsolidatedList SKUs' = COUNTROWS('Fact_ConsolidatedList')
+		formatString: #,0
+		lineageTag: 720b927f-c470-414e-a6a5-5a16eeec0df0
+
+		changedProperty = IsHidden
+
+	measure 'DSI (COGS)' = ```
+			DIVIDE(
+						[Ext Statutory Cost],
+						[TTM COGS]
+					) * 365
+				
+			```
+		formatString: #,0
+		lineageTag: bf3ab89d-9135-4648-966a-647678351a20
+
+		changedProperty = FormatString
+
+	measure 'Dynamic Global PLCM Decision' = ```
+			VAR Brand =
+					SELECTEDVALUE(Dim_GIM[Global PLCM Decision (Brand)])
+					VAR SubBrand =
+					SELECTEDVALUE(Dim_GIM[Global PLCM Decision (SubBrand)])
+					RETURN
+						IF(
+							ISINSCOPE(Dim_GIM[SubBrand]),
+							SubBrand,
+							Brand
+						)
+				
+			```
+		lineageTag: 33d54d86-362f-4716-bfe1-d81d5dddb9c9
+
+	measure 'Dynamic Sales KPI' = ```
+			VAR SelectedKPI =
+					SELECTEDVALUE('Dim_KPI'[KPI])
+					RETURN
+						SWITCH(
+							TRUE(),
+							SelectedKPI = "Revenue", [Revenue],
+							SelectedKPI = "Units", [Units Sold],
+							SelectedKPI = "COGS", [COGS]
+						)
+					
+			```
+		formatString: #,0
+		lineageTag: d2ac9558-2e93-4299-bbd1-53705af0c1b1
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Inventory QoH' = ```
+			SUM(Fact_Inventory[QuantityOnHand])
+				
+			```
+		formatString: #,0
+		lineageTag: 8ca778fb-6cd8-4952-8305-a855c6053d81
+
+		changedProperty = FormatString
+
+	measure 'Ext Statutory Cost' = ```
+			SUM(Fact_Inventory[ERP_Extended_Statutory_Cost_USD])
+				
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: aec56f89-743d-4d6d-b158-9f62429a16d6
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Revenue = ```
+			SUM(Fact_Sales[Revenue])
+				
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: e6205c9f-7019-47f1-a963-2b2c9761fd04
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'TTM COGS' = ```
+			SUMX(
+						Dim_GIM,
+						[TTM Units] * Dim_GIM[Manufacturing Cost]
+					)
+				
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: a413169c-b97e-4a48-90fd-5e8b2841c584
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'TTM Revenue' = ```
+			VAR EndDate =
+					CALCULATE(
+						MAX(Fact_Sales[Date]),
+						ALL(),
+						Fact_Sales[Scenario] = "AC"
+					) --retrives Max Date
+					VAR StartDate =
+					EDATE(
+						EndDate,
+						-12
+					) + 1 -- Shifts EndDate to date beginning
+					RETURN
+						CALCULATE(
+							[Revenue],
+							FILTER(
+								'Dim_Calendar',
+								'Dim_Calendar'[Date] >= StartDate
+								&& 'Dim_Calendar'[Date] <= EndDate
+							)
+						)
+				
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: b9edf60d-9d37-4940-aedc-8078ac5fddfd
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'TTM Units' = ```
+			
+			VAR EndDate =
+			CALCULATE(
+			    MAX(Fact_Sales[Date]),
+			    ALL(),
+			    Fact_Sales[Scenario] = "AC"
+			) --retrives last date of actual sales
+			VAR StartDate =
+			EDATE(
+			    EndDate,
+			    -12
+			) + 1 -- Shifts EndDate to date beginning
+			RETURN
+			    CALCULATE(
+			        [Units Sold],
+			        FILTER(
+			            'Dim_Calendar',
+			            'Dim_Calendar'[Date] >= StartDate
+			            && 'Dim_Calendar'[Date] <= EndDate
+			        )
+			    )
+				
+			```
+		formatString: #,0
+		lineageTag: 81c65ac1-0ecc-4233-8109-25f176195073
+
+		changedProperty = FormatString
+
+	measure 'Units Sold' = ```
+			SUM(Fact_Sales[Quantity])
+				
+			```
+		formatString: #,0
+		lineageTag: 5caa14ff-a22d-4c0c-8087-ec4bf483eb72
+
+		changedProperty = FormatString
+
+	measure 'TTM Start Date' = ```
+			VAR EndDate =
+					CALCULATE(
+						MAX(Fact_Sales[Date]),
+						ALL(),
+						Fact_Sales[Scenario] = "AC"
+					) --retrives last date of actual sales
+					VAR StartDate =
+					EDATE(
+						EndDate,
+						-12
+					) + 1 -- Shifts EndDate to date beginning
+					RETURN
+						StartDate
+				
+			```
+		formatString: General Date
+		displayFolder: Text Box Measures
+		lineageTag: 5b07bd4f-5e65-4864-802e-30c386966ace
+
+	measure 'TTM End Date' =
+			VAR EndDate =
+					CALCULATE(
+						MAX(Fact_Sales[Date]),
+						ALL(),
+						Fact_Sales[Scenario] = "AC"
+					) --retrives last date of actual sales
+					RETURN
+						EndDate
+		formatString: General Date
+		displayFolder: Text Box Measures
+		lineageTag: 9acbf14c-6718-40d5-96a4-a96c62656660
+
+	measure '# GIM SKUs' = DISTINCTCOUNT(Dim_GIM[ItemId])
+		formatString: #,0
+		lineageTag: dac12fbc-ab6a-485b-945e-212130a9f9e3
+
+	measure 'Actual Sales - End Date' = ```
+			VAR StartingMonth =
+					CALCULATE(
+						MAX(Fact_Sales[Date]),
+						ALL(),
+						Fact_Sales[Scenario] = "AC"
+					) --Retrieves forecast starting date
+					VAR DayinMonth =
+					DAY(StartingMonth) --Day of Month
+					RETURN
+						--StartingMonth - ( DayinMonth )
+						-- removing number of days to get previous month ending date (e.g., if starting date is 4/30/2022, then 4/30/2022 - 30 days = 3/31/2022 )
+						StartingMonth
+				
+			```
+		formatString: General Date
+		displayFolder: Text Box Measures
+		lineageTag: 3118f39c-b627-4878-b9f7-89fca6216987
+
+	measure 'Actual Sales - Start Date' =
+			CALCULATE(
+						MIN(Fact_Sales[Date]),
+						ALL(),
+						Fact_Sales[Scenario] = "AC"
+					)
+		formatString: General Date
+		displayFolder: Text Box Measures
+		lineageTag: 9b1d29e6-9424-421d-84de-0dc6af0b15a8
+
+	measure 'Forecast Sales - End Date' = ```
+			CALCULATE(
+						MAX(Fact_Sales[Date]),
+						ALL(),
+						Fact_Sales[Scenario] = "FC"
+					)
+				
+			```
+		formatString: General Date
+		displayFolder: Text Box Measures
+		lineageTag: 983b29ad-3c4d-4462-a2b8-795a7643402d
+
+	measure 'Forecast Sales - Start Date' =
+			VAR StartingMonth =
+					CALCULATE(
+						MIN(Fact_Sales[Date]),
+						ALL(),
+						Fact_Sales[Scenario] = "FC"
+					) --Retrieves forecast starting date
+					VAR DayinMonth =
+					DAY(StartingMonth) --Day of Month
+					RETURN
+						StartingMonth - (DayinMonth - 1)
+		formatString: General Date
+		displayFolder: Text Box Measures
+		lineageTag: 6eee2923-6697-490e-95bd-ad5aae29384e
+
+	measure 'Dynamic Sales KPI Selection' = SELECTEDVALUE('Dim_KPI'[KPI])
+		lineageTag: 622f9b9a-2ca3-41fd-bfcb-3a84418e476f
+
+	measure 'Gross Profit' = ```
+			
+			 [Trailing 12M Revenue]-[COGS]
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 49aa30ea-bd26-4e58-ab20-e56c161b1e4e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Trailing 12M Revenue' =
+			
+			VAR MaxSalesDate = EOMONTH( TODAY(), -1)
+			RETURN
+			    CALCULATE(
+			        [Revenue],
+			        DATESINPERIOD(
+			            'Dim_Calendar'[Date],
+			            MaxSalesDate,
+			            -12,
+			            MONTH
+			        )
+			    )
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 25abd72d-e1dd-4d6b-a936-f1c409a00661
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Profit Margin' =
+			
+			DIVIDE([Gross Profit], [Trailing 12M Revenue])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 738d0342-3dca-46b0-848d-42306c5fb5a8
+
+	measure 'Profit Margin minus Sum of Budgeted Growth Margin' =
+			
+			[Profit Margin] - [Budget Growth Margin %]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 99608302-db59-4f39-b772-e391f1fc7d42
+
+	measure 'Next 12M Demand Units' = ```
+			
+			VAR StartDate =
+			    DATE ( YEAR ( TODAY() ), MONTH ( TODAY() ), 1 )
+			VAR EndDate =
+			    EDATE ( StartDate, 11 )
+			RETURN
+			    CALCULATE (
+			        [Units Sold],
+			        DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
+			    )
+			
+			```
+		formatString: #,0
+		lineageTag: acea76f7-9c01-49f5-a981-9dc066e45542
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Ext Management Cost' = SUM(Fact_Inventory[ERP_Extended_Management_Cost_USD])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c326d1b4-ae0c-4365-b9bb-d8a66a0fd42b
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 44a3ef43-b2e1-4c4f-96cc-8ad964c1a059
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures-e23275f6-f7aa-4a81-be8c-8820302c3177 = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = f49754c4da9244e998d8d61be90746e8
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

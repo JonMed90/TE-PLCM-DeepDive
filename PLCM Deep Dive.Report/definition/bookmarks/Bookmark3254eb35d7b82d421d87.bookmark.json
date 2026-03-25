@@ -1,0 +1,1033 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Landing Page Clear Filters",
+  "name": "Bookmark3254eb35d7b82d421d87",
+  "options": {
+    "targetVisualNames": []
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSectionc030d964aa51ae60a193",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "Filter98a3ea614165e32c4573",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "g",
+                "Entity": "Dim_GIM",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "g"
+                                }
+                              },
+                              "Property": "Business Unit"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "null"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'Trauma Other'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "HierarchyLevel": {
+              "Expression": {
+                "Hierarchy": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Hierarchy": "GIM Hierarchy"
+                }
+              },
+              "Level": "Product Line"
+            }
+          },
+          "howCreated": 1,
+          "cachedDisplayNames": [
+            {
+              "id": {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Dim_GIM"
+                          }
+                        },
+                        "Property": "Business Unit"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "null"
+                      }
+                    }
+                  }
+                }
+              },
+              "displayName": "(Blank)"
+            },
+            {
+              "id": {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Dim_GIM"
+                          }
+                        },
+                        "Property": "Business Unit"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Trauma Other'"
+                      }
+                    }
+                  }
+                }
+              },
+              "displayName": "Trauma Other"
+            }
+          ]
+        }
+      ]
+    },
+    "sections": {
+      "ReportSectionc030d964aa51ae60a193": {
+        "visualContainers": {
+          "cb4b5691ee72ee7f3494": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "c2a156ebc9f2ffa9076a": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "bf49b580b4bca6ccf9ee": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5759119b3e0d385ef00c",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "84800bb7fbd79cf61cd7",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d3a79d140d530a4af70d",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a70a486767d635297ed2",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Standard Catalog Number"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1d29dda41d7cac61d40b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "27bc1f9315ee0f98dcc2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Dynamic Global PLCM Decision"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7f56c8c248ce627d5277",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Stocking Type Code"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0269edaae23367ecaf87",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Inventory QoH"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7089afdef3a913fceb7d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Ext Statutory Cost"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6e82c507375bfee3d021",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "TTM Units"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "feea5243a805cb93e5f7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "TTM COGS"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "49268297e2352c382ecb",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "TTM Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "de79059ae5fd84152ff6",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "DSI (COGS)"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Ext Statutory Cost"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Rows": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  },
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  },
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  },
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Standard Catalog Number"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Stocking Type Code"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "06e444216e5cfa00fd65": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "964da9f82cd646270c34": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "d5dffb3a47704620536d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "412b73bbff21a2c011fa",
+                  "type": "Categorical",
+                  "expression": {
+                    "GroupRef": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Global PLCM Decision (Brand) (groups)",
+                      "GroupedColumns": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "Dim_GIM"
+                              }
+                            },
+                            "Property": "Global PLCM Decision (Brand)"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "GroupRef": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Global PLCM Decision (Brand) (groups)",
+                      "GroupedColumns": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "Dim_GIM"
+                              }
+                            },
+                            "Property": "Global PLCM Decision (Brand)"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "f2e3f08b4c7a06a2d2c3": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ebdfce51c64988e292d6",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "3a077d1a012ab7c0e3d2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "04567548e810baa4661d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Stocking Type Code"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "Stocking Type Code"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "6a296c65e4005185ea70": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "259e3c2dab6eeff06995",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "LifeCycleCode"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "LifeCycleCode"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "618685e1ea7cc55bed90": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e337d6cadbbb1999e1bb",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Property": "StandardCatalogNumber"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "FilterByList507A2DBEC31244C8AAABDE9BA541F723",
+              "objects": {}
+            }
+          },
+          "e5a99cb1d7e4102ba90b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "94986886d35aa430c38d",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "SubBrand"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "7a4d5dc3466c5bea8952": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "278f1c321e348b5438b8",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Brand"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "781ad7137e1c81eb1e32": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1e9bbd143e8c363acf25",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_GIM"
+                            }
+                          },
+                          "Hierarchy": "GIM Hierarchy"
+                        }
+                      },
+                      "Level": "Product Line"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "16cf781e0b4d17deef3a": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "6028a27062a28bd3a3cd": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "002647956f25c04f44c6",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Ext Statutory Cost"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ee575a8c31274fe35c55",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pieChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Regions"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

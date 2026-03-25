@@ -1,0 +1,863 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Playbook by Phase",
+  "name": "19bdc8bb641b2b3d84eb",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "fe9742333088ece1e0b6",
+      "006018989f8cd6db9388",
+      "2145016dea18612d4643",
+      "4acabc18005c250d6f38",
+      "517798c70a9a35d9e134",
+      "cc7b3a95a5ab407a3b85",
+      "96868d5d820b51e610ba"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "dc23a6f18b1cdd8010a5",
+    "filters": {
+      "byName": {
+        "6cf00d88a225a5cdff64": {
+          "name": "6cf00d88a225a5cdff64",
+          "type": "Categorical",
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "Dim_GIM"
+                }
+              },
+              "Property": "DeleteFlag"
+            }
+          },
+          "howCreated": 1
+        },
+        "f9439439782296ce1ae6": {
+          "name": "f9439439782296ce1ae6",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "d",
+                "Entity": "Dim_GIM",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "d"
+                                }
+                              },
+                              "Property": "Business Unit"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'Trauma Other'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "Dim_GIM"
+                }
+              },
+              "Property": "Business Unit"
+            }
+          },
+          "howCreated": 1
+        }
+      }
+    },
+    "sections": {
+      "dc23a6f18b1cdd8010a5": {
+        "visualContainers": {
+          "5b1a17f12b07805334ec": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "bc8888f1122047dd4de0": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "0e78d5825791005a2504": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "1a1eefe5a844560804e0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4b78f5298d0a2628f94f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Process/Tasks"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Process/Tasks"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "cf25717130d2090d948c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "118eafce66a5a409729b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Role"
+                        }
+                      },
+                      "Property": "Role Name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Role"
+                        }
+                      },
+                      "Property": "Role Name"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "f3233033c31035bab726": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "2145016dea18612d4643": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "cb60c07c4f54955e94cb",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Phase"
+                        }
+                      },
+                      "Property": "Phase"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2f142dd5b934bbaa8865",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Phase"
+                        }
+                      },
+                      "Property": "Objective"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "67478ecea8388735908c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Phase"
+                        }
+                      },
+                      "Property": "Phase ID"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Phase"
+                        }
+                      },
+                      "Property": "Phase ID"
+                    }
+                  }
+                }
+              ],
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "cc7b3a95a5ab407a3b85": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4e469130a776b19ffca2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Phase Activity ID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f87497400cc1a39e41db",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Phase"
+                        }
+                      },
+                      "Property": "Phase"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "bdde857063fc1b95b5b9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Process/Tasks"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "96419fe52c0d72861aa7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_TaskAssignments"
+                        }
+                      },
+                      "Property": "Department (Accountable)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7f7bd86cf8c9213b0a3d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_TaskAssignments"
+                        }
+                      },
+                      "Property": "Department (Responsible)"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Phase Activity ID"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "96868d5d820b51e610ba": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b68e6e40fc4055415cc3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_Phase"
+                            }
+                          },
+                          "Property": "Objective"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b63f5a49bb109f88fdb8",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Phase"
+                        }
+                      },
+                      "Property": "Phase"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "advancedSlicerVisual",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "d",
+                                "Entity": "Dim_Phase",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "d"
+                                            }
+                                          },
+                                          "Property": "Phase"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Phaseout Request & Approval'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "cachedFilterDisplayItems": [
+                {
+                  "id": {
+                    "scopeId": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "Dim_Phase"
+                              }
+                            },
+                            "Property": "Phase"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'Phaseout Request & Approval'"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "displayName": "Phaseout Request & Approval"
+                }
+              ]
+            }
+          },
+          "4acabc18005c250d6f38": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e7002dda56df28736888",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_TaskAssignments"
+                        }
+                      },
+                      "Property": "Departments (by Code)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e22dccb4e44bd411e47f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_TaskAssignments"
+                        }
+                      },
+                      "Property": "Assignment Type"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f3d81376ddda01438380",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Phase Activity ID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "78cede3d27faed6d9ac7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Phase"
+                        }
+                      },
+                      "Property": "Phase"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "071ead946dd8a760fefa",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Process/Tasks"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Process/Tasks"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Columns": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_TaskAssignments"
+                        }
+                      },
+                      "Property": "Assignment Type"
+                    }
+                  }
+                ],
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Phase Activity ID"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Phase"
+                        }
+                      },
+                      "Property": "Phase"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_PhaseActivity"
+                        }
+                      },
+                      "Property": "Process/Tasks"
+                    }
+                  }
+                ]
+              },
+              "expansionStates": [
+                {
+                  "roles": [
+                    "Rows"
+                  ],
+                  "levels": [
+                    {
+                      "queryRefs": [
+                        "Dim_PhaseActivity.Phase Activity ID"
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "Dim_Phase.Phase"
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "Dim_PhaseActivity.Process/Tasks"
+                      ],
+                      "isCollapsed": true,
+                      "isPinned": true
+                    }
+                  ],
+                  "root": {
+                    "identityValues": null
+                  }
+                }
+              ]
+            }
+          },
+          "517798c70a9a35d9e134": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e56848cc95dab41e7231",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Role"
+                        }
+                      },
+                      "Property": "Role Name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "d",
+                                "Entity": "Dim_Role",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "d"
+                                            }
+                                          },
+                                          "Property": "Role Name"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Change Analyst II'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Role"
+                        }
+                      },
+                      "Property": "Role Name"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "bfb14af9e5b69955e95d": {
+            "singleVisual": {
+              "visualType": "bookmarkNavigator",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "ea5803f1b1b7e0c78770": {
+            "isHidden": true
+          },
+          "4c2ff6bfeeb47db2bf0e": {
+            "children": {
+              "006018989f8cd6db9388": {
+                "isHidden": false
+              },
+              "fe9742333088ece1e0b6": {
+                "isHidden": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+relationship d4742aae-9b1f-4988-8ec9-7c9a92b2955b
+	fromColumn: Fact_Sales.Date
+	toColumn: Dim_Calendar.Date
+
+relationship d3dfcb45-8f1f-7b03-6752-7eb68308e887
+	fromColumn: Fact_Sales.ItemId
+	toColumn: Dim_GIM.ItemId
+
+relationship AutoDetected_5afa0f18-ee24-4bdb-a415-7c690a7896df
+	fromColumn: Fact_Sales.'Dim_Regions.Index'
+	toColumn: Dim_Regions.Index
+
+relationship 3b515043-db9b-5506-a290-38c6eedd2055
+	crossFilteringBehavior: bothDirections
+	fromColumn: Dim_GIM.'Business Unit'
+	toColumn: Budget.BU
+
+relationship AutoDetected_9a4bb1e1-2cae-4473-b0ab-f4bf380348bf
+	fromColumn: Fact_Inventory.ItemId
+	toColumn: Dim_GIM.ItemId
+
+relationship 468308fb-2489-3365-53e8-96aad6acc14e
+	crossFilteringBehavior: bothDirections
+	fromColumn: Fact_ConsolidatedList.ItemId
+	toColumn: Dim_GIM.ItemId
+
+relationship fb135e58-61a5-37af-42fa-7847f31c7dce
+	fromColumn: Fact_Inventory.Region
+	toColumn: Dim_Regions.Region
+
+relationship AutoDetected_6ac3b117-4362-4e7d-b4f1-7edc2e88ea54
+	fromColumn: Fact_TaskAssignments.'Role Name'
+	toColumn: Dim_Role.'Role Name'
+
+relationship 4eb8be6f-d8ee-4b8e-c318-d896204eb6cf
+	fromColumn: Fact_TaskAssignments.'Phase Activity ID'
+	toColumn: Dim_PhaseActivity.'Phase Activity ID'
+
+relationship 69ea5d42-5b7a-9f2b-6702-1f14943dd0b2
+	fromColumn: Fact_TaskAssignments.'Phase ID'
+	toColumn: Dim_Phase.'Phase ID'
+

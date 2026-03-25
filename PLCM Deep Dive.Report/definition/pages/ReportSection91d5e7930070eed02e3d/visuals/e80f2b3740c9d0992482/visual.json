@@ -1,0 +1,885 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "e80f2b3740c9d0992482",
+  "position": {
+    "x": 247.77429467084642,
+    "y": 376.1755485893417,
+    "z": 2000,
+    "height": 301.94357366771163,
+    "width": 1016.1755485893417,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "Business Unit"
+                }
+              },
+              "queryRef": "Dim_GIM.Franchise Hierarchy.Business Unit",
+              "nativeQueryRef": "Franchise Hierarchy Business Unit"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "Product Line"
+                }
+              },
+              "queryRef": "Dim_GIM.Franchise Hierarchy.Product Line",
+              "nativeQueryRef": "Franchise Hierarchy Product Line"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "Brand"
+                }
+              },
+              "queryRef": "Dim_GIM.Franchise Hierarchy.Brand",
+              "nativeQueryRef": "Franchise Hierarchy Brand"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "SubBrand"
+                }
+              },
+              "queryRef": "Dim_GIM.Franchise Hierarchy.SubBrand",
+              "nativeQueryRef": "Franchise Hierarchy SubBrand"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "Catalog Number"
+                }
+              },
+              "queryRef": "Dim_GIM.Franchise Hierarchy.Catalog Number",
+              "nativeQueryRef": "Franchise Hierarchy Catalog Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "ItemId"
+                }
+              },
+              "queryRef": "CountNonNull(GIM.ItemId)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Inventory QoH"
+                }
+              },
+              "queryRef": "Inventory.Inventory Qty",
+              "displayName": "Qty OnHand"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ext Statutory Cost"
+                }
+              },
+              "queryRef": "Inventory.Inventory Value$",
+              "displayName": "Ext Statutory Cost"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ext Management Cost"
+                }
+              },
+              "queryRef": "_Measures.Ext Management Cost",
+              "nativeQueryRef": "Ext Management Cost"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Long Description"
+                }
+              },
+              "queryRef": "Dim_GIM.Long Description",
+              "nativeQueryRef": "Long Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Item Type Description"
+                }
+              },
+              "queryRef": "Dim_GIM.Item Type Description",
+              "nativeQueryRef": "Item Type Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Item Owner Name"
+                }
+              },
+              "queryRef": "Dim_GIM.Item Owner Name",
+              "nativeQueryRef": "Item Owner Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Life Cycle Code"
+                }
+              },
+              "queryRef": "Dim_GIM.Life Cycle Code",
+              "nativeQueryRef": "Life Cycle Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Stocking Type Code"
+                }
+              },
+              "queryRef": "GIM.Stocking Type Code",
+              "displayName": "Stocking Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Global PLCM Decision (Brand)"
+                }
+              },
+              "queryRef": "GIM.Global PLCM Decision (Brand)",
+              "displayName": "PLCM Decision (Brand)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Global PLCM Decision (SubBrand)"
+                }
+              },
+              "queryRef": "GIM.Global PLCM Decision (SubBrand)",
+              "displayName": "PLCM Decision (SubBrand)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Regions"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "Regions.Region"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Inventory"
+                    }
+                  },
+                  "Property": "BP/WH Code"
+                }
+              },
+              "queryRef": "Fact_Inventory.BP/WH Code",
+              "nativeQueryRef": "BP/WH Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Inventory"
+                    }
+                  },
+                  "Property": "BP/WH Description"
+                }
+              },
+              "queryRef": "Fact_Inventory.BP/WH Description",
+              "nativeQueryRef": "BP/WH Description"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Ext Statutory Cost"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "86.79148380974974D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(PPR Tracker Status.GIM Flag)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "271.6293045506662D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.Brand_SubBrand_Key"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "178.22010042304194D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.SubBrand"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.Global PLCM Decision (Brand)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.Global PLCM Decision (SubBrand)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "123.95044969396216D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.LongDescription"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "27D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.LifeCycleCode"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "106.69071889843624D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "EncompassSales.PY Sales"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Inventory.Inventory Qty"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Inventory.Inventory Value$"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Regions.Region"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "238D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Location.BP/WH Description"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.Stocking Type Code"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "CountNonNull(GIM.ItemId)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.ItemOwner"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "113D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.ItemTypeDescription"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Franchise Hierarchy.Business Unit"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Franchise Hierarchy.Product Line"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Franchise Hierarchy.Brand"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Franchise Hierarchy.SubBrand"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Franchise Hierarchy.Catalog Number"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Long Description"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Item Type Description"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Item Owner Name"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Dim_GIM.Life Cycle Code"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "72b4f763ce00a4d09c51",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_GIM"
+                  }
+                },
+                "Hierarchy": "Franchise Hierarchy"
+              }
+            },
+            "Level": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0f97b625ae306c8147d2",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_GIM"
+                  }
+                },
+                "Hierarchy": "Franchise Hierarchy"
+              }
+            },
+            "Level": "Product Line"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "beb043b55c908dcca486",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_GIM"
+                  }
+                },
+                "Hierarchy": "Franchise Hierarchy"
+              }
+            },
+            "Level": "Brand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "904d504125149527030d",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_GIM"
+                  }
+                },
+                "Hierarchy": "Franchise Hierarchy"
+              }
+            },
+            "Level": "SubBrand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0e660687adb89b19836c",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_GIM"
+                  }
+                },
+                "Hierarchy": "Franchise Hierarchy"
+              }
+            },
+            "Level": "Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "48c0455904b4635ac4da",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "ItemId"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "57e3e42f090e9428aa36",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Inventory QoH"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "50f88de0aab0d6ed642e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Ext Statutory Cost"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8951e3718c3121b0b500",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Ext Management Cost"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "99a9ea4da8571c52e3ac",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Long Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ce0e8e6cb08a43b57ec1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Item Type Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "53d464ee10e620c92dc6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Item Owner Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "76d75964d9d164b65a01",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Life Cycle Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1e20308b1010b2b9378d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Stocking Type Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9031ac8c400702e97db6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Global PLCM Decision (Brand)"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "91ea2d8065226905861c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Global PLCM Decision (SubBrand)"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "40164d13b2b98ba44da9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Regions"
+              }
+            },
+            "Property": "Region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8668a647d0dde5b867a3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Inventory"
+              }
+            },
+            "Property": "BP/WH Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2e2c98913ce058810b17",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Inventory"
+              }
+            },
+            "Property": "BP/WH Description"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

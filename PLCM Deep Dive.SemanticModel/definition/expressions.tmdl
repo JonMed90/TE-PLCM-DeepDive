@@ -1,0 +1,802 @@
+expression 'Bio Tracker' = ```
+		let
+		    // Source data from the specified Excel file on SharePoint
+		    Source = Excel.Workbook(
+		        Web.Contents("https://stryker.sharepoint.com/sites/TEPLCM/Shared%20Documents/General/PLCM%20Roadmap,%20Tracker,%20and%20PowerBI%20tools/PLCM%20Tracker_LIVE.xlsx"), 
+		        null, 
+		        true
+		    ),
+		
+		    // Extract the "Bio Tracker" sheet
+		    BioTrackerSheet = Source{[Item="Bio Tracker", Kind="Sheet"]}[Data],
+		
+		    // Promote the first row as headers
+		    PromotedHeaders = Table.PromoteHeaders(
+		        BioTrackerSheet, 
+		        [PromoteAllScalars = true]
+		    ),
+		
+		    // Change column types for consistency and accuracy
+		    ChangedType = Table.TransformColumnTypes(
+		        PromotedHeaders, {
+		            {"Brand Total Row?", type text}, 
+		            {"SYK/WM", type text}, 
+		            {"Brand", type text}, 
+		            {"SubBrand", type any}, 
+		            {"US", type number}, 
+		            {"OUS", type number}, 
+		            {"Grand Total", type number}, 
+		            {"PLCM Status", type text}, 
+		            {"Global PLCM Decision", type any}, 
+		            {"Roadmap Updated", type any}, 
+		            {"Brand or SKU", type any}, 
+		            {"Deep Dive Data Collected", type any}, 
+		            {"Last Buy", type any}, 
+		            {"Last Sell", type any}, 
+		            {"MDR Remediated?", type any}, 
+		            {"Comments", type any}
+		        }
+		    ),
+		
+		    // Remove blank rows by checking if all columns are empty
+		    RemovedBlankRows = Table.SelectRows(
+		        ChangedType, 
+		        each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))
+		    ),
+		
+		    // Add a custom column for "Business Unit" with a constant value
+		    AddedCustom = Table.AddColumn(
+		        RemovedBlankRows, 
+		        "Business Unit", 
+		        each "Biologics"
+		    ),
+		
+		    // Remove unnecessary columns to optimize the dataset
+		    RemovedColumns = Table.RemoveColumns(
+		        AddedCustom, 
+		        {"US", "OUS", "Grand Total"}
+		    )
+		in
+		    RemovedColumns
+		```
+	lineageTag: c8d8b7d0-cea2-4146-89ac-6f16d0983af0
+	queryGroup: 'Disabled\PPR Tracker'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'F&A Tracker' = ```
+		let
+		    // Source data from the specified Excel file on SharePoint
+		    Source = Excel.Workbook(
+		        Web.Contents("https://stryker.sharepoint.com/sites/TEPLCM/Shared%20Documents/General/PLCM%20Roadmap,%20Tracker,%20and%20PowerBI%20tools/PLCM%20Tracker_LIVE.xlsx"), 
+		        null, 
+		        true
+		    ),
+		
+		    // Extract the "F&A Tracker" sheet
+		    FATrackerSheet = Source{[Item="F&A Tracker", Kind="Sheet"]}[Data],
+		
+		    // Promote the first row as headers
+		    PromotedHeaders = Table.PromoteHeaders(
+		        FATrackerSheet, 
+		        [PromoteAllScalars = true]
+		    ),
+		
+		    // Change column types for consistency and accuracy
+		    ChangedType = Table.TransformColumnTypes(
+		        PromotedHeaders, {
+		            {"Brand Total Row?", type text}, 
+		            {"SYK/WM", type text}, 
+		            {"Brand", type text}, 
+		            {"SubBrand", type text}, 
+		            {"US", type number}, 
+		            {"OUS", type number}, 
+		            {"Grand Total", type number}, 
+		            {"PLCM Status", type text}, 
+		            {"Global PLCM Decision", type any}, 
+		            {"Roadmap Updated", type any}, 
+		            {"Brand or SKU", type any}, 
+		            {"Deep Dive Data Collected", type any}, 
+		            {"Last Buy", type any}, 
+		            {"Last Sell", type any}, 
+		            {"MDR Remediated?", type any}, 
+		            {"Comments", type any}
+		        }
+		    ),
+		
+		    // Remove blank rows by checking if all columns are empty
+		    RemovedBlankRows = Table.SelectRows(
+		        ChangedType, 
+		        each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))
+		    ),
+		
+		    // Add a custom column for "Business Unit" with a constant value
+		    AddedCustom = Table.AddColumn(
+		        RemovedBlankRows, 
+		        "Business Unit", 
+		        each "Foot & Ankle"
+		    ),
+		
+		    // Remove unnecessary columns to optimize the dataset
+		    RemovedColumns = Table.RemoveColumns(
+		        AddedCustom, 
+		        {"US", "OUS", "Grand Total"}
+		    )
+		in
+		    RemovedColumns
+		```
+	lineageTag: dd826d16-5802-48a4-89ab-094c63ed3a3e
+	queryGroup: 'Disabled\PPR Tracker'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Trauma Tracker' = ```
+		let
+		    // Source data from the specified Excel file on SharePoint
+		    Source = Excel.Workbook(
+		        Web.Contents("https://stryker.sharepoint.com/sites/TEPLCM/Shared%20Documents/General/PLCM%20Roadmap,%20Tracker,%20and%20PowerBI%20tools/PLCM%20Tracker_LIVE.xlsx"), 
+		        null, 
+		        true
+		    ),
+		
+		    // Extract the "Trauma Tracker" sheet
+		    TraumaTrackerSheet = Source{[Item="Trauma Tracker", Kind="Sheet"]}[Data],
+		
+		    // Promote the first row as headers
+		    PromotedHeaders = Table.PromoteHeaders(
+		        TraumaTrackerSheet, 
+		        [PromoteAllScalars = true]
+		    ),
+		
+		    // Change column types for consistency and accuracy
+		    ChangedType = Table.TransformColumnTypes(
+		        PromotedHeaders, {
+		            {"Brand Total Row?", type text}, 
+		            {"SYK/WM", type text}, 
+		            {"Brand", type text}, 
+		            {"SubBrand", type text}, 
+		            {"US", type number}, 
+		            {"OUS", type number}, 
+		            {"Grand Total", type number}, 
+		            {"PLCM Status", type text}, 
+		            {"Global PLCM Decision", type any}, 
+		            {"Roadmap Updated", type any}, 
+		            {"Brand or SKU", type any}, 
+		            {"Deep Dive Data Collected", type any}, 
+		            {"Last Buy", type any}, 
+		            {"Last Sell", type any}, 
+		            {"MDR Remediated?", type any}, 
+		            {"Comments", type any}
+		        }
+		    ),
+		
+		    // Remove blank rows by checking if all columns are empty
+		    RemovedBlankRows = Table.SelectRows(
+		        ChangedType, 
+		        each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))
+		    ),
+		
+		    // Add a custom column for "Business Unit" with a constant value
+		    AddedCustom = Table.AddColumn(
+		        RemovedBlankRows, 
+		        "Business Unit", 
+		        each "Trauma"
+		    ),
+		
+		    // Remove unnecessary columns to optimize the dataset
+		    RemovedColumns = Table.RemoveColumns(
+		        AddedCustom, 
+		        {"US", "OUS", "Grand Total"}
+		    )
+		in
+		    RemovedColumns
+		```
+	lineageTag: 70af7837-78b5-473d-8725-c261a7c9cc7d
+	queryGroup: 'Disabled\PPR Tracker'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'UE Tracker' = ```
+		let
+		    // Source data from the specified Excel file on SharePoint
+		    Source = Excel.Workbook(
+		        Web.Contents("https://stryker.sharepoint.com/sites/TEPLCM/Shared%20Documents/General/PLCM%20Roadmap,%20Tracker,%20and%20PowerBI%20tools/PLCM%20Tracker_LIVE.xlsx"), 
+		        null, 
+		        true
+		    ),
+		
+		    // Extract the "UE Tracker" sheet
+		    UETrackerSheet = Source{[Item="UE Tracker", Kind="Sheet"]}[Data],
+		
+		    // Promote the first row as headers
+		    PromotedHeaders = Table.PromoteHeaders(
+		        UETrackerSheet, 
+		        [PromoteAllScalars = true]
+		    ),
+		
+		    // Change column types for consistency and accuracy
+		    ChangedType = Table.TransformColumnTypes(
+		        PromotedHeaders, {
+		            {"Brand Total Row?", type text}, 
+		            {"SYK/WM", type text}, 
+		            {"Brand", type text}, 
+		            {"SubBrand", type text}, 
+		            {"US", type number}, 
+		            {"OUS", type number}, 
+		            {"Grand Total", type number}, 
+		            {"PLCM Status", type text}, 
+		            {"Global PLCM Decision", type any}, 
+		            {"Roadmap Updated", type any}, 
+		            {"Brand or SKU", type any}, 
+		            {"Deep Dive Data Collected", type any}, 
+		            {"Last Buy", type any}, 
+		            {"Last Sell", type any}, 
+		            {"MDR Remediated?", type any}, 
+		            {"Comments", type any}
+		        }
+		    ),
+		
+		    // Remove blank rows by checking if all columns are empty
+		    RemovedBlankRows = Table.SelectRows(
+		        ChangedType, 
+		        each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))
+		    ),
+		
+		    // Add a custom column for "Business Unit" with a constant value
+		    AddedCustom = Table.AddColumn(
+		        RemovedBlankRows, 
+		        "Business Unit", 
+		        each "Upper Extremities"
+		    ),
+		
+		    // Remove unnecessary columns to optimize the dataset
+		    RemovedColumns = Table.RemoveColumns(
+		        AddedCustom, 
+		        {"US", "OUS", "Grand Total"}
+		    )
+		in
+		    RemovedColumns
+		```
+	lineageTag: 10a9afbc-003a-4d8d-94b3-c0b7c500acf8
+	queryGroup: 'Disabled\PPR Tracker'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Dates Version Query' = ```
+		let
+		    Source = let fnDateTable = (StartDate as date, EndDate as date, optional FYStartMonthNum as number, optional Holidays as list, optional WDStartNum as number ) as table =>
+		  let
+		    FYStartMonth = if List.Contains( {1..12}, FYStartMonthNum ) then FYStartMonthNum else 1,
+		    StartOfWeekDayName = Text.Proper( Text.Start( Date.DayOfWeekName( #date(2021, 2,1) ), 3)),
+		    WDStart = if List.Contains( {0, 1}, WDStartNum ) then WDStartNum else 0,
+		    CurrentDate = Date.From(DateTime.FixedLocalNow()),
+		    DayCount = Duration.Days(Duration.From(EndDate - StartDate))+1,
+		    Source = List.Dates(StartDate,DayCount,#duration(1,0,0,0)),
+		    AddToday = if EndDate < CurrentDate then List.Combine( {Source, {CurrentDate}}) else Source,
+		    TableFromList = Table.FromList(AddToday, Splitter.SplitByNothing()),
+		    ChangedType = Table.TransformColumnTypes(TableFromList,{{"Column1", type date}}),
+		    RenamedColumns = Table.RenameColumns(ChangedType,{{"Column1", "Date"}}),
+		    InsertYear = Table.AddColumn(RenamedColumns, "Year", each Date.Year([Date]), type number),
+		    InsertYearOffset = Table.AddColumn(InsertYear, "YearOffset", each Date.Year([Date]) - Date.Year(Date.From(CurrentDate)), type number),
+		    InsertCompletedYear = Table.AddColumn(InsertYearOffset, "YearCompleted", each Date.EndOfYear([Date]) < Date.From(Date.EndOfYear(CurrentDate)), type logical),
+		
+		    InsertQuarter = Table.AddColumn(InsertCompletedYear, "QuarterOfYear", each Date.QuarterOfYear([Date]), type number),
+		    InsertCalendarQtr = Table.AddColumn(InsertQuarter, "Quarter & Year", each "Q" & Number.ToText([QuarterOfYear]) & " " & Number.ToText([Year]), type text),
+		    InsertCalendarQtr2 = Table.AddColumn(InsertQuarter, "Quarter & Year", each "Q" & Number.ToText([QuarterOfYear]), type text),
+		    InsertQuarternYear = Table.AddColumn(InsertCalendarQtr2, "QuarternYear", each [Year] * 10000 + [QuarterOfYear] * 100, type number),
+		    InsertQuarterOffset = Table.AddColumn(InsertQuarternYear, "QuarterOffset", each ((4 * Date.Year([Date])) +  Date.QuarterOfYear([Date])) - ((4 * Date.Year(Date.From(CurrentDate))) +  Date.QuarterOfYear(Date.From(CurrentDate))), type number),
+		    InsertCompletedQuarter = Table.AddColumn(InsertQuarterOffset, "QuarterCompleted", each Date.EndOfQuarter([Date]) < Date.From(Date.EndOfQuarter(CurrentDate)), type logical),
+		
+		    InsertMonth = Table.AddColumn(InsertCompletedQuarter, "MonthOfYear", each Date.Month([Date]), type number),
+		    InsertDay = Table.AddColumn(InsertMonth, "DayOfMonth", each Date.Day([Date]), type number),
+		    InsertMonthName = Table.AddColumn(InsertDay, "Month Name", each Text.Proper( Date.ToText([Date], "MMMM")), type text),
+		    InsertMonthShort = Table.AddColumn( InsertMonthName, "MonthShortName", each try Text.Proper( Text.Start([Month Name], 3 )) otherwise Text.Proper( [Month Name] ), type text),
+		    InsertMonthInitial = Table.AddColumn(InsertMonthShort, "Month Initial", each Text.Proper(Text.Start([Month Name], 1)) & Text.Repeat( Character.FromNumber(8203), [MonthOfYear] ), type text),
+		    InsertCalendarMonth = Table.AddColumn(InsertMonthInitial, "Month-Year", each [MonthShortName] & "-" & Text.End(Number.ToText([Year]),2), type text),
+		    InsertMonthnYear = Table.AddColumn(InsertCalendarMonth , "MonthnYear", each [Year] * 10000 + [MonthOfYear] * 100, type number),
+		    InsertMonthOffset = Table.AddColumn(InsertMonthnYear, "MonthOffset", each ((12 * Date.Year([Date])) +  Date.Month([Date])) - ((12 * Date.Year(Date.From(CurrentDate))) +  Date.Month(Date.From(CurrentDate))), type number),
+		    InsertCompletedMonth = Table.AddColumn(InsertMonthOffset, "MonthCompleted", each Date.EndOfMonth([Date]) < Date.From(Date.EndOfMonth(CurrentDate)), type logical),
+		    InsertMonthEnding = Table.AddColumn(InsertCompletedMonth, "MonthEnding", each Date.EndOfMonth([Date]), type date),
+		    InsertMonthStart = Table.AddColumn(InsertMonthEnding, "MonthStart", each Date.StartOfMonth([Date]), type date),
+		
+		    InsertDayInt = Table.AddColumn(InsertMonthStart, "DateInt", each [Year] * 10000 + [MonthOfYear] * 100 + [DayOfMonth], type number),
+		    InsertDayOfYear = Table.AddColumn(InsertDayInt, "Day of Year", each Date.DayOfYear([Date]), Int64.Type),
+		    InsertDayWeek = Table.AddColumn(InsertDayOfYear, "DayOfWeek", each Date.DayOfWeek([Date]) + WDStart, Int64.Type),
+		    InsertDayName = Table.AddColumn(InsertDayWeek, "DayOfWeekName", each Text.Proper( Date.ToText([Date], "dddd" )), type text),
+		    InsertDayInitial = Table.AddColumn(InsertDayName, "Weekday Initial", each Text.Proper(Text.Start([DayOfWeekName], 1)) & Text.Repeat( Character.FromNumber(8203), [DayOfWeek] ), type text),
+		    
+		    InsertWeekNumber= Table.AddColumn(InsertDayInitial, "ISO Weeknumber", each
+		      if Number.RoundDown((Date.DayOfYear([Date])-(Date.DayOfWeek([Date], Day.Monday)+1)+10)/7)=0
+		      then Number.RoundDown((Date.DayOfYear(#date(Date.Year([Date])-1,12,31))-(Date.DayOfWeek(#date(Date.Year([Date])-1,12,31), Day.Monday)+1)+10)/7)
+		      else if (Number.RoundDown((Date.DayOfYear([Date])-(Date.DayOfWeek([Date], Day.Monday)+1)+10)/7)=53 and (Date.DayOfWeek(#date(Date.Year([Date]),12,31), Day.Monday)+1<4))
+		      then 1 else Number.RoundDown((Date.DayOfYear([Date])-(Date.DayOfWeek([Date], Day.Monday)+1)+10)/7), type number),
+		    InsertISOyear = Table.AddColumn(InsertWeekNumber, "ISO Year", each Date.Year( Date.AddDays( Date.StartOfWeek([Date], Day.Monday), 3 )),  Int64.Type),
+		    BufferTable = Table.Buffer(Table.Distinct( InsertISOyear[[ISO Year], [DateInt]])),
+		    InsertISOqNum = Table.AddColumn(InsertISOyear, "ISO QuarterOfYear", each if [ISO Weeknumber] >39 then 4 else if [ISO Weeknumber] >26 then 3 else if [ISO Weeknumber] >13 then 2 else 1, Int64.Type),
+		    InsertISOqtr = Table.AddColumn(InsertISOqNum, "ISO Quarter", each "Q" & Number.ToText([ISO QuarterOfYear]), type text),
+		    InsertISOQuarter = Table.AddColumn(InsertISOqtr, "ISO Quarter & Year", each "Q" & Number.ToText([ISO QuarterOfYear]) & " " & Number.ToText([ISO Year]), type text),
+		    InsertISOqNy = Table.AddColumn(InsertISOQuarter, "ISO QuarternYear", each [ISO Year] * 10000 + [ISO QuarterOfYear] * 100, Int64.Type),
+		    //InsertISOday = Table.AddColumn(InsertISOqNy, "ISO Day of Year", (OT) => Table.RowCount( Table.SelectRows( BufferTable, (IT) => IT[DateInt] <= OT[DateInt] and IT[ISO Year] = OT[ISO Year])),  Int64.Type),
+		    InsertCalendarWk = Table.AddColumn(InsertISOqNy, "Week & Year", each Text.From([ISO Year]) & "-" & Text.PadStart( Text.From( [ISO Weeknumber] ), 2, "0"), type text ),
+		    InsertWeeknYear = Table.AddColumn(InsertCalendarWk, "WeeknYear", each [ISO Year] * 10000 + [ISO Weeknumber] * 100,  Int64.Type),
+		    InsertWeekOffset = Table.AddColumn(InsertWeeknYear, "WeekOffset", each (Number.From(Date.StartOfWeek([Date], Day.Monday))-Number.From(Date.StartOfWeek(CurrentDate, Day.Monday)))/7, type number),
+		    InsertCompletedWeek = Table.AddColumn(InsertWeekOffset, "WeekCompleted", each Date.EndOfWeek( [Date], Day.Monday) < Date.From(Date.EndOfWeek(CurrentDate, Day.Monday)), type logical),
+		    InsertWeekEnding = Table.AddColumn(InsertCompletedWeek, "WeekEnding", each Date.EndOfWeek( [Date], Day.Monday), type date),
+		    InsertWeekStart = Table.AddColumn(InsertWeekEnding, "WeekStart", each Date.StartOfWeek( [Date], Day.Monday), type date),
+		
+		    AddFY = Table.AddColumn(InsertWeekStart, "Fiscal Year", each "FY" & (if [MonthOfYear] >= FYStartMonth then Text.PadEnd( Text.End( Text.From([Year] +1), 2), 2, "0") else Text.End( Text.From([Year]), 2)), type text),
+		    AddFQ = Table.AddColumn(AddFY, "Fiscal Quarter", each "FQ" & Text.From( Number.RoundUp( Date.Month( Date.AddMonths( [Date], - (FYStartMonth -1) )) / 3 )), type text),
+		    AddFQnYr = Table.AddColumn(AddFQ, "FQuarternYear", each (if [MonthOfYear] >= FYStartMonth then [Year] +1 else [Year]) * 10000 + Number.RoundUp( Date.Month( Date.AddMonths( [Date], - (FYStartMonth -1) )) / 3 ) * 100,  Int64.Type),
+		    AddFM = Table.AddColumn(AddFQnYr, "Fiscal Period", each if [MonthOfYear] >= FYStartMonth then [MonthOfYear] - (FYStartMonth-1) else [MonthOfYear] + (12-FYStartMonth+1), type text),
+		    AddFMnYr = Table.AddColumn(AddFM , "FPeriodnYear", each (if [MonthOfYear] >= FYStartMonth then [Year] +1 else [Year]) * 10000 + [Fiscal Period] * 100, Int64.Type),
+		    FYCalendarStart = #date( Date.Year(StartDate)-1, FYStartMonth, 1 ),
+		    InsertFFD = Table.AddColumn( AddFMnYr, "FiscalFirstDay", each if Date.Month([Date]) < FYStartMonth then #date( Date.Year([Date]), FYStartMonth, 1) else #date( Date.Year([Date])+1, FYStartMonth, 1)),
+		    AddFYDateRange = Table.Buffer( Table.ExpandTableColumn( Table.ExpandTableColumn( Table.AddColumn( Table.Group( Table.Group( Table.AddColumn( Table.AddColumn( 
+		      Table.RenameColumns( Table.TransformColumnTypes( Table.FromList( { Number.From(FYCalendarStart)..Number.From(EndDate) }, Splitter.SplitByNothing()),{{"Column1", type date}}), {{"Column1", "Date"}}), 
+		        "FiscalFirstDay", each if Date.Month([Date]) < FYStartMonth then #date( Date.Year([Date]), FYStartMonth, 1) else #date( Date.Year([Date])+1, FYStartMonth, 1)),
+		        "FWStartDate", each  Date.AddYears(Date.StartOfWeek( [Date], Day.Monday), 1)),
+		        {"FiscalFirstDay", "FWStartDate"}, {{"AllRows", each _, type table [Date=nullable date, FiscalFirstDay=date, FWStartDate=date]}}),
+		        {"FiscalFirstDay"}, {{"AllRows2", each _, type table [FiscalFirstDay=date, FWStartDate=date, AllRows=table]}}),
+		        "Custom", each Table.AddIndexColumn( [AllRows2], "FY Week", 1, 1))[[Custom]],
+		        "Custom", {"FiscalFirstDay", "FWStartDate", "AllRows", "FY Week"}, {"FiscalFirstDay", "FWStartDate", "AllRows", "FY Week"}),
+		        "AllRows", {"Date"}, {"Date"})[[Date], [FY Week]]
+		      ),
+		    MergeFYW = Table.NestedJoin(InsertFFD, {"Date"}, AddFYDateRange, {"Date"}, "AddFYWeek", JoinKind.LeftOuter),
+		    ExpandFYWeek = Table.TransformColumnTypes( Table.ExpandTableColumn(MergeFYW, "AddFYWeek", {"FY Week"}, {"Fiscal Week"}),{{"Fiscal Week", Int64.Type}}),
+		    AddFYW = Table.AddColumn( ExpandFYWeek, "Fiscal Year & Week", each if FYStartMonth =1 then [#"Week & Year"] else if Date.Month([Date]) < FYStartMonth then Text.From( Date.Year([Date])) & "-" & Text.PadStart( Text.From([Fiscal Week]), 2, "0") else Text.From( Date.Year([Date])+1) & "-" & Text.PadStart(Text.From([Fiscal Week]), 2, "0"), type text),
+		    InsertFWeeknYear = Table.AddColumn(AddFYW, "FWeeknYear", each if FYStartMonth =1 then [WeeknYear] else (if Date.Month([Date]) < FYStartMonth then Date.Year([Date]) else Date.Year([Date])+1) * 10000 + [Fiscal Week] * 100,  Int64.Type),
+		    
+		    InsertIsAfterToday = Table.AddColumn(InsertFWeeknYear, "IsAfterToday", each not ([Date] <= Date.From(CurrentDate)), type logical),
+		    InsertIsWorkingDay = Table.AddColumn(InsertIsAfterToday, "IsWorkingDay", each if Date.DayOfWeek([Date], Day.Monday) > 4 then false else true, type logical),
+		    InsertIsHoliday = Table.AddColumn(InsertIsWorkingDay, "IsHoliday", each if Holidays = null then "Unknown" else List.Contains( Holidays, [Date] ), if Holidays = null then type text else type logical),
+		    InsertIsBusinessDay = Table.AddColumn(InsertIsHoliday, "IsBusinessDay", each if [IsWorkingDay] = true and [IsHoliday] <> true then true else false, type logical),
+		    InsertDayType = Table.AddColumn(InsertIsBusinessDay, "Day Type", each if [IsHoliday] = true then "Holiday" else if [IsWorkingDay] = false then "Weekend" else if [IsWorkingDay] = true then "Weekday" else null, type text),
+		
+		    CurrentDateRecord = Table.SelectRows(InsertDayType, each ([Date] = CurrentDate)),
+		    CurrentISOyear = CurrentDateRecord{0}[ISO Year],
+		    CurrentISOqtr = CurrentDateRecord{0}[ISO QuarterOfYear],
+		    CurrentYear = CurrentDateRecord{0}[Year],
+		    CurrentMonth = CurrentDateRecord{0}[MonthOfYear],
+		    CurrentFiscalFirstDay = CurrentDateRecord{0}[FiscalFirstDay],
+		    PrevFiscalFirstDay = Date.AddYears(CurrentFiscalFirstDay, -1),
+		    CurrentFQ = CurrentDateRecord{0}[FQuarternYear],
+		    CurrentFP = CurrentDateRecord{0}[FPeriodnYear],
+		    CurrentFW = CurrentDateRecord{0}[FWeeknYear],
+		    InsertISOQtrOffset = Table.AddColumn(InsertDayType, "ISO QuarterOffset", each ((4 * [ISO Year]) +  [ISO QuarterOfYear]) - ((4 * CurrentISOyear) + CurrentISOqtr), type number),
+		    InsertISOYrOffset = Table.AddColumn(InsertISOQtrOffset, "ISO YearOffset", each [ISO Year] - CurrentISOyear, Int64.Type),
+		    InsertFYoffset = Table.AddColumn(InsertISOYrOffset, "FiscalYearOffset", each try (if [MonthOfYear] >= FYStartMonth then [Year]+1 else [Year]) - (if CurrentMonth >= FYStartMonth then CurrentYear+1 else CurrentYear) otherwise null, type number),
+		    InsertCurrentFQ = Table.AddColumn(InsertFYoffset, "IsCurrentFQ", each if [FQuarternYear] = CurrentFQ then true else false, type logical),
+		    InsertCurrentFP = Table.AddColumn(InsertCurrentFQ, "IsCurrentFP", each if [FPeriodnYear] = CurrentFP then true else false, type logical),
+		    InsertCurrentFW = Table.AddColumn(InsertCurrentFP, "IsCurrentFW", each if [FWeeknYear] = CurrentFW then true else false, type logical),
+		    InsertPYTD = Table.AddColumn(InsertCurrentFW, "IsPYTD", each if CurrentYear-1 = [Year] and [Day of Year] <= CurrentDateRecord{0}[Day of Year] then true else false, type logical),
+		      ListPrevFYDates = List.Buffer( Table.SelectRows( Table.ExpandTableColumn( Table.NestedJoin(
+		          Table.AddIndexColumn( Table.RenameColumns( Table.TransformColumnTypes( Table.FromList( List.Dates( PrevFiscalFirstDay, Number.From(CurrentFiscalFirstDay-PrevFiscalFirstDay),#duration(1,0,0,0)), Splitter.SplitByNothing()),{{"Column1", type date}}), {{"Column1", "DateFY"}}), "Index", 1, 1), {"Index"}, 
+		          Table.AddIndexColumn( Table.RenameColumns( Table.TransformColumnTypes( Table.FromList( List.Dates( Date.AddYears( PrevFiscalFirstDay, -1), Number.From( PrevFiscalFirstDay - Date.AddYears( PrevFiscalFirstDay, -1)),#duration(1,0,0,0)), Splitter.SplitByNothing()),{{"Column1", type date}}), {{"Column1", "DateFY"}}), "Index", 1, 1)
+		          , {"Index"}, "Table", JoinKind.LeftOuter), "Table", {"DateFY"}, {"PrevDateFY"}), each [DateFY] <= CurrentDate)[PrevDateFY] ),
+		    InsertPFYTD = Table.AddColumn(InsertPYTD, "IsPFYTD", each if [FiscalYearOffset] = -1 and List.Contains(ListPrevFYDates, [Date] ) then true else false, type logical),
+		    
+		    RemoveToday = Table.RemoveColumns( if EndDate < CurrentDate then Table.SelectRows(InsertPFYTD, each ([Date] <> CurrentDate)) else InsertPFYTD, {"Day of Year", "FiscalFirstDay"}),
+		    ChType = Table.TransformColumnTypes(RemoveToday,{{"Year", Int64.Type}, {"QuarterOfYear", Int64.Type}, {"MonthOfYear", Int64.Type}, {"DayOfMonth", Int64.Type}, {"DateInt", Int64.Type}, {"DayOfWeek", Int64.Type}, {"ISO Weeknumber", Int64.Type}, {"WeeknYear", Int64.Type}, {"MonthnYear", Int64.Type}, {"QuarternYear", Int64.Type}, {"Fiscal Period", Int64.Type}, {"WeekOffset", Int64.Type}, {"MonthOffset", Int64.Type}, {"QuarterOffset", Int64.Type}, {"YearOffset", Int64.Type}, {"FiscalYearOffset", Int64.Type}}),
+		    ReorderColumns = Table.ReorderColumns(ChType, {"Date", "Year", "YearOffset", "YearCompleted", "QuarterOfYear", "Quarter & Year", "QuarternYear", "QuarterOffset", "QuarterCompleted", "MonthOfYear", "DayOfMonth", "Month Name", "MonthShortName", "Month Initial", "MonthnYear", "MonthOffset", "MonthCompleted", "MonthEnding", "DateInt", "DayOfWeek", "DayOfWeekName", "Weekday Initial", "Day Type", "ISO Year", "ISO YearOffset", "ISO QuarterOfYear", "ISO Quarter", "ISO Quarter & Year", "ISO QuarternYear", "ISO QuarterOffset", "ISO Weeknumber", "Week & Year", "WeeknYear", "WeekOffset", "WeekCompleted", "WeekEnding", "Fiscal Year", "FiscalYearOffset", "Fiscal Quarter", "FQuarternYear", "IsCurrentFQ", "Fiscal Period", "FPeriodnYear", "IsCurrentFP", "Fiscal Week", "Fiscal Year & Week", "FWeeknYear", "IsCurrentFW", "IsAfterToday", "IsWorkingDay", "IsHoliday", "IsBusinessDay", "IsPYTD", "IsPFYTD"}, MissingField.UseNull)
+		  in
+		    ReorderColumns, documentation = [
+		    Documentation.Name =  " fxCalendar", 
+		    Documentation.Description = " Date table function to create an ISO-8601 calendar", 
+		    Documentation.LongDescription = " Date table function to create an ISO-8601 calendar", 
+		    Documentation.Category = " Table", 
+		    Documentation.Version = " 1.25: Added ISO Quarters and Offsets",
+		    Documentation.Source = " local", 
+		    Documentation.Author = " Melissa de Korte", 
+		    Documentation.Examples = { [Description =  " See: https://forum.enterprisedna.co/t/extended-date-table-power-query-m-function/6390", 
+		      Code = " Optional paramters: #(lf)
+		      (FYStartMonthNum) Month number the fiscal year starts, Januari if omitted #(lf) 
+		      (Holidays) Select a query (and column) that contains a list of holiday dates #(lf) 
+		      (WDStartNum) Switch default weekday numbering from 0-6 to 1-7 by entering a 1 #(lf)
+		      #(lf)
+		      Important to note: #(lf)
+		      [Fiscal Week] starts on a Monday and can contain less than 7 days in a First- and/or Last Week of a FY #(lf)
+		      [IsWorkingDay] does not take holiday dates into account  #(lf)
+		      [IsBusinessDay] does take optional holiday dates into account  #(lf)
+		      [IsPYTD] and [IsPFYTD] compare Previous [Day of Year] with the Current [Day of Year] number, so dates don't align in leap years", 
+		      Result = " " ] }
+		    ] 
+		  in 
+		  Value.ReplaceType(fnDateTable, Value.ReplaceMetadata(Value.Type(fnDateTable), documentation))
+		in
+		    Source
+		```
+	lineageTag: 8aaae725-7b09-421f-a1bd-708c0dbd306b
+	queryGroup: Calendar
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression 'Anaplan Products' = ```
+		let
+		    // Source data from the specified Excel file on SharePoint
+		    Source = Excel.Workbook(
+		        Web.Contents("https://stryker.sharepoint.com/sites/TEPLCM/Shared%20Documents/General/PLCM%20Roadmap,%20Tracker,%20and%20PowerBI%20tools/PowerBI/v2%20Support/P-HP07%20Item%20%5BHUB%5D.xlsx"), 
+		        null, 
+		        true
+		    ),
+		
+		    // Extract the "Sheet 1" sheet
+		    Sheet1 = Source{[Item = "Sheet 1", Kind = "Sheet"]}[Data],
+		
+		    // Promote the first row as headers
+		    PromotedHeaders = Table.PromoteHeaders(Sheet1, [PromoteAllScalars = true]),
+		
+		    // Change column types for consistency and accuracy
+		    ChangedColumnTypes = Table.TransformColumnTypes(
+		        PromotedHeaders, {
+		            {"", type text}, 
+		            {"Item Number", type text}, 
+		            {"Item Description", type text}, 
+		            {"Line [Item Class (HPR01)]", type text}, 
+		            {"Sales Segment[Item Family Group (HPR02)]", type text}, 
+		            {"Sales Family [Item Line Family (HPR03)]", type text}, 
+		            {"Brand [Item Line (HPR04)]", type text}, 
+		            {"Imp Inst Kits", type text}, 
+		            {"Imp Inst Kits Desc", type text}, 
+		            {"Master Planning Family", type text}, 
+		            {"Stocking Type Code", type text}, 
+		            {"Item Grouping", type text}, 
+		            {"Inventory UOM", type text}, 
+		            {"GIM_ID", Int64.Type}
+		        }
+		    ),
+		
+		    // Rename columns for clarity
+		    RenamedColumns = Table.RenameColumns(
+		        ChangedColumnTypes, {
+		            {"Line [Item Class (HPR01)]", "Product Line"}, 
+		            {"Sales Segment[Item Family Group (HPR02)]", "Segment"}, 
+		            {"Sales Family [Item Line Family (HPR03)]", "Family"}, 
+		            {"Brand [Item Line (HPR04)]", "Brand"}, 
+		            {"Item Description", "Description"}, 
+		            {"Item Grouping", "Franchise"}
+		        }
+		    ),
+		
+		    // Add a custom column for normalized item numbers
+		    AddedNormalizedItemNumber = Table.AddColumn(
+		        RenamedColumns, 
+		        "Item_Number_Normalized", 
+		        each Text.Select([Item Number], {"0".."9", "A".."z"}), 
+		        type text
+		    ),
+		
+		    // Add an index column
+		    AddedIndexColumn = Table.AddIndexColumn(
+		        AddedNormalizedItemNumber, 
+		        "Index", 
+		        0, 
+		        1, 
+		        Int64.Type
+		    )
+		in
+		    AddedIndexColumn
+		```
+	lineageTag: 41d9d867-af05-4504-91da-63ec42efb4fc
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Historical Sales' = ```
+		let
+		    // Connect to Power BI Dataflows
+		    Source = PowerBI.Dataflows(null),
+		
+		    // Access the specific workspace
+		    Workspace = Source{[workspaceId = "f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+		
+		    // Access the specific dataflow
+		    Dataflow = Workspace{[dataflowId = "19ac5c01-6afb-4ed0-8749-bf98aafc6f61"]}[Data],
+		
+		    // Access the specific entity (table) within the dataflow
+		    SalesHistory = Dataflow{[entity = "Sales History"]}[Data],
+		
+		    // Add a custom column for the scenario
+		    AddedScenarioColumn = Table.AddColumn(
+		        SalesHistory, 
+		        "Scenario", 
+		        each "AC", 
+		        type text
+		    ),
+		    #"Filtered Rows" = Table.SelectRows(AddedScenarioColumn, each [Date] >= #date(2022, 1, 1)),
+		
+		    // Add a custom column for the data source
+		    AddedSourceColumn = Table.AddColumn(
+		        #"Filtered Rows", 
+		        "Source", 
+		        each "Encompass", 
+		        type text
+		    ),
+		
+		    // Merge with the GIM table on "ItemId"
+		    MergedGIMData = Table.NestedJoin(AddedSourceColumn, {"ItemId"}, Dim_GIM, {"ItemId"}, "Dim_GIM", JoinKind.Inner),
+		
+		    // Expand the "ManufacturingcostUSD" column from the nested GIM table
+		    ExpandedGIMCost = Table.ExpandTableColumn(MergedGIMData, "Dim_GIM", { "Manufacturing Cost"}, {"Dim_GIM.manufacturingcostusd"}),
+		    // Add a custom column for COGS calculation
+		    AddedCOGSColumn = Table.AddColumn(
+		        ExpandedGIMCost, 
+		        "COGS", 
+		        each [Quantity] * [Dim_GIM.manufacturingcostusd], Currency.Type
+		    ),
+		
+		    // Remove the expanded column to optimize the dataset
+		    RemovedExpandedColumns = Table.RemoveColumns(
+		        AddedCOGSColumn, 
+		        {"Dim_GIM.manufacturingcostusd"}
+		    ),
+		
+		    // Replace empty values in the "Region" column with "UNKNOWN"
+		    ReplacedEmptyRegionValues = Table.ReplaceValue(
+		        RemovedExpandedColumns, 
+		        "", 
+		        "UNKNOWN", 
+		        Replacer.ReplaceValue, 
+		        {"Region"}
+		    )
+		in
+		    ReplacedEmptyRegionValues
+		```
+	lineageTag: 126a7597-9934-4d10-96e9-d9bdb9f09f34
+	queryGroup: Sales/Demand
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+
+expression DemantraDemand =
+		let
+		    Source = PowerPlatform.Dataflows(null),
+		    Workspaces = Source{[Id="Workspaces"]}[Data],
+		    #"7370e662-04ab-4255-8e24-48b841511f42" = Workspaces{[workspaceId="7370e662-04ab-4255-8e24-48b841511f42"]}[Data],
+		    #"30b852e0-f844-4ba2-8a8b-19381a50fc06" = #"7370e662-04ab-4255-8e24-48b841511f42"{[dataflowId="30b852e0-f844-4ba2-8a8b-19381a50fc06"]}[Data],
+		    #"DemantraCloud Dataflow_" = #"30b852e0-f844-4ba2-8a8b-19381a50fc06"{[entity="DemantraCloud Dataflow",version=""]}[Data],
+		    #"Renamed Columns" = Table.RenameColumns(#"DemantraCloud Dataflow_",{{"sales_date", "Date"}, {"sellingdivision", "Selling Division"}, {"country", "Country"}, {"region", "Region"}, {"item_gim_id", "ItemId"}, {"catalognumber", "Catalog Number"}, {"fcst_df_final_rev", "Quantity"}, {"fcst_df_final_rev_val", "Revenue"}}),
+		    #"Added Source Column" = Table.AddColumn(#"Renamed Columns", "Source", each "Envision", type text),
+		    #"Added Scenario Column" = Table.AddColumn(#"Added Source Column", "Scenario", each "FC", type text),
+		    #"Added COGS Column" = Table.AddColumn(#"Added Scenario Column", "COGS", each [manufacturingcostusd] * [Quantity], type number),
+		    #"Added Hide Column" = Table.AddColumn(#"Added COGS Column", "Hide", each if [Quantity] + [Revenue] = 0 then "Hide" else "Show", type text),
+		    #"Filtered Hide eq Show" = Table.SelectRows(#"Added Hide Column", each ([Hide] = "Show")),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Hide eq Show",{"Date", "ItemId", "Catalog Number", "Selling Division", "Country", "Region", "Quantity", "Revenue", "COGS", "Source", "Scenario"}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Removed Other Columns","EUROPE","EMEA",Replacer.ReplaceText,{"Region"}),
+		        #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","EEMEA","EMEA",Replacer.ReplaceText,{"Region"})
+		in
+		    #"Replaced Value1"
+	lineageTag: cfb8c8bb-3e3d-4373-90de-1cb4bdc99ff1
+	queryGroup: Sales/Demand
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'SKU list' = ```
+		let
+		    // Source data from the specified Excel file on SharePoint
+		    Source = Excel.Workbook(
+		        Web.Contents("https://stryker.sharepoint.com/sites/TEPLCM/Shared%20Documents/General/PLCM%20Roadmap,%20Tracker,%20and%20PowerBI%20tools/PowerBI/v2%20Support/Inventory%20Run%20Out.xlsx"), 
+		        null, 
+		        true
+		    ),
+		
+		    // Extract the "SKU list" sheet
+		    SKUListSheet = Source{[Item = "SKU list", Kind = "Sheet"]}[Data],
+		
+		    // Promote the first row as headers
+		    PromotedHeaders = Table.PromoteHeaders(SKUListSheet, [PromoteAllScalars = true]),
+		
+		    // Change column types for consistency and accuracy
+		    ChangedColumnTypes = Table.TransformColumnTypes(
+		        PromotedHeaders, {
+		            {"BU", type text}, 
+		            {"Brand", type text}, 
+		            {"Subbrand", type text}, 
+		            {"Item Number", type text}, 
+		            {"Item Description", type text}, 
+		            {"Non-GAAP (Y/N)", type text}, 
+		            {"GIM ID", Int64.Type}, 
+		            {"Year", type text}, 
+		            {"Item Number (Text to Columns)", type text}
+		        }
+		    )
+		in
+		    ChangedColumnTypes
+		```
+	lineageTag: 0f70f683-b10d-4261-8aba-7df05d7dde3c
+	queryGroup: Disabled
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'PPR Tracker Status' = ```
+		let
+		    // 🔹 Combine the individual tracker tables into one unified table
+		    Source = Table.Combine({
+		        #"Bio Tracker",
+		        #"F&A Tracker",
+		        #"Trauma Tracker",
+		        #"UE Tracker"
+		    }),
+		
+		    // 🔹 Set explicit and consistent column data types
+		    TypedColumns = Table.TransformColumnTypes(Source, {
+		        {"PLCM Status", type text},
+		        {"SubBrand", type text},
+		        {"APAC", type number},
+		        {"Canada", type number},
+		        {"EEMEA", type number},
+		        {"Europe", type number},
+		        {"LATAM", type number},
+		        {"Global PLCM Decision", type text},
+		        {"Roadmap Updated", type text},
+		        {"Brand or SKU", type text},
+		        {"Deep Dive Data Collected", type text},
+		        {"Last Buy", type date},
+		        {"Last Sell", type date},
+		        {"MDR Remediated?", type text},
+		        {"Financial Impact of Global Decision ($)", type text},
+		        {"Comments", type text},
+		        {"Business Unit", type text},
+		        {"US PLCM Decision", type text},
+		        {"EU PLCM Decision", type text},
+		        {"ASPAC PLCM Decision", type text}
+		    }),
+		
+		    // 🔹 Remove unwanted summary and total rows
+		    RemovedGrandTotal = Table.SelectRows(TypedColumns, each [Brand] <> "Grand Total"),
+		    RemovedBrandTotal = Table.SelectRows(RemovedGrandTotal, each [#"Brand Total Row?"] = null),
+		    FilteredGlobalDecision = Table.SelectRows(RemovedBrandTotal, each [#"Global PLCM Decision"] <> ""),
+		
+		    // 🔹 Duplicate 'PLCM Status' column for use in executive summary visuals
+		    AddedExecSummaryStatus = Table.DuplicateColumn(
+		        FilteredGlobalDecision, 
+		        "PLCM Status", 
+		        "PLCM Status - Exec Summary"
+		    ),
+		
+		    // 🔹 Standardize values in Brand and SubBrand columns
+		    StandardizedBrand = Table.ReplaceValue(AddedExecSummaryStatus, "SYK Other", "Other", Replacer.ReplaceText, {"Brand"}),
+		    StandardizedBrand_OEM = Table.ReplaceValue(StandardizedBrand, "OEM_SYK", "OEM", Replacer.ReplaceText, {"Brand"}),
+		    StandardizedBrand_WM = Table.ReplaceValue(StandardizedBrand_OEM, "WM Other", "Other", Replacer.ReplaceText, {"Brand"}),
+		    CleanedBrandSymbols = Table.ReplaceValue(StandardizedBrand_WM, "®", "", Replacer.ReplaceText, {"Brand"}),
+		    CleanedSubBrandSymbols = Table.ReplaceValue(CleanedBrandSymbols, "™", "", Replacer.ReplaceText, {"SubBrand"}),
+		
+		    // 🔹 Normalize Business Unit naming
+		    StandardizedBusinessUnit = Table.ReplaceValue(
+		        CleanedSubBrandSymbols, 
+		        "Foot & Ankle", 
+		        "Foot and Ankle", 
+		        Replacer.ReplaceText, 
+		        {"Business Unit"}
+		    ),
+		
+		    // 🔹 Normalize status naming for executive summary use
+		    NormalizedExecSummaryStatus = Table.ReplaceValue(
+		        StandardizedBusinessUnit,
+		        "Global Roadmap Updated",
+		        "Complete - Strategic Decision",
+		        Replacer.ReplaceText,
+		        {"PLCM Status - Exec Summary"}
+		    ),
+		
+		    // 🔹 Remove unnecessary or intermediate columns
+		    RemovedUnnecessaryColumns = Table.RemoveColumns(NormalizedExecSummaryStatus, {
+		        "Brand Total Row?",
+		        "Group f/ Formatting",
+		        "APAC",
+		        "Canada",
+		        "EEMEA",
+		        "Europe",
+		        "LATAM",
+		        "Brand or SKU",
+		        "Deep Dive Data Collected",
+		        "MDR Remediated?",
+		        "Financial Impact of Global Decision ($)",
+		        "Roadmap Updated"
+		    }),
+		
+		    // 🔹 Add a composite key for deduplication and analysis
+		    AddedCompositeKey = Table.AddColumn(
+		        RemovedUnnecessaryColumns, 
+		        "PL_Brand_SubBrand_Key", 
+		        each Text.Upper([Business Unit] & [Brand] & [SubBrand]), 
+		        type text
+		    ),
+		
+		    // 🔹 Remove duplicate entries based on the composite key
+		    DeduplicatedRows = Table.Distinct(AddedCompositeKey, {"PL_Brand_SubBrand_Key"}),
+		
+		    // 🔹 Rename columns for semantic model clarity
+		    RenamedColumns = Table.RenameColumns(DeduplicatedRows, {
+		        {"Global PLCM Decision", "Global PLCM Decision (SubBrand)"}
+		    }),
+		
+		    // 🔹 Replace any date conversion errors with null values
+		    CleanedDateErrors = Table.ReplaceErrorValues(RenamedColumns, {
+		        {"Last Buy", null},
+		        {"Last Sell", null}
+		    })
+		in
+		    CleanedDateErrors
+		```
+	lineageTag: b6e85f3a-0347-45a3-b227-0284b470d502
+	queryGroup: 'Disabled\PPR Tracker'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Scenario = ```
+		let
+		    // Source data from a compressed binary string
+		    Source = Table.FromRows(
+		        Json.Document(
+		            Binary.Decompress(
+		                Binary.FromText(
+		                    "i45WckwuKU3MUdJRMgBiR2elWJ1oJbf8otTkxOISoIghELsBRWMB", 
+		                    BinaryEncoding.Base64
+		                ), 
+		                Compression.Deflate
+		            )
+		        ), 
+		        let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Target = _t, Index = _t, #"Target 2" = _t]
+		    ),
+		
+		    // Change the type of the "Index" column to Int64
+		    ChangedType = Table.TransformColumnTypes(
+		        Source, 
+		        {{"Index", Int64.Type}}
+		    ),
+		
+		    // Reorder the columns for better readability
+		    ReorderedColumns = Table.ReorderColumns(
+		        ChangedType, 
+		        {"Target 2", "Target", "Index"}
+		    ),
+		
+		    // Rename the "Target 2" column to "Target ABBR"
+		    RenamedColumns = Table.RenameColumns(
+		        ReorderedColumns, 
+		        {{"Target 2", "Target ABBR"}}
+		    )
+		in
+		    RenamedColumns
+		```
+	lineageTag: 881858ae-f808-4076-bbb3-b0f063fc4e4f
+	queryGroup: Disabled
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Fact_ConsolidatedList STG' =
+		let
+		    Source = PowerPlatform.Dataflows(null),
+		    Workspaces = Source{[Id="Workspaces"]}[Data],
+		    #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c" = Workspaces{[workspaceId="7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
+		    #"0da45554-39c0-4713-9400-fd465c822e18" = #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"{[dataflowId="0da45554-39c0-4713-9400-fd465c822e18"]}[Data],
+		    Fact_ConsolidatedList_ = #"0da45554-39c0-4713-9400-fd465c822e18"{[entity="Fact_ConsolidatedList",version=""]}[Data],
+		    #"Renamed Columns" = Table.RenameColumns(Fact_ConsolidatedList_,{{"Temp_ItemId", "ItemId"}, {"Subbrand", "SubBrand"}, {"Item Number", "Catalog Number"}, {"Item Description", "Long Description"}})
+		in
+		    #"Renamed Columns"
+	lineageTag: 1727aafd-8015-425a-8d49-b3a735742171
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

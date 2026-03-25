@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "a737e2b0c966dd360a17",
+  "position": {
+    "x": 248,
+    "y": 152,
+    "z": 6000,
+    "height": 88,
+    "width": 224,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Source: ",
+                    "textStyle": {
+                      "fontFamily": "Times New Roman",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Envision database ",
+                    "textStyle": {
+                      "fontFamily": "Times New Roman",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "(GIMItems, DemantraProducts)",
+                    "textStyle": {
+                      "fontFamily": "Times New Roman",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "refreshed daily",
+                    "textStyle": {
+                      "fontFamily": "Times New Roman",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

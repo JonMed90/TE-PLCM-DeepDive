@@ -1,0 +1,100 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "192775cb11a26848c8de",
+  "position": {
+    "x": 0,
+    "y": 296,
+    "z": 5000,
+    "height": 128,
+    "width": 240,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
+    "query": {
+      "queryState": {
+        "field": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Catalog Number"
+                }
+              },
+              "queryRef": "Dim_GIM.Catalog Number",
+              "nativeQueryRef": "Catalog Number"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "filterOperator": {
+              "expr": {
+                "Literal": {
+                  "Value": "'In'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "366f0ee87cdd16bdbe4d",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d34e33b60975cc0bd21c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

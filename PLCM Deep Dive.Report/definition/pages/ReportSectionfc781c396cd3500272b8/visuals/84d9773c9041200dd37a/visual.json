@@ -1,0 +1,699 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "84d9773c9041200dd37a",
+  "position": {
+    "x": 255.81792318634425,
+    "y": 457.01280227596021,
+    "z": 0,
+    "height": 249.4452347083926,
+    "width": 1008.7055476529162,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Business Unit"
+                }
+              },
+              "queryRef": "Dim_GIM.Business Unit",
+              "nativeQueryRef": "Business Unit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Brand"
+                }
+              },
+              "queryRef": "Dim_GIM.Brand",
+              "nativeQueryRef": "Brand"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "SubBrand"
+                }
+              },
+              "queryRef": "Dim_GIM.SubBrand",
+              "nativeQueryRef": "SubBrand"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Life Cycle Code"
+                }
+              },
+              "queryRef": "Dim_GIM.Life Cycle Code",
+              "nativeQueryRef": "Life Cycle Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Standard Catalog Number"
+                }
+              },
+              "queryRef": "Dim_GIM.standardcatalognumber",
+              "nativeQueryRef": "Standard Catalog Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Catalog Number"
+                }
+              },
+              "queryRef": "Dim_GIM.Catalog Number",
+              "nativeQueryRef": "Catalog Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Item Owner Name"
+                }
+              },
+              "queryRef": "Dim_GIM.itemownername",
+              "nativeQueryRef": "Item Owner Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "ItemId"
+                }
+              },
+              "queryRef": "Dim_GIM.itemid",
+              "nativeQueryRef": "ItemId"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Long Description"
+                }
+              },
+              "queryRef": "Dim_GIM.longdescription",
+              "nativeQueryRef": "Long Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Item Type Description"
+                }
+              },
+              "queryRef": "Dim_GIM.Item Type Description",
+              "nativeQueryRef": "Item Type Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Stocking Type Code"
+                }
+              },
+              "queryRef": "GIM.Stocking Type Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Manufacturing Cost"
+                }
+              },
+              "queryRef": "Dim_GIM.Manufacturing Cost",
+              "nativeQueryRef": "Manufacturing Cost"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "PPR.Last Buy"
+                }
+              },
+              "queryRef": "GIM.PPR.Last Buy"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "PPR.Last Sell"
+                }
+              },
+              "queryRef": "GIM.PPR.Last Sell"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "GIM.LastTransferredDate"
+                }
+              },
+              "queryRef": "Dim_GIM.GIM.LastTransferredDate",
+              "nativeQueryRef": "GIM.LastTransferredDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "GIM.LastSaleDate"
+                }
+              },
+              "queryRef": "Dim_GIM.GIM.LastSaleDate",
+              "nativeQueryRef": "GIM.LastSaleDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "GIM.LastChangeDate"
+                }
+              },
+              "queryRef": "Dim_GIM.GIM.LastChangeDate",
+              "nativeQueryRef": "GIM.LastChangeDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "GIM.FirstSaleDate"
+                }
+              },
+              "queryRef": "Dim_GIM.GIM.FirstSaleDate",
+              "nativeQueryRef": "GIM.FirstSaleDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "GIM.CreateDate"
+                }
+              },
+              "queryRef": "Dim_GIM.GIM.CreateDate",
+              "nativeQueryRef": "GIM.CreateDate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Dim_GIM"
+                      }
+                    },
+                    "Hierarchy": "GIM Hierarchy"
+                  }
+                },
+                "Level": "Brand"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "86.79148380974974D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(PPR Tracker Status.GIM Flag)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "271.6293045506662D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.Brand_SubBrand_Key"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "178.22010042304194D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.SubBrand"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "174.92770412871278D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.LongDescription"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "GIM.LifeCycleCode"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Sum(GIM.ManufacturingcostUSD)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.41423125794155D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_GIM.SubBrand"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4158e44c4f092e85b24d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Catalog Number"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1f91eefe971ce831cc90",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c8fbed1308534401e575",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Brand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fa2e006d3d1abc04db3d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "SubBrand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "cd5d86a0da5aca8a4521",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Standard Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "579a34fd4a0beba40895",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Item Owner Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "009a1691861827454249",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "ItemId"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d231f4ac9e5258913201",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Long Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "92642c3795323880c9ba",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Item Type Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "dbbe71d08eed9b300b10",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Stocking Type Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6b08a492cdccc07834ce",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Manufacturing Cost"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d984f7a144aa490bcae6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "PPR.Last Buy"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "47c680f956dcad7ab80b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "PPR.Last Sell"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2a9f482cd325864813d8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "GIM.LastTransferredDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "15c824ed2ee75526b125",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "GIM.LastSaleDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e7169f8a1e80d2ce1387",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "GIM.LastChangeDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b9533cc103a860101828",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "GIM.FirstSaleDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "917918be85d48ccac128",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "GIM.CreateDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "347132137377e3725383",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Life Cycle Code"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

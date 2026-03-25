@@ -1,0 +1,401 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "06e444216e5cfa00fd65",
+  "position": {
+    "x": 248.5279187817259,
+    "y": 55.228426395939088,
+    "z": 2000,
+    "height": 248.5279187817259,
+    "width": 294.010152284264,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Purple (",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline",
+                      "color": "#85458a"
+                    }
+                  },
+                  {
+                    "value": "QoH) Quantity OnHand + Inventory Value ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "(",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  },
+                  {
+                    "value": "refreshed daily @ 12am eastern",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontStyle": "italic",
+                      "fontSize": "8pt"
+                    }
+                  },
+                  {
+                    "value": ")",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Blue ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline",
+                      "color": "#1c5687"
+                    }
+                  },
+                  {
+                    "value": "TTM (Trailing twelve Months) ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "Value"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline"
+                    }
+                  },
+                  {
+                    "value": " - ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "Value 2"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\tTTM Units = Units sold in the trailing twelve months ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\tTTM COGS = Cost of goods sold for trailing twelve months",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\tTTM Revenue = Revenue for trailing twelve months ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Green DSI (",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline",
+                      "color": "#4c7d7a"
+                    }
+                  },
+                  {
+                    "value": "Days Sales of Inventory):",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "It shows how many days worth of sales are ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "held in inventory at any given time",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "          ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  },
+                  {
+                    "value": "Formula",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt",
+                      "textDecoration": "underline"
+                    }
+                  },
+                  {
+                    "value": ":",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "   ( Ending Inventory Bal / TTM COGS ) * 365",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              }
+            ]
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "m",
+                                "Entity": "_Measures",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "m"
+                                    }
+                                  },
+                                  "Property": "TTM Start Date"
+                                },
+                                "Name": "Measures Table.TTM Start Date"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "Measures Table.TTM Start Date"
+                    }
+                  },
+                  "Function": 3
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "Value",
+                      "utterance": "TTM Start Date"
+                    }
+                  }
+                }
+              }
+            },
+            "formatString": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MM/dd/yyyy'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Value"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "m",
+                                "Entity": "_Measures",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "m"
+                                    }
+                                  },
+                                  "Property": "TTM End Date"
+                                },
+                                "Name": "Measures Table.TTM End Date"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "Measures Table.TTM End Date"
+                    }
+                  },
+                  "Function": 3
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "Value 2",
+                      "utterance": "TTM End Date"
+                    }
+                  }
+                }
+              }
+            },
+            "formatString": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MM/dd/yyyy'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Value 2"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

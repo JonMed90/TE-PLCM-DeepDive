@@ -1,0 +1,125 @@
+table Fact_ConsolidatedList
+	lineageTag: 68208094-5a34-4fb5-ac03-13fb93f946c2
+
+	column 'GIM ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ebac54e3-e14e-41e7-92af-9b672a386d78
+		summarizeBy: count
+		sourceColumn: GIM ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PLCM Phaseout Batch'
+		dataType: string
+		lineageTag: c655d1fd-5056-4d76-bd8e-dee3a906ba6d
+		summarizeBy: none
+		sourceColumn: PLCM Phaseout Batch
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PLCM Status'
+		dataType: string
+		lineageTag: 78f870f6-aa23-4807-aca3-298d87479a2f
+		summarizeBy: none
+		sourceColumn: PLCM Status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MDM Request #'
+		dataType: string
+		lineageTag: 9f714201-3cd4-40e5-b683-2272f8dd05b4
+		summarizeBy: none
+		sourceColumn: MDM Request #
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comments
+		dataType: string
+		lineageTag: 4184ef2a-bdb2-484a-9276-1b071a38d462
+		summarizeBy: none
+		sourceColumn: Comments
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ECR #'
+		dataType: string
+		lineageTag: a4e36e57-e23c-4887-9447-d7bbf8a2ae57
+		summarizeBy: none
+		sourceColumn: ECR #
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LTS Date'
+		dataType: string
+		lineageTag: e171d7e8-b41d-4136-a642-1186b59565d4
+		summarizeBy: none
+		sourceColumn: LTS Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Submitted'
+		dataType: string
+		lineageTag: 2b069c6a-0aa3-4411-8b58-7781b494d193
+		summarizeBy: none
+		sourceColumn: Date Submitted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RowNum
+		dataType: int64
+		formatString: 0
+		lineageTag: cf5bf031-cf91-4bbe-a9bd-75b679460fa9
+		summarizeBy: sum
+		sourceColumn: RowNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItemId
+		dataType: int64
+		formatString: 0
+		lineageTag: 41721c68-cf48-4bc4-a13f-7002372c29a7
+		summarizeBy: none
+		sourceColumn: ItemId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GIM Flag'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ba7f6316-b118-45f6-95aa-a6bc61d55552
+		summarizeBy: none
+		sourceColumn: GIM Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_ConsolidatedList = m
+		mode: import
+		source =
+				let
+				    Source = #"Fact_ConsolidatedList STG",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"GIM ID", "PLCM Phaseout Batch", "PLCM Status", "MDM Request #", "ECR #", "LTS Date", "Comments", "Date Submitted", "RowNum", "ItemId", "GIM Flag"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "9ab957d33751689b10a4",
+  "position": {
+    "x": 0,
+    "y": 293.26976527653642,
+    "z": 5000,
+    "height": 60,
+    "width": 240,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "PLCM Status"
+                }
+              },
+              "queryRef": "Consolidated List.PLCM Status",
+              "nativeQueryRef": "PLCM Status",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "selection": [
+        {
+          "properties": {
+            "selectAllCheckboxEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "4040382c904ed267d89b",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "337e54ce0a2b04de0e8e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "PLCM Status"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

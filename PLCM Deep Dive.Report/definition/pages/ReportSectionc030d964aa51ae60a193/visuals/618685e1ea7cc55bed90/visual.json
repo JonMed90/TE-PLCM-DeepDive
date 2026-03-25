@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "618685e1ea7cc55bed90",
+  "position": {
+    "x": 0,
+    "y": 264,
+    "z": 11000,
+    "height": 136,
+    "width": 240,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
+    "query": {
+      "queryState": {
+        "field": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_GIM"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "Catalog Number"
+                }
+              },
+              "queryRef": "Dim_GIM.Franchise Hierarchy.Catalog Number",
+              "nativeQueryRef": "Franchise Hierarchy Catalog Number"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "filterOperator": {
+              "expr": {
+                "Literal": {
+                  "Value": "'In'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "2bfdde20a16d001ae0d2"
+}

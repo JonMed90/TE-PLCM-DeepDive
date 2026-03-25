@@ -1,0 +1,65 @@
+table Dim_Phase
+	lineageTag: 43990acc-bb7c-4b63-8573-96963b521726
+
+	column Phase
+		dataType: string
+		lineageTag: 9f9884bd-ee11-400e-a2cd-9503555fe2a5
+		summarizeBy: none
+		sourceColumn: Phase
+		sortByColumn: 'Phase ID'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phase ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 956e2b07-04f7-4e7d-8a8d-5cde22f0919d
+		summarizeBy: none
+		sourceColumn: Phase ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column Objective
+		dataType: string
+		lineageTag: 811d8674-3c85-4726-bf27-621ccace5bb3
+		summarizeBy: none
+		sourceColumn: Objective
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phase BG Color'
+		dataType: string
+		lineageTag: 8710a570-d56d-4f54-b663-99634679203f
+		summarizeBy: none
+		sourceColumn: Phase BG Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phase Font Color' = Switch( Dim_Phase[Phase BG Color], "#FFB500", "#000000", "#B2B4AE", "#000000", "#FFFFFF")
+		lineageTag: dcf1cc0f-cf08-4464-aa7a-bd646a4651cc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Phase = m
+		mode: import
+		queryGroup: 'PLCM RACI Playbook'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c" = Workspaces{[workspaceId="7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
+				    #"1830a663-42fe-4d9a-bc4b-93a6ae5df183" = #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"{[dataflowId="1830a663-42fe-4d9a-bc4b-93a6ae5df183"]}[Data],
+				    dim_Phase_ = #"1830a663-42fe-4d9a-bc4b-93a6ae5df183"{[entity="dim_Phase",version=""]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(dim_Phase_,{{"Phase Color", "Phase BG Color"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

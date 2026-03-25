@@ -1,0 +1,628 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "bf428a1c89e75806cbcb",
+  "position": {
+    "x": 256,
+    "y": 368,
+    "z": 0,
+    "height": 336,
+    "width": 1008,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Business Unit"
+                }
+              },
+              "queryRef": "Dim_GIM.Business Unit",
+              "nativeQueryRef": "Business Unit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Brand"
+                }
+              },
+              "queryRef": "Dim_GIM.Brand",
+              "nativeQueryRef": "Brand"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "SubBrand"
+                }
+              },
+              "queryRef": "Dim_GIM.SubBrand",
+              "nativeQueryRef": "SubBrand"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Catalog Number"
+                }
+              },
+              "queryRef": "Dim_GIM.Catalog Number",
+              "nativeQueryRef": "Catalog Number"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Inventory QoH"
+                }
+              },
+              "queryRef": "_Measures.Inventory Qty",
+              "nativeQueryRef": "QoH",
+              "displayName": "QoH"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Next 12M Demand Units"
+                }
+              },
+              "queryRef": "_Measures.Next 12M Demand Units",
+              "nativeQueryRef": "Next 12M Demand Units"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Trailing 12M Revenue"
+                }
+              },
+              "queryRef": "_Measures.Trailing 12M Revenue",
+              "nativeQueryRef": "Trailing 12M Revenue"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "MDM Request #"
+                }
+              },
+              "queryRef": "Consolidated List.MDM Request #",
+              "nativeQueryRef": "MDM Request #"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "PLCM Phaseout Batch"
+                }
+              },
+              "queryRef": "Consolidated List.PLCM Phaseout Batch",
+              "nativeQueryRef": "PLCM Phaseout Batch"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "PLCM Status"
+                }
+              },
+              "queryRef": "Consolidated List.PLCM Status",
+              "nativeQueryRef": "PLCM Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "GIM ID"
+                }
+              },
+              "queryRef": "Consolidated List.GIM ID",
+              "nativeQueryRef": "GIM ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Life Cycle Code"
+                }
+              },
+              "queryRef": "Dim_GIM.Life Cycle Code",
+              "nativeQueryRef": "Life Cycle Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Stocking Type Code"
+                }
+              },
+              "queryRef": "Dim_GIM.Stocking Type Code",
+              "nativeQueryRef": "Stocking Type Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Item Owner"
+                }
+              },
+              "queryRef": "Dim_GIM.Item Owner",
+              "nativeQueryRef": "Item Owner"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "ECR #"
+                }
+              },
+              "queryRef": "Consolidated List.ECR #",
+              "nativeQueryRef": "ECR #"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "LTS Date"
+                }
+              },
+              "queryRef": "Consolidated List.LTS Date",
+              "nativeQueryRef": "LTS Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "Date Submitted"
+                }
+              },
+              "queryRef": "Consolidated List.Date Submitted",
+              "nativeQueryRef": "Date Submitted"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
+                  "Property": "Comments"
+                }
+              },
+              "queryRef": "Consolidated List.Comments",
+              "nativeQueryRef": "Comments"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_GIM"
+                    }
+                  },
+                  "Property": "Item Type Description"
+                }
+              },
+              "queryRef": "Dim_GIM.Item Type Description",
+              "nativeQueryRef": "Item Type Description"
+            }
+          ],
+          "showAll": true
+        }
+      }
+    },
+    "objects": {
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Inventory Qty"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7173e2a97e05dc672ee6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "684898234315cd17310c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Brand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8344209e899c45474823",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "SubBrand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "50cbb8c30919a04a84d0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6c05ba40e1da4ed3a028",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Inventory QoH"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "23cc5d6c30e0e8c95a79",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Next 12M Demand Units"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "19722cc0268a281b3d70",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Trailing 12M Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d77fcca2646ed25d3075",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "MDM Request #"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a17b7b503687c376012d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "PLCM Phaseout Batch"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "08dd855705166cb452bb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "PLCM Status"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4d556d9f20eacb4b0c58",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "GIM ID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f05e03a2942b0420704a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Life Cycle Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d6831a006ed3d433be74",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Stocking Type Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d7fea1bda140ec6511ec",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Item Owner"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b256d49487e72b80cc44",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "ECR #"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a42264dcbd21b939433b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "LTS Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8cec2379bb0a761b2585",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Date Submitted"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "359eae6bb5c0e203319b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Comments"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4aa12f048e5c1d9550ec",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Item Type Description"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

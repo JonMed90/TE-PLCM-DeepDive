@@ -1,0 +1,40 @@
+table 'Playbook Navigation'
+	isHidden
+	lineageTag: 7c6cd9c1-9f58-417b-9e7d-7fc3becb6d41
+
+	column Tab
+		isHidden
+		lineageTag: b575a21a-8146-4fed-9b3d-cd8662625d00
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Tab]
+		sortByColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		isHidden
+		formatString: 0
+		lineageTag: 53e91da6-9105-4bc4-9f30-e92e805c81c7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Playbook Navigation' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Tab", STRING,
+				    "Order", INTEGER,
+				    {
+				        {"PLCM Playbook Summary", 1},
+				        {"Playbook by Phase", 2},
+				        {"Playbook by Accountability", 3},
+				        {"Other", 4}
+				    })
+
+	annotation PBI_Id = 3f3f7cc1e83a425c8f6522b194f39c30
+

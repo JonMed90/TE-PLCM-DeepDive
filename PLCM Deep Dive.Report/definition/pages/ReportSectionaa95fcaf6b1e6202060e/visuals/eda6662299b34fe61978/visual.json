@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "eda6662299b34fe61978",
+  "position": {
+    "x": 624,
+    "y": 0,
+    "z": 0,
+    "height": 48,
+    "width": 552,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Standard catalog numbers not populating in the table means their not included in the PLCM Roadmap",
+                    "textStyle": {
+                      "fontFamily": "Cambria",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt",
+                      "color": "#333333"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Any TBD, missing and incorrect dates are shown as blanks",
+                    "textStyle": {
+                      "fontFamily": "Cambria",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt",
+                      "color": "#333333"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "Bookmarkcf3bc34a52bd24024a0c"
+    },
+    {
+      "name": "Bookmarkfd7cbe701db884398d88"
+    },
+    {
+      "name": "Bookmark65969adc084c58078592",
+      "displayName": "Group 1",
+      "children": [
+        "Bookmark3fd50054732beb92b04c",
+        "Bookmark1c71eaaad0e070663ceb"
+      ]
+    },
+    {
+      "name": "Bookmark3254eb35d7b82d421d87"
+    },
+    {
+      "name": "Bookmark866816aceb1c8f36f57e"
+    },
+    {
+      "name": "Bookmark6bcea02092f62f5ca7fa"
+    },
+    {
+      "name": "Bookmark6a2a49b6e9264348ce67"
+    },
+    {
+      "name": "Bookmark560f856e7f64de29ea4e"
+    },
+    {
+      "name": "Bookmarkbe1ae25438fae7db3f9f"
+    },
+    {
+      "name": "Bookmark837a37851442187c224f"
+    },
+    {
+      "name": "Bookmark04188486feb06fa795dd"
+    },
+    {
+      "name": "Bookmark4ceb4ba1addab8aeb631"
+    },
+    {
+      "name": "5819e381e3ab2df95906",
+      "displayName": "Playbook Group",
+      "children": [
+        "b8c89f02e84f9b51f70e",
+        "19bdc8bb641b2b3d84eb",
+        "c0eed1a5ede7ae4d6d02"
+      ]
+    }
+  ]
+}
