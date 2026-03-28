@@ -1,119 +1,6 @@
 table Dim_GIM
 	lineageTag: b471070f-9991-498f-917e-cbf78c036660
 
-	column 'PLCM Status'
-		dataType: string
-		displayFolder: PLCM Decision
-		lineageTag: e2e80b53-53a0-48ae-8f73-e117e1a5cd65
-		summarizeBy: none
-		sourceColumn: PLCM Status
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'US PLCM Decision'
-		dataType: string
-		displayFolder: PLCM Decision
-		lineageTag: a1216840-6a4a-45e4-9b1f-a23b409bdf43
-		summarizeBy: none
-		sourceColumn: US PLCM Decision
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'EU PLCM Decision'
-		dataType: string
-		displayFolder: PLCM Decision
-		lineageTag: 416f1828-04b1-4a48-b744-2a498c3f4cac
-		summarizeBy: none
-		sourceColumn: EU PLCM Decision
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'ASPAC PLCM Decision'
-		dataType: string
-		displayFolder: PLCM Decision
-		lineageTag: ce0c332e-69e2-4944-ab0e-4432d957d86c
-		summarizeBy: none
-		sourceColumn: ASPAC PLCM Decision
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Global PLCM Decision (SubBrand)'
-		dataType: string
-		displayFolder: PLCM Decision
-		lineageTag: b71f9b5d-c173-469d-8e2a-61cd8d2a371a
-		summarizeBy: none
-		sourceColumn: Global PLCM Decision (SubBrand)
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Roadmap Updated'
-		dataType: string
-		displayFolder: PLCM Decision
-		lineageTag: bfce324b-17a3-4046-bf98-a1678ac11325
-		summarizeBy: none
-		sourceColumn: Roadmap Updated
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'PPR.Last Buy'
-		dataType: dateTime
-		formatString: mm/dd/yy
-		displayFolder: SKU Dates
-		lineageTag: 968a56c7-75e0-4df5-b288-519c84263314
-		summarizeBy: none
-		sourceColumn: PPR.Last Buy
-
-		changedProperty = FormatString
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Date
-
-		annotation PBI_FormatHint = {"isDateTimeCustom":true}
-
-	column 'PPR.Last Sell'
-		dataType: dateTime
-		formatString: mm/dd/yy
-		displayFolder: SKU Dates
-		lineageTag: bd0a7437-d6d4-4035-81a2-3b16b0d655b3
-		summarizeBy: none
-		sourceColumn: PPR.Last Sell
-
-		changedProperty = FormatString
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Date
-
-		annotation PBI_FormatHint = {"isDateTimeCustom":true}
-
-	column 'PLCM Status - Exec Summary'
-		dataType: string
-		displayFolder: PLCM Decision
-		lineageTag: eedccdb1-865d-43d8-b076-69fa7ddfe031
-		summarizeBy: none
-		sourceColumn: PLCM Status - Exec Summary
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column 'Global PLCM Decision (Brand)' =
 			
 			VAR Brand = 'Dim_GIM'[Brand]
@@ -196,38 +83,6 @@ table Dim_GIM
 		changedProperty = IsHidden
 
 		changedProperty = SortByColumn
-
-		annotation SummarizationSetBy = Automatic
-
-	column PL_Brand_SubBrand_Key
-		dataType: string
-		isHidden
-		displayFolder: Keys
-		lineageTag: 4bc91587-4459-40cf-9919-4b3ca2334af1
-		summarizeBy: none
-		sourceColumn: PL_Brand_SubBrand_Key
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'SKU list.Non-GAAP (Y/N)'
-		dataType: string
-		lineageTag: a01124de-aafc-4811-b323-fb2626ec4913
-		summarizeBy: none
-		sourceColumn: SKU list.Non-GAAP (Y/N)
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'SKU list.Year'
-		dataType: string
-		lineageTag: dd45ed37-9ed5-4fe5-b719-d4e1bb720ebb
-		summarizeBy: none
-		sourceColumn: SKU list.Year
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -438,16 +293,6 @@ table Dim_GIM
 
 		annotation SummarizationSetBy = Automatic
 
-	column Comments
-		dataType: string
-		lineageTag: b91a2961-9e55-4248-8e6d-7f0f7b203f1b
-		summarizeBy: none
-		sourceColumn: Comments
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	/// gim id, gim_id, gim_item_id, gim
 	column ItemId
 		dataType: int64
@@ -476,39 +321,6 @@ table Dim_GIM
 		lineageTag: 8ce47564-293c-4d3c-8156-cd5fba866251
 		summarizeBy: none
 		sourceColumn: currentmarkupclass
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column replacementitem
-		dataType: int64
-		formatString: 0
-		lineageTag: 8dbb65c9-c56c-43d6-a904-cf7b633e6e24
-		summarizeBy: sum
-		sourceColumn: replacementitem
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column substituteitem
-		dataType: int64
-		formatString: 0
-		displayFolder: Flag
-		lineageTag: 8972e7fe-541f-4a31-970a-e2feaef3ff76
-		summarizeBy: sum
-		sourceColumn: substituteitem
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column eancode
-		dataType: string
-		lineageTag: e1641319-2a9d-498f-89c8-f92e7c139817
-		summarizeBy: none
-		sourceColumn: eancode
 
 		changedProperty = IsHidden
 
@@ -625,26 +437,6 @@ table Dim_GIM
 
 		annotation SummarizationSetBy = Automatic
 
-	column segment
-		dataType: string
-		lineageTag: 430c8c8b-8a3c-4328-a5e8-c5970285a653
-		summarizeBy: none
-		sourceColumn: segment
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column subsegment
-		dataType: string
-		lineageTag: 5dcbc1c0-c7ea-45cf-a315-e3d5e03bf135
-		summarizeBy: none
-		sourceColumn: subsegment
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column majorclassification
 		dataType: string
 		lineageTag: e3761225-b69c-416a-898f-54322a027771
@@ -675,16 +467,6 @@ table Dim_GIM
 
 		annotation SummarizationSetBy = Automatic
 
-	column gtin
-		dataType: string
-		lineageTag: 55e0daed-2871-4934-b6fe-7e75290a45b7
-		summarizeBy: none
-		sourceColumn: gtin
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column 'Item Type Description'
 		dataType: string
 		lineageTag: 49f8b8b5-d878-485d-be10-a3a8e45e4e1f
@@ -706,18 +488,6 @@ table Dim_GIM
 
 		annotation SummarizationSetBy = User
 
-	column catalogflag
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
-		displayFolder: Flag
-		lineageTag: d93db41c-1aa7-47b8-8672-360fe382076f
-		summarizeBy: none
-		sourceColumn: catalogflag
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column deferredchargeflag
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
@@ -725,29 +495,6 @@ table Dim_GIM
 		lineageTag: 0ccb417a-9d57-4f4c-a337-9b3efddcd0dd
 		summarizeBy: none
 		sourceColumn: deferredchargeflag
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column keyitemflag
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
-		lineageTag: 150eba01-9c6e-4816-b305-6914ffdb49ae
-		summarizeBy: none
-		sourceColumn: keyitemflag
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
-	column trueduplicateflag
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
-		displayFolder: Flag
-		lineageTag: 0fd965ac-f296-4aef-880c-458df9c7bd01
-		summarizeBy: none
-		sourceColumn: trueduplicateflag
 
 		changedProperty = IsHidden
 
@@ -774,12 +521,97 @@ table Dim_GIM
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'ConsolidatedList Flag'
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
-		lineageTag: 7f5fcfb5-f454-4a11-9ac7-980c96a329ab
+	column PL_Brand_SubBrand_Key
+		dataType: string
+		lineageTag: 133f6e7d-423d-4142-93b3-68e109bfb724
 		summarizeBy: none
-		sourceColumn: ConsolidatedList Flag
+		sourceColumn: PL_Brand_SubBrand_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PLCM Status'
+		dataType: string
+		lineageTag: c9d9436e-dbb9-4399-96dc-8df9b8cc1353
+		summarizeBy: none
+		sourceColumn: PLCM Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'US PLCM Decision'
+		dataType: string
+		lineageTag: 4aab00ff-d5d2-4444-9804-53391927ca43
+		summarizeBy: none
+		sourceColumn: US PLCM Decision
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EU PLCM Decision'
+		dataType: string
+		lineageTag: e94f1067-1383-4e51-9726-6408ece2771a
+		summarizeBy: none
+		sourceColumn: EU PLCM Decision
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ASPAC PLCM Decision'
+		dataType: string
+		lineageTag: ce0f68d3-58c5-4d03-aeba-c748fed8b931
+		summarizeBy: none
+		sourceColumn: ASPAC PLCM Decision
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Global PLCM Decision (SubBrand)'
+		dataType: string
+		lineageTag: ee88e14d-4034-4990-9f20-6650dd859e34
+		summarizeBy: none
+		sourceColumn: Global PLCM Decision (SubBrand)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Roadmap Updated'
+		dataType: string
+		lineageTag: c92fa45e-64b0-4cc2-bd9b-990b2f55b52d
+		summarizeBy: none
+		sourceColumn: Roadmap Updated
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PPR.Last Buy'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8d814814-bfd3-4ba9-beec-d0e709972bee
+		summarizeBy: none
+		sourceColumn: PPR.Last Buy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'PPR.Last Sell'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9eac8644-bdf8-4a39-9b18-c0876408ffbb
+		summarizeBy: none
+		sourceColumn: PPR.Last Sell
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Comments
+		dataType: string
+		lineageTag: e9385f9a-bef2-4ae6-bee4-9aab37ca7080
+		summarizeBy: none
+		sourceColumn: Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PLCM Status - Exec Summary'
+		dataType: string
+		lineageTag: 630bace0-ffb3-4da9-99f9-0957644b48fd
+		summarizeBy: none
+		sourceColumn: PLCM Status - Exec Summary
 
 		annotation SummarizationSetBy = Automatic
 
@@ -810,7 +642,8 @@ table Dim_GIM
 
 	partition Dim_GIM-f911bc3c-c25e-4d22-b83a-f42e4ec92347 = m
 		mode: import
-		source = ```
+		queryGroup: Products
+		source =
 				let
 				    Source = PowerPlatform.Dataflows(null),
 				    Workspaces = Source{[Id="Workspaces"]}[Data],
@@ -818,32 +651,19 @@ table Dim_GIM
 				    #"3c4e0e8e-488e-4345-8703-b15f825bed96" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="3c4e0e8e-488e-4345-8703-b15f825bed96"]}[Data],
 				    Dim_GIMItem_ = #"3c4e0e8e-488e-4345-8703-b15f825bed96"{[entity="Dim_GIMItem",version=""]}[Data],
 				    #"Added Index" = Table.AddIndexColumn(Dim_GIMItem_, "Index", 1, 1, Int64.Type),
-				    #"Added Custom" = Table.AddColumn(#"Added Index", "PL_Brand_SubBrand_Key", each Text.Upper([cyproductgroup]&[brand]&[subbrand]), type text),
-				    #"Merged Queries" = Table.NestedJoin(#"Added Custom", {"PL_Brand_SubBrand_Key"}, #"PPR Tracker Status", {"PL_Brand_SubBrand_Key"}, "PPR Tracker Status", JoinKind.LeftOuter),
+				    #"Merged Queries2" = Table.NestedJoin(#"Added Index", {"lifecyclecode"}, LCC_Description, {"Life Cycle Code"}, "LCC_Description", JoinKind.LeftOuter),
+				    #"Expanded LCC_Description" = Table.ExpandTableColumn(#"Merged Queries2", "LCC_Description", {"LCC Description"}, {"LCC Description"}),
+				    #"Added PL_Brand_SubBrand_Key" = Table.AddColumn(#"Expanded LCC_Description", "PL_Brand_SubBrand_Key", each Text.Upper(Text.Trim([cyproductgroup]) &"|"& Text.Trim([brand]) &"|"& Text.Trim([subbrand])), type text),
+				    #"Merged Queries" = Table.NestedJoin(#"Added PL_Brand_SubBrand_Key", {"PL_Brand_SubBrand_Key"}, #"PPR Tracker Status", {"PL_Brand_SubBrand_Key"}, "PPR Tracker Status", JoinKind.LeftOuter),
 				    #"Expanded PPR Tracker Status" = Table.ExpandTableColumn(#"Merged Queries", "PPR Tracker Status", {"PLCM Status", "US PLCM Decision", "EU PLCM Decision", "ASPAC PLCM Decision", "Global PLCM Decision (SubBrand)", "Roadmap Updated", "Last Buy", "Last Sell", "Comments", "PLCM Status - Exec Summary"}, {"PLCM Status", "US PLCM Decision", "EU PLCM Decision", "ASPAC PLCM Decision", "Global PLCM Decision (SubBrand)", "Roadmap Updated", "Last Buy", "Last Sell", "Comments", "PLCM Status - Exec Summary"}),
 				    #"Merged Queries1" = Table.NestedJoin(#"Expanded PPR Tracker Status", {"catalognumber"}, #"Anaplan Products", {"Item Number"}, "Anaplan Products", JoinKind.LeftOuter),
 				    #"Expanded Anaplan Products" = Table.ExpandTableColumn(#"Merged Queries1", "Anaplan Products", {"Stocking Type Code"}, {"Stocking Type Code"}),
-				    #"Added LCC Description Column" = Table.AddColumn(#"Expanded Anaplan Products", "LCC Description", each if [lifecyclecode] = "050" then "Reservation" else if [lifecyclecode] = "100" then "Development" else if [lifecyclecode] = "150" then "Pre-Launch" else if [lifecyclecode] = "198" then "Clinical Trials" else if [lifecyclecode] = "199" then "EPS" else if [lifecyclecode] = "200" then "Launch" else if [lifecyclecode] = "300" then "Production" else if [lifecyclecode] = "350" then "Specialty Item" else if [lifecyclecode] = "399" then "Custom" else if [lifecyclecode] = "400" then "Phase-Out" else if [lifecyclecode] = "499" then "Manufacturing Stop" else if [lifecyclecode] = "500" then "Obsolete" else if [lifecyclecode] = "550" then "Obsolete (Frozen)" else if [lifecyclecode] = "600" then "Obsolete from Sales and Service" else "Missing", type text),
-				    #"Removed Duplicates" = Table.Distinct(#"Added LCC Description Column", {"itemid"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Expanded Anaplan Products", {"itemid"}),
 				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Duplicates",{{"createdate", "GIM.CreateDate"}, {"firstsaledate", "GIM.FirstSaleDate"}, {"lastchangedate", "GIM.LastChangeDate"}, {"lastsaledate", "GIM.LastSaleDate"}, {"lasttransferreddate", "GIM.LastTransferredDate"}, {"Last Buy", "PPR.Last Buy"}, {"Last Sell", "PPR.Last Sell"},{"cyproductgroup", "Business Unit"}, {"cyproductlinename", "Product Line"}, {"cydivision", "Franchise"}, {"subbrand", "SubBrand"}, {"catalognumber", "Catalog Number"}, {"brand", "Brand"}, {"deletedflag", "DeleteFlag"}, {"lifecyclecode", "Life Cycle Code"}, {"standardcatalognumber", "Standard Catalog Number"}, {"itemownername", "Item Owner Name"}, {"itemowner", "Item Owner"}, {"itemid", "ItemId"}, {"longdescription", "Long Description"}, {"itemtypedescription", "Item Type Description"}, {"manufacturingcostusd", "Manufacturing Cost"}}),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns1",{{"GIM.LastTransferredDate", type date}, {"GIM.LastChangeDate", type date}, {"GIM.CreateDate", type date}, {"GIM.LastSaleDate", type date}, {"GIM.FirstSaleDate", type date}}),
-				    #"Merged Queries2" = Table.NestedJoin(#"Changed Type", {"ItemId"}, #"SKU list", {"GIM ID"}, "SKU list", JoinKind.LeftOuter),
-				    #"Expanded SKU list" = Table.ExpandTableColumn(#"Merged Queries2", "SKU list", {"Non-GAAP (Y/N)", "Year"}, {"SKU list.Non-GAAP (Y/N)", "SKU list.Year"}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Expanded SKU list",{"cymedsurggroup", "Franchise", "cybusinesssector", "unitofmeasure", "uomdescription", "dimensionunitofmeasure", "item_skey"}),
-				    MissingExitTrackerItems =  Table.SelectColumns (
-				      Table.SelectRows ( #"Fact_ConsolidatedList STG", each ( [GIM Flag] = false ) ), 
-				      { "Business Unit", "Brand", "SubBrand", "Catalog Number", "Long Description", "Item Owner", "ItemId" }
-				    ),
-				    #"Appended Query" = Table.Combine({#"Removed Columns", MissingExitTrackerItems}),
-				    #"Merged Queries3" = Table.NestedJoin(#"Appended Query", {"ItemId"}, Fact_ConsolidatedList, {"ItemId"}, "Fact_ConsolidatedList", JoinKind.LeftOuter),
-				    #"Expanded Fact_ConsolidatedList" = Table.ExpandTableColumn(#"Merged Queries3", "Fact_ConsolidatedList", {"ItemId"}, {"Fact_ConsolidatedList.ItemId"}),
-				    #"Removed Duplicates1" = Table.Distinct(#"Expanded Fact_ConsolidatedList", {"ItemId"}),
-				    #"Added Custom1" = Table.AddColumn(#"Removed Duplicates1", "ConsolidatedList Flag", each [Fact_ConsolidatedList.ItemId] <> null),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"ConsolidatedList Flag", type logical}}),
-				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"Fact_ConsolidatedList.ItemId"})
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"cymedsurggroup", "Franchise", "cybusinesssector", "unitofmeasure", "uomdescription", "dimensionunitofmeasure", "item_skey", "segment", "subsegment", "replacementitem", "substituteitem", "eancode", "gtin", "catalogflag", "keyitemflag", "trueduplicateflag"})
 				in
-				    #"Removed Columns1"
-				```
+				    #"Removed Columns"
 
 	annotation PBI_ResultType = Table
 

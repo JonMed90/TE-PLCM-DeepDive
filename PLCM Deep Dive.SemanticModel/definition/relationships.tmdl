@@ -10,18 +10,8 @@ relationship AutoDetected_5afa0f18-ee24-4bdb-a415-7c690a7896df
 	fromColumn: Fact_Sales.'Dim_Regions.Index'
 	toColumn: Dim_Regions.Index
 
-relationship 3b515043-db9b-5506-a290-38c6eedd2055
-	crossFilteringBehavior: bothDirections
-	fromColumn: Dim_GIM.'Business Unit'
-	toColumn: Budget.BU
-
 relationship AutoDetected_9a4bb1e1-2cae-4473-b0ab-f4bf380348bf
 	fromColumn: Fact_Inventory.ItemId
-	toColumn: Dim_GIM.ItemId
-
-relationship 468308fb-2489-3365-53e8-96aad6acc14e
-	crossFilteringBehavior: bothDirections
-	fromColumn: Fact_ConsolidatedList.ItemId
 	toColumn: Dim_GIM.ItemId
 
 relationship fb135e58-61a5-37af-42fa-7847f31c7dce
@@ -39,4 +29,12 @@ relationship 4eb8be6f-d8ee-4b8e-c318-d896204eb6cf
 relationship 69ea5d42-5b7a-9f2b-6702-1f14943dd0b2
 	fromColumn: Fact_TaskAssignments.'Phase ID'
 	toColumn: Dim_Phase.'Phase ID'
+
+relationship 16204cd4-478c-c40b-b704-c02dab75521f
+	fromColumn: Fact_Sales.ItemId
+	toColumn: Fact_ConsolidatedList.'GIM_ID (Hide)'
+
+relationship fff10699-4f45-707a-a0f8-c8a8488a14d1
+	fromColumn: Fact_Inventory.ItemId
+	toColumn: Fact_ConsolidatedList.'GIM_ID (Hide)'
 

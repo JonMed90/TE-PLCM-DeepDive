@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "6028a27062a28bd3a3cd",
   "position": {
     "x": 902.66836086404066,
@@ -326,6 +326,20 @@
             }
           ]
         }
+      },
+      {
+        "name": "63a02c1225378c623306",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Inventory QoH"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "618685e1ea7cc55bed90",
   "position": {
     "x": 0,
-    "y": 264,
+    "y": 282.73526107772938,
     "z": 11000,
-    "height": 136,
-    "width": 240,
-    "tabOrder": 11000
+    "height": 145.35605898666964,
+    "width": 239.89658515686128
   },
   "visual": {
     "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
@@ -79,9 +78,45 @@
             }
           }
         }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "2bfdde20a16d001ae0d2"
+  "parentGroupName": "2bfdde20a16d001ae0d2",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "097b3a289aec574940d6",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_GIM"
+                  }
+                },
+                "Hierarchy": "Franchise Hierarchy"
+              }
+            },
+            "Level": "Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

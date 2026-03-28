@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
   "displayName": "Historical Sales Clear Filter",
   "name": "Bookmark560f856e7f64de29ea4e",
   "options": {
@@ -371,18 +371,6 @@
               }
             }
           },
-          "b15e2d21ca5d0e1516c7": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
-          "ebf140c1be7b5ed7c987": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
           "0ecab90b861a407e1a05": {
             "filters": {
               "byExpr": [
@@ -495,12 +483,6 @@
                   }
                 ]
               }
-            }
-          },
-          "1536de86d17385590a5d": {
-            "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
             }
           },
           "b6c833301c7d06d07c41": {

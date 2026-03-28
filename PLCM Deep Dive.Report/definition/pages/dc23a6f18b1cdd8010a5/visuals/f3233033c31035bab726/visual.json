@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "f3233033c31035bab726",
   "position": {
     "x": 1232.5552050473186,
     "y": 4.0378548895899051,
-    "z": 3000,
+    "z": 6250,
     "height": 40.378548895899051,
     "width": 45.425867507886437,
     "tabOrder": 2000
@@ -57,6 +57,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'Info Btn'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

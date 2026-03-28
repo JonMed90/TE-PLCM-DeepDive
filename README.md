@@ -6,12 +6,12 @@ Power BI analytics solution for the **Trauma & Extremities (T&E) Product Life Cy
 
 ## Platforms
 
-| Platform                         | Usage                                                                                |
-| -------------------------------- | ------------------------------------------------------------------------------------ |
-| **Power BI** (`.pbip` / `.pbix`) | Semantic model (14 tables, 30+ DAX measures) and 11-page report                      |
-| **Azure Synapse Analytics**      | Source for GIM product master (`dim_gimitem`) and Demantra sales/demand data         |
-| **SharePoint Online**            | PLCM Tracker workbook (`PLCM Tracker_LIVE.xlsx`) with BU-specific tracker sheets     |
-| **Power Platform Dataflows**     | Inventory snapshot data and PLCM Playbook RACI tables (Phase, Role, TaskAssignments) |
+| Platform                         | Usage                                                                              |
+| -------------------------------- | ---------------------------------------------------------------------------------- |
+| **Power BI** (`.pbip` / `.pbix`) | Semantic model (14 tables, 30+ DAX measures) and 11-page report                    |
+| **Power Platform Dataflows**     | GIM product master, Demantra demand, PPR Tracker, Consolidated List, Playbook RACI |
+| **Power BI Dataflows**           | Historical sales, calendar, and inventory snapshot data                            |
+| **SharePoint Online**            | Anaplan Products workbook (`P-HP07 Item [HUB].xlsx`) for stocking types            |
 
 ## Key Features
 
@@ -48,8 +48,8 @@ Power BI analytics solution for the **Trauma & Extremities (T&E) Product Life Cy
 
 | Table                   | Type      | Mode       | Source                                              |
 | ----------------------- | --------- | ---------- | --------------------------------------------------- |
-| `Dim_GIM`               | Dimension | Import     | Azure Synapse — `dim_gimitem`                       |
-| `Dim_Calendar`          | Dimension | Import     | Generated date table (2022–2030)                    |
+| `Dim_GIM`               | Dimension | Import     | Power Platform Dataflow — `Dim_GIMItem`             |
+| `Dim_Calendar`          | Dimension | Import     | Power Platform Dataflow — Calendar entity (2022+)   |
 | `Dim_Regions`           | Dimension | Import     | Static region lookup (US, EMEA, ASPAC, LATAM, etc.) |
 | `Dim_KPI`               | Dimension | Import     | Static KPI selector (Revenue, Units, COGS)          |
 | `Dim_Phase`             | Dimension | Import     | Dataflow — PLCM playbook phases                     |
@@ -57,7 +57,7 @@ Power BI analytics solution for the **Trauma & Extremities (T&E) Product Life Cy
 | `Dim_Role`              | Dimension | Import     | Dataflow — PLCM playbook roles                      |
 | `Fact_Sales`            | Fact      | Import     | Combined Demantra demand + historical sales         |
 | `Fact_Inventory`        | Fact      | Import     | Dataflow — finished goods inventory snapshot        |
-| `Fact_ConsolidatedList` | Fact      | Import     | SharePoint — PLCM phaseout consolidated list        |
+| `Fact_ConsolidatedList` | Fact      | Import     | Power Platform Dataflow — PLCM phaseout list        |
 | `Fact_TaskAssignments`  | Fact      | Import     | Dataflow — PLCM playbook RACI assignments           |
 | `Budget`                | Reference | Calculated | DAX `DATATABLE` — BU budgeted growth margin %       |
 | `Playbook Navigation`   | Reference | Calculated | DAX `DATATABLE` — playbook tab navigation           |
@@ -69,9 +69,10 @@ Power BI analytics solution for the **Trauma & Extremities (T&E) Product Life Cy
 Fact_Sales[Date]              → Dim_Calendar[Date]
 Fact_Sales[ItemId]            → Dim_GIM[ItemId]
 Fact_Sales[Dim_Regions.Index] → Dim_Regions[Index]
+Fact_Sales[ItemId]            → Fact_ConsolidatedList[GIM_ID (Hide)]
 Fact_Inventory[ItemId]        → Dim_GIM[ItemId]
 Fact_Inventory[Region]        → Dim_Regions[Region]
-Fact_ConsolidatedList[ItemId] → Dim_GIM[ItemId]         (bidirectional)
+Fact_Inventory[ItemId]        → Fact_ConsolidatedList[GIM_ID (Hide)]
 Dim_GIM[Business Unit]        → Budget[BU]              (bidirectional)
 Fact_TaskAssignments[Role Name]         → Dim_Role[Role Name]
 Fact_TaskAssignments[Phase Activity ID] → Dim_PhaseActivity[Phase Activity ID]
@@ -89,25 +90,28 @@ Fact_TaskAssignments[Phase ID]          → Dim_Phase[Phase ID]
 | `Ext Statutory Cost`           | `SUM(Fact_Inventory[ERP_Extended_Statutory_Cost_USD])`            |
 | `TTM Revenue`                  | Trailing 12-month revenue from last actual sales date             |
 | `TTM Units`                    | Trailing 12-month units from last actual sales date               |
-| `TTM COGS`                     | TTM units × manufacturing cost per GIM item                       |
+| `TTM COGS`                     | Trailing 12-month COGS from last actual sales date                |
 | `DSI (COGS)`                   | Days Sales in Inventory — `(Ext Statutory Cost / TTM COGS) × 365` |
 | `Dynamic Sales KPI`            | Switches between Revenue, Units, COGS based on slicer             |
 | `Dynamic Global PLCM Decision` | Brand vs. SubBrand-level PLCM decision based on drill level       |
-| `Trailing 12M Revenue`         | Revenue for 12 months ending last month                           |
-| `Gross Profit`                 | `Trailing 12M Revenue − COGS`                                     |
-| `Profit Margin`                | `Gross Profit / Trailing 12M Revenue`                             |
+| `Trailing 12M Revenue`         | Revenue for 12 months ending last month (TODAY-based)             |
+| `Gross Profit`                 | `Revenue − COGS` in current filter context                        |
+| `Profit Margin`                | `Gross Profit / Revenue`                                          |
+| `Budget Growth Margin %`       | `SELECTEDVALUE(Budget[Budgeted %])` — target margin by BU         |
+| `Profit Margin minus Budgeted` | `Profit Margin − Budget Growth Margin %`                          |
+| `Ext Management Cost`          | `SUM(Fact_Inventory[ERP_Extended_Management_Cost_USD])`           |
 | `Next 12M Demand Units`        | Forecast units for next 12 months from current month              |
 | `# GIM SKUs`                   | `DISTINCTCOUNT(Dim_GIM[ItemId])`                                  |
 | `# ConsolidatedList SKUs`      | `COUNTROWS(Fact_ConsolidatedList)`                                |
 
 ## Data Sources
 
-| Source                              | Connection                        | Objects                                                                                     |
-| ----------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------- |
-| Azure Synapse (`gda_glbsyndb`)      | ActiveDirectoryInteractive        | `dim_gimitem`, `demantra_cld_fact_sales`, Demantra demand tables                            |
-| SharePoint Online (T&E PLCM site)   | Excel workbook via Power Query    | `PLCM Tracker_LIVE.xlsx` — Bio, F&A, Trauma, UE tracker sheets + SKU list                   |
-| Power BI Dataflows (Inventory)      | PowerBI.Dataflows connector       | `fact_Inventory` (workspace `f4ac28b7-...`)                                                 |
-| Power Platform Dataflows (Playbook) | PowerPlatform.Dataflows connector | `dim_Phase`, `dim_PhaseActivity`, `dim_Role`, `fact_Assignments` (workspace `7e9a6bda-...`) |
+| Source                                    | Connection                        | Objects                                                                                                       |
+| ----------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Power Platform Dataflows (GIM & Demantra) | PowerPlatform.Dataflows connector | `Dim_GIMItem`, `DemantraCloud Dataflow`, `PPR Tracker Status`, `Fact_ConsolidatedList` (workspace `7370e662`) |
+| Power BI Dataflows (Sales & Inventory)    | PowerBI.Dataflows connector       | `Sales History`, `Calendar`, `fact_Inventory` (workspace `f4ac28b7`)                                          |
+| SharePoint Online (Anaplan Products)      | Excel workbook via Power Query    | `P-HP07 Item [HUB].xlsx` — Anaplan item master with stocking types                                            |
+| Power Platform Dataflows (Playbook)       | PowerPlatform.Dataflows connector | `dim_Phase`, `dim_PhaseActivity`, `dim_Role`, `fact_Assignments` (workspace `7e9a6bda`)                       |
 
 ## Folder Structure
 
@@ -145,7 +149,7 @@ PLCM-Inventory-DeepDive/
 │   │   │   ├── Budget.tmdl                        # BU budget margins
 │   │   │   └── Playbook Navigation.tmdl           # Tab navigation
 │   │   ├── model.tmdl                             # Model metadata & query groups
-│   │   ├── relationships.tmdl                     # 10 relationships
+│   │   ├── relationships.tmdl                     # 11 relationships
 │   │   └── expressions.tmdl                       # Power Query / M-code
 │   └── DAXQueries/                                # Ad-hoc DAX queries
 └── PLCM Deep Dive.Report/                         # Report pages & visuals
@@ -161,15 +165,14 @@ PLCM-Inventory-DeepDive/
 
 ### Prerequisites
 
-- **Power BI Desktop** (June 2024 or later recommended for PBIP support)
-- Access to Azure Synapse Analytics (`gda_glbsyndb`) via Azure AD
-- Access to the T&E PLCM SharePoint site (`stryker.sharepoint.com/sites/TEPLCM`)
-- Access to Power BI / Power Platform Dataflows for inventory and playbook data
+- **Power BI Desktop** (March 2026 or later recommended for PBIP/TMDL support)
+- Access to the T&E PLCM SharePoint site for Anaplan Products workbook
+- Access to Power BI / Power Platform Dataflows for GIM, sales, inventory, and playbook data
 
 ### Opening the Report
 
 1. Open `PLCM Deep Dive.pbip` in Power BI Desktop (Developer Mode)
-2. Authenticate to Azure Synapse, SharePoint, and Dataflow sources when prompted
+2. Authenticate to Power Platform Dataflows, Power BI Dataflows, and SharePoint sources when prompted
 3. Refresh the dataset to load current data
 
 ### Legacy PBIX

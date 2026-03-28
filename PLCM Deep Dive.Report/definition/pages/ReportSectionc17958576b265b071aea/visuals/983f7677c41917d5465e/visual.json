@@ -1,9 +1,9 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "983f7677c41917d5465e",
   "position": {
-    "x": 247.64017252002463,
-    "y": 55.995070856438687,
+    "x": 256,
+    "y": 61,
     "z": 3000,
     "height": 320.19716574245223,
     "width": 365.93961799137395,
@@ -162,37 +162,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "4a8d855e2b3bcb045b67",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Calendar"
-              }
-            },
-            "Property": "Year"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f6fc1a161c0256a23093",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Dynamic Sales KPI"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

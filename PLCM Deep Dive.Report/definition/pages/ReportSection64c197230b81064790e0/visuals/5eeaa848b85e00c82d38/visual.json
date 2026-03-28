@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "5eeaa848b85e00c82d38",
   "position": {
     "x": 0,
-    "y": 117.33333333333334,
-    "z": 7000,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 0
+    "y": 124.78725854444556,
+    "z": 8000,
+    "height": 63.811666301136931,
+    "width": 240.26057536306439
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +19,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Fact_ConsolidatedList"
                     }
                   },
                   "Property": "Brand"
                 }
               },
-              "queryRef": "Dim_GIM.Brand",
-              "nativeQueryRef": "Brand",
+              "queryRef": "Fact_ConsolidatedList.Brand",
+              "nativeQueryRef": "Brand1",
               "active": true
             }
           ]

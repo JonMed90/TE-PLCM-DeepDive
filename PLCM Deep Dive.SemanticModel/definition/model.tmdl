@@ -20,25 +20,21 @@ queryGroup Sales/Demand
 
 	annotation PBI_QueryGroupOrder = 4
 
-queryGroup 'Disabled\PPR Tracker'
-
-	annotation PBI_QueryGroupOrder = 0
-
-queryGroup Disabled
-
-	annotation PBI_QueryGroupOrder = 6
-
 queryGroup 'PLCM RACI Playbook'
 
 	annotation PBI_QueryGroupOrder = 5
 
-annotation PBI_QueryOrder = ["Bio Tracker","F&A Tracker","Trauma Tracker","UE Tracker","PPR Tracker Status","Historical Sales","Anaplan Products","Dim_GIM","Dim_Regions","Dates Version Query","Dim_Calendar","Scenario","SKU list","Dim_KPI","DemantraDemand","Fact_Sales","Fact_ConsolidatedList","Fact_Inventory","Dim_Role","Dim_Phase","Dim_PhaseActivity","Fact_TaskAssignments","Fact_ConsolidatedList STG"]
+queryGroup Products
+
+	annotation PBI_QueryGroupOrder = 4
+
+annotation PBI_QueryOrder = ["Historical Sales","LCC_Description","PPR Tracker Status","Anaplan Products","Dim_GIM","Dim_Regions","Dim_Calendar","Dim_KPI","DemantraDemand","Fact_Sales","Fact_ConsolidatedList","Fact_Inventory","Dim_Role","Dim_Phase","Dim_PhaseActivity","Fact_TaskAssignments"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation __TEdtr = 1
 
-annotation PBI_ProTooling = ["WebModelingEdit","TMDLView_Desktop","DaxQueryView_Desktop","DevMode"]
+annotation PBI_ProTooling = ["WebModelingEdit","TMDLView_Desktop","DaxQueryView_Desktop","DevMode","TMDL-Extension"]
 
 ref table Dim_KPI
 ref table Dim_GIM

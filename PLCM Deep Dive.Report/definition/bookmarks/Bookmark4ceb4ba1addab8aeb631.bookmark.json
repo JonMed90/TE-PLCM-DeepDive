@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
   "displayName": "Exit Tracker",
   "name": "Bookmark4ceb4ba1addab8aeb631",
   "options": {
@@ -499,79 +499,6 @@
                   }
                 ]
               }
-            }
-          },
-          "df2c1f5c31eae81e1d34": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "c5da3acac350224f17be",
-                  "type": "Categorical",
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_GIM"
-                        }
-                      },
-                      "Property": "Stocking Type Code"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "slicer",
-              "objects": {
-                "merge": {
-                  "data": [
-                    {
-                      "properties": {
-                        "mode": {
-                          "expr": {
-                            "Literal": {
-                              "Value": "'Dropdown'"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              },
-              "activeProjections": {
-                "Values": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_GIM"
-                        }
-                      },
-                      "Property": "Stocking Type Code"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          "f9b791bcdeea4da1ae7e": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
-          "b28f86787850905800d2": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
-          "ea68b903785b272468b2": {
-            "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
             }
           },
           "35cb7286dcb7a71696d5": {

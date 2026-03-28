@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "9ab957d33751689b10a4",
   "position": {
     "x": 0,
-    "y": 293.26976527653642,
+    "y": 313.68771186846652,
     "z": 5000,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 3000
+    "height": 63.960222561308889,
+    "width": 240.0063313679712
   },
   "visual": {
     "visualType": "slicer",
@@ -72,23 +71,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "4040382c904ed267d89b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "337e54ce0a2b04de0e8e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
-              }
-            },
-            "Property": "PLCM Status"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "4040382c904ed267d89b"
 }

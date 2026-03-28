@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "dc23a6f18b1cdd8010a5",
   "displayName": "7) PLCM Playbook",
   "displayOption": "FitToPage",
@@ -18,9 +18,8 @@
             "solid": {
               "color": {
                 "expr": {
-                  "ThemeDataColor": {
-                    "ColorId": 0,
-                    "Percent": -0.1
+                  "Literal": {
+                    "Value": "'#DFDFDF'"
                   }
                 }
               }
@@ -29,7 +28,7 @@
           "transparency": {
             "expr": {
               "Literal": {
-                "Value": "35D"
+                "Value": "0D"
               }
             }
           },
@@ -61,6 +60,24 @@
             "expr": {
               "Literal": {
                 "Value": "248L"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": 0
+                  }
+                }
               }
             }
           }

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "73f0601d591f92fc22ea",
   "position": {
-    "x": 247.62159208209366,
-    "y": 383.32382051126359,
+    "x": 256.16688396349412,
+    "y": 397.18383311603651,
     "z": 1000,
-    "height": 320.369178456494,
-    "width": 1008.6732649219747,
+    "height": 306.23207301173403,
+    "width": 1008.8135593220338,
     "tabOrder": 5000
   },
   "visual": {
@@ -115,20 +115,6 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Trailing 12M Revenue"
-                }
-              },
-              "queryRef": "_Measures.Trailing 12M Revenue",
-              "nativeQueryRef": "Trailing 12M Revenue"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
                   "Property": "Gross Profit"
                 }
               },
@@ -154,7 +140,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Budget"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Budget Growth Margin %"
@@ -247,7 +233,8 @@
             "queryRefs": [
               "Dim_GIM.Brand"
             ],
-            "isCollapsed": true
+            "isCollapsed": true,
+            "isPinned": true
           },
           {
             "queryRefs": [
@@ -256,7 +243,31 @@
             "isCollapsed": true
           }
         ],
-        "root": {}
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Trauma'"
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'EMEA'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            }
+          ]
+        }
       }
     ],
     "objects": {
@@ -1183,20 +1194,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "c02cd376d0e915d64aa7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "eaf319a794365c47d79d",
         "field": {
           "Column": {
@@ -1212,119 +1209,7 @@
         "howCreated": "User"
       },
       {
-        "name": "78a72d2dfb597e9ebfca",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "COGS"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "08c4b60aa34e673a3c0a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Trailing 12M Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "74a93a694fb7bb8cf0f6",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Gross Profit"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "25d9b3662b8e5b299a56",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Profit Margin"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5e3846f749c2ca00cb17",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "SubBrand"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "126f512f766b90a70484",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "53b753d257a4b8a6e093",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Budget"
-              }
-            },
-            "Property": "Budget Growth Margin %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "984c93a053144704ac3a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Regions"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5c184df5a3e15211dd26",
+        "name": "b15dcbe20d3e3c3ad18e",
         "field": {
           "Column": {
             "Expression": {
@@ -1338,7 +1223,21 @@
         "type": "Categorical"
       },
       {
-        "name": "accbb31732676070c317",
+        "name": "c6f3a846ed771fd02da3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Regions"
+              }
+            },
+            "Property": "Region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "890c0d0da7ef3fdbf3ca",
         "field": {
           "Column": {
             "Expression": {
@@ -1350,6 +1249,104 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "b97adca8c3a1ed13f435",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "SubBrand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "83954b8681fc80b4db85",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e32976c2c9aebae9d17a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "COGS"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "60fb774f9f928ffbe9cb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Gross Profit"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "31efb9bb1f9ee3e5ae50",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Profit Margin"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cc495ce42d25ce595175",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Budget Growth Margin %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9a0f18c9e07c29112a32",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

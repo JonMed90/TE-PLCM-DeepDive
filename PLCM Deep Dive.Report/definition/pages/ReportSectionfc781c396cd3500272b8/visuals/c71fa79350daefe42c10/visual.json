@@ -1,9 +1,9 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "c71fa79350daefe42c10",
   "position": {
-    "x": 879.89834815756035,
-    "y": 64.243964421855139,
+    "x": 881.98174706649274,
+    "y": 61.581486310299972,
     "z": 4000,
     "height": 375.70520965692504,
     "width": 383.83735705209654,
@@ -105,6 +105,18 @@
                   "Value": "1L"
                 }
               }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.1
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -145,5 +157,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c4167ce244d2eb3d9f77",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "LCC Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2eeda93481c32f752891",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "# GIM SKUs"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
   "displayName": "Demand Clear Filters",
   "name": "Bookmarkbe1ae25438fae7db3f9f",
   "options": {
@@ -210,12 +210,6 @@
           ]
         },
         "visualContainers": {
-          "6ecd26d789b23484aa66": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
           "a9fa5ac71cd37e1e89cf": {
             "filters": {
               "byExpr": [
@@ -534,18 +528,6 @@
                   }
                 ]
               }
-            }
-          },
-          "08ed32450dee39a83f5b": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
-          "ccb725bd6ebf40df0bde": {
-            "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
             }
           },
           "927db7d71ecc5a48aa1c": {

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
   "displayName": "GIM Clear Filters",
   "name": "Bookmark866816aceb1c8f36f57e",
   "options": {
@@ -399,18 +399,6 @@
                   }
                 }
               ]
-            }
-          },
-          "f15b1e0b0dadaa7341b0": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
-          "c4113d1b11a61e0ecd77": {
-            "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
             }
           },
           "017d28bc81e805e76779": {
@@ -888,12 +876,6 @@
                   }
                 ]
               }
-            }
-          },
-          "fd4d10531bb0d0d03d27": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
             }
           },
           "c71fa79350daefe42c10": {

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "c2a156ebc9f2ffa9076a",
   "position": {
-    "x": 0,
+    "x": 239.94828700711057,
     "y": 0,
     "z": 0,
-    "height": 48,
-    "width": 328,
+    "height": 47.989657401422107,
+    "width": 454.24692954104722,
     "tabOrder": 0
   },
   "visual": {
@@ -43,7 +43,7 @@
                     }
                   },
                   {
-                    "value": "PPR Status Tracker",
+                    "value": "Home",
                     "textStyle": {
                       "fontFamily": "Times New Roman",
                       "fontSize": "20pt",
@@ -53,6 +53,21 @@
                 ]
               }
             ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ]

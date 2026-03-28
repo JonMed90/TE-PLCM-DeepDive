@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "170607dd67020b84bae1",
   "position": {
     "x": 0,
-    "y": 232,
+    "y": 248.58422759942937,
     "z": 6000,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 6000
+    "height": 64.289024379162768,
+    "width": 239.87860394537176
   },
   "visual": {
     "visualType": "slicer",
@@ -80,5 +79,23 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "366f0ee87cdd16bdbe4d"
+  "parentGroupName": "366f0ee87cdd16bdbe4d",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b60422c80cbe225f5f4e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "SubBrand"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

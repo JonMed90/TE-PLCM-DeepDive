@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "d87750f7117f81f9029a",
   "position": {
     "x": 0,
-    "y": 360.43180335272166,
-    "z": 4000,
-    "height": 120.37617554858934,
-    "width": 239.74921630094045,
-    "tabOrder": 10000
+    "y": 584.88422917046307,
+    "z": 1500,
+    "height": 134.76437990713566,
+    "width": 239.91586865522643
   },
   "visual": {
     "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
@@ -20,13 +19,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Fact_ConsolidatedList"
                     }
                   },
                   "Property": "Catalog Number"
                 }
               },
-              "queryRef": "Dim_GIM.Catalog Number",
+              "queryRef": "Fact_ConsolidatedList.Catalog Number",
               "nativeQueryRef": "Catalog Number"
             }
           ]
@@ -74,6 +73,19 @@
             }
           }
         }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -82,12 +94,12 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "c695f39aa0213c071365",
+        "name": "3fb62e2e1fa724982abd",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Dim_GIM"
+                "Entity": "Fact_ConsolidatedList"
               }
             },
             "Property": "Catalog Number"

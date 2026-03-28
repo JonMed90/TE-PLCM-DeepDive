@@ -43,8 +43,9 @@ table Fact_Sales
 		annotation SummarizationSetBy = Automatic
 
 	column ItemId
-		dataType: double
+		dataType: int64
 		isHidden
+		formatString: 0
 		displayFolder: Keys
 		lineageTag: 4437f837-018b-4282-9b46-1628dfb17036
 		summarizeBy: none
@@ -53,8 +54,6 @@ table Fact_Sales
 		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Country
 		dataType: string
@@ -114,11 +113,12 @@ table Fact_Sales
 				    #"Expanded Dim_Regions" = Table.ExpandTableColumn(#"Merged Queries", "Dim_Regions", {"Index"}, {"Dim_Regions.Index"}),
 				    // Remove the "Selling Division" column to optimize the dataset
 				    RemovedSellingDivisionColumn = Table.RemoveColumns(#"Expanded Dim_Regions",{"Source", "Region","Selling Division", "Catalog Number", "ordertypekey", "ot_localordertypename", "ot_globalordertypename", "ordertypekeytype2", "ot2_localordertypename", "ot2_globalordertypename", "ot2_active", "transactiontypekey", "TOM Division", "TOM Area", "transactiontypecode", "transactiontypename", "Normalized Catalog Number", "Division", "Margin", "TOM Group"}),
-				    #"Reordered Columns" = Table.ReorderColumns(RemovedSellingDivisionColumn,{"Date", "ItemId", "Dim_Regions.Index", "Country", "Quantity", "Revenue", "COGS", "Scenario"})
+				    #"Reordered Columns" = Table.ReorderColumns(RemovedSellingDivisionColumn,{"Date", "ItemId", "Dim_Regions.Index", "Country", "Quantity", "Revenue", "COGS", "Scenario"}),
+				    #"Changed ItemId Type" = Table.TransformColumnTypes(#"Reordered Columns",{{"ItemId", Int64.Type}})
 				in
-				    #"Reordered Columns"
+				    #"Changed ItemId Type"
 
-	annotation PBI_ResultType = Table
+	annotation PBI_ResultType = Exception
 
 	annotation PBI_NavigationStepName = Navigation
 

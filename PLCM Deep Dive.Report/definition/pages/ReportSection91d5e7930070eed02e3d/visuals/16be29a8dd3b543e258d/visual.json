@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "16be29a8dd3b543e258d",
   "position": {
     "x": 0,
-    "y": 456.73867005506162,
+    "y": 491.1776274708958,
     "z": 5500,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 6000
+    "height": 64.524113197380345,
+    "width": 239.61325150737912
   },
   "visual": {
     "visualType": "slicer",
@@ -63,23 +62,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "65058ff356b927ce01e4",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6f42a576202117524083",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Stocking Type Code"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "65058ff356b927ce01e4"
 }

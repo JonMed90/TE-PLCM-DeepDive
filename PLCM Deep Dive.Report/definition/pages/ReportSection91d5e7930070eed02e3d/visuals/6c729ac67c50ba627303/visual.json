@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "6c729ac67c50ba627303",
   "position": {
     "x": 0,
-    "y": 518.07200338839414,
+    "y": 557.13560985043932,
     "z": 4250,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 4000
+    "height": 64.524113197380345,
+    "width": 239.61325150737912
   },
   "visual": {
     "visualType": "slicer",
@@ -68,23 +67,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "65058ff356b927ce01e4",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6c080cfb98bc44dd2274",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Regions"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "65058ff356b927ce01e4"
 }

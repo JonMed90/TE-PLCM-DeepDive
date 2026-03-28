@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "ReportSection64c197230b81064790e0",
   "displayName": "5) Exit Tracker",
   "displayOption": "FitToPage",
@@ -7,21 +7,6 @@
   "width": 1280,
   "filterConfig": {
     "filters": [
-      {
-        "name": "0732106f79006781a9a2",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Item Owner"
-          }
-        },
-        "type": "Categorical",
-        "howCreated": "User"
-      },
       {
         "name": "c057a92e044a0249b9bf",
         "field": {
@@ -38,19 +23,79 @@
         "howCreated": "User"
       },
       {
-        "name": "57712d33b149cd215420",
+        "name": "47602dcce68a1e785756",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Dim_GIM"
+                "Entity": "Fact_ConsolidatedList"
               }
             },
-            "Property": "ConsolidatedList Flag"
+            "Property": "Business Unit"
           }
         },
         "type": "Categorical",
-        "howCreated": "User"
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "Fact_ConsolidatedList",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "f"
+                              }
+                            },
+                            "Property": "Business Unit"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isHiddenInViewMode": true,
+        "isLockedInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
       }
     ]
   },
@@ -73,7 +118,34 @@
           "transparency": {
             "expr": {
               "Literal": {
-                "Value": "35D"
+                "Value": "0D"
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'PowerBI_CanvasBG.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "PowerBI_CanvasBG5167809914325163.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
               }
             }
           }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
   "displayName": "Inventory Clear Filters",
   "name": "Bookmark837a37851442187c224f",
   "options": {
@@ -411,12 +411,6 @@
               "objects": {}
             }
           },
-          "b10d3e380b950175a476": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
           "921c4b21cc306903d5b2": {
             "singleVisual": {
               "visualType": "textbox",
@@ -701,18 +695,6 @@
                   }
                 }
               ]
-            }
-          },
-          "d8622adb00cb28c30305": {
-            "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
-            }
-          },
-          "362ada011d33b08c09d0": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
             }
           },
           "c7241e7d9f66d5cb297c": {

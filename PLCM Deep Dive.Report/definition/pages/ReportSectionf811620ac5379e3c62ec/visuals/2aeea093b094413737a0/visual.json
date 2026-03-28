@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "2aeea093b094413737a0",
   "position": {
     "x": 648,
@@ -74,7 +74,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Units'"
+                                "Value": "'COGS'"
                               }
                             }
                           ]
@@ -128,11 +128,44 @@
         }
       ]
     },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dynamic KPI Slicer'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "syncGroup": {
       "groupName": "KPI",
       "fieldChanges": true,
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "217651b08d61f5ed78e2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_KPI"
+              }
+            },
+            "Property": "KPI"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

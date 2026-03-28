@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "2c6af04dc0de984b845d",
   "position": {
     "x": 0,
-    "y": 264,
+    "y": 283.31883985819877,
     "z": 1562,
-    "height": 152,
-    "width": 240,
-    "tabOrder": 11000
+    "height": 163.12296840320536,
+    "width": 239.87860394537176
   },
   "visual": {
     "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
@@ -74,6 +73,19 @@
             }
           }
         }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -82,7 +94,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "bdf86e2374e73c645425",
+        "name": "6dac1a79a1d2acff483f",
         "field": {
           "Column": {
             "Expression": {

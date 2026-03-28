@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "aa0b62c9284012001d22",
   "position": {
     "x": 0,
-    "y": 487.12875035980164,
-    "z": 3000,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 2000
+    "y": 379.37658909359453,
+    "z": 4000,
+    "height": 63.960222561308889,
+    "width": 240.0063313679712
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +19,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Fact_ConsolidatedList"
                     }
                   },
-                  "Property": "Life Cycle Code"
+                  "Property": "LCC"
                 }
               },
-              "queryRef": "Dim_GIM.Life Cycle Code",
-              "nativeQueryRef": "Life Cycle Code",
+              "queryRef": "Fact_ConsolidatedList.LCC",
+              "nativeQueryRef": "LCC",
               "active": true
             }
           ]

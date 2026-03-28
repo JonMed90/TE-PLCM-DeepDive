@@ -1,11 +1,9 @@
 table Budget
+	isHidden
 	lineageTag: 6c13e33e-5299-415f-842d-e78a2f3e3bb0
 
-	measure 'Budget Growth Margin %' = SELECTEDVALUE(Budget[Budgeted %])
-		formatString: 0.00%;-0.00%;0.00%
-		lineageTag: 606018e5-989b-46a8-baba-07118ff8ab02
-
 	column BU
+		isHidden
 		lineageTag: c018ffb0-f32e-4c5c-9fd9-519701edad95
 		summarizeBy: none
 		isNameInferred
@@ -14,9 +12,10 @@ table Budget
 		annotation SummarizationSetBy = Automatic
 
 	column 'Budgeted %'
+		isHidden
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: a8d49683-8b4a-4a38-8685-9a13c784445a
-		summarizeBy: none
+		summarizeBy: sum
 		isNameInferred
 		sourceColumn: [Budgeted %]
 

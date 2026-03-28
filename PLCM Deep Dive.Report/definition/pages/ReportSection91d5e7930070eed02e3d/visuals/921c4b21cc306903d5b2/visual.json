@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "921c4b21cc306903d5b2",
   "position": {
-    "x": 519.62382445141066,
-    "y": 685.141065830721,
+    "x": 844.916540212443,
+    "y": 3.8846737481031863,
     "z": 1000,
-    "height": 35.109717868338556,
-    "width": 760.37617554858934,
+    "height": 35.933232169954472,
+    "width": 218.51289833080423,
     "tabOrder": 0
   },
   "visual": {
@@ -21,16 +21,29 @@
                   {
                     "value": "Source: IDM - Refresh Daily",
                     "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Cambria",
-                      "fontStyle": "italic",
-                      "fontSize": "8pt",
+                      "fontFamily": "Times New Roman",
+                      "fontSize": "9pt",
                       "color": "#000000"
                     }
                   }
                 ]
               }
             ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ]

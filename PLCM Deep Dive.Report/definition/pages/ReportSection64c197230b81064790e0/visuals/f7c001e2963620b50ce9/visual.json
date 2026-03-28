@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "f7c001e2963620b50ce9",
   "position": {
     "x": 0,
-    "y": 7.1054273576010019E-15,
+    "y": 0,
     "z": 10000,
-    "height": 48.000000000000007,
-    "width": 112,
-    "tabOrder": 5000
+    "height": 51.049333040909552,
+    "width": 112.12160183609672
   },
   "visual": {
     "visualType": "actionButton",
@@ -189,6 +188,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'Clear Filter Button'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
   "displayName": "Playbook Summary",
   "name": "b8c89f02e84f9b51f70e",
   "options": {
@@ -329,122 +329,6 @@
             "singleVisual": {
               "visualType": "advancedSlicerVisual",
               "objects": {}
-            }
-          },
-          "0e78d5825791005a2504": {
-            "singleVisual": {
-              "visualType": "shape",
-              "objects": {}
-            }
-          },
-          "1a1eefe5a844560804e0": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "7d25709f49ebda863f14",
-                  "type": "Categorical",
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_PhaseActivity"
-                        }
-                      },
-                      "Property": "Process/Tasks"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "slicer",
-              "objects": {
-                "merge": {
-                  "data": [
-                    {
-                      "properties": {
-                        "mode": {
-                          "expr": {
-                            "Literal": {
-                              "Value": "'Dropdown'"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              },
-              "activeProjections": {
-                "Values": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_PhaseActivity"
-                        }
-                      },
-                      "Property": "Process/Tasks"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          "cf25717130d2090d948c": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "f617ceaea588a92ca8f2",
-                  "type": "Categorical",
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_Role"
-                        }
-                      },
-                      "Property": "Role Name"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "slicer",
-              "objects": {
-                "merge": {
-                  "data": [
-                    {
-                      "properties": {
-                        "mode": {
-                          "expr": {
-                            "Literal": {
-                              "Value": "'Dropdown'"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              },
-              "activeProjections": {
-                "Values": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_Role"
-                        }
-                      },
-                      "Property": "Role Name"
-                    }
-                  }
-                ]
-              }
             }
           },
           "f3233033c31035bab726": {

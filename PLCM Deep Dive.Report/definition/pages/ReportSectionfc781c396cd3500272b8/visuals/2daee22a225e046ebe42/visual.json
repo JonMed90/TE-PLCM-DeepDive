@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "2daee22a225e046ebe42",
   "position": {
     "x": 0,
-    "y": 248,
+    "y": 265.98458254687858,
     "z": 5000,
-    "height": 144,
-    "width": 240,
-    "tabOrder": 0
+    "height": 154.44266083367145,
+    "width": 239.88286969253295
   },
   "visual": {
     "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
@@ -114,27 +113,22 @@
             }
           }
         }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "86c3f075c6e7bc722c02",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "3f30486720638762a7e9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Catalog Number"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "86c3f075c6e7bc722c02"
 }

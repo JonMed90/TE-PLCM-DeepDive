@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "b6c833301c7d06d07c41",
   "position": {
-    "x": 247.5,
-    "y": 436.5,
+    "x": 256.16688396349412,
+    "y": 426.38852672750977,
     "z": 1000,
-    "height": 279.9,
-    "width": 1015.1999999999999,
+    "height": 280.36505867014341,
+    "width": 1005.4758800521512,
     "tabOrder": 5000
   },
   "visual": {
@@ -90,7 +90,7 @@
               },
               "queryRef": "Dim_GIM.Brand",
               "nativeQueryRef": "Brand",
-              "active": true
+              "active": false
             },
             {
               "field": {
@@ -105,7 +105,7 @@
               },
               "queryRef": "Dim_GIM.SubBrand",
               "nativeQueryRef": "SubBrand",
-              "active": true
+              "active": false
             },
             {
               "field": {
@@ -120,7 +120,7 @@
               },
               "queryRef": "Dim_GIM.Catalog Number",
               "nativeQueryRef": "Catalog Number",
-              "active": true
+              "active": false
             },
             {
               "field": {
@@ -135,7 +135,7 @@
               },
               "queryRef": "Dim_GIM.Long Description",
               "nativeQueryRef": "Long Description",
-              "active": true
+              "active": false
             }
           ]
         },
@@ -204,6 +204,7 @@
             "queryRefs": [
               "Dim_GIM.Business Unit"
             ],
+            "isCollapsed": true,
             "identityKeys": [
               {
                 "Column": {
@@ -908,13 +909,27 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "155.83862770012706D"
+                  "Value": "91.67081802582813D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "Calendar.Year"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "132.02883190923822D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_GIM.Brand"
           }
         }
       ],
@@ -1032,7 +1047,7 @@
         "howCreated": "User"
       },
       {
-        "name": "311d57955a26e77823b1",
+        "name": "8a4a6e793639381cdc94",
         "field": {
           "Column": {
             "Expression": {
@@ -1046,7 +1061,7 @@
         "type": "Categorical"
       },
       {
-        "name": "38933896d03384098ed4",
+        "name": "9964ab123ec9ba2e8031",
         "field": {
           "Column": {
             "Expression": {
@@ -1060,7 +1075,7 @@
         "type": "Categorical"
       },
       {
-        "name": "5105d08a682ad019b112",
+        "name": "c87348bd941937b72fa7",
         "field": {
           "Column": {
             "Expression": {
@@ -1074,7 +1089,7 @@
         "type": "Advanced"
       },
       {
-        "name": "8b707f3310956e31b0ac",
+        "name": "29d032e69c77f06fd05c",
         "field": {
           "Column": {
             "Expression": {
@@ -1088,7 +1103,7 @@
         "type": "Categorical"
       },
       {
-        "name": "8a2492b642065729772a",
+        "name": "6dd58baeef4762a04498",
         "field": {
           "Column": {
             "Expression": {
@@ -1102,7 +1117,7 @@
         "type": "Categorical"
       },
       {
-        "name": "ea21d6cb3c04862410b6",
+        "name": "ec9e16862f7a5c515464",
         "field": {
           "Column": {
             "Expression": {
@@ -1116,7 +1131,7 @@
         "type": "Categorical"
       },
       {
-        "name": "1ce674770b44cc7c077c",
+        "name": "e03d8c58403254bf85fd",
         "field": {
           "Column": {
             "Expression": {
@@ -1130,21 +1145,7 @@
         "type": "Categorical"
       },
       {
-        "name": "9238e8fc7a0d26bb555d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Dynamic Sales KPI"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0593177a97051723ee69",
+        "name": "632c320529994e866a32",
         "field": {
           "Column": {
             "Expression": {
@@ -1156,6 +1157,20 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "e1c57faa8c957de61309",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Dynamic Sales KPI"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

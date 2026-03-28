@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "0ecab90b861a407e1a05",
   "position": {
-    "x": 623.83240911891551,
-    "y": 55.995070856438687,
+    "x": 636.66232073011736,
+    "y": 61,
     "z": 2000,
-    "height": 320.19716574245223,
-    "width": 631.71903881700553,
+    "height": 320.41720990873534,
+    "width": 624.980443285528,
     "tabOrder": 3000
   },
   "visual": {
@@ -84,7 +84,7 @@
             "version": {
               "expr": {
                 "Literal": {
-                  "Value": "'1.8.2.0'"
+                  "Value": "'1.9.0.0'"
                 }
               }
             }
@@ -115,13 +115,6 @@
                 }
               }
             },
-            "isNewDialogOpen": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
             "version": {
               "expr": {
                 "Literal": {
@@ -138,14 +131,14 @@
             "viewportHeight": {
               "expr": {
                 "Literal": {
-                  "Value": "257.1971657424522D"
+                  "Value": "257.41720990873534D"
                 }
               }
             },
             "viewportWidth": {
               "expr": {
                 "Literal": {
-                  "Value": "615.7190388170055D"
+                  "Value": "608.980443285528D"
                 }
               }
             }
@@ -258,48 +251,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "ff57fbbf085a01a4995e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Calendar"
-              }
-            },
-            "Property": "MonthStart"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "2e46ec1416aa38230b77",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Regions"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "ee71ceb79763ab6a577a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Dynamic Sales KPI"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "bf428a1c89e75806cbcb",
   "position": {
-    "x": 256,
-    "y": 368,
+    "x": 256.16688396349412,
+    "y": 377.99217731421118,
     "z": 0,
-    "height": 336,
-    "width": 1008,
+    "height": 326.25814863103,
+    "width": 1007.9791395045632,
     "tabOrder": 7000
   },
   "visual": {
@@ -17,59 +17,121 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ConsolidatedList"
+                        }
+                      },
+                      "Hierarchy": "Product Hierarchy"
                     }
                   },
-                  "Property": "Business Unit"
+                  "Level": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.Business Unit",
-              "nativeQueryRef": "Business Unit"
+              "queryRef": "Fact_ConsolidatedList.Product Hierarchy.Business Unit",
+              "nativeQueryRef": "Product Hierarchy Business Unit"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ConsolidatedList"
+                        }
+                      },
+                      "Hierarchy": "Product Hierarchy"
+                    }
+                  },
+                  "Level": "Brand"
+                }
+              },
+              "queryRef": "Fact_ConsolidatedList.Product Hierarchy.Brand",
+              "nativeQueryRef": "Product Hierarchy Brand"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ConsolidatedList"
+                        }
+                      },
+                      "Hierarchy": "Product Hierarchy"
+                    }
+                  },
+                  "Level": "SubBrand"
+                }
+              },
+              "queryRef": "Fact_ConsolidatedList.Product Hierarchy.SubBrand",
+              "nativeQueryRef": "Product Hierarchy SubBrand"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ConsolidatedList"
+                        }
+                      },
+                      "Hierarchy": "Product Hierarchy"
+                    }
+                  },
+                  "Level": "Catalog Number"
+                }
+              },
+              "queryRef": "Fact_ConsolidatedList.Product Hierarchy.Catalog Number",
+              "nativeQueryRef": "Product Hierarchy Catalog Number"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Fact_ConsolidatedList"
                     }
                   },
-                  "Property": "Brand"
+                  "Property": "GIM ID"
                 }
               },
-              "queryRef": "Dim_GIM.Brand",
-              "nativeQueryRef": "Brand"
+              "queryRef": "Consolidated List.GIM ID",
+              "nativeQueryRef": "GIM ID"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Fact_ConsolidatedList"
                     }
                   },
-                  "Property": "SubBrand"
+                  "Property": "Long Description"
                 }
               },
-              "queryRef": "Dim_GIM.SubBrand",
-              "nativeQueryRef": "SubBrand"
+              "queryRef": "Fact_ConsolidatedList.Long Description",
+              "nativeQueryRef": "Long Description"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Fact_ConsolidatedList"
                     }
                   },
-                  "Property": "Catalog Number"
+                  "Property": "LCC"
                 }
               },
-              "queryRef": "Dim_GIM.Catalog Number",
-              "nativeQueryRef": "Catalog Number"
+              "queryRef": "Fact_ConsolidatedList.LCC",
+              "nativeQueryRef": "LCC"
             },
             {
               "field": {
@@ -94,11 +156,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Next 12M Demand Units"
+                  "Property": "TTM Units"
                 }
               },
-              "queryRef": "_Measures.Next 12M Demand Units",
-              "nativeQueryRef": "Next 12M Demand Units"
+              "queryRef": "_Measures.TTM Units",
+              "nativeQueryRef": "Trailing 12M Units Sold",
+              "displayName": "Trailing 12M Units Sold"
             },
             {
               "field": {
@@ -108,11 +171,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Trailing 12M Revenue"
+                  "Property": "Next 12M Demand Units"
                 }
               },
-              "queryRef": "_Measures.Trailing 12M Revenue",
-              "nativeQueryRef": "Trailing 12M Revenue"
+              "queryRef": "_Measures.Next 12M Demand Units",
+              "nativeQueryRef": "Next 12M Demand Units"
             },
             {
               "field": {
@@ -164,52 +227,10 @@
                       "Entity": "Fact_ConsolidatedList"
                     }
                   },
-                  "Property": "GIM ID"
-                }
-              },
-              "queryRef": "Consolidated List.GIM ID",
-              "nativeQueryRef": "GIM ID"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "Life Cycle Code"
-                }
-              },
-              "queryRef": "Dim_GIM.Life Cycle Code",
-              "nativeQueryRef": "Life Cycle Code"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "Stocking Type Code"
-                }
-              },
-              "queryRef": "Dim_GIM.Stocking Type Code",
-              "nativeQueryRef": "Stocking Type Code"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
                   "Property": "Item Owner"
                 }
               },
-              "queryRef": "Dim_GIM.Item Owner",
+              "queryRef": "Fact_ConsolidatedList.Item Owner",
               "nativeQueryRef": "Item Owner"
             },
             {
@@ -267,24 +288,27 @@
               },
               "queryRef": "Consolidated List.Comments",
               "nativeQueryRef": "Comments"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "Item Type Description"
-                }
-              },
-              "queryRef": "Dim_GIM.Item Type Description",
-              "nativeQueryRef": "Item Type Description"
             }
           ],
           "showAll": true
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Inventory QoH"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "objects": {
@@ -315,6 +339,22 @@
           },
           "selector": {
             "metadata": "_Measures.Inventory Qty"
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "132.66226866477655D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_ConsolidatedList.Long Description"
           }
         }
       ]
@@ -358,63 +398,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7173e2a97e05dc672ee6",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Business Unit"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "684898234315cd17310c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Brand"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "8344209e899c45474823",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "SubBrand"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "50cbb8c30919a04a84d0",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Catalog Number"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6c05ba40e1da4ed3a028",
+        "name": "e6b0ceb80b415e75f1cd",
         "field": {
           "Measure": {
             "Expression": {
@@ -428,7 +412,7 @@
         "type": "Advanced"
       },
       {
-        "name": "23cc5d6c30e0e8c95a79",
+        "name": "097262f1e27b10c85939",
         "field": {
           "Measure": {
             "Expression": {
@@ -442,21 +426,7 @@
         "type": "Advanced"
       },
       {
-        "name": "19722cc0268a281b3d70",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Trailing 12M Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d77fcca2646ed25d3075",
+        "name": "84c946a98137b37c9f51",
         "field": {
           "Column": {
             "Expression": {
@@ -470,7 +440,7 @@
         "type": "Categorical"
       },
       {
-        "name": "a17b7b503687c376012d",
+        "name": "f20979fba49ba5762ca4",
         "field": {
           "Column": {
             "Expression": {
@@ -484,7 +454,7 @@
         "type": "Categorical"
       },
       {
-        "name": "08dd855705166cb452bb",
+        "name": "a2a73f0ce1ac0d3ee014",
         "field": {
           "Column": {
             "Expression": {
@@ -498,63 +468,7 @@
         "type": "Categorical"
       },
       {
-        "name": "4d556d9f20eacb4b0c58",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
-              }
-            },
-            "Property": "GIM ID"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f05e03a2942b0420704a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Life Cycle Code"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "d6831a006ed3d433be74",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Stocking Type Code"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "d7fea1bda140ec6511ec",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Item Owner"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "b256d49487e72b80cc44",
+        "name": "7dce8c0276e5f8d973a2",
         "field": {
           "Column": {
             "Expression": {
@@ -568,7 +482,7 @@
         "type": "Categorical"
       },
       {
-        "name": "a42264dcbd21b939433b",
+        "name": "f9e75f74f0ce3eecef0a",
         "field": {
           "Column": {
             "Expression": {
@@ -582,7 +496,7 @@
         "type": "Categorical"
       },
       {
-        "name": "8cec2379bb0a761b2585",
+        "name": "bc747a07c55372d00c79",
         "field": {
           "Column": {
             "Expression": {
@@ -596,7 +510,7 @@
         "type": "Categorical"
       },
       {
-        "name": "359eae6bb5c0e203319b",
+        "name": "e4b0b8b1a4f764d718e9",
         "field": {
           "Column": {
             "Expression": {
@@ -610,18 +524,150 @@
         "type": "Categorical"
       },
       {
-        "name": "4aa12f048e5c1d9550ec",
+        "name": "341cf0a82a33b550104b",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ConsolidatedList"
+                  }
+                },
+                "Hierarchy": "Product Hierarchy"
+              }
+            },
+            "Level": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "50dd1828241956010824",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ConsolidatedList"
+                  }
+                },
+                "Hierarchy": "Product Hierarchy"
+              }
+            },
+            "Level": "Brand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1320aa7094e82defa640",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ConsolidatedList"
+                  }
+                },
+                "Hierarchy": "Product Hierarchy"
+              }
+            },
+            "Level": "SubBrand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ead1062ae32f43940588",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ConsolidatedList"
+                  }
+                },
+                "Hierarchy": "Product Hierarchy"
+              }
+            },
+            "Level": "Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c9ad703683743ce8ccfb",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Dim_GIM"
+                "Entity": "Fact_ConsolidatedList"
               }
             },
-            "Property": "Item Type Description"
+            "Property": "Item Owner"
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "abf58ac3426ba582c057",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "GIM ID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "66de0418b288d365b5de",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Long Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "455be45a0e13a9e959e3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "LCC"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0c9af28144a405d1eea6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "TTM Units"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

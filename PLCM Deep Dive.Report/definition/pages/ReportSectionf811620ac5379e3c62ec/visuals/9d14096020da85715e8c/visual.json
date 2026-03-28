@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "9d14096020da85715e8c",
   "position": {
     "x": 256,
@@ -71,7 +71,7 @@
               },
               "queryRef": "Dim_GIM.Franchise Hierarchy.Product Line",
               "nativeQueryRef": "Franchise Hierarchy Product Line",
-              "active": true
+              "active": false
             },
             {
               "field": {
@@ -291,7 +291,6 @@
                   }
                 }
               ],
-              "isToggled": true,
               "children": [
                 {
                   "identityValues": [
@@ -949,7 +948,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4355754973ae449e9596",
+        "name": "d91f388e1967bed936d1",
         "field": {
           "Column": {
             "Expression": {
@@ -963,7 +962,7 @@
         "type": "Categorical"
       },
       {
-        "name": "61fb60ca711106c5de30",
+        "name": "51dc35be93f73eb52a0f",
         "field": {
           "HierarchyLevel": {
             "Expression": {
@@ -982,7 +981,7 @@
         "type": "Categorical"
       },
       {
-        "name": "c4ceb01a8aeb6c8c270d",
+        "name": "108042b89df96272b9df",
         "field": {
           "HierarchyLevel": {
             "Expression": {
@@ -1001,7 +1000,7 @@
         "type": "Categorical"
       },
       {
-        "name": "01b6865f05ec6062399c",
+        "name": "96724a0608e8d9032bbe",
         "field": {
           "HierarchyLevel": {
             "Expression": {
@@ -1020,7 +1019,7 @@
         "type": "Categorical"
       },
       {
-        "name": "839f8b173690b5d52170",
+        "name": "414d1d456fe0d73ee449",
         "field": {
           "HierarchyLevel": {
             "Expression": {
@@ -1039,7 +1038,7 @@
         "type": "Categorical"
       },
       {
-        "name": "8e607776c31419e7a465",
+        "name": "791b458db8287e7c2815",
         "field": {
           "HierarchyLevel": {
             "Expression": {
@@ -1058,7 +1057,7 @@
         "type": "Categorical"
       },
       {
-        "name": "12d50dc2bb621e1b0626",
+        "name": "3846c4f194610c66b356",
         "field": {
           "Column": {
             "Expression": {
@@ -1072,7 +1071,7 @@
         "type": "Categorical"
       },
       {
-        "name": "4a3ae36c38ae044aeb09",
+        "name": "c066bd58f4ebefa703d4",
         "field": {
           "Measure": {
             "Expression": {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ec7295f03199a0546e0e",
   "position": {
-    "x": 480.60991105463785,
-    "y": 64.243964421855139,
+    "x": 482.69330996357007,
+    "y": 61.581486310299972,
     "z": 5000,
     "height": 375.70520965692504,
     "width": 383.02414231257939,
@@ -106,6 +106,31 @@
                 }
               }
             }
+          }
+        },
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
           }
         }
       ],
@@ -235,7 +260,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "10187e5a040026b78282",
+        "name": "042b9b170d2f6e541c0a",
         "field": {
           "Column": {
             "Expression": {
@@ -249,7 +274,7 @@
         "type": "Categorical"
       },
       {
-        "name": "b63033c5e0e3b2392100",
+        "name": "241f0242d68e6f476622",
         "field": {
           "Measure": {
             "Expression": {

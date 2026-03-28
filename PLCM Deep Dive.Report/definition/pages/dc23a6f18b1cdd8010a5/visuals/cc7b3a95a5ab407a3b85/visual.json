@@ -116,7 +116,7 @@
                     "Entity": "Dim_PhaseActivity"
                   }
                 },
-                "Property": "Phase Activity ID"
+                "Property": "Process/Tasks"
               }
             },
             "direction": "Ascending"

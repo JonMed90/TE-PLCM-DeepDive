@@ -4,6 +4,7 @@ table Dim_Calendar
 
 	column Date
 		dataType: dateTime
+		isHidden
 		isKey
 		formatString: mm/dd/yy
 		lineageTag: 61d64438-ce9d-4a7b-bdfc-a2406840448b
@@ -161,8 +162,12 @@ table Dim_Calendar
 		queryGroup: Calendar
 		source =
 				let
-				    Source = #"Dates Version Query"(#date(2019, 1, 1), #date(2030, 12, 1), null, null),
-				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Date", "Year", "QuarterOfYear", "Quarter & Year", "MonthOfYear", "MonthShortName", "Month-Year", "MonthnYear", "MonthEnding", "MonthStart", "DateInt"}),
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+				    #"e3ccdbb4-94be-4464-adfe-5e78894f0eba" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="e3ccdbb4-94be-4464-adfe-5e78894f0eba"]}[Data],
+				    Calendar_ = #"e3ccdbb4-94be-4464-adfe-5e78894f0eba"{[entity="Calendar",version=""]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(Calendar_,{"Date", "Year", "QuarterOfYear", "Quarter & Year", "MonthOfYear", "MonthShortName", "Month-Year", "MonthnYear", "MonthEnding", "MonthStart", "DateInt"}),
 				    #"Reordered Columns" = Table.ReorderColumns(#"Removed Other Columns",{"Date", "MonthStart", "MonthEnding", "Year", "QuarterOfYear", "Quarter & Year", "MonthOfYear", "MonthShortName", "MonthnYear", "Month-Year", "DateInt"}),
 				    #"Filtered Rows" = Table.SelectRows(#"Reordered Columns", each [Date] >= #date(2022, 1, 1))
 				in

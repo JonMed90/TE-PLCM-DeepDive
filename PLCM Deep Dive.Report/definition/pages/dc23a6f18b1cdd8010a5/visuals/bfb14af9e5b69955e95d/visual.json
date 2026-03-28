@@ -25,7 +25,7 @@
             "selectedBookmark": {
               "expr": {
                 "Literal": {
-                  "Value": "'19bdc8bb641b2b3d84eb'"
+                  "Value": "'b8c89f02e84f9b51f70e'"
                 }
               }
             },
@@ -154,6 +154,19 @@
     },
     "visualContainerObjects": {
       "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
         {
           "properties": {
             "show": {

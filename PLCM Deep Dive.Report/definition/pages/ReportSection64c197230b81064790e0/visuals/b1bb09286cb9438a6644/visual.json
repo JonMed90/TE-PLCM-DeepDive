@@ -3,11 +3,10 @@
   "name": "b1bb09286cb9438a6644",
   "position": {
     "x": 0,
-    "y": 235.87431289936993,
+    "y": 250.85888239574254,
     "z": 6000,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 6000
+    "height": 63.811666301136931,
+    "width": 240.26057536306439
   },
   "visual": {
     "visualType": "slicer",
@@ -77,23 +76,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "4040382c904ed267d89b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "610929e0b9abc0be0700",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
-              }
-            },
-            "Property": "PLCM Phaseout Batch"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "4040382c904ed267d89b"
 }

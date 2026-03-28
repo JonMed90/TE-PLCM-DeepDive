@@ -5,26 +5,6 @@
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f983e778ec1fb0bd1ddd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "ItemId"
-          }
-        },
-        "type": "Advanced",
-        "howCreated": "User",
-        "isLockedInViewMode": true
-      }
-    ]
-  },
   "objects": {
     "background": [
       {
@@ -35,7 +15,7 @@
                 "expr": {
                   "ThemeDataColor": {
                     "ColorId": 0,
-                    "Percent": -0.1
+                    "Percent": -0.2
                   }
                 }
               }
@@ -44,7 +24,34 @@
           "transparency": {
             "expr": {
               "Literal": {
-                "Value": "35D"
+                "Value": "0D"
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'PowerBI_CanvasBG.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "PowerBI_CanvasBG685791353728328.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
               }
             }
           }

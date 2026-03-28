@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "7913bc129f10556a43ea",
   "position": {
-    "x": 520.45743329097843,
-    "y": 63.430749682337989,
+    "x": 476.45371577574963,
+    "y": 63.415906127770533,
     "z": 4000,
-    "height": 286.25158831003813,
-    "width": 389.52986022871664,
+    "height": 296.21903520208605,
+    "width": 388.83963494132985,
     "tabOrder": 3000
   },
   "visual": {
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Fact_ConsolidatedList"
                     }
                   },
                   "Property": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.Business Unit",
+              "queryRef": "Fact_ConsolidatedList.Business Unit",
               "nativeQueryRef": "Business Unit",
               "active": true
             }
@@ -381,6 +381,60 @@
         }
       ]
     },
+    "visualContainerObjects": {
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "eaabd5c449372d08c69f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "# ConsolidatedList SKUs"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "eec5d51593ee726203f8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

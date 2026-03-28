@@ -7,18 +7,22 @@ table Fact_Inventory
 		formatString: 0
 		displayFolder: Keys
 		lineageTag: fa8c55ee-d968-491d-9114-f3b780a945e3
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Dim_Regions.Index
 
 		changedProperty = IsHidden
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column Region
 		dataType: string
+		isHidden
+		displayFolder: Keys
 		lineageTag: 4ba9abdf-5ff1-40df-9073-3ba179f881ca
 		summarizeBy: none
 		sourceColumn: Region
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -72,9 +76,12 @@ table Fact_Inventory
 
 	column QuantityOnHand
 		dataType: double
+		isHidden
 		lineageTag: d3182dc8-6283-48f3-bcd1-9ffb84e3181c
 		summarizeBy: sum
 		sourceColumn: QuantityOnHand
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -82,9 +89,12 @@ table Fact_Inventory
 
 	column ERP_Extended_Statutory_Cost_USD
 		dataType: double
+		isHidden
 		lineageTag: cff34c11-4212-4880-9d89-1200475d1dec
 		summarizeBy: sum
 		sourceColumn: ERP_Extended_Statutory_Cost_USD
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -92,9 +102,12 @@ table Fact_Inventory
 
 	column ERP_Extended_Management_Cost_USD
 		dataType: double
+		isHidden
 		lineageTag: a42b9362-c7e0-40f3-a414-28998d277d9d
 		summarizeBy: sum
 		sourceColumn: ERP_Extended_Management_Cost_USD
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -142,10 +155,14 @@ table Fact_Inventory
 
 	column ItemId
 		dataType: int64
+		isHidden
 		formatString: 0
+		displayFolder: Keys
 		lineageTag: 6ad9c463-40d3-49b5-b275-77768fbfb3ad
 		summarizeBy: none
 		sourceColumn: ItemId
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

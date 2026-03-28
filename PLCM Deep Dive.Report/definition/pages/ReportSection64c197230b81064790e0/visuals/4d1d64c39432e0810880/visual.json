@@ -3,11 +3,10 @@
   "name": "4d1d64c39432e0810880",
   "position": {
     "x": 0,
-    "y": 56,
+    "y": 59.557555214394462,
     "z": 9000,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 1000
+    "height": 63.811666301136931,
+    "width": 240.26057536306439
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +19,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Fact_ConsolidatedList"
                     }
                   },
                   "Property": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.Business Unit",
-              "nativeQueryRef": "Business Unit",
+              "queryRef": "Fact_ConsolidatedList.Business Unit",
+              "nativeQueryRef": "Business Unit1",
               "active": true
             }
           ]
@@ -85,6 +84,7 @@
           }
         },
         "type": "Categorical",
+        "howCreated": "User",
         "isHiddenInViewMode": true,
         "objects": {
           "general": [

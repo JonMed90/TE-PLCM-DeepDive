@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "84d9773c9041200dd37a",
   "position": {
-    "x": 255.81792318634425,
-    "y": 457.01280227596021,
+    "x": 256.16688396349412,
+    "y": 457.26205997392435,
     "z": 0,
-    "height": 249.4452347083926,
-    "width": 1008.7055476529162,
+    "height": 249.4915254237288,
+    "width": 1009.6479791395045,
     "tabOrder": 2000
   },
   "visual": {
@@ -285,18 +285,13 @@
         "sort": [
           {
             "field": {
-              "HierarchyLevel": {
+              "Column": {
                 "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Dim_GIM"
-                      }
-                    },
-                    "Hierarchy": "GIM Hierarchy"
+                  "SourceRef": {
+                    "Entity": "Dim_GIM"
                   }
                 },
-                "Level": "Brand"
+                "Property": "Brand"
               }
             },
             "direction": "Descending"
@@ -429,21 +424,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4158e44c4f092e85b24d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Catalog Number"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1f91eefe971ce831cc90",
+        "name": "b6d267fe71c5526bc55c",
         "field": {
           "Column": {
             "Expression": {
@@ -457,7 +438,7 @@
         "type": "Categorical"
       },
       {
-        "name": "c8fbed1308534401e575",
+        "name": "4d65c82e3d591ee74c07",
         "field": {
           "Column": {
             "Expression": {
@@ -471,7 +452,7 @@
         "type": "Categorical"
       },
       {
-        "name": "fa2e006d3d1abc04db3d",
+        "name": "6c0a475b012959c6889a",
         "field": {
           "Column": {
             "Expression": {
@@ -485,7 +466,21 @@
         "type": "Categorical"
       },
       {
-        "name": "cd5d86a0da5aca8a4521",
+        "name": "6824491750606ae7e54a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Life Cycle Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6026ed84b0c25b0f04c6",
         "field": {
           "Column": {
             "Expression": {
@@ -499,7 +494,21 @@
         "type": "Categorical"
       },
       {
-        "name": "579a34fd4a0beba40895",
+        "name": "9d18e53a52fa3596f576",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "bf479b77262c4f5838d9",
         "field": {
           "Column": {
             "Expression": {
@@ -513,7 +522,7 @@
         "type": "Categorical"
       },
       {
-        "name": "009a1691861827454249",
+        "name": "d42ec5971c748863adf3",
         "field": {
           "Column": {
             "Expression": {
@@ -527,7 +536,7 @@
         "type": "Advanced"
       },
       {
-        "name": "d231f4ac9e5258913201",
+        "name": "08857f190ae651befa97",
         "field": {
           "Column": {
             "Expression": {
@@ -541,7 +550,7 @@
         "type": "Categorical"
       },
       {
-        "name": "92642c3795323880c9ba",
+        "name": "169722e4d8fa4410373c",
         "field": {
           "Column": {
             "Expression": {
@@ -555,7 +564,7 @@
         "type": "Categorical"
       },
       {
-        "name": "dbbe71d08eed9b300b10",
+        "name": "7261e5196182b4e22004",
         "field": {
           "Column": {
             "Expression": {
@@ -569,7 +578,7 @@
         "type": "Categorical"
       },
       {
-        "name": "6b08a492cdccc07834ce",
+        "name": "bd6503c318d9a9a7c1f5",
         "field": {
           "Column": {
             "Expression": {
@@ -583,7 +592,7 @@
         "type": "Advanced"
       },
       {
-        "name": "d984f7a144aa490bcae6",
+        "name": "84b1e3ef57bb0250ae84",
         "field": {
           "Column": {
             "Expression": {
@@ -597,7 +606,7 @@
         "type": "Categorical"
       },
       {
-        "name": "47c680f956dcad7ab80b",
+        "name": "886d04b9b42012d104e4",
         "field": {
           "Column": {
             "Expression": {
@@ -611,7 +620,7 @@
         "type": "Categorical"
       },
       {
-        "name": "2a9f482cd325864813d8",
+        "name": "ab4aedf9461498a497c4",
         "field": {
           "Column": {
             "Expression": {
@@ -625,7 +634,7 @@
         "type": "Categorical"
       },
       {
-        "name": "15c824ed2ee75526b125",
+        "name": "7903d100bd539d4392a1",
         "field": {
           "Column": {
             "Expression": {
@@ -639,7 +648,7 @@
         "type": "Categorical"
       },
       {
-        "name": "e7169f8a1e80d2ce1387",
+        "name": "c7f344ec8baef857d9a1",
         "field": {
           "Column": {
             "Expression": {
@@ -653,7 +662,7 @@
         "type": "Categorical"
       },
       {
-        "name": "b9533cc103a860101828",
+        "name": "f2a21da034964babd733",
         "field": {
           "Column": {
             "Expression": {
@@ -667,7 +676,7 @@
         "type": "Categorical"
       },
       {
-        "name": "917918be85d48ccac128",
+        "name": "69772765cdf7d5f7c5e9",
         "field": {
           "Column": {
             "Expression": {
@@ -676,20 +685,6 @@
               }
             },
             "Property": "GIM.CreateDate"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "347132137377e3725383",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Life Cycle Code"
           }
         },
         "type": "Categorical"

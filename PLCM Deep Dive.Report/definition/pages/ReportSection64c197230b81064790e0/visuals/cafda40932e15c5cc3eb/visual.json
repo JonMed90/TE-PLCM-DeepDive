@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cafda40932e15c5cc3eb",
   "position": {
     "x": 0,
-    "y": 607.69315183704828,
-    "z": 1000,
-    "height": 60,
-    "width": 240.24615384615385,
-    "tabOrder": 9000
+    "y": 443.3368116549035,
+    "z": 3000,
+    "height": 63.960222561308889,
+    "width": 240.81991215226941
   },
   "visual": {
     "visualType": "slicer",
@@ -64,23 +63,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "4040382c904ed267d89b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "dbc46d8a904911b38232",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
-              }
-            },
-            "Property": "MDM Request #"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "4040382c904ed267d89b"
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "48b35bae04be9550db3a",
   "displayName": "6) Margins",
   "displayOption": "FitToPage",
@@ -8,59 +8,8 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a9bc9bae80c6d4bd00d4",
-        "ordinal": 0,
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "ItemId"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "Dim_GIM",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 2,
-                  "Left": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "d"
-                        }
-                      },
-                      "Property": "ItemId"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "0L"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User",
-        "isLockedInViewMode": true
-      },
-      {
         "name": "6865dffb0f42561fc305",
-        "ordinal": 1,
+        "ordinal": 0,
         "field": {
           "Column": {
             "Expression": {
@@ -106,6 +55,13 @@
                               "Value": "'Platform Screws'"
                             }
                           }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Trauma Other'"
+                            }
+                          }
                         ]
                       ]
                     }
@@ -135,7 +91,7 @@
       },
       {
         "name": "798907613d5ba55274b5",
-        "ordinal": 2,
+        "ordinal": 1,
         "field": {
           "Column": {
             "Expression": {
@@ -216,7 +172,7 @@
           "transparency": {
             "expr": {
               "Literal": {
-                "Value": "35D"
+                "Value": "0D"
               }
             }
           },
@@ -225,14 +181,23 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "''"
+                    "Value": "'PowerBI_CanvasBG.png'"
                   }
                 }
               },
               "url": {
                 "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "PowerBI_CanvasBG8189896858146625.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
                   "Literal": {
-                    "Value": "''"
+                    "Value": "'Fit'"
                   }
                 }
               }

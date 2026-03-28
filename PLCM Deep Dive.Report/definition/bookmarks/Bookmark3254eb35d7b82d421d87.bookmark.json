@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
   "displayName": "Landing Page Clear Filters",
   "name": "Bookmark3254eb35d7b82d421d87",
   "options": {
@@ -476,12 +476,6 @@
           "06e444216e5cfa00fd65": {
             "singleVisual": {
               "visualType": "textbox",
-              "objects": {}
-            }
-          },
-          "964da9f82cd646270c34": {
-            "singleVisual": {
-              "visualType": "shape",
               "objects": {}
             }
           },

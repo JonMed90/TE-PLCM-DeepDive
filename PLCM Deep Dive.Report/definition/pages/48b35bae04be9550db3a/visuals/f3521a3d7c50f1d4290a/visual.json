@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "f3521a3d7c50f1d4290a",
   "position": {
-    "x": 248,
-    "y": 56,
+    "x": 256.16688396349412,
+    "y": 60.912646675358538,
     "z": 3000,
-    "height": 320,
-    "width": 384,
+    "height": 320.41720990873534,
+    "width": 483.12907431551497,
     "tabOrder": 0
   },
   "visual": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Budget"
+                      "Entity": "Dim_GIM"
                     }
                   },
-                  "Property": "BU"
+                  "Property": "Business Unit"
                 }
               },
-              "queryRef": "Budget.BU",
-              "nativeQueryRef": "BU",
+              "queryRef": "Dim_GIM.Business Unit",
+              "nativeQueryRef": "Business Unit",
               "active": true
             }
           ]
@@ -94,6 +94,27 @@
                   "Value": "'Categorical'"
                 }
               }
+            },
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "32L"
+                }
+              }
+            },
+            "maxMarginFactor": {
+              "expr": {
+                "Literal": {
+                  "Value": "17L"
+                }
+              }
+            },
+            "preferredCategoryWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
             }
           }
         }
@@ -105,6 +126,26 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "clusteredGapSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "clusteredGapOverlaps": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -150,13 +191,8 @@
           "properties": {
             "text": {
               "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Dynamic Sales KPI Selection"
+                "Literal": {
+                  "Value": "'AC Profit Margin vs Budget'"
                 }
               }
             }
@@ -169,7 +205,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'By Year'"
+                  "Value": "'By Business Unit'"
                 }
               }
             }
@@ -182,7 +218,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3213bbd3ab722e159e27",
+        "name": "ae37fb08190480c14cef",
         "field": {
           "Measure": {
             "Expression": {
@@ -196,7 +232,7 @@
         "type": "Advanced"
       },
       {
-        "name": "94e04b409ba3c1e5ca65",
+        "name": "3ebe0c95ca3e0e9061e1",
         "field": {
           "Measure": {
             "Expression": {
@@ -210,15 +246,15 @@
         "type": "Advanced"
       },
       {
-        "name": "588c850f77ece73e5361",
+        "name": "df42c27b05fb215345a2",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Budget"
+                "Entity": "Dim_GIM"
               }
             },
-            "Property": "BU"
+            "Property": "Business Unit"
           }
         },
         "type": "Categorical"

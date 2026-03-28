@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "a5bba2cd8f663f5c7777",
   "position": {
-    "x": 648,
-    "y": 56,
+    "x": 746.80573663624511,
+    "y": 60.912646675358538,
     "z": 2000,
-    "height": 320,
-    "width": 608,
+    "height": 320.41720990873534,
+    "width": 518.17470664928294,
     "tabOrder": 3000
   },
   "visual": {
@@ -146,6 +146,39 @@
             }
           }
         }
+      ],
+      "smallMultiplesLayout": [
+        {
+          "properties": {
+            "rowCount": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
+            },
+            "columnCount": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "responsive": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -161,13 +194,8 @@
             },
             "text": {
               "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Dynamic Sales KPI Selection"
+                "Literal": {
+                  "Value": "'AC Profit Margin vs Budget'"
                 }
               }
             }
@@ -218,6 +246,19 @@
             }
           }
         }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -225,7 +266,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "77282ed37719340b8b02",
+        "name": "f4ec55873b8a5eee97c9",
         "field": {
           "Column": {
             "Expression": {
@@ -239,7 +280,7 @@
         "type": "Categorical"
       },
       {
-        "name": "f8d380ea1dc0275e2a7b",
+        "name": "87395669509517b42c40",
         "field": {
           "Column": {
             "Expression": {
@@ -253,7 +294,7 @@
         "type": "Categorical"
       },
       {
-        "name": "16ad613493c0d0a730b0",
+        "name": "c99bfe0b61446384747b",
         "field": {
           "Column": {
             "Expression": {
@@ -267,7 +308,7 @@
         "type": "Categorical"
       },
       {
-        "name": "81805b4c959b9da5468e",
+        "name": "14968f38cd00b41149ba",
         "field": {
           "Measure": {
             "Expression": {

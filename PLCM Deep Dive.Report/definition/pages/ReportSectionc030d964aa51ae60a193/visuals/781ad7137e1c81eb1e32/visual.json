@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "781ad7137e1c81eb1e32",
   "position": {
     "x": 0,
-    "y": 56,
+    "y": 59.987071751777634,
     "z": 14000,
-    "height": 56,
-    "width": 240,
-    "tabOrder": 16000
+    "height": 59.987071751777641,
+    "width": 239.94828700711057
   },
   "visual": {
     "visualType": "slicer",
@@ -57,9 +56,37 @@
             }
           }
         }
+      ],
+      "data": [
+        {
+          "properties": {}
+        }
       ]
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "2bfdde20a16d001ae0d2"
+  "parentGroupName": "2bfdde20a16d001ae0d2",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8f72411a70ee7f7e95cf",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_GIM"
+                  }
+                },
+                "Hierarchy": "Franchise Hierarchy"
+              }
+            },
+            "Level": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

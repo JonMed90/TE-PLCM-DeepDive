@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "bf49b580b4bca6ccf9ee",
   "position": {
-    "x": 257.62539682539682,
-    "y": 438.04444444444442,
+    "x": 257.0013037809648,
+    "y": 438.07040417209907,
     "z": 1000,
-    "height": 247.87301587301587,
-    "width": 1006.1206349206349,
+    "height": 260.33898305084745,
+    "width": 1006.3102998696219,
     "tabOrder": 4000
   },
   "visual": {
@@ -104,8 +104,8 @@
                   "Property": "Dynamic Global PLCM Decision"
                 }
               },
-              "queryRef": "GIM.Dynamic Global PLCM Decision",
-              "displayName": "PLCM Decision (SubBrand)"
+              "queryRef": "_Measures.Dynamic Global PLCM Decision",
+              "nativeQueryRef": "Dynamic Global PLCM Decision"
             },
             {
               "field": {
@@ -561,12 +561,6 @@
         {
           "properties": {},
           "selector": {
-            "metadata": "GIM.Dynamic Global PLCM Decision"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
             "metadata": "Inventory.Inventory Qty"
           }
         },
@@ -583,7 +577,15 @@
           }
         },
         {
-          "properties": {},
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.0266040688576D"
+                }
+              }
+            }
+          },
           "selector": {
             "metadata": "Measures Table.TTM COGS"
           }
@@ -633,6 +635,19 @@
             }
           }
         }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -674,7 +689,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "ee5a8cef9c257249ae96",
+        "name": "c5c3f3aa3837e4812db9",
         "field": {
           "Column": {
             "Expression": {
@@ -688,7 +703,7 @@
         "type": "Categorical"
       },
       {
-        "name": "48124d406c7e8e70b020",
+        "name": "0b88625a97068064c706",
         "field": {
           "Column": {
             "Expression": {
@@ -702,7 +717,7 @@
         "type": "Categorical"
       },
       {
-        "name": "1e27074be83643289e0c",
+        "name": "3e4d04e601ebe681a651",
         "field": {
           "Column": {
             "Expression": {
@@ -716,7 +731,7 @@
         "type": "Categorical"
       },
       {
-        "name": "9b757bd69810db7ba19d",
+        "name": "addf34af4c6e332d958c",
         "field": {
           "Column": {
             "Expression": {
@@ -730,7 +745,7 @@
         "type": "Categorical"
       },
       {
-        "name": "8882a907d3130d87c652",
+        "name": "50c0574b450ac1684f62",
         "field": {
           "Column": {
             "Expression": {
@@ -744,21 +759,7 @@
         "type": "Categorical"
       },
       {
-        "name": "70f75ba32029ebed6c03",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Dynamic Global PLCM Decision"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ade44af7246569843e0d",
+        "name": "abc3ba1a320e26966640",
         "field": {
           "Measure": {
             "Expression": {
@@ -772,7 +773,7 @@
         "type": "Advanced"
       },
       {
-        "name": "f522b91e40ad0d38e5cb",
+        "name": "682f5151f7c9a422009b",
         "field": {
           "Measure": {
             "Expression": {
@@ -786,7 +787,7 @@
         "type": "Advanced"
       },
       {
-        "name": "732484c94530b90792e5",
+        "name": "3561cf6b0ce3dd2a1d2a",
         "field": {
           "Measure": {
             "Expression": {
@@ -800,7 +801,7 @@
         "type": "Advanced"
       },
       {
-        "name": "79c1e7aa6e25a2cee858",
+        "name": "068af53dc7501756c26b",
         "field": {
           "Measure": {
             "Expression": {
@@ -814,7 +815,7 @@
         "type": "Advanced"
       },
       {
-        "name": "5ced062716065ee29c0b",
+        "name": "b92df0cc5506e7193944",
         "field": {
           "Measure": {
             "Expression": {
@@ -828,7 +829,7 @@
         "type": "Advanced"
       },
       {
-        "name": "a425f19ed1ad6852d078",
+        "name": "3dbb1cdf4c592023aa00",
         "field": {
           "Measure": {
             "Expression": {
@@ -837,6 +838,20 @@
               }
             },
             "Property": "DSI (COGS)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "514389d75c6e87cb647d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Dynamic Global PLCM Decision"
           }
         },
         "type": "Advanced"

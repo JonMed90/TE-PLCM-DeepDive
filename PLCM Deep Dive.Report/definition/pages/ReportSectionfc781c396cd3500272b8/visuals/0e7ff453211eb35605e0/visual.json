@@ -3,11 +3,10 @@
   "name": "0e7ff453211eb35605e0",
   "position": {
     "x": 0,
-    "y": 114.57471264367817,
+    "y": 122.88349642321496,
     "z": 8000,
-    "height": 60,
-    "width": 240,
-    "tabOrder": 2000
+    "height": 64.351108680696441,
+    "width": 239.88286969253295
   },
   "visual": {
     "visualType": "slicer",
@@ -43,44 +42,6 @@
                 "Literal": {
                   "Value": "true"
                 }
-              }
-            },
-            "selfFilter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "Dim_GIM",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "Contains": {
-                        "Left": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "d"
-                              }
-                            },
-                            "Property": "Brand"
-                          }
-                        },
-                        "Right": {
-                          "Literal": {
-                            "Value": "'traus'"
-                          }
-                        }
-                      }
-                    },
-                    "Annotations": {
-                      "PowerBI.MParameterBehavior": 1
-                    }
-                  }
-                ]
               }
             }
           }
