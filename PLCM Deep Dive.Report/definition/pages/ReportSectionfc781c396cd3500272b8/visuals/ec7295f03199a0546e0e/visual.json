@@ -4,10 +4,10 @@
   "position": {
     "x": 482.69330996357007,
     "y": 61.581486310299972,
-    "z": 5000,
+    "z": 3000,
     "height": 375.70520965692504,
     "width": 383.02414231257939,
-    "tabOrder": 5000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "pieChart",
@@ -256,37 +256,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "042b9b170d2f6e541c0a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Business Unit"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "241f0242d68e6f476622",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "# GIM SKUs"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

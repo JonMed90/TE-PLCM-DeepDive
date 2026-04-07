@@ -6,7 +6,8 @@
     "y": 59.987071751777634,
     "z": 14000,
     "height": 59.987071751777641,
-    "width": 239.94828700711057
+    "width": 239.94828700711057,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "slicer",
@@ -65,28 +66,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "2bfdde20a16d001ae0d2",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8f72411a70ee7f7e95cf",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_GIM"
-                  }
-                },
-                "Hierarchy": "Franchise Hierarchy"
-              }
-            },
-            "Level": "Business Unit"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "2bfdde20a16d001ae0d2"
 }

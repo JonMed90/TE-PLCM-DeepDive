@@ -7,7 +7,7 @@
     "z": 1000,
     "height": 280.36505867014341,
     "width": 1005.4758800521512,
-    "tabOrder": 5000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -1045,132 +1045,6 @@
         },
         "type": "Categorical",
         "howCreated": "User"
-      },
-      {
-        "name": "8a4a6e793639381cdc94",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Regions"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "9964ab123ec9ba2e8031",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_Sales"
-              }
-            },
-            "Property": "Country"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "c87348bd941937b72fa7",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Calendar"
-              }
-            },
-            "Property": "Year"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "29d032e69c77f06fd05c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Business Unit"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6dd58baeef4762a04498",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Brand"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "ec9e16862f7a5c515464",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "SubBrand"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "e03d8c58403254bf85fd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Catalog Number"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "632c320529994e866a32",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Long Description"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "e1c57faa8c957de61309",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Dynamic Sales KPI"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

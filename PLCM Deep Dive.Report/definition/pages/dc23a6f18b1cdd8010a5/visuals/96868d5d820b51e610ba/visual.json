@@ -1226,42 +1226,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "006018989f8cd6db9388",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6a08c1117e7ecc27adb4",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_Phase"
-                  }
-                },
-                "Property": "Objective"
-              }
-            },
-            "Function": 3
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "93fadd8ae4ae46960672",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Phase"
-              }
-            },
-            "Property": "Phase"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "006018989f8cd6db9388"
 }

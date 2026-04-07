@@ -7,7 +7,7 @@
     "z": 3000,
     "height": 361.06734434561628,
     "width": 361.06734434561628,
-    "tabOrder": 9000
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "donutChart",
@@ -326,20 +326,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "63a02c1225378c623306",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Inventory QoH"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

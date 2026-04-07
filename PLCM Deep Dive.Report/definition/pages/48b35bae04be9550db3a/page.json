@@ -55,13 +55,6 @@
                               "Value": "'Platform Screws'"
                             }
                           }
-                        ],
-                        [
-                          {
-                            "Literal": {
-                              "Value": "'Trauma Other'"
-                            }
-                          }
                         ]
                       ]
                     }
@@ -132,7 +125,63 @@
                     [
                       {
                         "Literal": {
-                          "Value": "2025L"
+                          "Value": "2026L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "d677c6bd3bd477999d0c",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Regions"
+              }
+            },
+            "Property": "Region"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_Regions",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "Region"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'US'"
                         }
                       }
                     ]

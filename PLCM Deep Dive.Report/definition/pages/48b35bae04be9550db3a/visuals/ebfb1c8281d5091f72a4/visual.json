@@ -4,10 +4,10 @@
   "position": {
     "x": 239.94828700711057,
     "y": 0,
-    "z": 3001,
+    "z": 4000,
     "height": 47.989657401422107,
     "width": 454.24692954104722,
-    "tabOrder": 5001
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "textbox",
@@ -43,7 +43,7 @@
                     }
                   },
                   {
-                    "value": "Margin v Budget",
+                    "value": "Profit Margin v Budget",
                     "textStyle": {
                       "fontFamily": "Times New Roman",
                       "fontSize": "20pt",

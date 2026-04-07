@@ -6,7 +6,8 @@
     "y": 283.31883985819877,
     "z": 1562,
     "height": 163.12296840320536,
-    "width": 239.87860394537176
+    "width": 239.87860394537176,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
@@ -90,23 +91,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "bdfb683c4c25e217051d",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6dac1a79a1d2acff483f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Catalog Number"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "bdfb683c4c25e217051d"
 }

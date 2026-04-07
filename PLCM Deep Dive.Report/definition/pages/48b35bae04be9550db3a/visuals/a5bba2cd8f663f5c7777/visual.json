@@ -7,7 +7,7 @@
     "z": 2000,
     "height": 320.41720990873534,
     "width": 518.17470664928294,
-    "tabOrder": 3000
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "lineChart",
@@ -29,24 +29,6 @@
               "queryRef": "Dim_Calendar.MonthEnding",
               "nativeQueryRef": "MonthEnding",
               "active": true
-            }
-          ]
-        },
-        "Rows": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_Regions"
-                    }
-                  },
-                  "Property": "Region"
-                }
-              },
-              "queryRef": "Dim_Regions.Region",
-              "nativeQueryRef": "Region"
             }
           ]
         },
@@ -87,9 +69,6 @@
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "isDefaultSort": true
       }
     },
     "objects": {
@@ -179,6 +158,19 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categorical'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -240,7 +232,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'By Date and Region'"
+                  "Value": "'By Date'"
                 }
               }
             }
@@ -266,7 +258,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "f4ec55873b8a5eee97c9",
+        "name": "3147cfa82212baae1951",
         "field": {
           "Column": {
             "Expression": {
@@ -280,21 +272,7 @@
         "type": "Categorical"
       },
       {
-        "name": "87395669509517b42c40",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Regions"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "c99bfe0b61446384747b",
+        "name": "cab5e109d11491596bb0",
         "field": {
           "Column": {
             "Expression": {
@@ -308,7 +286,7 @@
         "type": "Categorical"
       },
       {
-        "name": "14968f38cd00b41149ba",
+        "name": "2fd6bd37f9f625d76435",
         "field": {
           "Measure": {
             "Expression": {

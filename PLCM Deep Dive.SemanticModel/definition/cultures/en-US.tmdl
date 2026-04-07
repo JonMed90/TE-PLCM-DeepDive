@@ -4006,9 +4006,6 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "business unit": {
@@ -6868,276 +6865,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__measure.actual_sales__end_date": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Actual Sales - End Date"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "actual sales - end date": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "actual sales end date": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "end date": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "sales end date": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "actual sale - end moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.78
-			          }
-			        },
-			        {
-			          "actual sale end moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.771
-			          }
-			        },
-			        {
-			          "sale end moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.762
-			          }
-			        },
-			        {
-			          "actual sale - end period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.757
-			          }
-			        },
-			        {
-			          "end moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "actual sale end period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.748
-			          }
-			        },
-			        {
-			          "sale end period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.739
-			          }
-			        },
-			        {
-			          "end period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "actual sale - culmination date": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.64
-			          }
-			        },
-			        {
-			          "actual sale culmination date": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.629
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
-			    },
-			    "entity__measure.actual_sales__start_date": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Actual Sales - Start Date"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "actual sales - start date": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "actual sales start date": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "start date": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "sales start date": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "actual sale - start moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.78
-			          }
-			        },
-			        {
-			          "actual sale start moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.771
-			          }
-			        },
-			        {
-			          "sale start moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.762
-			          }
-			        },
-			        {
-			          "actual sale - start period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.757
-			          }
-			        },
-			        {
-			          "start moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "actual sale start period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.748
-			          }
-			        },
-			        {
-			          "sale start period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.739
-			          }
-			        },
-			        {
-			          "start period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "actual sale - commencement date": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.64
-			          }
-			        },
-			        {
-			          "actual sale - inception date": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.64
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
-			    },
 			    "entity__measure.forecast_sales__end_date": {
 			      "Definition": {
 			        "Binding": {
@@ -7987,6 +7714,12 @@ cultureInfo en-US
 			          }
 			        },
 			        {
+			          "margin": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
 			          "profit boundary": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -8014,6 +7747,36 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "boundary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "perimeter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "periphery": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
 			          }
 			        },
 			        {
@@ -8048,36 +7811,6 @@ cultureInfo en-US
 			        },
 			        {
 			          "profit edge": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "profit verge": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "profit fringe": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "profit side": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -9188,6 +8921,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "budget": {
@@ -9224,6 +8960,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "bu": {
@@ -9240,6 +8979,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "budgeted %": {
@@ -15471,72 +15213,6 @@ cultureInfo en-US
 			    }
 			  },
 			  "Relationships": {
-			    "dim_GIM_franchise_hierarchy_product_line_has_dim_GIM_franchise_hierarchy_brand": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_GIM"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_GIM.franchise_hierarchy.product_line": {
-			          "Target": {
-			            "Entity": "dim_GIM.franchise_hierarchy.product_line"
-			          }
-			        },
-			        "dim_GIM.franchise_hierarchy.brand": {
-			          "Target": {
-			            "Entity": "dim_GIM.franchise_hierarchy.brand"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_GIM.franchise_hierarchy.product_line"
-			            },
-			            "Object": {
-			              "Role": "dim_GIM.franchise_hierarchy.brand"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "product_lines_have_brands"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_GIM.franchise_hierarchy.brand"
-			            },
-			            "Object": {
-			              "Role": "dim_GIM.franchise_hierarchy.product_line"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "brands_have_product_lines"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "dim_GIM.franchise_hierarchy.brand"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "dim_GIM.franchise_hierarchy.product_line"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "brands_are_in_product_lines"
-			        }
-			      ]
-			    },
 			    "dim_GIM_franchise_hierarchy_business_unit_has_dim_GIM_franchise_hierarchy_product_line": {
 			      "Binding": {
 			        "ConceptualEntity": "Dim_GIM"
@@ -16235,64 +15911,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "dim_GIM_has_budget": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_GIM"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_GIM": {
-			          "Target": {
-			            "Entity": "dim_GIM"
-			          }
-			        },
-			        "budget": {
-			          "Target": {
-			            "Entity": "budget"
-			          },
-			          "Nouns": [
-			            {
-			              "business unit": {
-			                "State": "Generated"
-			              }
-			            },
-			            {
-			              "unit": {
-			                "State": "Generated"
-			              }
-			            }
-			          ]
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_GIM"
-			            },
-			            "Object": {
-			              "Role": "budget"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_GIMs_have_budgets"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "budget"
-			            },
-			            "Object": {
-			              "Role": "dim_GIM"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "budgets_have_dim_GIMs"
-			        }
-			      ]
-			    },
 			    "fact_task_assignment_has_modern_tooltip_HTML": {
 			      "Binding": {
 			        "ConceptualEntity": "Fact_TaskAssignments"
@@ -16623,6 +16241,39 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
+			    "fact_sale_has_entity__measure_budget_growth_margin_": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact_Sales"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_sale": {
+			          "Target": {
+			            "Entity": "fact_sale"
+			          }
+			        },
+			        "entity__measure.budget_growth_margin_": {
+			          "Target": {
+			            "Entity": "entity__measure.budget_growth_margin_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_sale"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.budget_growth_margin_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_sales_have_budget_growth_margin_"
+			        }
+			      ]
+			    },
 			    "budget_has_entity__measure_budget_growth_margin_": {
 			      "Binding": {
 			        "ConceptualEntity": "Budget"
@@ -16639,22 +16290,7 @@ cultureInfo en-US
 			            "Entity": "entity__measure.budget_growth_margin_"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "budget"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.budget_growth_margin_"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "budgets_have_budget_growth_margin_"
-			        }
-			      ]
+			      }
 			    },
 			    "dim_GIM_has_PLCM_status__exec_summary": {
 			      "Binding": {
@@ -17791,72 +17427,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "budget_has_budgeted_": {
-			      "Binding": {
-			        "ConceptualEntity": "Budget"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "budget": {
-			          "Target": {
-			            "Entity": "budget"
-			          }
-			        },
-			        "budget.budgeted_": {
-			          "Target": {
-			            "Entity": "budget.budgeted_"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "budget"
-			            },
-			            "Object": {
-			              "Role": "budget.budgeted_"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "budgets_have_budgeted_"
-			        }
-			      ]
-			    },
-			    "budget_has_bu": {
-			      "Binding": {
-			        "ConceptualEntity": "Budget"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "budget": {
-			          "Target": {
-			            "Entity": "budget"
-			          }
-			        },
-			        "budget.bu": {
-			          "Target": {
-			            "Entity": "budget.bu"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "budget"
-			            },
-			            "Object": {
-			              "Role": "budget.bu"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "budgets_have_bu"
-			        }
-			      ]
-			    },
 			    "fact_inventory_has_inventory_category": {
 			      "Binding": {
 			        "ConceptualEntity": "Fact_Inventory"
@@ -18137,22 +17707,7 @@ cultureInfo en-US
 			            "Entity": "entity__measure.profit_margin_minus_sum_of_budgeted_growth_margin"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "budget"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.profit_margin_minus_sum_of_budgeted_growth_margin"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "budgets_have_profit_margin_minus_sum_of_budgeted_growth_margin"
-			        }
-			      ]
+			      }
 			    },
 			    "fact_sale_has_entity__measure_profit_margin": {
 			      "Binding": {
@@ -18250,6 +17805,19 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_GIMs_have_currents"
+			        },
+			        {
+			          "DynamicAdjective": {
+			            "Subject": {
+			              "Role": "dim_GIM"
+			            },
+			            "Adjective": {
+			              "Role": "dim_GIM.current"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "currents_describe_dim_GIMs"
 			        }
 			      ]
 			    },
@@ -19573,6 +19141,39 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_GIMs_have_cymarketingcodes"
+			        }
+			      ]
+			    },
+			    "dim_GIM_has_business_unit": {
+			      "Binding": {
+			        "ConceptualEntity": "Dim_GIM"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_GIM": {
+			          "Target": {
+			            "Entity": "dim_GIM"
+			          }
+			        },
+			        "dim_GIM.business_unit": {
+			          "Target": {
+			            "Entity": "dim_GIM.business_unit"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_GIM"
+			            },
+			            "Object": {
+			              "Role": "dim_GIM.business_unit"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_GIMs_have_business_units"
 			        }
 			      ]
 			    },
@@ -21352,6 +20953,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.9,
 			          "ID": "fact_sales_are_started_on_TTM_start_date"
+			        }
+			      ]
+			    },
+			    "dim_GIM_franchise_hierarchy_product_line_has_dim_GIM_franchise_hierarchy_brand": {
+			      "Binding": {
+			        "ConceptualEntity": "Dim_GIM"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_GIM.franchise_hierarchy.product_line": {
+			          "Target": {
+			            "Entity": "dim_GIM.franchise_hierarchy.product_line"
+			          }
+			        },
+			        "dim_GIM.franchise_hierarchy.brand": {
+			          "Target": {
+			            "Entity": "dim_GIM.franchise_hierarchy.brand"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_GIM.franchise_hierarchy.product_line"
+			            },
+			            "Object": {
+			              "Role": "dim_GIM.franchise_hierarchy.brand"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "product_lines_have_brands"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_GIM.franchise_hierarchy.brand"
+			            },
+			            "Object": {
+			              "Role": "dim_GIM.franchise_hierarchy.product_line"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "brands_have_product_lines"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dim_GIM.franchise_hierarchy.brand"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_GIM.franchise_hierarchy.product_line"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "brands_are_in_product_lines"
 			        }
 			      ]
 			    },

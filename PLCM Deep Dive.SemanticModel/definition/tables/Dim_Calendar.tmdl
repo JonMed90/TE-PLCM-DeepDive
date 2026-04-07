@@ -83,7 +83,7 @@ table Dim_Calendar
 
 		changedProperty = IsHidden
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column 'Quarter & Year'
 		dataType: string
@@ -155,7 +155,7 @@ table Dim_Calendar
 
 		changedProperty = IsHidden
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	partition Dim_Calendar-c84a13df-4f81-406c-b43a-7b1629587a08 = m
 		mode: import

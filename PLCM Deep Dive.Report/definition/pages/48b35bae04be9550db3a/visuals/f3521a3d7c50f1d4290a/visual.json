@@ -61,6 +61,17 @@
               },
               "queryRef": "_Measures.Profit Margin minus Sum of Budgeted Growth Margin",
               "nativeQueryRef": "Profit Margin minus Sum of Budgeted Growth Margin"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "If(  [Profit Margin minus Sum of Budgeted Growth Margin] >0 , \"#B83C27\", \"#3A913F\")",
+                  "Name": "Calculation"
+                }
+              },
+              "queryRef": "select",
+              "nativeQueryRef": "Calculation"
             }
           ]
         }
@@ -151,6 +162,45 @@
             }
           }
         }
+      ],
+      "error": [
+        {
+          "properties": {
+            "enabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Profit Margin minus Sum of Budgeted Growth Margin"
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "borderShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "borderColorMatchFill": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Profit Margin"
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -218,7 +268,21 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "ae37fb08190480c14cef",
+        "name": "85c202808ee6e0ac1c4d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5aee29a3fef217d6c5b5",
         "field": {
           "Measure": {
             "Expression": {
@@ -232,7 +296,7 @@
         "type": "Advanced"
       },
       {
-        "name": "3ebe0c95ca3e0e9061e1",
+        "name": "1143cf3454f9d5da07bb",
         "field": {
           "Measure": {
             "Expression": {
@@ -244,20 +308,6 @@
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "df42c27b05fb215345a2",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Business Unit"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

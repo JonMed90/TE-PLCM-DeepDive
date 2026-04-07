@@ -38,3 +38,15 @@ relationship fff10699-4f45-707a-a0f8-c8a8488a14d1
 	fromColumn: Fact_Inventory.ItemId
 	toColumn: Fact_ConsolidatedList.'GIM_ID (Hide)'
 
+relationship AutoDetected_b33bc2cc-3607-43cd-b90c-80b03e4c1489
+	fromColumn: Fact_E&O.Region
+	toColumn: Dim_Regions.Region
+
+relationship 20241eab-53dd-5545-15e8-8272c32bcc65
+	fromColumn: Fact_E&O.ItemId
+	toColumn: Dim_GIM.ItemId
+
+relationship 0b3a861e-782e-a366-a78c-43c3d14ee579
+	fromColumn: Fact_E&O.MonthEnding
+	toColumn: Dim_Calendar.Date
+

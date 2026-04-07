@@ -6,12 +6,12 @@ Power BI analytics solution for the **Trauma & Extremities (T&E) Product Life Cy
 
 ## Platforms
 
-| Platform                         | Usage                                                                              |
-| -------------------------------- | ---------------------------------------------------------------------------------- |
-| **Power BI** (`.pbip` / `.pbix`) | Semantic model (14 tables, 30+ DAX measures) and 11-page report                    |
-| **Power Platform Dataflows**     | GIM product master, Demantra demand, PPR Tracker, Consolidated List, Playbook RACI |
-| **Power BI Dataflows**           | Historical sales, calendar, and inventory snapshot data                            |
-| **SharePoint Online**            | Anaplan Products workbook (`P-HP07 Item [HUB].xlsx`) for stocking types            |
+| Platform                         | Usage                                                                                        |
+| -------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Power BI** (`.pbip` / `.pbix`) | Semantic model (15 tables, 34 DAX measures) and 11-page report                               |
+| **Power Platform Dataflows**     | GIM product master, Demantra demand, PPR Tracker, Consolidated List, Playbook RACI, E&O data |
+| **Power BI Dataflows**           | Calendar and inventory snapshot data                                                         |
+| **SharePoint Online**            | Anaplan Products workbook (`P-HP07 Item [HUB].xlsx`) for stocking types                      |
 
 ## Key Features
 
@@ -25,6 +25,7 @@ Power BI analytics solution for the **Trauma & Extremities (T&E) Product Life Cy
 - **Exec IBP Summary** — Executive-level Integrated Business Planning view
 - **Dynamic PLCM Decisions** — Brand-level and SubBrand-level global PLCM decision rollups (Exit, Maintain, Out of Scope)
 - **DSI Calculation** — Days Sales in Inventory computed from statutory cost and TTM COGS
+- **Excess & Obsolescence (E&O)** — Reserves, inventory, and reserve rate analysis by region and product
 
 ## Report Pages
 
@@ -59,9 +60,10 @@ Power BI analytics solution for the **Trauma & Extremities (T&E) Product Life Cy
 | `Fact_Inventory`        | Fact      | Import     | Dataflow — finished goods inventory snapshot        |
 | `Fact_ConsolidatedList` | Fact      | Import     | Power Platform Dataflow — PLCM phaseout list        |
 | `Fact_TaskAssignments`  | Fact      | Import     | Dataflow — PLCM playbook RACI assignments           |
+| `Fact_E&O`              | Fact      | Import     | Power Platform Dataflow — Excess & Obsolescence     |
 | `Budget`                | Reference | Calculated | DAX `DATATABLE` — BU budgeted growth margin %       |
 | `Playbook Navigation`   | Reference | Calculated | DAX `DATATABLE` — playbook tab navigation           |
-| `_Measures`             | Measures  | Calculated | Central measures table (30+ DAX measures)           |
+| `_Measures`             | Measures  | Calculated | Central measures table (34 DAX measures)            |
 
 ### Key Relationships
 
@@ -73,11 +75,15 @@ Fact_Sales[ItemId]            → Fact_ConsolidatedList[GIM_ID (Hide)]
 Fact_Inventory[ItemId]        → Dim_GIM[ItemId]
 Fact_Inventory[Region]        → Dim_Regions[Region]
 Fact_Inventory[ItemId]        → Fact_ConsolidatedList[GIM_ID (Hide)]
-Dim_GIM[Business Unit]        → Budget[BU]              (bidirectional)
+Fact_E&O[Region]              → Dim_Regions[Region]
+Fact_E&O[ItemId]              → Dim_GIM[ItemId]
+Fact_E&O[MonthEnding]         → Dim_Calendar[Date]
 Fact_TaskAssignments[Role Name]         → Dim_Role[Role Name]
 Fact_TaskAssignments[Phase Activity ID] → Dim_PhaseActivity[Phase Activity ID]
 Fact_TaskAssignments[Phase ID]          → Dim_Phase[Phase ID]
 ```
+
+> **Note:** The `Budget` table has no physical relationship. `Budget Growth Margin %` uses `TREATAS(VALUES(Dim_GIM[Business Unit]), Budget[BU])` to propagate filters virtually.
 
 ### Key Measures
 
@@ -97,31 +103,36 @@ Fact_TaskAssignments[Phase ID]          → Dim_Phase[Phase ID]
 | `Trailing 12M Revenue`         | Revenue for 12 months ending last month (TODAY-based)             |
 | `Gross Profit`                 | `Revenue − COGS` in current filter context                        |
 | `Profit Margin`                | `Gross Profit / Revenue`                                          |
-| `Budget Growth Margin %`       | `SELECTEDVALUE(Budget[Budgeted %])` — target margin by BU         |
-| `Profit Margin minus Budgeted` | `Profit Margin − Budget Growth Margin %`                          |
+| `Budget Growth Margin %`       | Target margin by BU via `TREATAS` (virtual relationship)          |
+| `Profit Margin minus Budgeted` | `Profit Margin − Budget Growth Margin %` (BLANK-guarded)          |
 | `Ext Management Cost`          | `SUM(Fact_Inventory[ERP_Extended_Management_Cost_USD])`           |
 | `Next 12M Demand Units`        | Forecast units for next 12 months from current month              |
 | `# GIM SKUs`                   | `DISTINCTCOUNT(Dim_GIM[ItemId])`                                  |
 | `# ConsolidatedList SKUs`      | `COUNTROWS(Fact_ConsolidatedList)`                                |
+| `E&O Total`                    | `SUM(Fact_E&O[Amount])` — total E&O amount                        |
+| `E&O (Reserves)`               | E&O filtered to Reserves account                                  |
+| `E&O (Inventory)`              | E&O filtered to Inventory account                                 |
+| `E&O (Reserve Rate %)`         | `DIVIDE(E&O Reserves, E&O Inventory)` — reserve rate percentage   |
 
 ## Data Sources
 
 | Source                                    | Connection                        | Objects                                                                                                       |
 | ----------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | Power Platform Dataflows (GIM & Demantra) | PowerPlatform.Dataflows connector | `Dim_GIMItem`, `DemantraCloud Dataflow`, `PPR Tracker Status`, `Fact_ConsolidatedList` (workspace `7370e662`) |
-| Power BI Dataflows (Sales & Inventory)    | PowerBI.Dataflows connector       | `Sales History`, `Calendar`, `fact_Inventory` (workspace `f4ac28b7`)                                          |
+| Power Platform Dataflows (Sales)          | PowerPlatform.Dataflows connector | `Sales History` (workspace `f4ac28b7`, dataflow `19ac5c01`)                                                   |
+| Power BI Dataflows (Calendar & Inventory) | PowerBI.Dataflows connector       | `Calendar`, `fact_Inventory` (workspace `f4ac28b7`)                                                           |
 | SharePoint Online (Anaplan Products)      | Excel workbook via Power Query    | `P-HP07 Item [HUB].xlsx` — Anaplan item master with stocking types                                            |
 | Power Platform Dataflows (Playbook)       | PowerPlatform.Dataflows connector | `dim_Phase`, `dim_PhaseActivity`, `dim_Role`, `fact_Assignments` (workspace `7e9a6bda`)                       |
+| Power Platform Dataflows (E&O)            | PowerPlatform.Dataflows connector | `Fact_EO` (workspace `7e9a6bda`, dataflow `69e3d6cc`)                                                         |
 
 ## Folder Structure
 
 ```text
-PLCM-Inventory-DeepDive/
+TE-PLCM-DeepDive/
 ├── README.md                                      # This file
 ├── CHANGELOG.md                                   # Release history
 ├── .gitignore                                     # Git ignore rules
 ├── PLCM Deep Dive.pbip                            # PBIP project entry point
-├── PLCM Deep Dive.pbix                            # Legacy PBIX file
 ├── docs/                                          # Documentation
 │   ├── 01_Business-Overview/
 │   ├── 02_Requirements/
@@ -133,7 +144,7 @@ PLCM-Inventory-DeepDive/
 │   └── 08_Release-Notes/
 ├── PLCM Deep Dive.SemanticModel/                  # Semantic model (TMDL)
 │   ├── definition/
-│   │   ├── tables/                                # 14 table definitions
+│   │   ├── tables/                                # 15 table definitions
 │   │   │   ├── _Measures.tmdl                     # Central measures table
 │   │   │   ├── Dim_GIM.tmdl                       # GIM product master
 │   │   │   ├── Dim_Calendar.tmdl                  # Date table
@@ -146,10 +157,11 @@ PLCM-Inventory-DeepDive/
 │   │   │   ├── Fact_Inventory.tmdl                # Inventory snapshot
 │   │   │   ├── Fact_ConsolidatedList.tmdl         # PLCM exit list
 │   │   │   ├── Fact_TaskAssignments.tmdl          # RACI assignments
+│   │   │   ├── Fact_E&O.tmdl                      # Excess & Obsolescence
 │   │   │   ├── Budget.tmdl                        # BU budget margins
 │   │   │   └── Playbook Navigation.tmdl           # Tab navigation
 │   │   ├── model.tmdl                             # Model metadata & query groups
-│   │   ├── relationships.tmdl                     # 11 relationships
+│   │   ├── relationships.tmdl                     # 13 relationships
 │   │   └── expressions.tmdl                       # Power Query / M-code
 │   └── DAXQueries/                                # Ad-hoc DAX queries
 └── PLCM Deep Dive.Report/                         # Report pages & visuals
@@ -174,7 +186,3 @@ PLCM-Inventory-DeepDive/
 1. Open `PLCM Deep Dive.pbip` in Power BI Desktop (Developer Mode)
 2. Authenticate to Power Platform Dataflows, Power BI Dataflows, and SharePoint sources when prompted
 3. Refresh the dataset to load current data
-
-### Legacy PBIX
-
-The `PLCM Deep Dive.pbix` file is maintained for backward compatibility. The `.pbip` format is the primary development format for version control support.

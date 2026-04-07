@@ -7,7 +7,7 @@
     "z": 1000,
     "height": 306.23207301173403,
     "width": 1008.8135593220338,
-    "tabOrder": 5000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -163,6 +163,48 @@
               "queryRef": "_Measures.Profit Margin minus Sum of Budgeted Growth Margin",
               "nativeQueryRef": "Margin",
               "displayName": "Margin"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "E&O (Reserves)"
+                }
+              },
+              "queryRef": "_Measures.E&O (Reserves)",
+              "nativeQueryRef": "E&O (Reserves)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "E&O (Inventory)"
+                }
+              },
+              "queryRef": "_Measures.E&O (Inventory)",
+              "nativeQueryRef": "E&O (Inventory)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "E&O (Reserve Rate %)"
+                }
+              },
+              "queryRef": "_Measures.E&O (Reserve Rate %)",
+              "nativeQueryRef": "E&O (Reserve Rate %)"
             }
           ]
         }
@@ -177,7 +219,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Profit Margin"
+                "Property": "Revenue"
               }
             },
             "direction": "Descending"
@@ -1061,7 +1103,14 @@
             "rowSubtotals": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "rowSubtotalsPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bottom'"
                 }
               }
             }
@@ -1207,146 +1256,6 @@
         },
         "type": "Categorical",
         "howCreated": "User"
-      },
-      {
-        "name": "b15dcbe20d3e3c3ad18e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Business Unit"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "c6f3a846ed771fd02da3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Regions"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "890c0d0da7ef3fdbf3ca",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Brand"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "b97adca8c3a1ed13f435",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "SubBrand"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "83954b8681fc80b4db85",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e32976c2c9aebae9d17a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "COGS"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "60fb774f9f928ffbe9cb",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Gross Profit"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "31efb9bb1f9ee3e5ae50",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Profit Margin"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "cc495ce42d25ce595175",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Budget Growth Margin %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "9a0f18c9e07c29112a32",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -7,7 +7,7 @@
     "z": 7000,
     "height": 359.54095573501735,
     "width": 352.54599550670957,
-    "tabOrder": 12000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -159,42 +159,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8e23dcea9c8977a08835",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_GIM"
-                  }
-                },
-                "Hierarchy": "Franchise Hierarchy"
-              }
-            },
-            "Level": "Business Unit"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "9e30800361dbd3a20e68",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Inventory QoH"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

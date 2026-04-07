@@ -3,10 +3,11 @@
   "name": "2dd82136013e74242d80",
   "position": {
     "x": 0,
-    "y": 51.431219503330205,
+    "y": 54.241256600310678,
     "z": 9000,
     "height": 64.289024379162768,
-    "width": 239.87860394537176
+    "width": 239.87860394537176,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "slicer",
@@ -43,13 +44,6 @@
                   "Value": "'Dropdown'"
                 }
               }
-            },
-            "isInvertedSelectionMode": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
             }
           }
         }
@@ -76,11 +70,78 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "d",
+                    "Entity": "Dim_Calendar",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "d"
+                                }
+                              },
+                              "Property": "MonthEnding"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "datetime'2026-02-28T00:00:00'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "datetime'2026-01-31T00:00:00'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       ]
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "dde76e8eb566a96c600b"
+  "parentGroupName": "dde76e8eb566a96c600b",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ef64b459f78a0e1e83b5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Calendar"
+              }
+            },
+            "Property": "MonthEnding"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

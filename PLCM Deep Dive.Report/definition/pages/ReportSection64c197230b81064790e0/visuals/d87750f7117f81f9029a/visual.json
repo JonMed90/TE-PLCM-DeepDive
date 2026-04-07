@@ -6,7 +6,8 @@
     "y": 584.88422917046307,
     "z": 1500,
     "height": 134.76437990713566,
-    "width": 239.91586865522643
+    "width": 239.91586865522643,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
@@ -90,23 +91,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "4040382c904ed267d89b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "3fb62e2e1fa724982abd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
-              }
-            },
-            "Property": "Catalog Number"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "4040382c904ed267d89b"
 }

@@ -4,10 +4,10 @@
   "position": {
     "x": 875.30638852672746,
     "y": 64.2503259452412,
-    "z": 5000,
+    "z": 4000,
     "height": 295.38461538461536,
     "width": 388.83963494132985,
-    "tabOrder": 4000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -658,56 +658,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8dd48fae59b00c646824",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_GIM"
-                  }
-                },
-                "Property": "Life Cycle Code"
-              }
-            },
-            "Function": 3
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "17b348c4795df3e7dafa",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "# ConsolidatedList SKUs"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "3c310ab0fcb48e4c5829",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
-              }
-            },
-            "Property": "LCC Description"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

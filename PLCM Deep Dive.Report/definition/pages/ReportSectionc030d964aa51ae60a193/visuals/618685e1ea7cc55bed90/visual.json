@@ -6,7 +6,8 @@
     "y": 282.73526107772938,
     "z": 11000,
     "height": 145.35605898666964,
-    "width": 239.89658515686128
+    "width": 239.89658515686128,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
@@ -95,28 +96,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "2bfdde20a16d001ae0d2",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "097b3a289aec574940d6",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_GIM"
-                  }
-                },
-                "Hierarchy": "Franchise Hierarchy"
-              }
-            },
-            "Level": "Catalog Number"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "2bfdde20a16d001ae0d2"
 }

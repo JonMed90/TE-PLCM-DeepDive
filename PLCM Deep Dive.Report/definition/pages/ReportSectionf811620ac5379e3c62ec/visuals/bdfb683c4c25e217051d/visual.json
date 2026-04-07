@@ -4,9 +4,10 @@
   "position": {
     "x": 0,
     "y": 0,
-    "z": 17125,
+    "z": 5000,
     "height": 704.09711684370257,
-    "width": 239.87860394537176
+    "width": 239.87860394537176,
+    "tabOrder": 8000
   },
   "visualGroup": {
     "displayName": "Navigation Pane",

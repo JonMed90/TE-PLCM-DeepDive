@@ -6,7 +6,8 @@
     "y": 7.61131751299027E-15,
     "z": 4000,
     "height": 715.56007018191906,
-    "width": 239.94828700711057
+    "width": 239.94828700711057,
+    "tabOrder": 6000
   },
   "visualGroup": {
     "displayName": "Slicer Group",

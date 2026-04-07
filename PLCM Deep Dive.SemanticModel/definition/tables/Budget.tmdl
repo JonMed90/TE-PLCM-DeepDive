@@ -15,11 +15,11 @@ table Budget
 		isHidden
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: a8d49683-8b4a-4a38-8685-9a13c784445a
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Budgeted %]
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	partition Budget = calculated
 		mode: import

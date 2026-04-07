@@ -6,7 +6,8 @@
     "y": 0,
     "z": 0,
     "height": 684.67374810318654,
-    "width": 239.87860394537176
+    "width": 239.87860394537176,
+    "tabOrder": 7000
   },
   "visualGroup": {
     "displayName": "Navigation Pane",

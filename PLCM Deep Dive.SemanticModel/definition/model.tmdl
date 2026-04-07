@@ -28,7 +28,7 @@ queryGroup Products
 
 	annotation PBI_QueryGroupOrder = 4
 
-annotation PBI_QueryOrder = ["Historical Sales","LCC_Description","PPR Tracker Status","Anaplan Products","Dim_GIM","Dim_Regions","Dim_Calendar","Dim_KPI","DemantraDemand","Fact_Sales","Fact_ConsolidatedList","Fact_Inventory","Dim_Role","Dim_Phase","Dim_PhaseActivity","Fact_TaskAssignments"]
+annotation PBI_QueryOrder = ["Historical Sales","LCC_Description","PPR Tracker Status","Anaplan Products","Dim_GIM","Dim_Regions","Dim_Calendar","Dim_KPI","DemantraDemand","Fact_Sales","Fact_ConsolidatedList","Fact_Inventory","Dim_Role","Dim_Phase","Dim_PhaseActivity","Fact_TaskAssignments","Fact_E&O"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
@@ -50,6 +50,7 @@ ref table Dim_Phase
 ref table Dim_PhaseActivity
 ref table Fact_TaskAssignments
 ref table 'Playbook Navigation'
+ref table Fact_E&O
 
 ref cultureInfo en-US
 

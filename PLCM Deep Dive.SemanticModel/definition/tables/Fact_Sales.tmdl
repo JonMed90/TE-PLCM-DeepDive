@@ -21,14 +21,16 @@ table Fact_Sales
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	column Quantity
-		dataType: double
+		dataType: int64
 		isHidden
-		formatString: 0
+		formatString: #,0
 		lineageTag: ee3120e6-7fa6-4512-8ec4-9cad02e055c5
 		summarizeBy: sum
 		sourceColumn: Quantity
 
 		changedProperty = IsHidden
+
+		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
 
@@ -118,7 +120,7 @@ table Fact_Sales
 				in
 				    #"Changed ItemId Type"
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Table
 
 	annotation PBI_NavigationStepName = Navigation
 

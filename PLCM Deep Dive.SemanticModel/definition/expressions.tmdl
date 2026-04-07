@@ -74,20 +74,16 @@ expression 'Anaplan Products' = ```
 expression 'Historical Sales' = ```
 		let
 		    // Connect to Power BI Dataflows
-		    Source = PowerBI.Dataflows(null),
-		
-		    // Access the specific workspace
-		    Workspace = Source{[workspaceId = "f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
-		
-		    // Access the specific dataflow
-		    Dataflow = Workspace{[dataflowId = "19ac5c01-6afb-4ed0-8749-bf98aafc6f61"]}[Data],
-		
+		    Source = PowerPlatform.Dataflows(null),
+		    Workspaces = Source{[Id="Workspaces"]}[Data],
+		    #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+		    #"19ac5c01-6afb-4ed0-8749-bf98aafc6f61" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="19ac5c01-6afb-4ed0-8749-bf98aafc6f61"]}[Data],
 		    // Access the specific entity (table) within the dataflow
-		    SalesHistory = Dataflow{[entity = "Sales History"]}[Data],
+		    #"Sales History_" = #"19ac5c01-6afb-4ed0-8749-bf98aafc6f61"{[entity="Sales History",version=""]}[Data],
 		
 		    // Add a custom column for the scenario
 		    AddedScenarioColumn = Table.AddColumn(
-		        SalesHistory, 
+		        #"Sales History_", 
 		        "Scenario", 
 		        each "AC", 
 		        type text
@@ -136,7 +132,7 @@ expression 'Historical Sales' = ```
 
 	annotation PBI_NavigationStepName = Navigation
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Table
 
 expression DemantraDemand =
 		let

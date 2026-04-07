@@ -172,12 +172,16 @@ table Fact_Inventory
 		source =
 				let
 				    // Connect to Power BI Dataflows
-				    Source = PowerBI.Dataflows(null),
-				    #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Source{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+				    Source = PowerPlatform.Dataflows(null),
+				    // Connect to Power BI Dataflows
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    // Connect to Power BI Dataflows
+				    #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+				    // Connect to Power BI Dataflows
 				    #"41f287c8-3350-4c8e-996a-5a6f9956999c" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="41f287c8-3350-4c8e-996a-5a6f9956999c"]}[Data],
-				    // Access the specific entity (table) within the dataflow
-				    fact_Inventory = #"41f287c8-3350-4c8e-996a-5a6f9956999c"{[entity="fact_Inventory"]}[Data],
-				    #"Filtered Rows" = Table.SelectRows(fact_Inventory, each ([Inventory_Category] = "Finished Goods")),
+				    // Connect to Power BI Dataflows
+				    fact_Inventory_ = #"41f287c8-3350-4c8e-996a-5a6f9956999c"{[entity="fact_Inventory",version=""]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(fact_Inventory_, each ([Inventory_Category] = "Finished Goods")),
 				    #"Grouped Rows" = Table.Group(#"Filtered Rows", {"system_name", "Erp_Inventory_Source", "BP/WH Code", "BP/WH Description", "SUBINVENTORY_CODE", "SUBINVENTORY_DESCRIPTION", "Region", "Erp_Site_Type", "Erp_Source_Plant", "Entity_ID", "Inventory_Status", "Inventory_Category", "ItemId"}, {{"QuantityOnHand", each List.Sum([QuantityOnHand]), type nullable number}, {"ERP_Extended_Statutory_Cost_USD", each List.Sum([ERP_Extended_Statutory_Cost_USD]), type nullable number}, {"ERP_Extended_Management_Cost_USD", each List.Sum([ERP_Extended_Management_Cost_USD]), type nullable number}}),
 				    #"Merged Queries" = Table.NestedJoin(#"Grouped Rows", {"Region"}, Dim_Regions, {"Region"}, "Dim_Regions", JoinKind.LeftOuter),
 				    #"Expanded Dim_Regions" = Table.ExpandTableColumn(#"Merged Queries", "Dim_Regions", {"Index"}, {"Dim_Regions.Index"}),

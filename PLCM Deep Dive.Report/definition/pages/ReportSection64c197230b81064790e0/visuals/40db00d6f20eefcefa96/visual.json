@@ -4,10 +4,10 @@
   "position": {
     "x": 287.7003121748179,
     "y": 72.59105098855359,
-    "z": 3000,
+    "z": 2000,
     "height": 139.18834547346515,
     "width": 182.47658688865766,
-    "tabOrder": 2000
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "card",
@@ -83,23 +83,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "0af7b75ee1092f2acd18",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "# ConsolidatedList SKUs"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

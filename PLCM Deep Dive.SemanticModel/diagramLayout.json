@@ -198,6 +198,20 @@
           },
           "zIndex": 12,
           "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 1239.045102954414,
+            "y": 146.59226190476221
+          },
+          "nodeIndex": "Fact_E&O",
+          "nodeLineageTag": "acff4fb9-31e4-4475-828f-cc24a8f83607",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 15,
+          "expandedHeight": 248
         }
       ],
       "name": "All tables",
