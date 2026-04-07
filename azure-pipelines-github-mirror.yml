@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+      - '**'   # covers all branches including feature/*, bugfix/*, etc.
+
+variables:
+  - group: github-mirror-secrets
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+    fetchDepth: 0        # full history, not shallow
+    persistCredentials: true
+
+  - script: |
+      git config user.email "ado-mirror@stryker.com"
+      git config user.name "ADO Mirror Bot"
+
+      # Create a proper local branch first
+      git checkout -b main origin/main
+
+      
+      # Add GitHub remote using the PAT for auth
+      git remote add github https://$(GITHUB_PAT)@github.com/JonMed90/TE-PLCM-DeepDive.git
+      
+      # Push local branch directly
+      git push github main:refs/heads/main --force
+    displayName: 'Mirror to GitHub'
