@@ -23,7 +23,7 @@ steps:
 
       
       # Add GitHub remote using the PAT for auth
-      git remote add github https://$(GITHUB_PAT)@github.com/JonMed90/TE-JDEOrderHold.git
+      git remote add github https://$(GITHUB_PAT)@github.com/JonMed90/TE-PLCM-DeepDive.git
       
       # Push local branch directly
       git push github main:refs/heads/main --force
