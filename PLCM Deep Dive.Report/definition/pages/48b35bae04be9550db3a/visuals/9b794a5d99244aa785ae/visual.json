@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "9b794a5d99244aa785ae",
   "position": {
     "x": 0,
@@ -91,23 +91,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "dde76e8eb566a96c600b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d7be67a4f991a0c2856f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Catalog Number"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "dde76e8eb566a96c600b"
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "f3521a3d7c50f1d4290a",
   "position": {
     "x": 256.16688396349412,
@@ -264,51 +264,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "85c202808ee6e0ac1c4d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Business Unit"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5aee29a3fef217d6c5b5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Profit Margin"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1143cf3454f9d5da07bb",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

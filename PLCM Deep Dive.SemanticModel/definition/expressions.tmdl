@@ -187,3 +187,15 @@ expression LCC_Description =
 
 	annotation PBI_ResultType = Table
 
+expression Dim_PLCM_Status =
+		let
+		  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("fcq9CsIwFEDhV7ncuQ7+z7UUdBAhGUuGGq8SSZNQbqqPb0xFRMTxHL6mwSkWKOOxM8x0QlWMZ+dA0GDo9j6CrqQ/ycHB1tuxZ6nLEHo/vMA8jfpOOrJxF5hAXYn8F19fsg+wb108t5pjn2Zmy19MkrXPLDNZ/SObTNaJVL4LlphQqQc=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Phase ID" = _t, #"PLCM Status" = _t])
+		in
+		  Source
+	lineageTag: 7a770c72-d507-4227-b21f-7209e1cf794a
+	queryGroup: Products
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

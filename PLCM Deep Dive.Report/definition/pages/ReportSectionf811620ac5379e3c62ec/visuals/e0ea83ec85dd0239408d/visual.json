@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "777e9bff8abddb4e3bb8",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "e0ea83ec85dd0239408d",
   "position": {
     "x": 0,
-    "y": 206.05006535141729,
-    "z": 1625,
-    "height": 64.3906454223179,
-    "width": 239.87860394537176,
-    "tabOrder": 3000
+    "y": 188.51153039832283,
+    "z": 9000,
+    "height": 64.40251572327044,
+    "width": 240.167714884696,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "slicer",
@@ -23,34 +23,18 @@
                       "Entity": "Dim_GIM"
                     }
                   },
-                  "Property": "SubBrand"
+                  "Property": "Brand"
                 }
               },
-              "queryRef": "Dim_GIM.SubBrand",
-              "nativeQueryRef": "SubBrand",
+              "queryRef": "Dim_GIM.Brand",
+              "nativeQueryRef": "Brand",
               "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "isDefaultSort": true
       }
     },
     "objects": {
-      "data": [
-        {
-          "properties": {
-            "isInvertedSelectionMode": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
       "selection": [
         {
           "properties": {
@@ -76,9 +60,21 @@
             }
           }
         }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "parentGroupName": "bdfb683c4c25e217051d"
+  }
 }

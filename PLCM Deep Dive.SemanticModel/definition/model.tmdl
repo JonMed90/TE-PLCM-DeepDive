@@ -28,7 +28,7 @@ queryGroup Products
 
 	annotation PBI_QueryGroupOrder = 4
 
-annotation PBI_QueryOrder = ["Historical Sales","LCC_Description","PPR Tracker Status","Anaplan Products","Dim_GIM","Dim_Regions","Dim_Calendar","Dim_KPI","DemantraDemand","Fact_Sales","Fact_ConsolidatedList","Fact_Inventory","Dim_Role","Dim_Phase","Dim_PhaseActivity","Fact_TaskAssignments","Fact_E&O"]
+annotation PBI_QueryOrder = ["Historical Sales","LCC_Description","PPR Tracker Status","Anaplan Products","Dim_GIM","Dim_Regions","Dim_Calendar","Dim_KPI","DemantraDemand","Fact_Sales","Fact_ConsolidatedList","Fact_Inventory","Dim_Role","Dim_Phase","Dim_PhaseActivity","Fact_TaskAssignments","Fact_E&O","Dim_PLCM_Status"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 

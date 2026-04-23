@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "fbe6bb20b5c25c251c19",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "02a648a23908b3054180",
   "position": {
     "x": 0,
-    "y": 68.683355117139087,
-    "z": 2000,
-    "height": 64.3906454223179,
-    "width": 239.87860394537176,
-    "tabOrder": 8000
+    "y": 60.377358490566039,
+    "z": 12000,
+    "height": 64,
+    "width": 240.167714884696,
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Dim_Calendar"
                     }
                   },
-                  "Property": "Business Unit"
+                  "Property": "MonthEnding"
                 }
               },
-              "queryRef": "Dim_GIM.Business Unit",
-              "nativeQueryRef": "Business Unit",
+              "queryRef": "Dim_Calendar.MonthEnding",
+              "nativeQueryRef": "MonthEnding",
               "active": true
             }
           ]
@@ -37,7 +37,15 @@
     "objects": {
       "data": [
         {
-          "properties": {}
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
         }
       ],
       "selection": [
@@ -47,6 +55,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -60,6 +75,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "parentGroupName": "bdfb683c4c25e217051d"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "bf428a1c89e75806cbcb",
   "position": {
     "x": 256.16688396349412,
@@ -218,6 +218,20 @@
               },
               "queryRef": "Consolidated List.PLCM Status",
               "nativeQueryRef": "PLCM Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Phase"
+                    }
+                  },
+                  "Property": "Phase"
+                }
+              },
+              "queryRef": "Dim_Phase.Phase",
+              "nativeQueryRef": "Phase"
             },
             {
               "field": {

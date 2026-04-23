@@ -166,6 +166,14 @@ table Fact_Inventory
 
 		annotation SummarizationSetBy = Automatic
 
+	column Country
+		dataType: string
+		lineageTag: c9c2dd3a-a0f0-4273-b552-5cbe35e987a3
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Fact_Inventory-b128650f-cd9b-485e-a6c7-709f0d42cfbe = m
 		mode: import
 		queryGroup: Inventory
@@ -182,14 +190,14 @@ table Fact_Inventory
 				    // Connect to Power BI Dataflows
 				    fact_Inventory_ = #"41f287c8-3350-4c8e-996a-5a6f9956999c"{[entity="fact_Inventory",version=""]}[Data],
 				    #"Filtered Rows" = Table.SelectRows(fact_Inventory_, each ([Inventory_Category] = "Finished Goods")),
-				    #"Grouped Rows" = Table.Group(#"Filtered Rows", {"system_name", "Erp_Inventory_Source", "BP/WH Code", "BP/WH Description", "SUBINVENTORY_CODE", "SUBINVENTORY_DESCRIPTION", "Region", "Erp_Site_Type", "Erp_Source_Plant", "Entity_ID", "Inventory_Status", "Inventory_Category", "ItemId"}, {{"QuantityOnHand", each List.Sum([QuantityOnHand]), type nullable number}, {"ERP_Extended_Statutory_Cost_USD", each List.Sum([ERP_Extended_Statutory_Cost_USD]), type nullable number}, {"ERP_Extended_Management_Cost_USD", each List.Sum([ERP_Extended_Management_Cost_USD]), type nullable number}}),
+				    #"Grouped Rows" = Table.Group(#"Filtered Rows", {"system_name", "Erp_Inventory_Source", "BP/WH Code", "BP/WH Description", "SUBINVENTORY_CODE", "SUBINVENTORY_DESCRIPTION", "Region", "Erp_Site_Type", "Erp_Source_Plant", "Entity_ID", "Inventory_Status", "Country", "Inventory_Category", "ItemId"}, {{"QuantityOnHand", each List.Sum([QuantityOnHand]), type nullable number}, {"ERP_Extended_Statutory_Cost_USD", each List.Sum([ERP_Extended_Statutory_Cost_USD]), type nullable number}, {"ERP_Extended_Management_Cost_USD", each List.Sum([ERP_Extended_Management_Cost_USD]), type nullable number}}),
 				    #"Merged Queries" = Table.NestedJoin(#"Grouped Rows", {"Region"}, Dim_Regions, {"Region"}, "Dim_Regions", JoinKind.LeftOuter),
 				    #"Expanded Dim_Regions" = Table.ExpandTableColumn(#"Merged Queries", "Dim_Regions", {"Index"}, {"Dim_Regions.Index"}),
 				    #"Replaced Value" = Table.ReplaceValue(#"Expanded Dim_Regions","EUROPE","EMEA",Replacer.ReplaceText,{"Region"})
 				in
 				    #"Replaced Value"
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Table
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "96868d5d820b51e610ba",
   "position": {
     "x": 0,
@@ -1226,5 +1226,42 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "006018989f8cd6db9388"
+  "parentGroupName": "006018989f8cd6db9388",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9687cf07abc099024e6b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Phase"
+                  }
+                },
+                "Property": "Objective"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ab9ded64a9c01cd88336",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Phase"
+              }
+            },
+            "Property": "Phase"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

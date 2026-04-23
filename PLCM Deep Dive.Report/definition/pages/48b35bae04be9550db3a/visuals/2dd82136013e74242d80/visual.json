@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "2dd82136013e74242d80",
   "position": {
     "x": 0,
@@ -125,23 +125,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "dde76e8eb566a96c600b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "ef64b459f78a0e1e83b5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Calendar"
-              }
-            },
-            "Property": "MonthEnding"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "dde76e8eb566a96c600b"
 }

@@ -171,6 +171,17 @@ table Fact_ConsolidatedList
 
 		annotation SummarizationSetBy = User
 
+	column 'Phase ID'
+		dataType: string
+		isHidden
+		lineageTag: 16fcd866-31a9-4d2c-8fa0-0bcbe166b6e0
+		summarizeBy: none
+		sourceColumn: Phase ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
 	hierarchy 'Product Hierarchy'
 		lineageTag: af543f7f-b855-4d33-8b33-6188cdd26bad
 
@@ -205,9 +216,11 @@ table Fact_ConsolidatedList
 				    #"Expanded LCC_Description" = Table.ExpandTableColumn(#"Merged Queries", "LCC_Description", {"LCC Description"}, {"LCC Description"}),
 				    #"Added Conditional Column" = Table.AddColumn(#"Expanded LCC_Description", "GIM ID", each if [GIM_ID] > 0 then [GIM_ID] else null, Int64.Type),
 				    #"Renamed Columns" = Table.RenameColumns(#"Added Conditional Column",{{"GIM_ID", "GIM_ID (Hide)"}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns",{"RowNum"})
+				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns",{"RowNum"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Removed Columns", {"PLCM Status"}, Dim_PLCM_Status, {"PLCM Status"}, "Dim_PLCM_Status", JoinKind.LeftOuter),
+				    #"Expanded Dim_PLCM_Status" = Table.ExpandTableColumn(#"Merged Queries1", "Dim_PLCM_Status", {"Phase ID"}, {"Phase ID"})
 				in
-				    #"Removed Columns"
+				    #"Expanded Dim_PLCM_Status"
 
 	annotation PBI_ResultType = Table
 

@@ -23,7 +23,7 @@ table _Measures
 
 	/// VAR TTMCogs = [TTM COGS]
 	/// RETURN
-	///     IF ( TTMCogs = 0, BLANK (), DIVIDE ( [Ext Statutory Cost], TTMCogs ) * 365 )
+	/// IF ( TTMCogs = 0, BLANK (), DIVIDE ( [Ext Statutory Cost], TTMCogs ) * 365 )
 	measure 'DSI (COGS)' =
 			
 			VAR TTMCogs = [TTM COGS]
@@ -36,11 +36,11 @@ table _Measures
 		changedProperty = FormatString
 
 	/// VAR Brand =
-	///     SELECTEDVALUE ( Dim_GIM[Global PLCM Decision (Brand)] )
+	/// SELECTEDVALUE ( Dim_GIM[Global PLCM Decision (Brand)] )
 	/// VAR SubBrand =
-	///     SELECTEDVALUE ( Dim_GIM[Global PLCM Decision (SubBrand)] )
+	/// SELECTEDVALUE ( Dim_GIM[Global PLCM Decision (SubBrand)] )
 	/// RETURN
-	///     IF ( ISINSCOPE ( Dim_GIM[SubBrand] ), SubBrand, Brand )
+	/// IF ( ISINSCOPE ( Dim_GIM[SubBrand] ), SubBrand, Brand )
 	measure 'Dynamic Global PLCM Decision' =
 			
 			VAR Brand =
@@ -53,14 +53,14 @@ table _Measures
 		lineageTag: 33d54d86-362f-4716-bfe1-d81d5dddb9c9
 
 	/// VAR SelectedKPI =
-	///     SELECTEDVALUE ( 'Dim_KPI'[KPI] )
+	/// SELECTEDVALUE ( 'Dim_KPI'[KPI] )
 	/// RETURN
-	///     SWITCH (
-	///         TRUE (),
-	///         SelectedKPI = "Revenue", [Revenue],
-	///         SelectedKPI = "Units", [Units Sold],
-	///         SelectedKPI = "COGS", [COGS]
-	///     )
+	/// SWITCH (
+	/// TRUE (),
+	/// SelectedKPI = "Revenue", [Revenue],
+	/// SelectedKPI = "Units", [Units Sold],
+	/// SelectedKPI = "COGS", [COGS]
+	/// )
 	measure 'Dynamic Sales KPI' =
 			
 			VAR SelectedKPI =
@@ -115,11 +115,11 @@ table _Measures
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	/// VAR EndDate =
-	///     CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
+	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
 	/// VAR StartDate =
-	///     EDATE ( EndDate, -12 ) + 1
+	/// EDATE ( EndDate, -12 ) + 1
 	/// RETURN
-	///     CALCULATE ( [COGS], DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate ) )
+	/// CALCULATE ( [COGS], DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate ) )
 	measure 'TTM COGS' =
 			
 			VAR EndDate =
@@ -137,14 +137,14 @@ table _Measures
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	/// VAR EndDate =
-	///     CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" ) --retrieves last date of actual sales
+	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" ) --retrieves last date of actual sales
 	/// VAR StartDate =
-	///     EDATE ( EndDate, -12 ) + 1 -- Shifts EndDate to date beginning
+	/// EDATE ( EndDate, -12 ) + 1 -- Shifts EndDate to date beginning
 	/// RETURN
-	///     CALCULATE (
-	///         [Revenue],
-	///         DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
-	///     )
+	/// CALCULATE (
+	/// [Revenue],
+	/// DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
+	/// )
 	measure 'TTM Revenue' =
 			
 			VAR EndDate =
@@ -165,14 +165,14 @@ table _Measures
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	/// VAR EndDate =
-	///     CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" ) --retrieves last date of actual sales
+	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" ) --retrieves last date of actual sales
 	/// VAR StartDate =
-	///     EDATE ( EndDate, -12 ) + 1 -- Shifts EndDate to date beginning
+	/// EDATE ( EndDate, -12 ) + 1 -- Shifts EndDate to date beginning
 	/// RETURN
-	///     CALCULATE (
-	///         [Units Sold],
-	///         DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
-	///     )
+	/// CALCULATE (
+	/// [Units Sold],
+	/// DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
+	/// )
 	measure 'TTM Units' =
 			
 			VAR EndDate =
@@ -201,9 +201,9 @@ table _Measures
 		changedProperty = FormatString
 
 	/// VAR EndDate =
-	///     CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
+	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
 	/// RETURN
-	///     EDATE ( EndDate, -12 ) + 1
+	/// EDATE ( EndDate, -12 ) + 1
 	measure 'TTM Start Date' =
 			
 			VAR EndDate =
@@ -239,9 +239,9 @@ table _Measures
 		lineageTag: 983b29ad-3c4d-4462-a2b8-795a7643402d
 
 	/// VAR StartingMonth =
-	///     CALCULATE ( MIN ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" )
+	/// CALCULATE ( MIN ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" )
 	/// RETURN
-	///     DATE ( YEAR ( StartingMonth ), MONTH ( StartingMonth ), 1 )
+	/// DATE ( YEAR ( StartingMonth ), MONTH ( StartingMonth ), 1 )
 	measure 'Forecast Sales - Start Date' =
 			
 			VAR StartingMonth =
@@ -278,9 +278,9 @@ table _Measures
 		lineageTag: 738d0342-3dca-46b0-848d-42306c5fb5a8
 
 	/// IF (
-	///     ISBLANK ( [Revenue] ) || [Revenue] = 0,
-	///     BLANK (),
-	///     [Profit Margin] - [Budget Growth Margin %]
+	/// ISBLANK ( [Revenue] ) || [Revenue] = 0,
+	/// BLANK (),
+	/// [Profit Margin] - [Budget Growth Margin %]
 	/// )
 	measure 'Profit Margin minus Sum of Budgeted Growth Margin' =
 			
@@ -294,14 +294,14 @@ table _Measures
 		lineageTag: 99608302-db59-4f39-b772-e391f1fc7d42
 
 	/// VAR StartDate =
-	///     CALCULATE ( MIN ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" ) --retrieves last date of actual sales
+	/// CALCULATE ( MIN ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" ) --retrieves last date of actual sales
 	/// VAR EndDate =
-	///     EDATE ( StartDate, 12 ) - 1 -- Shifts EndDate to date beginning
+	/// EDATE ( StartDate, 12 ) - 1 -- Shifts EndDate to date beginning
 	/// RETURN
-	///     CALCULATE (
-	///         [Units Sold],
-	///         DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
-	///     )
+	/// CALCULATE (
+	/// [Units Sold],
+	/// DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
+	/// )
 	measure 'Next 12M Demand Units' =
 			
 			VAR StartDate =
@@ -328,12 +328,12 @@ table _Measures
 		lineageTag: c326d1b4-ae0c-4365-b9bb-d8a66a0fd42b
 
 	/// IF (
-	///     ISBLANK ( [Revenue] ) || [Revenue] = 0,
-	///     BLANK (),
-	///     CALCULATE (
-	///         SELECTEDVALUE ( Budget[Budgeted %] ),
-	///         TREATAS ( VALUES ( Dim_GIM[Business Unit] ), Budget[BU] )
-	///     )
+	/// ISBLANK ( [Revenue] ) || [Revenue] = 0,
+	/// BLANK (),
+	/// CALCULATE (
+	/// SELECTEDVALUE ( Budget[Budgeted %] ),
+	/// TREATAS ( VALUES ( Dim_GIM[Business Unit] ), Budget[BU] )
+	/// )
 	/// )
 	measure 'Budget Growth Margin %' =
 			

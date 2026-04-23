@@ -50,3 +50,7 @@ relationship 0b3a861e-782e-a366-a78c-43c3d14ee579
 	fromColumn: Fact_E&O.MonthEnding
 	toColumn: Dim_Calendar.Date
 
+relationship 5db514eb-ac9a-a705-5a12-df2745d42a55
+	fromColumn: Fact_ConsolidatedList.'Phase ID'
+	toColumn: Dim_Phase.'Phase ID'
+

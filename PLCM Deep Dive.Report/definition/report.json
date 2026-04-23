@@ -23,22 +23,8 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "6cf00d88a225a5cdff64",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "DeleteFlag"
-          }
-        },
-        "type": "Categorical",
-        "howCreated": "User"
-      },
-      {
         "name": "f9439439782296ce1ae6",
+        "ordinal": 0,
         "field": {
           "Column": {
             "Expression": {
@@ -110,8 +96,76 @@
             }
           ]
         }
+      },
+      {
+        "name": "698bf1d2244dec6ac107",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Calendar"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_Calendar",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 4,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "d"
+                        }
+                      },
+                      "Property": "Year"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "2027L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "6cf00d88a225a5cdff64",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_GIM"
+              }
+            },
+            "Property": "DeleteFlag"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
       }
-    ]
+    ],
+    "filterSortOrder": "Custom"
   },
   "objects": {
     "section": [

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "9d14096020da85715e8c",
   "position": {
     "x": 256,
@@ -20,14 +20,30 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Calendar"
+                      "Entity": "Dim_Regions"
                     }
                   },
-                  "Property": "MonthEnding"
+                  "Property": "Region"
                 }
               },
-              "queryRef": "Calendar.End Of Month",
+              "queryRef": "Dim_Regions.Region",
+              "nativeQueryRef": "Region",
               "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Sales"
+                    }
+                  },
+                  "Property": "Country"
+                }
+              },
+              "queryRef": "Fact_Sales.Country",
+              "nativeQueryRef": "Country",
+              "active": false
             }
           ]
         },
@@ -138,13 +154,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Regions"
+                      "Entity": "Dim_Calendar"
                     }
                   },
-                  "Property": "Region"
+                  "Property": "MonthEnding"
                 }
               },
-              "queryRef": "Regions.Region",
+              "queryRef": "Dim_Calendar.MonthEnding",
+              "nativeQueryRef": "MonthEnding",
               "active": false
             }
           ]
@@ -276,7 +293,7 @@
           },
           {
             "queryRefs": [
-              "Regions.Region"
+              "Dim_Calendar.MonthEnding"
             ],
             "isCollapsed": true
           }

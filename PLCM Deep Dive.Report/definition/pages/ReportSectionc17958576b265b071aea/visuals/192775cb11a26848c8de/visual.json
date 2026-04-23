@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "192775cb11a26848c8de",
   "position": {
-    "x": 0,
-    "y": 317.159186937203,
+    "x": 8.7211740041928714,
+    "y": 326.03773584905656,
     "z": 5000,
-    "height": 137.14991867554724,
-    "width": 239.87860394537176,
+    "height": 136.85534591194968,
+    "width": 220.71278825995805,
     "tabOrder": 1000
   },
   "visual": {
@@ -41,6 +41,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'In'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "searchBox": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "a5bba2cd8f663f5c7777",
   "position": {
     "x": 746.80573663624511,
@@ -254,51 +254,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "3147cfa82212baae1951",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Calendar"
-              }
-            },
-            "Property": "MonthEnding"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "cab5e109d11491596bb0",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Business Unit"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "2fd6bd37f9f625d76435",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

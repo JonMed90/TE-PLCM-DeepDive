@@ -19,7 +19,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 7,
+          "zIndex": 5,
           "expandedHeight": 295.44598431254269
         },
         {
@@ -33,7 +33,7 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 5,
+          "zIndex": 15,
           "expandedHeight": 212.5
         },
         {
@@ -47,7 +47,7 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 3,
+          "zIndex": 14,
           "expandedHeight": 296
         },
         {
@@ -61,7 +61,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 6,
+          "zIndex": 4,
           "expandedHeight": 248
         },
         {
@@ -75,7 +75,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 8,
+          "zIndex": 6,
           "expandedHeight": 124
         },
         {
@@ -88,7 +88,7 @@
             "height": 72,
             "width": 234
           },
-          "zIndex": 4,
+          "zIndex": 3,
           "expandedHeight": 200
         },
         {
@@ -102,7 +102,7 @@
             "height": 72,
             "width": 234
           },
-          "zIndex": 14,
+          "zIndex": 12,
           "expandedHeight": 104
         },
         {
@@ -113,11 +113,10 @@
           "nodeIndex": "Fact_ConsolidatedList",
           "nodeLineageTag": "68208094-5a34-4fb5-ac03-13fb93f946c2",
           "size": {
-            "height": 104,
+            "height": 519.44444444444434,
             "width": 234
           },
-          "zIndex": 11,
-          "expandedHeight": 519.44444444444434
+          "zIndex": 9
         },
         {
           "location": {
@@ -130,7 +129,7 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 13,
+          "zIndex": 11,
           "expandedHeight": 200
         },
         {
@@ -144,7 +143,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 9
+          "zIndex": 7
         },
         {
           "location": {
@@ -170,7 +169,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 10
+          "zIndex": 8
         },
         {
           "location": {
@@ -196,7 +195,7 @@
             "height": 72,
             "width": 234
           },
-          "zIndex": 12,
+          "zIndex": 10,
           "expandedHeight": 200
         },
         {
@@ -210,7 +209,7 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 15,
+          "zIndex": 13,
           "expandedHeight": 248
         }
       ],
