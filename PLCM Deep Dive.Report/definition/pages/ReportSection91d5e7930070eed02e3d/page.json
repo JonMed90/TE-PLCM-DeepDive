@@ -8,7 +8,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "5349d077c163a7c1b49a",
+        "name": "d7e60be6d40e6e9d09c1",
         "ordinal": 0,
         "field": {
           "Column": {
@@ -17,11 +17,56 @@
                 "Entity": "Dim_GIM"
               }
             },
-            "Property": "Item Owner Name"
+            "Property": "Business Unit"
           }
         },
         "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_GIM",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Business Unit"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
         "howCreated": "User",
+        "isHiddenInViewMode": true,
+        "isLockedInViewMode": true,
         "objects": {
           "general": [
             {

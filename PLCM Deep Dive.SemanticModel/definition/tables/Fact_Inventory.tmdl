@@ -50,27 +50,11 @@ table Fact_Inventory
 
 		annotation SummarizationSetBy = Automatic
 
-	column Inventory_Status
-		dataType: string
-		lineageTag: 9bdffda0-98ce-4909-bc3c-12606d0e12a9
-		summarizeBy: none
-		sourceColumn: Inventory_Status
-
-		annotation SummarizationSetBy = Automatic
-
 	column Erp_Inventory_Source
 		dataType: string
 		lineageTag: be0a9c6b-c127-4d9b-86b2-0a7e72b11398
 		summarizeBy: none
 		sourceColumn: Erp_Inventory_Source
-
-		annotation SummarizationSetBy = Automatic
-
-	column Inventory_Category
-		dataType: string
-		lineageTag: ab8e7c0e-49f6-492f-a327-f51e5dc38f1c
-		summarizeBy: none
-		sourceColumn: Inventory_Category
 
 		annotation SummarizationSetBy = Automatic
 
@@ -178,24 +162,75 @@ table Fact_Inventory
 		mode: import
 		queryGroup: Inventory
 		source =
+				//Unnamed
 				let
-				    // Connect to Power BI Dataflows
-				    Source = PowerPlatform.Dataflows(null),
-				    // Connect to Power BI Dataflows
-				    Workspaces = Source{[Id="Workspaces"]}[Data],
-				    // Connect to Power BI Dataflows
-				    #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
-				    // Connect to Power BI Dataflows
-				    #"41f287c8-3350-4c8e-996a-5a6f9956999c" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="41f287c8-3350-4c8e-996a-5a6f9956999c"]}[Data],
-				    // Connect to Power BI Dataflows
-				    fact_Inventory_ = #"41f287c8-3350-4c8e-996a-5a6f9956999c"{[entity="fact_Inventory",version=""]}[Data],
-				    #"Filtered Rows" = Table.SelectRows(fact_Inventory_, each ([Inventory_Category] = "Finished Goods")),
-				    #"Grouped Rows" = Table.Group(#"Filtered Rows", {"system_name", "Erp_Inventory_Source", "BP/WH Code", "BP/WH Description", "SUBINVENTORY_CODE", "SUBINVENTORY_DESCRIPTION", "Region", "Erp_Site_Type", "Erp_Source_Plant", "Entity_ID", "Inventory_Status", "Country", "Inventory_Category", "ItemId"}, {{"QuantityOnHand", each List.Sum([QuantityOnHand]), type nullable number}, {"ERP_Extended_Statutory_Cost_USD", each List.Sum([ERP_Extended_Statutory_Cost_USD]), type nullable number}, {"ERP_Extended_Management_Cost_USD", each List.Sum([ERP_Extended_Management_Cost_USD]), type nullable number}}),
-				    #"Merged Queries" = Table.NestedJoin(#"Grouped Rows", {"Region"}, Dim_Regions, {"Region"}, "Dim_Regions", JoinKind.LeftOuter),
-				    #"Expanded Dim_Regions" = Table.ExpandTableColumn(#"Merged Queries", "Dim_Regions", {"Index"}, {"Dim_Regions.Index"}),
-				    #"Replaced Value" = Table.ReplaceValue(#"Expanded Dim_Regions","EUROPE","EMEA",Replacer.ReplaceText,{"Region"})
+				
+				  // Connect to Power BI Dataflows
+				  Source = PowerPlatform.Dataflows(null),
+				  // Connect to Power BI Dataflows
+				  Workspaces = Source{[Id = "Workspaces"]}[Data],
+				  // Connect to Power BI Dataflows
+				  #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces
+				    {[workspaceId = "f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}
+				    [Data],
+				  // Connect to Power BI Dataflows
+				  #"41f287c8-3350-4c8e-996a-5a6f9956999c" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"
+				    {[dataflowId = "41f287c8-3350-4c8e-996a-5a6f9956999c"]}
+				    [Data],
+				  // Connect to Power BI Dataflows
+				  fact_Inventory_ = #"41f287c8-3350-4c8e-996a-5a6f9956999c"
+				    {[entity = "fact_Inventory", version = ""]}
+				    [Data],
+				  #"Filtered Rows" = Table.SelectRows(
+				    fact_Inventory_,
+				    each ([Inventory_Category] = "Finished Goods")
+				  ),
+				  #"Grouped Rows" = Table.Group(
+				    #"Filtered Rows",
+				    {
+				      "system_name",
+				      "Erp_Inventory_Source",
+				      "BP/WH Code",
+				      "BP/WH Description",
+				      "SUBINVENTORY_CODE",
+				      "SUBINVENTORY_DESCRIPTION",
+				      "Region",
+				      "Erp_Site_Type",
+				      "Erp_Source_Plant",
+				      "Entity_ID",
+				      "Country",
+				      "ItemId"
+				    },
+				    {
+				      {"QuantityOnHand", each List.Sum([QuantityOnHand]), type nullable number},
+				      {
+				        "ERP_Extended_Statutory_Cost_USD",
+				        each List.Sum([ERP_Extended_Statutory_Cost_USD]),
+				        type nullable number
+				      },
+				      {
+				        "ERP_Extended_Management_Cost_USD",
+				        each List.Sum([ERP_Extended_Management_Cost_USD]),
+				        type nullable number
+				      }
+				    }
+				  ),
+				  #"Merged Queries" = Table.NestedJoin(
+				    #"Grouped Rows",
+				    {"Region"},
+				    Dim_Regions,
+				    {"Region"},
+				    "Dim_Regions",
+				    JoinKind.LeftOuter
+				  ),
+				  #"Expanded Dim_Regions" = Table.ExpandTableColumn(
+				    #"Merged Queries",
+				    "Dim_Regions",
+				    {"Index"},
+				    {"Dim_Regions.Index"}
+				  )
 				in
-				    #"Replaced Value"
+				  #"Expanded Dim_Regions"
 
 	annotation PBI_ResultType = Table
 

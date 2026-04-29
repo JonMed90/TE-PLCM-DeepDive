@@ -8,30 +8,16 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "c057a92e044a0249b9bf",
+        "name": "7dd8e4dc057031ae8156",
+        "ordinal": 0,
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
+                "Entity": "Dim_Phase"
               }
             },
-            "Property": "ECR #"
-          }
-        },
-        "type": "Categorical",
-        "howCreated": "User"
-      },
-      {
-        "name": "47602dcce68a1e785756",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
-              }
-            },
-            "Property": "Business Unit"
+            "Property": "Phase"
           }
         },
         "type": "Categorical",
@@ -39,8 +25,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "f",
-              "Entity": "Fact_ConsolidatedList",
+              "Name": "d",
+              "Entity": "Dim_Phase",
               "Type": 0
             }
           ],
@@ -55,10 +41,10 @@
                           "Column": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "f"
+                                "Source": "d"
                               }
                             },
-                            "Property": "Business Unit"
+                            "Property": "Phase"
                           }
                         }
                       ],
@@ -96,8 +82,25 @@
             }
           ]
         }
+      },
+      {
+        "name": "c057a92e044a0249b9bf",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "ECR #"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
       }
-    ]
+    ],
+    "filterSortOrder": "Custom"
   },
   "objects": {
     "background": [

@@ -80,6 +80,7 @@
           ]
         },
         "howCreated": "User",
+        "isHiddenInViewMode": true,
         "isLockedInViewMode": true,
         "objects": {
           "general": [
@@ -98,59 +99,8 @@
         }
       },
       {
-        "name": "698bf1d2244dec6ac107",
-        "ordinal": 1,
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Calendar"
-              }
-            },
-            "Property": "Year"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "Dim_Calendar",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 4,
-                  "Left": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "d"
-                        }
-                      },
-                      "Property": "Year"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "2027L"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User",
-        "isLockedInViewMode": true
-      },
-      {
         "name": "6cf00d88a225a5cdff64",
-        "ordinal": 2,
+        "ordinal": 1,
         "field": {
           "Column": {
             "Expression": {
@@ -199,7 +149,6 @@
     "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
     "FilterByList507A2DBEC31244C8AAABDE9BA541F723",
     "GanttChartByMAQSoftware1448688115701",
-    "htmlViewerA9520C4C697347CDB4EA10E418B1A6E7",
     "inforiverAppProfessional2B7A5FD2992D434DAE0B149479307B7B",
     "massFilter2E7137AC1174403C8CF3456F3EB0B7D7",
     "mergedBarChart7A702E6E03084979A73CC897E0D7E2EB",
@@ -212,20 +161,11 @@
     "zebraBiCards2C860CFAA9944091B75F0DBD117F20FA",
     "ZoomChartsFacetChartPaidE77E4ED357DC402ABA005987437CF500",
     "ZoomChartsTimeChartPaidE77E4ED357DC402ABA005987437CF500",
-    "htmlContent443BE3AD55E043BF878BED274D3A6865"
+    "htmlContent443BE3AD55E043BF878BED274D3A6865",
+    "htmlViewerA9520C4C697347CDB4EA10E418B1A6E7",
+    "htmlContent443BE3AD55E043BF878BED274D3A6855"
   ],
   "resourcePackages": [
-    {
-      "name": "htmlContent443BE3AD55E043BF878BED274D3A6855",
-      "type": "CustomVisual",
-      "items": [
-        {
-          "name": "resources/htmlContent443BE3AD55E043BF878BED274D3A6855.pbiviz.json",
-          "path": "htmlContent443BE3AD55E043BF878BED274D3A6855.pbiviz.json",
-          "type": "CustomVisualMetadata"
-        }
-      ]
-    },
     {
       "name": "PBI_CV_7B952816_A48F_49B4_9E13_15E3BB2C0337",
       "type": "CustomVisual",

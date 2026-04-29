@@ -397,6 +397,257 @@ table _Measures
 		displayFolder: Trailing 12M
 		lineageTag: 4645dd7d-43a4-4e90-bdb4-338c9db62afd
 
+	measure 'Phase Tracker HTML' =
+			
+			VAR _ActivePhase  = SELECTEDVALUE(Dim_Phase[Phase ID], 0)
+			VAR _ActiveName   = SELECTEDVALUE(Dim_Phase[Phase], "—")
+			VAR _ActiveBG     = LOOKUPVALUE(Dim_Phase[Phase BG Color],   Dim_Phase[Phase ID], _ActivePhase)
+			VAR _ActiveFont   = LOOKUPVALUE(Dim_Phase[Phase Font Color], Dim_Phase[Phase ID], _ActivePhase)
+			VAR _Objective    = LOOKUPVALUE(Dim_Phase[Objective],        Dim_Phase[Phase ID], _ActivePhase)
+			
+			VAR _BU       = SELECTEDVALUE(Fact_ConsolidatedList[Business Unit], "—")
+			VAR _Brand    = SELECTEDVALUE(Fact_ConsolidatedList[Brand], "—")
+			VAR _SubBrand = SELECTEDVALUE(Fact_ConsolidatedList[SubBrand], "—")
+			VAR _Catalog  = SELECTEDVALUE(Fact_ConsolidatedList[Catalog Number], "—")
+			VAR _Batch    = SELECTEDVALUE(Fact_ConsolidatedList[PLCM Phaseout Batch], "—")
+			VAR _LCC      = SELECTEDVALUE(Fact_ConsolidatedList[LCC], "—")
+			VAR _ECR = SELECTEDVALUE(Fact_ConsolidatedList[ECR #], "N/A")
+			VAR _MdmRequest = SELECTEDVALUE(Fact_ConsolidatedList[MDM Request #], "—")
+			VAR _LtsDate = SELECTEDVALUE(Fact_ConsolidatedList[LTS Date], "—")
+			VAR _DateSubmitted = SELECTEDVALUE(Fact_ConsolidatedList[Date Submitted], "—")
+			
+			
+			-- Chevron background per step
+			VAR _S1BG = IF(_ActivePhase > 1, "#003057", IF(_ActivePhase = 1, _ActiveBG, "#E8E8E8"))
+			VAR _S2BG = IF(_ActivePhase > 2, "#003057", IF(_ActivePhase = 2, _ActiveBG, "#E8E8E8"))
+			VAR _S3BG = IF(_ActivePhase > 3, "#003057", IF(_ActivePhase = 3, _ActiveBG, "#E8E8E8"))
+			VAR _S4BG = IF(_ActivePhase > 4, "#003057", IF(_ActivePhase = 4, _ActiveBG, "#E8E8E8"))
+			VAR _S5BG = IF(_ActivePhase > 5, "#003057", IF(_ActivePhase = 5, _ActiveBG, "#E8E8E8"))
+			VAR _S6BG = IF(_ActivePhase > 6, "#003057", IF(_ActivePhase = 6, _ActiveBG, "#E8E8E8"))
+			VAR _S7BG = IF(_ActivePhase = 7, _ActiveBG,  IF(_ActivePhase > 7, "#003057", "#E8E8E8"))
+			
+			-- Chevron font per step
+			VAR _S1FC = IF(_ActivePhase > 1, "#FFFFFF", IF(_ActivePhase = 1, _ActiveFont, "#666666"))
+			VAR _S2FC = IF(_ActivePhase > 2, "#FFFFFF", IF(_ActivePhase = 2, _ActiveFont, "#666666"))
+			VAR _S3FC = IF(_ActivePhase > 3, "#FFFFFF", IF(_ActivePhase = 3, _ActiveFont, "#666666"))
+			VAR _S4FC = IF(_ActivePhase > 4, "#FFFFFF", IF(_ActivePhase = 4, _ActiveFont, "#666666"))
+			VAR _S5FC = IF(_ActivePhase > 5, "#FFFFFF", IF(_ActivePhase = 5, _ActiveFont, "#666666"))
+			VAR _S6FC = IF(_ActivePhase > 6, "#FFFFFF", IF(_ActivePhase = 6, _ActiveFont, "#666666"))
+			VAR _S7FC = IF(_ActivePhase = 7, _ActiveFont, IF(_ActivePhase > 7, "#FFFFFF", "#666666"))
+			
+			-- Orange underbar segments: active = #FFB500, others transparent
+			VAR _I1 = IF(_ActivePhase = 1, "#FFB500", "transparent")
+			VAR _I2 = IF(_ActivePhase = 2, "#FFB500", "transparent")
+			VAR _I3 = IF(_ActivePhase = 3, "#FFB500", "transparent")
+			VAR _I4 = IF(_ActivePhase = 4, "#FFB500", "transparent")
+			VAR _I5 = IF(_ActivePhase = 5, "#FFB500", "transparent")
+			VAR _I6 = IF(_ActivePhase = 6, "#FFB500", "transparent")
+			VAR _I7 = IF(_ActivePhase = 7, "#FFB500", "transparent")
+			
+			VAR _Style = "
+			<style>
+			  body{margin:0;font-family:'Segoe UI',sans-serif;}
+			  .ctx{background:#003057;padding:9px 16px;display:flex;align-items:center;gap:0;flex-wrap:wrap;}
+			  .ci{display:flex;flex-direction:column;padding:0 14px;border-right:1px solid rgba(255,255,255,0.12);}
+			  .ci:first-child{padding-left:0;}
+			  .ci.last{border-right:none;margin-left:auto;align-items:flex-end;}
+			  .cl{font-size:8px;font-weight:700;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;}
+			  .cv{font-size:12px;font-weight:600;color:#fff;}
+			  .cbadge{display:inline-block;padding:2px 10px;border-radius:3px;font-size:10px;font-weight:700;}
+			  .tw{background:#fff;padding:10px 16px 0;}
+			  .tl{font-size:8px;font-weight:700;color:#003057;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;}
+			  .cr{display:flex;align-items:stretch;}
+			  .ch{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+			    height:44px;padding:0 12px;text-align:center;line-height:1.2;box-sizing:border-box;
+			    clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%,10px 50%);
+			    margin-right:-1px;flex-shrink:1;}
+			  .ch.fi{clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);padding-left:8px;}
+			  .ch.la{clip-path:polygon(0 0,100% 0,100% 100%,0 100%,10px 50%);}
+			  .cn{font-size:13px;font-weight:700;display:block;line-height:1;margin-bottom:1px;}
+			  .cl2{font-size:7px;font-weight:500;display:block;max-width:68px;}
+			  .ind{display:flex;}
+			  .is{flex:1;height:3px;}
+			  .ob{background:#fff;padding:7px 16px 10px;border-bottom:1px solid #E8E8E8;display:flex;align-items:baseline;gap:8px;}
+			  .ot{font-size:8px;font-weight:700;color:#FFB500;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;}
+			  .ox{font-size:11px;color:#444;line-height:1.5;}
+			</style>"
+			
+			VAR _HTML =
+			"<div class='ctx'>
+			  <div class='ci'><span class='cl'>Business Unit</span><span class='cv'>" & _BU & "</span></div>
+			  <div class='ci'><span class='cl'>Brand</span><span class='cv'>" & _Brand & "</span></div>
+			    <div class='ci'><span class='cl'>Brand</span><span class='cv'>" & _SubBrand & "</span></div>
+			  <div class='ci'><span class='cl'>Catalog Number</span><span class='cv'>" & _Catalog & "</span></div>
+			  <div class='ci'><span class='cl'>Phaseout Batch</span><span class='cv'>" & _Batch & "</span></div>
+			  <div class='ci'><span class='cl'>LCC</span><span class='cv'>" & _LCC & "</span></div>
+			  <div class='ci'><span class='cl'>MDM Request #</span><span class='cv'>" & _MdmRequest & "</span></div>
+			  <div class='ci'><span class='cl'>LTS Date</span><span class='cv'>" & _LtsDate & "</span></div>
+			  <div class='ci'><span class='cl'>Date Submitted</span><span class='cv'>" & _DateSubmitted & "</span></div>
+			  <div class='ci last'><span class='cl'>Current Phase</span>
+			    <span class='cbadge' style='background:" & _ActiveBG & ";color:" & _ActiveFont & ";'>" & _ActiveName & "</span>
+			  </div>
+			</div>
+			<div class='tw'>
+			  <div class='tl'>Phase Progress Tracker</div>
+			  <div class='cr'>
+			    <div class='ch fi' style='background:" & _S1BG & ";color:" & _S1FC & ";'>
+			      <span class='cn'>1</span><span class='cl2'>Phaseout Request &amp; Approval</span></div>
+			    <div class='ch' style='background:" & _S2BG & ";color:" & _S2FC & ";'>
+			      <span class='cn'>2</span><span class='cl2'>Post Approval Planning</span></div>
+			    <div class='ch' style='background:" & _S3BG & ";color:" & _S3FC & ";'>
+			      <span class='cn'>3</span><span class='cl2'>Change Request Initiation</span></div>
+			    <div class='ch' style='background:" & _S4BG & ";color:" & _S4FC & ";'>
+			      <span class='cn'>4</span><span class='cl2'>Stop Manufacturing</span></div>
+			    <div class='ch' style='background:" & _S5BG & ";color:" & _S5FC & ";'>
+			      <span class='cn'>5</span><span class='cl2'>Stop Selling (Mfg to No Sales)</span></div>
+			    <div class='ch' style='background:" & _S6BG & ";color:" & _S6FC & ";'>
+			      <span class='cn'>6</span><span class='cl2'>Stop Selling (Phaseout to No Sales)</span></div>
+			    <div class='ch la' style='background:" & _S7BG & ";color:" & _S7FC & ";'>
+			      <span class='cn'>7</span><span class='cl2'>Complete</span></div>
+			  </div>
+			  <div class='ind'>
+			    <div class='is' style='background:" & _I1 & ";'></div>
+			    <div class='is' style='background:" & _I2 & ";'></div>
+			    <div class='is' style='background:" & _I3 & ";'></div>
+			    <div class='is' style='background:" & _I4 & ";'></div>
+			    <div class='is' style='background:" & _I5 & ";'></div>
+			    <div class='is' style='background:" & _I6 & ";'></div>
+			    <div class='is' style='background:" & _I7 & ";'></div>
+			  </div>
+			</div>
+			<div class='ob'>
+			  <span class='ot'>Phase Objective</span>
+			  <span class='ox'>" & _Objective & "</span>
+			</div>"
+			
+			RETURN _Style & _HTML
+		lineageTag: 5e4399b4-0823-421c-959a-509aa657618a
+
+	/// COUNTROWS ( Dim_GIM ) - DISTINCTCOUNT ( Dim_GIM[ItemId] )
+	measure '[_DQ_] Dim_GIM Duplicate ItemIds' =
+			
+			COUNTROWS ( Dim_GIM ) - DISTINCTCOUNT ( Dim_GIM[ItemId] )
+		formatString: #,0
+		isHidden
+		displayFolder: _DQ_
+		lineageTag: a1b2c3d4-e5f6-4789-a012-b34c5d6e7f80
+
+	/// COUNTROWS (
+	/// EXCEPT (
+	/// DISTINCT ( ALL ( Fact_Sales[ItemId] ) ),
+	/// DISTINCT ( ALL ( Dim_GIM[ItemId] ) )
+	/// )
+	/// )
+	measure '[_DQ_] Fact_Sales Unmatched ItemIds' =
+			
+			COUNTROWS (
+			    EXCEPT (
+			        DISTINCT ( ALL ( Fact_Sales[ItemId] ) ),
+			        DISTINCT ( ALL ( Dim_GIM[ItemId] ) )
+			    )
+			)
+		formatString: #,0
+		isHidden
+		displayFolder: _DQ_
+		lineageTag: b1c2d3e4-f5a6-4789-b012-c34d5e6f7a80
+
+	/// COUNTROWS (
+	/// EXCEPT (
+	/// DISTINCT ( ALL ( Fact_Inventory[ItemId] ) ),
+	/// DISTINCT ( ALL ( Dim_GIM[ItemId] ) )
+	/// )
+	/// )
+	measure '[_DQ_] Fact_Inventory Unmatched ItemIds' =
+			
+			COUNTROWS (
+			    EXCEPT (
+			        DISTINCT ( ALL ( Fact_Inventory[ItemId] ) ),
+			        DISTINCT ( ALL ( Dim_GIM[ItemId] ) )
+			    )
+			)
+		formatString: #,0
+		isHidden
+		displayFolder: _DQ_
+		lineageTag: c1d2e3f4-a5b6-4789-c012-d34e5f6a7b80
+
+	/// VAR UnmatchedRegions =
+	/// EXCEPT (
+	/// DISTINCT ( ALL ( Fact_Inventory[Region] ) ),
+	/// DISTINCT ( ALL ( Dim_Regions[Region] ) )
+	/// )
+	/// RETURN
+	/// COUNTROWS ( FILTER ( ALL ( Fact_Inventory ), Fact_Inventory[Region] IN UnmatchedRegions ) )
+	measure '[_DQ_] Fact_Inventory Unmatched Region Rows' =
+			
+			VAR UnmatchedRegions =
+			    EXCEPT (
+			        DISTINCT ( ALL ( Fact_Inventory[Region] ) ),
+			        DISTINCT ( ALL ( Dim_Regions[Region] ) )
+			    )
+			RETURN
+			    COUNTROWS ( FILTER ( ALL ( Fact_Inventory ), Fact_Inventory[Region] IN UnmatchedRegions ) )
+		formatString: #,0
+		isHidden
+		displayFolder: _DQ_
+		lineageTag: d1e2f3a4-b5c6-4789-d012-e34f5a6b7c80
+
+	/// CALCULATE (
+	/// COUNTROWS ( Fact_Sales ),
+	/// NOT ( Fact_Sales[Scenario] IN { "AC", "FC" } ),
+	/// ALL ( Fact_Sales )
+	/// )
+	measure '[_DQ_] Fact_Sales Invalid Scenario Rows' =
+			
+			CALCULATE (
+			    COUNTROWS ( Fact_Sales ),
+			    NOT ( Fact_Sales[Scenario] IN { "AC", "FC" } ),
+			    ALL ( Fact_Sales )
+			)
+		formatString: #,0
+		isHidden
+		displayFolder: _DQ_
+		lineageTag: e1f2a3b4-c5d6-4789-e012-f34a5b6c7d80
+
+	/// VAR TotalRows = COUNTROWS ( ALL ( Fact_Sales ) )
+	/// VAR NullRows =
+	/// COUNTROWS (
+	/// FILTER ( ALL ( Fact_Sales ), ISBLANK ( Fact_Sales[Dim_Regions.Index] ) )
+	/// )
+	/// RETURN DIVIDE ( NullRows, TotalRows )
+	measure '[_Metrics_] % Fact_Sales Null Region' =
+			
+			VAR TotalRows = COUNTROWS ( ALL ( Fact_Sales ) )
+			VAR NullRows =
+			    COUNTROWS (
+			        FILTER ( ALL ( Fact_Sales ), ISBLANK ( Fact_Sales[Dim_Regions.Index] ) )
+			    )
+			RETURN
+			    DIVIDE ( NullRows, TotalRows )
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		displayFolder: _Metrics_
+		lineageTag: f1a2b3c4-d5e6-4789-f012-a34b5c6d7e80
+
+	/// VAR TotalRows = COUNTROWS ( ALL ( Fact_Inventory ) )
+	/// VAR NullRows =
+	/// COUNTROWS (
+	/// FILTER ( ALL ( Fact_Inventory ), ISBLANK ( Fact_Inventory[Region] ) )
+	/// )
+	/// RETURN DIVIDE ( NullRows, TotalRows )
+	measure '[_Metrics_] % Fact_Inventory Null Region' =
+			
+			VAR TotalRows = COUNTROWS ( ALL ( Fact_Inventory ) )
+			VAR NullRows =
+			    COUNTROWS (
+			        FILTER ( ALL ( Fact_Inventory ), ISBLANK ( Fact_Inventory[Region] ) )
+			    )
+			RETURN
+			    DIVIDE ( NullRows, TotalRows )
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		displayFolder: _Metrics_
+		lineageTag: a2b3c4d5-e6f7-4789-a123-b45c6d7e8f90
+
 	column Column
 		isHidden
 		formatString: 0

@@ -30,14 +30,6 @@ relationship 69ea5d42-5b7a-9f2b-6702-1f14943dd0b2
 	fromColumn: Fact_TaskAssignments.'Phase ID'
 	toColumn: Dim_Phase.'Phase ID'
 
-relationship 16204cd4-478c-c40b-b704-c02dab75521f
-	fromColumn: Fact_Sales.ItemId
-	toColumn: Fact_ConsolidatedList.'GIM_ID (Hide)'
-
-relationship fff10699-4f45-707a-a0f8-c8a8488a14d1
-	fromColumn: Fact_Inventory.ItemId
-	toColumn: Fact_ConsolidatedList.'GIM_ID (Hide)'
-
 relationship AutoDetected_b33bc2cc-3607-43cd-b90c-80b03e4c1489
 	fromColumn: Fact_E&O.Region
 	toColumn: Dim_Regions.Region
@@ -53,4 +45,10 @@ relationship 0b3a861e-782e-a366-a78c-43c3d14ee579
 relationship 5db514eb-ac9a-a705-5a12-df2745d42a55
 	fromColumn: Fact_ConsolidatedList.'Phase ID'
 	toColumn: Dim_Phase.'Phase ID'
+
+relationship e2216a84-26e1-52f9-03e0-6cfb9fd3264b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Fact_ConsolidatedList.'GIM_ID (Hide)'
+	toColumn: Dim_GIM.ItemId
 

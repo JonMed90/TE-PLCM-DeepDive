@@ -1,0 +1,177 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "dc7569c541d0a1905180",
+  "position": {
+    "x": 326.39391056137015,
+    "y": 70.637488106565186,
+    "z": 0,
+    "height": 630.86584205518557,
+    "width": 428.69647954329213,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "[_DQ_] Dim_GIM Duplicate ItemIds"
+                }
+              },
+              "queryRef": "_Measures.[_DQ_] Dim_GIM Duplicate ItemIds",
+              "nativeQueryRef": "[_DQ_] Dim_GIM Duplicate ItemIds"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "[_DQ_] Fact_Inventory Unmatched ItemIds"
+                }
+              },
+              "queryRef": "_Measures.[_DQ_] Fact_Inventory Unmatched ItemIds",
+              "nativeQueryRef": "[_DQ_] Fact_Inventory Unmatched ItemIds"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "[_DQ_] Fact_Inventory Unmatched Region Rows"
+                }
+              },
+              "queryRef": "_Measures.[_DQ_] Fact_Inventory Unmatched Region Rows",
+              "nativeQueryRef": "[_DQ_] Fact_Inventory Unmatched Region Rows"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "[_DQ_] Fact_Sales Invalid Scenario Rows"
+                }
+              },
+              "queryRef": "_Measures.[_DQ_] Fact_Sales Invalid Scenario Rows",
+              "nativeQueryRef": "[_DQ_] Fact_Sales Invalid Scenario Rows"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "[_DQ_] Fact_Sales Unmatched ItemIds"
+                }
+              },
+              "queryRef": "_Measures.[_DQ_] Fact_Sales Unmatched ItemIds",
+              "nativeQueryRef": "[_DQ_] Fact_Sales Unmatched ItemIds"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "[_Metrics_] % Fact_Inventory Null Region"
+                }
+              },
+              "queryRef": "_Measures.[_Metrics_] % Fact_Inventory Null Region",
+              "nativeQueryRef": "[_Metrics_] % Fact_Inventory Null Region"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "[_Metrics_] % Fact_Sales Null Region"
+                }
+              },
+              "queryRef": "_Measures.[_Metrics_] % Fact_Sales Null Region",
+              "nativeQueryRef": "[_Metrics_] % Fact_Sales Null Region"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "[_DQ_] Dim_GIM Duplicate ItemIds"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "layout": [
+        {
+          "properties": {
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "rowCount": {
+              "expr": {
+                "Literal": {
+                  "Value": "7L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "28D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

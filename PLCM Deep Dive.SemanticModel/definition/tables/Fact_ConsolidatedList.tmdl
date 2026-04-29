@@ -52,7 +52,8 @@ table Fact_ConsolidatedList
 		annotation SummarizationSetBy = Automatic
 
 	column 'LTS Date'
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: e171d7e8-b41d-4136-a642-1186b59565d4
 		summarizeBy: none
 		sourceColumn: LTS Date
@@ -61,8 +62,11 @@ table Fact_ConsolidatedList
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column 'Date Submitted'
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: 2b069c6a-0aa3-4411-8b58-7781b494d193
 		summarizeBy: none
 		sourceColumn: Date Submitted
@@ -70,6 +74,8 @@ table Fact_ConsolidatedList
 		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'Business Unit'
 		dataType: string
@@ -204,23 +210,62 @@ table Fact_ConsolidatedList
 	partition Fact_ConsolidatedList = m
 		mode: import
 		queryGroup: Products
-		source =
+		source = ```
 				let
-				    Source = PowerPlatform.Dataflows(null),
-				    Workspaces = Source{[Id="Workspaces"]}[Data],
-				    #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c" = Workspaces{[workspaceId="7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
-				    #"0da45554-39c0-4713-9400-fd465c822e18" = #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"{[dataflowId="0da45554-39c0-4713-9400-fd465c822e18"]}[Data],
-				    Fact_ConsolidatedList_ = #"0da45554-39c0-4713-9400-fd465c822e18"{[entity="Fact_ConsolidatedList",version=""]}[Data],
-				    #"Changed Type" = Table.TransformColumnTypes(Fact_ConsolidatedList_,{{"LCC", type text}}),
-				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"LCC"}, LCC_Description, {"Life Cycle Code"}, "LCC_Description", JoinKind.LeftOuter),
-				    #"Expanded LCC_Description" = Table.ExpandTableColumn(#"Merged Queries", "LCC_Description", {"LCC Description"}, {"LCC Description"}),
-				    #"Added Conditional Column" = Table.AddColumn(#"Expanded LCC_Description", "GIM ID", each if [GIM_ID] > 0 then [GIM_ID] else null, Int64.Type),
-				    #"Renamed Columns" = Table.RenameColumns(#"Added Conditional Column",{{"GIM_ID", "GIM_ID (Hide)"}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns",{"RowNum"}),
-				    #"Merged Queries1" = Table.NestedJoin(#"Removed Columns", {"PLCM Status"}, Dim_PLCM_Status, {"PLCM Status"}, "Dim_PLCM_Status", JoinKind.LeftOuter),
-				    #"Expanded Dim_PLCM_Status" = Table.ExpandTableColumn(#"Merged Queries1", "Dim_PLCM_Status", {"Phase ID"}, {"Phase ID"})
+				  Source = PowerPlatform.Dataflows(null), 
+				  Workspaces = Source{[Id = "Workspaces"]}[Data], 
+				  #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c" = Workspaces
+				    {[workspaceId = "7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}
+				    [Data], 
+				  #"0da45554-39c0-4713-9400-fd465c822e18" = #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"
+				    {[dataflowId = "0da45554-39c0-4713-9400-fd465c822e18"]}
+				    [Data], 
+				  Fact_ConsolidatedList_ = #"0da45554-39c0-4713-9400-fd465c822e18"
+				    {[entity = "Fact_ConsolidatedList", version = ""]}
+				    [Data], 
+				  #"Changed Type" = Table.TransformColumnTypes(Fact_ConsolidatedList_,{{"LCC", type text}, {"LTS Date", type date}, {"Date Submitted", type date}}), 
+				  #"Merged Queries" = Table.NestedJoin(
+				    #"Changed Type", 
+				    {"LCC"}, 
+				    LCC_Description, 
+				    {"Life Cycle Code"}, 
+				    "LCC_Description", 
+				    JoinKind.LeftOuter
+				  ), 
+				  #"Expanded LCC_Description" = Table.ExpandTableColumn(
+				    #"Merged Queries", 
+				    "LCC_Description", 
+				    {"LCC Description"}, 
+				    {"LCC Description"}
+				  ), 
+				  #"Added Conditional Column" = Table.AddColumn(
+				    #"Expanded LCC_Description", 
+				    "GIM ID", 
+				    each if [GIM_ID] > 0 then [GIM_ID] else null, 
+				    Int64.Type
+				  ), 
+				  #"Renamed Columns" = Table.RenameColumns(
+				    #"Added Conditional Column", 
+				    {{"GIM_ID", "GIM_ID (Hide)"}}
+				  ), 
+				  #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns", {"RowNum"}), 
+				  #"Merged Queries1" = Table.NestedJoin(
+				    #"Removed Columns", 
+				    {"PLCM Status"}, 
+				    Dim_PLCM_Status, 
+				    {"PLCM Status"}, 
+				    "Dim_PLCM_Status", 
+				    JoinKind.LeftOuter
+				  ), 
+				  #"Expanded Dim_PLCM_Status" = Table.ExpandTableColumn(
+				    #"Merged Queries1", 
+				    "Dim_PLCM_Status", 
+				    {"Phase ID"}, 
+				    {"Phase ID"}
+				  )
 				in
-				    #"Expanded Dim_PLCM_Status"
+				  #"Expanded Dim_PLCM_Status"
+				```
 
 	annotation PBI_ResultType = Table
 

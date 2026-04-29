@@ -76,5 +76,23 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "366f0ee87cdd16bdbe4d"
+  "parentGroupName": "366f0ee87cdd16bdbe4d",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ed49e71f5d29d4103809",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Calendar"
+              }
+            },
+            "Property": "MonthEnding"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

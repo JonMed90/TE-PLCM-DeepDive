@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "9ab957d33751689b10a4",
   "position": {
     "x": 0,
@@ -20,6 +20,21 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
+                      "Entity": "Dim_Phase"
+                    }
+                  },
+                  "Property": "Phase"
+                }
+              },
+              "queryRef": "Dim_Phase.Phase",
+              "nativeQueryRef": "Phase",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
                       "Entity": "Fact_ConsolidatedList"
                     }
                   },
@@ -28,15 +43,48 @@
               },
               "queryRef": "Consolidated List.PLCM Status",
               "nativeQueryRef": "PLCM Status",
-              "active": true
+              "active": false
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "isDefaultSort": true
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Values"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Dim_Phase.Phase"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Phase"
+                    }
+                  },
+                  "Property": "Phase"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Consolidated List.PLCM Status"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
     "objects": {
       "selection": [
         {
@@ -68,9 +116,54 @@
         {
           "properties": {}
         }
+      ],
+      "header": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Phase Stage > PLCM Status'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "4040382c904ed267d89b"
+  "parentGroupName": "4040382c904ed267d89b",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2b74db834216b4466168",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Phase"
+              }
+            },
+            "Property": "Phase"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5c2ad3001d644a13eb61",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "PLCM Status"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

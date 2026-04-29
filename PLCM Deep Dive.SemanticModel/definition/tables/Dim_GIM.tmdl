@@ -643,27 +643,148 @@ table Dim_GIM
 	partition Dim_GIM-f911bc3c-c25e-4d22-b83a-f42e4ec92347 = m
 		mode: import
 		queryGroup: Products
-		source =
+		source = ```
 				let
-				    Source = PowerPlatform.Dataflows(null),
-				    Workspaces = Source{[Id="Workspaces"]}[Data],
-				    #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
-				    #"3c4e0e8e-488e-4345-8703-b15f825bed96" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="3c4e0e8e-488e-4345-8703-b15f825bed96"]}[Data],
-				    Dim_GIMItem_ = #"3c4e0e8e-488e-4345-8703-b15f825bed96"{[entity="Dim_GIMItem",version=""]}[Data],
-				    #"Added Index" = Table.AddIndexColumn(Dim_GIMItem_, "Index", 1, 1, Int64.Type),
-				    #"Merged Queries2" = Table.NestedJoin(#"Added Index", {"lifecyclecode"}, LCC_Description, {"Life Cycle Code"}, "LCC_Description", JoinKind.LeftOuter),
-				    #"Expanded LCC_Description" = Table.ExpandTableColumn(#"Merged Queries2", "LCC_Description", {"LCC Description"}, {"LCC Description"}),
-				    #"Added PL_Brand_SubBrand_Key" = Table.AddColumn(#"Expanded LCC_Description", "PL_Brand_SubBrand_Key", each Text.Upper(Text.Trim([cyproductgroup]) &"|"& Text.Trim([brand]) &"|"& Text.Trim([subbrand])), type text),
-				    #"Merged Queries" = Table.NestedJoin(#"Added PL_Brand_SubBrand_Key", {"PL_Brand_SubBrand_Key"}, #"PPR Tracker Status", {"PL_Brand_SubBrand_Key"}, "PPR Tracker Status", JoinKind.LeftOuter),
-				    #"Expanded PPR Tracker Status" = Table.ExpandTableColumn(#"Merged Queries", "PPR Tracker Status", {"PLCM Status", "US PLCM Decision", "EU PLCM Decision", "ASPAC PLCM Decision", "Global PLCM Decision (SubBrand)", "Roadmap Updated", "Last Buy", "Last Sell", "Comments", "PLCM Status - Exec Summary"}, {"PLCM Status", "US PLCM Decision", "EU PLCM Decision", "ASPAC PLCM Decision", "Global PLCM Decision (SubBrand)", "Roadmap Updated", "Last Buy", "Last Sell", "Comments", "PLCM Status - Exec Summary"}),
-				    #"Merged Queries1" = Table.NestedJoin(#"Expanded PPR Tracker Status", {"catalognumber"}, #"Anaplan Products", {"Item Number"}, "Anaplan Products", JoinKind.LeftOuter),
-				    #"Expanded Anaplan Products" = Table.ExpandTableColumn(#"Merged Queries1", "Anaplan Products", {"Stocking Type Code"}, {"Stocking Type Code"}),
-				    #"Removed Duplicates" = Table.Distinct(#"Expanded Anaplan Products", {"itemid"}),
-				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Duplicates",{{"createdate", "GIM.CreateDate"}, {"firstsaledate", "GIM.FirstSaleDate"}, {"lastchangedate", "GIM.LastChangeDate"}, {"lastsaledate", "GIM.LastSaleDate"}, {"lasttransferreddate", "GIM.LastTransferredDate"}, {"Last Buy", "PPR.Last Buy"}, {"Last Sell", "PPR.Last Sell"},{"cyproductgroup", "Business Unit"}, {"cyproductlinename", "Product Line"}, {"cydivision", "Franchise"}, {"subbrand", "SubBrand"}, {"catalognumber", "Catalog Number"}, {"brand", "Brand"}, {"deletedflag", "DeleteFlag"}, {"lifecyclecode", "Life Cycle Code"}, {"standardcatalognumber", "Standard Catalog Number"}, {"itemownername", "Item Owner Name"}, {"itemowner", "Item Owner"}, {"itemid", "ItemId"}, {"longdescription", "Long Description"}, {"itemtypedescription", "Item Type Description"}, {"manufacturingcostusd", "Manufacturing Cost"}}),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns1",{{"GIM.LastTransferredDate", type date}, {"GIM.LastChangeDate", type date}, {"GIM.CreateDate", type date}, {"GIM.LastSaleDate", type date}, {"GIM.FirstSaleDate", type date}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"cymedsurggroup", "Franchise", "cybusinesssector", "unitofmeasure", "uomdescription", "dimensionunitofmeasure", "item_skey", "segment", "subsegment", "replacementitem", "substituteitem", "eancode", "gtin", "catalogflag", "keyitemflag", "trueduplicateflag"})
+				  Source = PowerPlatform.Dataflows(null), 
+				  Workspaces = Source{[Id="Workspaces"]}[Data],
+				  #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+				  #"3c4e0e8e-488e-4345-8703-b15f825bed96" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="3c4e0e8e-488e-4345-8703-b15f825bed96"]}[Data],
+				  Dim_GIMItem_ = #"3c4e0e8e-488e-4345-8703-b15f825bed96"{[entity="Dim_GIMItem",version=""]}[Data],
+				  #"Added Index" = Table.AddIndexColumn(Dim_GIMItem_, "Index", 1, 1, Int64.Type), 
+				  MergedLCC = Table.NestedJoin(
+				    #"Added Index", 
+				    {"lifecyclecode"}, 
+				    LCC_Description, 
+				    {"Life Cycle Code"}, 
+				    "LCC_Description", 
+				    JoinKind.LeftOuter
+				  ), 
+				  #"Expanded LCC_Description" = Table.ExpandTableColumn(
+				    MergedLCC, 
+				    "LCC_Description", 
+				    {"LCC Description"}, 
+				    {"LCC Description"}
+				  ), 
+				  #"Added PL_Brand_SubBrand_Key" = Table.AddColumn(
+				    #"Expanded LCC_Description", 
+				    "PL_Brand_SubBrand_Key", 
+				    each Text.Upper(
+				      Text.Trim([cyproductgroup]) & "|" & Text.Trim([brand]) & "|" & Text.Trim([subbrand])
+				    ), 
+				    type text
+				  ), 
+				  #"Merged Queries" = Table.NestedJoin(
+				    #"Added PL_Brand_SubBrand_Key", 
+				    {"PL_Brand_SubBrand_Key"}, 
+				    #"PPR Tracker Status", 
+				    {"PL_Brand_SubBrand_Key"}, 
+				    "PPR Tracker Status", 
+				    JoinKind.LeftOuter
+				  ), 
+				  #"Expanded PPR Tracker Status" = Table.ExpandTableColumn(
+				    #"Merged Queries", 
+				    "PPR Tracker Status", 
+				    {
+				      "PLCM Status", 
+				      "US PLCM Decision", 
+				      "EU PLCM Decision", 
+				      "ASPAC PLCM Decision", 
+				      "Global PLCM Decision (SubBrand)", 
+				      "Roadmap Updated", 
+				      "Last Buy", 
+				      "Last Sell", 
+				      "Comments", 
+				      "PLCM Status - Exec Summary"
+				    }, 
+				    {
+				      "PLCM Status", 
+				      "US PLCM Decision", 
+				      "EU PLCM Decision", 
+				      "ASPAC PLCM Decision", 
+				      "Global PLCM Decision (SubBrand)", 
+				      "Roadmap Updated", 
+				      "Last Buy", 
+				      "Last Sell", 
+				      "Comments", 
+				      "PLCM Status - Exec Summary"
+				    }
+				  ), 
+				  #"Merged Anaplan Products" = Table.NestedJoin(
+				    #"Expanded PPR Tracker Status", 
+				    {"catalognumber"}, 
+				    #"Anaplan Products", 
+				    {"Item Number"}, 
+				    "Anaplan Products", 
+				    JoinKind.LeftOuter
+				  ), 
+				  #"Expanded Anaplan Products" = Table.ExpandTableColumn(
+				    #"Merged Anaplan Products", 
+				    "Anaplan Products", 
+				    {"Stocking Type Code"}, 
+				    {"Stocking Type Code"}
+				  ), 
+				  #"Removed Duplicates" = Table.Distinct(#"Expanded Anaplan Products", {"itemid"}), 
+				  #"Renamed Columns" = Table.RenameColumns(
+				    #"Removed Duplicates", 
+				    {
+				      {"createdate", "GIM.CreateDate"}, 
+				      {"firstsaledate", "GIM.FirstSaleDate"}, 
+				      {"lastchangedate", "GIM.LastChangeDate"}, 
+				      {"lastsaledate", "GIM.LastSaleDate"}, 
+				      {"lasttransferreddate", "GIM.LastTransferredDate"}, 
+				      {"Last Buy", "PPR.Last Buy"}, 
+				      {"Last Sell", "PPR.Last Sell"}, 
+				      {"cyproductgroup", "Business Unit"}, 
+				      {"cyproductlinename", "Product Line"}, 
+				      {"cydivision", "Franchise"}, 
+				      {"subbrand", "SubBrand"}, 
+				      {"catalognumber", "Catalog Number"}, 
+				      {"brand", "Brand"}, 
+				      {"deletedflag", "DeleteFlag"}, 
+				      {"lifecyclecode", "Life Cycle Code"}, 
+				      {"standardcatalognumber", "Standard Catalog Number"}, 
+				      {"itemownername", "Item Owner Name"}, 
+				      {"itemowner", "Item Owner"}, 
+				      {"itemid", "ItemId"}, 
+				      {"longdescription", "Long Description"}, 
+				      {"itemtypedescription", "Item Type Description"}, 
+				      {"manufacturingcostusd", "Manufacturing Cost"}
+				    }
+				  ), 
+				  #"Changed Type" = Table.TransformColumnTypes(
+				    #"Renamed Columns", 
+				    {
+				      {"GIM.LastTransferredDate", type date}, 
+				      {"GIM.LastChangeDate", type date}, 
+				      {"GIM.CreateDate", type date}, 
+				      {"GIM.LastSaleDate", type date}, 
+				      {"GIM.FirstSaleDate", type date}
+				    }
+				  ), 
+				  #"Removed Columns" = Table.RemoveColumns(
+				    #"Changed Type", 
+				    {
+				      "cymedsurggroup", 
+				      "Franchise", 
+				      "cybusinesssector", 
+				      "unitofmeasure", 
+				      "uomdescription", 
+				      "dimensionunitofmeasure", 
+				      "item_skey", 
+				      "segment", 
+				      "subsegment", 
+				      "replacementitem", 
+				      "substituteitem", 
+				      "eancode", 
+				      "gtin", 
+				      "catalogflag", 
+				      "keyitemflag", 
+				      "trueduplicateflag"
+				    }
+				  )
 				in
-				    #"Removed Columns"
+				  #"Removed Columns"
+				```
 
 	annotation PBI_ResultType = Table
 

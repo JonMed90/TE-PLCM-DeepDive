@@ -104,21 +104,56 @@ table Fact_Sales
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Catalog Number'
+		dataType: string
+		lineageTag: fa595c83-0333-4a88-8430-9556ea195a80
+		summarizeBy: none
+		sourceColumn: Catalog Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 344dd9aa-6a92-4593-8354-a8f3452b5c16
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Column 2' = RELATED(Dim_GIM[Business Unit])
+		lineageTag: b423d397-c390-4d80-bc66-0edbbf44c9f5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Fact_Sales-ba3cb9ec-29f4-465f-a406-9c259eaefb5e = m
 		mode: import
 		queryGroup: Sales/Demand
-		source =
+		source = ```
 				let
-				    // Combine the DemantraDemand and Historical Sales tables into one
-				    CombinedTables = Table.Combine({DemantraDemand, #"Historical Sales"}),
-				    #"Merged Queries" = Table.NestedJoin(CombinedTables, {"Region"}, Dim_Regions, {"Region"}, "Dim_Regions", JoinKind.LeftOuter),
-				    #"Expanded Dim_Regions" = Table.ExpandTableColumn(#"Merged Queries", "Dim_Regions", {"Index"}, {"Dim_Regions.Index"}),
-				    // Remove the "Selling Division" column to optimize the dataset
-				    RemovedSellingDivisionColumn = Table.RemoveColumns(#"Expanded Dim_Regions",{"Source", "Region","Selling Division", "Catalog Number", "ordertypekey", "ot_localordertypename", "ot_globalordertypename", "ordertypekeytype2", "ot2_localordertypename", "ot2_globalordertypename", "ot2_active", "transactiontypekey", "TOM Division", "TOM Area", "transactiontypecode", "transactiontypename", "Normalized Catalog Number", "Division", "Margin", "TOM Group"}),
-				    #"Reordered Columns" = Table.ReorderColumns(RemovedSellingDivisionColumn,{"Date", "ItemId", "Dim_Regions.Index", "Country", "Quantity", "Revenue", "COGS", "Scenario"}),
-				    #"Changed ItemId Type" = Table.TransformColumnTypes(#"Reordered Columns",{{"ItemId", Int64.Type}})
+				  // Combine the DemantraDemand and Historical Sales tables into one
+				  CombinedTables = Table.Combine({DemantraDemand, #"Historical Sales"}), 
+				  #"Merged Queries" = Table.NestedJoin(
+				    CombinedTables, 
+				    {"Region"}, 
+				    Dim_Regions, 
+				    {"Region"}, 
+				    "Dim_Regions", 
+				    JoinKind.LeftOuter
+				  ), 
+				  #"Expanded Dim_Regions" = Table.ExpandTableColumn(
+				    #"Merged Queries", 
+				    "Dim_Regions", 
+				    {"Index"}, 
+				    {"Dim_Regions.Index"}
+				  ), 
+				  #"Changed ItemId Type" = Table.TransformColumnTypes(
+				    #"Expanded Dim_Regions", 
+				    {{"ItemId", Int64.Type}}
+				  )
 				in
-				    #"Changed ItemId Type"
+				  #"Changed ItemId Type"
+				```
 
 	annotation PBI_ResultType = Exception
 

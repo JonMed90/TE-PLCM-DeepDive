@@ -127,6 +127,20 @@
                       "Entity": "Fact_ConsolidatedList"
                     }
                   },
+                  "Property": "PLCM Phaseout Batch"
+                }
+              },
+              "queryRef": "Consolidated List.PLCM Phaseout Batch",
+              "nativeQueryRef": "PLCM Phaseout Batch"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ConsolidatedList"
+                    }
+                  },
                   "Property": "LCC"
                 }
               },
@@ -199,48 +213,6 @@
                       "Entity": "Fact_ConsolidatedList"
                     }
                   },
-                  "Property": "PLCM Phaseout Batch"
-                }
-              },
-              "queryRef": "Consolidated List.PLCM Phaseout Batch",
-              "nativeQueryRef": "PLCM Phaseout Batch"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_ConsolidatedList"
-                    }
-                  },
-                  "Property": "PLCM Status"
-                }
-              },
-              "queryRef": "Consolidated List.PLCM Status",
-              "nativeQueryRef": "PLCM Status"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_Phase"
-                    }
-                  },
-                  "Property": "Phase"
-                }
-              },
-              "queryRef": "Dim_Phase.Phase",
-              "nativeQueryRef": "Phase"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_ConsolidatedList"
-                    }
-                  },
                   "Property": "Item Owner"
                 }
               },
@@ -302,6 +274,20 @@
               },
               "queryRef": "Consolidated List.Comments",
               "nativeQueryRef": "Comments"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Phase"
+                    }
+                  },
+                  "Property": "Phase"
+                }
+              },
+              "queryRef": "Dim_Phase.Phase",
+              "nativeQueryRef": "Phase"
             }
           ],
           "showAll": true
@@ -311,13 +297,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "HierarchyLevel": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_ConsolidatedList"
+                      }
+                    },
+                    "Hierarchy": "Product Hierarchy"
                   }
                 },
-                "Property": "Inventory QoH"
+                "Level": "Business Unit"
               }
             },
             "direction": "Descending"
@@ -371,6 +362,32 @@
             "metadata": "Fact_ConsolidatedList.Long Description"
           }
         }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -408,5 +425,316 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "895195558079ae8c0e5d",
+        "ordinal": 0,
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ConsolidatedList"
+                  }
+                },
+                "Hierarchy": "Product Hierarchy"
+              }
+            },
+            "Level": "Brand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "582465a4204ddcb41dc4",
+        "ordinal": 1,
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ConsolidatedList"
+                  }
+                },
+                "Hierarchy": "Product Hierarchy"
+              }
+            },
+            "Level": "Business Unit"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6b24ce18ae2d159d48e4",
+        "ordinal": 2,
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ConsolidatedList"
+                  }
+                },
+                "Hierarchy": "Product Hierarchy"
+              }
+            },
+            "Level": "Catalog Number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1aa0261428b65c50226c",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Comments"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0543ab21277b5858c823",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Date Submitted"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7be683c932609290a92b",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "ECR #"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "12068d491a9ce65edee8",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "GIM ID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "be5a74f413b8c350d050",
+        "ordinal": 7,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Phase ID"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "3b1a87a2ab37ce5191c4",
+        "ordinal": 8,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Item Owner"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6e097c94083a4a3cca17",
+        "ordinal": 9,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "LCC"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6b46834b5db93cd09dc5",
+        "ordinal": 10,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "Long Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "05e21757608101d26695",
+        "ordinal": 11,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "LTS Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ff79bd547a7184dae812",
+        "ordinal": 12,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "MDM Request #"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2c153256cba93e2182d4",
+        "ordinal": 13,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Next 12M Demand Units"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1675a3c03cb85c2e7b7b",
+        "ordinal": 14,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Phase"
+              }
+            },
+            "Property": "Phase"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8a84ab3c103b759e300d",
+        "ordinal": 15,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_ConsolidatedList"
+              }
+            },
+            "Property": "PLCM Phaseout Batch"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "20f223d1020747576525",
+        "ordinal": 16,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Inventory QoH"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "598a88ace1cb024bd779",
+        "ordinal": 17,
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ConsolidatedList"
+                  }
+                },
+                "Hierarchy": "Product Hierarchy"
+              }
+            },
+            "Level": "SubBrand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2a97c560501120b6567e",
+        "ordinal": 18,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "TTM Units"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
   }
 }

@@ -54,6 +54,13 @@
                               "Value": "null"
                             }
                           }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Complete'"
+                            }
+                          }
                         ]
                       ]
                     }

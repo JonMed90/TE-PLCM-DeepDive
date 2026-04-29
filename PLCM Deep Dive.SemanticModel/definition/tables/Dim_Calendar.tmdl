@@ -161,17 +161,52 @@ table Dim_Calendar
 		mode: import
 		queryGroup: Calendar
 		source =
+				//Unnamed
 				let
-				    Source = PowerPlatform.Dataflows(null),
-				    Workspaces = Source{[Id="Workspaces"]}[Data],
-				    #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
-				    #"e3ccdbb4-94be-4464-adfe-5e78894f0eba" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="e3ccdbb4-94be-4464-adfe-5e78894f0eba"]}[Data],
-				    Calendar_ = #"e3ccdbb4-94be-4464-adfe-5e78894f0eba"{[entity="Calendar",version=""]}[Data],
-				    #"Removed Other Columns" = Table.SelectColumns(Calendar_,{"Date", "Year", "QuarterOfYear", "Quarter & Year", "MonthOfYear", "MonthShortName", "Month-Year", "MonthnYear", "MonthEnding", "MonthStart", "DateInt"}),
-				    #"Reordered Columns" = Table.ReorderColumns(#"Removed Other Columns",{"Date", "MonthStart", "MonthEnding", "Year", "QuarterOfYear", "Quarter & Year", "MonthOfYear", "MonthShortName", "MonthnYear", "Month-Year", "DateInt"}),
-				    #"Filtered Rows" = Table.SelectRows(#"Reordered Columns", each [Date] >= #date(2022, 1, 1))
+				  Source = PowerPlatform.Dataflows(null),
+				  Workspaces = Source{[Id = "Workspaces"]}[Data],
+				  #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces
+				    {[workspaceId = "f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}
+				    [Data],
+				  #"e3ccdbb4-94be-4464-adfe-5e78894f0eba" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"
+				    {[dataflowId = "e3ccdbb4-94be-4464-adfe-5e78894f0eba"]}
+				    [Data],
+				  Calendar_ = #"e3ccdbb4-94be-4464-adfe-5e78894f0eba"{[entity = "Calendar", version = ""]}[Data],
+				  #"Removed Other Columns" = Table.SelectColumns(
+				    Calendar_,
+				    {
+				      "Date",
+				      "Year",
+				      "QuarterOfYear",
+				      "Quarter & Year",
+				      "MonthOfYear",
+				      "MonthShortName",
+				      "Month-Year",
+				      "MonthnYear",
+				      "MonthEnding",
+				      "MonthStart",
+				      "DateInt"
+				    }
+				  ),
+				  #"Reordered Columns" = Table.ReorderColumns(
+				    #"Removed Other Columns",
+				    {
+				      "Date",
+				      "MonthStart",
+				      "MonthEnding",
+				      "Year",
+				      "QuarterOfYear",
+				      "Quarter & Year",
+				      "MonthOfYear",
+				      "MonthShortName",
+				      "MonthnYear",
+				      "Month-Year",
+				      "DateInt"
+				    }
+				  ),
+				  #"Filtered Rows" = Table.SelectRows(#"Reordered Columns", each [Date] >= #date(2023, 1, 1) and [Date] <= #date(2028, 12, 31))
 				in
-				    #"Filtered Rows"
+				  #"Filtered Rows"
 
 	annotation PBI_ResultType = Table
 
