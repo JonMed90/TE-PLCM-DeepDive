@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "f384f9aaa5241c2fa58f",
   "position": {
-    "x": 240.14294222751636,
+    "x": 239.93803253292023,
     "y": 0,
-    "z": 7000,
-    "height": 48.028588445503274,
-    "width": 299.60690887433,
-    "tabOrder": 6000
+    "z": 6000,
+    "height": 47.591014717273431,
+    "width": 366.84740511231604,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "textbox",
@@ -45,7 +45,7 @@
                   {
                     "value": "Historical Sales",
                     "textStyle": {
-                      "fontFamily": "Times New Roman",
+                      "fontFamily": "Arial Black",
                       "fontSize": "20pt",
                       "color": "#ffb500"
                     }
@@ -65,6 +65,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Title Text box'"
                 }
               }
             }

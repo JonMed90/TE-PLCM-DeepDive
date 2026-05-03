@@ -1,0 +1,140 @@
+/// Monthly excess and obsolete inventory and reserve amounts by item, region, and account type.
+table 'Excess and Obsolete'
+	lineageTag: acff4fb9-31e4-4475-828f-cc24a8f83607
+
+	/// Account type: Inventory (on-hand value) or Reserves (write-down provision).
+	column Account
+		dataType: string
+		lineageTag: bc7badf8-795f-4e12-a79d-29af8656d520
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Month-end snapshot date.
+	column MonthEnding
+		dataType: dateTime
+		isHidden
+		formatString: mm/dd/yy
+		lineageTag: 71fd73d9-eb6e-46fd-96bc-7726cc9673ae
+		summarizeBy: none
+		sourceColumn: MonthEnding
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Dollar amount for the account type.
+	column Amount
+		dataType: int64
+		formatString: #,0
+		lineageTag: 32298422-683a-4090-b23b-df30ca3974bc
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Catalog number of the item (denormalized from Product).
+	column 'Catalog Number'
+		dataType: string
+		isHidden
+		lineageTag: 0953b80a-4114-43be-8965-00ed9e811543
+		summarizeBy: none
+		sourceColumn: CatalogNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Foreign key to Region table.
+	column Index
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: 338d0133-f489-41b4-8336-be2c2adead39
+		summarizeBy: none
+		sourceColumn: Index
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Foreign key to Product table.
+	column 'Item ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: af893c5f-ca7e-422d-9ba6-6d0045737e3c
+		summarizeBy: none
+		sourceColumn: ItemId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Foreign key to Region table.
+	column 'Region Index'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: ef5ab347-12e3-459a-a779-feaf45ce6c0e
+		summarizeBy: none
+		sourceColumn: Dim_Regions.Index
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_E&O = m
+		mode: import
+		source =
+				// Excess and Obsolete — Monthly E&O inventory and reserve amounts.
+				// Source: Power BI Dataflow > Fact_EO entity
+				// Renames Period to MonthEnding, joins to Region lookup for the integer FK,
+				// and drops unused source columns (Region text, Company, etc.).
+				let
+				    // ── Connect to dataflow ──
+				    Source = PowerPlatform.Dataflows( null ),
+				    Workspaces = Source{[Id = "Workspaces"]}[Data],
+				    Workspace = Workspaces{[workspaceId = "7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
+				    Dataflow = Workspace{[dataflowId = "69e3d6cc-a963-47f2-88c9-1c732d211586"]}[Data],
+				    RawEO = Dataflow{[entity = "Fact_EO", version = ""]}[Data],
+				
+				    // ── Rename Period to align with Calendar naming ──
+				    Renamed = Table.RenameColumns( RawEO, {{"Period", "MonthEnding"}} ),
+				
+				    // ── Join to Region lookup for integer FK ──
+				    JoinedRegion = Table.NestedJoin(
+				        Renamed,
+				        {"Region"},
+				        Region,
+				        {"Region"},
+				        "Region.Lookup",
+				        JoinKind.LeftOuter
+				    ),
+				    ExpandedRegion = Table.ExpandTableColumn(
+				        JoinedRegion,
+				        "Region.Lookup",
+				        {"Index"},
+				        {"Dim_Regions.Index"}
+				    ),
+				
+				    // ── Drop unused source columns (FK replaces text Region) ──
+				    Cleaned = Table.RemoveColumns(
+				        ExpandedRegion,
+				        {"Region", "Company", "StandardCatalogNumber", "ItemOwner", "Brand"}
+				    )
+				in
+				    Cleaned
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

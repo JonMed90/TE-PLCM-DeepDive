@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "5b1a17f12b07805334ec",
   "position": {
     "x": 16,
     "y": 0,
-    "z": 6500,
+    "z": 4000,
     "height": 47.238095238095241,
     "width": 483.8095238095238,
     "tabOrder": 0
@@ -19,22 +19,6 @@
               {
                 "textRuns": [
                   {
-                    "value": "T&E",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Arial Black",
-                      "fontSize": "20pt"
-                    }
-                  },
-                  {
-                    "value": " ",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Segoe (Bold)",
-                      "fontSize": "20pt"
-                    }
-                  },
-                  {
                     "value": "PLCM ",
                     "textStyle": {
                       "fontWeight": "bold",
@@ -45,7 +29,7 @@
                   {
                     "value": "Playbook",
                     "textStyle": {
-                      "fontFamily": "Times New Roman",
+                      "fontFamily": "Arial Black",
                       "fontSize": "20pt",
                       "color": "#ffb500"
                     }
@@ -64,7 +48,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Title'"
+                  "Value": "'Title Text Box'"
                 }
               }
             }

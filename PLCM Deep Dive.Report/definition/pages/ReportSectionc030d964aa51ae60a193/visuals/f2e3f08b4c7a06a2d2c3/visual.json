@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "f2e3f08b4c7a06a2d2c3",
   "position": {
     "x": 0,
@@ -7,7 +7,7 @@
     "z": 8000,
     "height": 59.987071751777641,
     "width": 239.94828700711057,
-    "tabOrder": 8000
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,13 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Regions"
+                      "Entity": "Region"
                     }
                   },
                   "Property": "Region"
                 }
               },
-              "queryRef": "Regions.Region",
+              "queryRef": "Region.Region",
+              "nativeQueryRef": "Region",
               "active": true
             }
           ]
@@ -50,6 +51,19 @@
       "general": [
         {
           "properties": {}
+        }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "6a296c65e4005185ea70",
   "position": {
     "x": 0,
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Life Cycle Code"
                 }
               },
-              "queryRef": "Dim_GIM.Life Cycle Code",
+              "queryRef": "Product.Life Cycle Code",
               "nativeQueryRef": "Life Cycle Code",
               "active": true
             }
@@ -42,6 +42,19 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
                 }
               }
             }

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "2bfdde20a16d001ae0d2",
   "position": {
     "x": 0,
-    "y": 7.61131751299027E-15,
+    "y": 3.6755204594400572,
     "z": 4000,
-    "height": 715.56007018191906,
-    "width": 239.94828700711057,
-    "tabOrder": 6000
+    "height": 712.62040816326532,
+    "width": 240.32653061224491,
+    "tabOrder": 8001
   },
   "visualGroup": {
     "displayName": "Slicer Group",

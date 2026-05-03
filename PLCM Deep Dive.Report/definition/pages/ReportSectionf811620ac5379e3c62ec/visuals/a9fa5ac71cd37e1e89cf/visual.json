@@ -20,13 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Calendar"
+                      "Entity": "Calendar"
                     }
                   },
-                  "Property": "MonthEnding"
+                  "Property": "Month Ending"
                 }
               },
-              "queryRef": "Calendar.End Of Month",
+              "queryRef": "Calendar.Month Ending",
+              "nativeQueryRef": "Month Ending",
               "active": true
             }
           ]
@@ -38,13 +39,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Regions"
+                      "Entity": "Region"
                     }
                   },
                   "Property": "Region"
                 }
               },
-              "queryRef": "Regions.Region"
+              "queryRef": "Region.Region",
+              "nativeQueryRef": "Region"
             }
           ]
         },
@@ -70,19 +72,29 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "ScopedEval": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_Calendar"
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "_Measures"
+                      }
+                    },
+                    "Property": "Dynamic Sales KPI"
                   }
                 },
-                "Property": "MonthEnding"
+                "Scope": [
+                  {
+                    "RoleRef": {
+                      "Role": "Rows"
+                    }
+                  }
+                ]
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -94,7 +106,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 7,
+                      "ColorId": 2,
                       "Percent": 0
                     }
                   }
@@ -156,6 +168,71 @@
                   "Value": "true"
                 }
               }
+            },
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subheader": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "responsive": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -184,8 +261,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                      "ColorId": 9,
+                      "Percent": 0
                     }
                   }
                 }
@@ -227,51 +304,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "9ffb230b55a854400a50",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Calendar"
-              }
-            },
-            "Property": "MonthEnding"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5378eb1231080b0a62bb",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Regions"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "42179065baaea48a4c01",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Dynamic Sales KPI"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

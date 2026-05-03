@@ -1,0 +1,63 @@
+/// Geographic region dimension used as a slicer across sales, inventory, and excess and obsolete data.
+table Region
+	lineageTag: 7161f6cf-6ca5-4fa9-9c79-eed9d2e89c11
+
+	/// Geographic region name.
+	column Region
+		dataType: string
+		lineageTag: ac231ad0-06f0-438b-ab4c-52b89826327d
+		summarizeBy: none
+		sourceColumn: Region
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Primary key. Numeric identifier for the region.
+	column Index
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 670efe80-2486-48be-ae85-be095e0fdbcf
+		summarizeBy: none
+		sourceColumn: Index
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Regions-7e824124-45d3-4517-8219-f9fb64a383ce = m
+		mode: import
+		source =
+				// Region — Static region lookup table.
+				// Contains geographic region names with an auto-generated integer index
+				// used as the FK across Sales, Inventory, and Excess and Obsolete.
+				// Data is embedded as compressed Base64 (Enter Data).
+				let
+				    Source = Table.FromRows(
+				        Json.Document(
+				            Binary.Decompress(
+				                Binary.FromText(
+				                    "i45WCg1WitWJVnIMcHQGM5wd/RxdHMFMV19XCMPHMcTRF8wK9fP28w/3A7P9XMMVAoL8XUKdQ4BmxAIA",
+				                    BinaryEncoding.Base64
+				                ),
+				                Compression.Deflate
+				            )
+				        ),
+				        let
+				            _t = ((type nullable text) meta [Serialized.Text = true])
+				        in
+				            type table [Region = _t]
+				    ),
+				
+				    // ── Add 1-based integer index as primary key ──
+				    Indexed = Table.AddIndexColumn( Source, "Index", 1, 1, Int64.Type )
+				in
+				    Indexed
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

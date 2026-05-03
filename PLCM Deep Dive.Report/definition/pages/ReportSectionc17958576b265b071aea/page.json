@@ -8,12 +8,12 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "ebad6d21665717f71b0d",
+        "name": "d7d78ad04ebda48839d8",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Fact_Sales"
+                "Entity": "Sales"
               }
             },
             "Property": "Scenario"
@@ -24,8 +24,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "f",
-              "Entity": "Fact_Sales",
+              "Name": "s",
+              "Entity": "Sales",
               "Type": 0
             }
           ],
@@ -38,7 +38,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "f"
+                            "Source": "s"
                           }
                         },
                         "Property": "Scenario"
@@ -60,79 +60,12 @@
           ]
         },
         "howCreated": "User",
-        "isLockedInViewMode": true
-      },
-      {
-        "name": "771c63343d07a1982385",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_GIM"
-              }
-            },
-            "Property": "Business Unit"
-          }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "Dim_GIM",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Not": {
-                  "Expression": {
-                    "In": {
-                      "Expressions": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "d"
-                              }
-                            },
-                            "Property": "Business Unit"
-                          }
-                        }
-                      ],
-                      "Values": [
-                        [
-                          {
-                            "Literal": {
-                              "Value": "null"
-                            }
-                          }
-                        ]
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User",
         "isHiddenInViewMode": true,
         "isLockedInViewMode": true,
         "objects": {
           "general": [
             {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
-                    }
-                  }
-                }
-              }
+              "properties": {}
             }
           ]
         }

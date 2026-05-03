@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "921c4b21cc306903d5b2",
   "position": {
-    "x": 844.916540212443,
-    "y": 3.8846737481031863,
-    "z": 1000,
-    "height": 35.933232169954472,
-    "width": 218.51289833080423,
+    "x": 1061.9108280254777,
+    "y": 0,
+    "z": 7500,
+    "height": 47.898089171974526,
+    "width": 218.08917197452232,
     "tabOrder": 0
   },
   "visual": {
@@ -22,8 +22,7 @@
                     "value": "Source: IDM - Refresh Daily",
                     "textStyle": {
                       "fontFamily": "Times New Roman",
-                      "fontSize": "9pt",
-                      "color": "#000000"
+                      "color": "#545857"
                     }
                   }
                 ]
@@ -41,6 +40,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Notes Text box'"
                 }
               }
             }

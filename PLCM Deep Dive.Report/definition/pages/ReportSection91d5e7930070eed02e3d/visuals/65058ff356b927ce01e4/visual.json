@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "65058ff356b927ce01e4",
   "position": {
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 684.67374810318654,
-    "width": 239.87860394537176,
-    "tabOrder": 7000
+    "height": 712.62040816326532,
+    "width": 240.32653061224491,
+    "tabOrder": 15000
   },
   "visualGroup": {
     "displayName": "Navigation Pane",

@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "bf49b580b4bca6ccf9ee",
   "position": {
     "x": 257.0013037809648,
     "y": 438.07040417209907,
-    "z": 1000,
+    "z": 4750,
     "height": 260.33898305084745,
     "width": 1006.3102998696219,
     "tabOrder": 2000
@@ -17,76 +17,102 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Business Unit"
+                  "Level": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.cyproductgroup",
-              "nativeQueryRef": "Business Unit",
+              "queryRef": "Product.Franchise Hierarchy.Business Unit",
+              "nativeQueryRef": "Franchise Hierarchy Business Unit",
               "active": true
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Brand"
+                  "Level": "Product Line"
                 }
               },
-              "queryRef": "Dim_GIM.brand",
-              "nativeQueryRef": "Brand",
-              "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "SubBrand"
-                }
-              },
-              "queryRef": "Dim_GIM.subbrand",
-              "nativeQueryRef": "SubBrand",
-              "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "Catalog Number"
-                }
-              },
-              "queryRef": "Dim_GIM.catalognumber",
-              "nativeQueryRef": "Catalog Number",
+              "queryRef": "Product.Franchise Hierarchy.Product Line",
+              "nativeQueryRef": "Franchise Hierarchy Product Line",
               "active": false
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_Regions"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Region"
+                  "Level": "Brand"
                 }
               },
-              "queryRef": "Regions.Region",
+              "queryRef": "Product.Franchise Hierarchy.Brand",
+              "nativeQueryRef": "Franchise Hierarchy Brand",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "SubBrand"
+                }
+              },
+              "queryRef": "Product.Franchise Hierarchy.SubBrand",
+              "nativeQueryRef": "Franchise Hierarchy SubBrand",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "Catalog Number"
+                }
+              },
+              "queryRef": "Product.Franchise Hierarchy.Catalog Number",
+              "nativeQueryRef": "Franchise Hierarchy Catalog Number",
               "active": false
             }
           ]
@@ -101,25 +127,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Dynamic Global PLCM Decision"
+                  "Property": "Inventory Qty on Hand"
                 }
               },
-              "queryRef": "_Measures.Dynamic Global PLCM Decision",
-              "nativeQueryRef": "Dynamic Global PLCM Decision"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Inventory QoH"
-                }
-              },
-              "queryRef": "Inventory.Inventory Qty",
-              "displayName": "Qty OnHand"
+              "queryRef": "_Measures.Inventory Qty on Hand",
+              "nativeQueryRef": "Inventory Qty on Hand"
             },
             {
               "field": {
@@ -172,39 +184,9 @@
                 }
               },
               "queryRef": "Measures Table.TTM Revenue"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "DSI (COGS)"
-                }
-              },
-              "queryRef": "Measures Table.DSI (COGS)"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
-                  }
-                },
-                "Property": "Ext Statutory Cost"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "expansionStates": [
@@ -215,7 +197,7 @@
         "levels": [
           {
             "queryRefs": [
-              "Dim_GIM.cyproductgroup"
+              "Product.Franchise Hierarchy.Business Unit"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -223,7 +205,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Business Unit"
@@ -234,7 +216,7 @@
           },
           {
             "queryRefs": [
-              "Dim_GIM.brand"
+              "Product.Franchise Hierarchy.Product Line"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -242,7 +224,26 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "Product Line"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Product.Franchise Hierarchy.Brand"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Brand"
@@ -253,141 +254,19 @@
           },
           {
             "queryRefs": [
-              "Dim_GIM.subbrand"
+              "Product.Franchise Hierarchy.SubBrand"
             ],
             "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "SubBrand"
-                }
-              }
-            ],
             "isPinned": true
           },
           {
             "queryRefs": [
-              "Dim_GIM.catalognumber"
+              "Product.Franchise Hierarchy.Catalog Number"
             ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "Catalog Number"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "Regions.Region"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
+            "isCollapsed": true
           }
         ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Trauma'"
-                  }
-                }
-              ],
-              "isToggled": true,
-              "children": [
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'T2'"
-                      }
-                    }
-                  ],
-                  "children": [
-                    {
-                      "identityValues": [
-                        {
-                          "Literal": {
-                            "Value": "'INSTRUMENTS'"
-                          }
-                        }
-                      ],
-                      "isToggled": true,
-                      "children": [
-                        {
-                          "identityValues": [
-                            {
-                              "Literal": {
-                                "Value": "'18061095'"
-                              }
-                            }
-                          ],
-                          "isToggled": true
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Sports Medicine'"
-                  }
-                }
-              ],
-              "isToggled": true,
-              "children": [
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'G-FORCE'"
-                      }
-                    }
-                  ],
-                  "isToggled": true
-                },
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'GRAVITY'"
-                      }
-                    }
-                  ],
-                  "isToggled": true
-                }
-              ]
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Trauma Other'"
-                  }
-                }
-              ],
-              "isToggled": true
-            }
-          ]
-        }
+        "root": {}
       }
     ],
     "objects": {
@@ -435,27 +314,17 @@
           }
         },
         {
-          "properties": {},
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "174.92770412871278D"
+                }
+              }
+            }
+          },
           "selector": {
-            "metadata": "Sum(GIM.ManufacturingcostUSD)"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "PLCM Roadmap.Last Order"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "PLCM Roadmap.Last Sale"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "PLCM Roadmap.Phase Out"
+            "metadata": "GIM.LongDescription"
           }
         },
         {
@@ -463,220 +332,37 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "67.76284073052098D"
+                  "Value": "77.41423125794155D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "PLCM Roadmap.Product Launch"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "82.05617977528091D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "PLCM Roadmap.Registration Initiation"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "89.45453368019824D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "PLCM Roadmap.Go-to SKU (Replacement)"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.Product Hierarchy.Standard Catalog Number"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.Product Hierarchy.Product Line"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.Product Hierarchy.Brand"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.Product Hierarchy.SubBrand"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "65D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "PLCM_Roadmap.RegionSKU"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Regions.Region"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "58D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "PLCM_Roadmap.Last Sale"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Inventory.Inventory Qty"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Measures Table.Inventory Value$"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Measures Table.TTM Units"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "82.0266040688576D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measures Table.TTM COGS"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Measures Table.TTM Revenue"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Measures Table.DSI (COGS)"
+            "metadata": "Dim_GIM.SubBrand"
           }
         }
       ],
-      "general": [
+      "columnHeaders": [
         {
           "properties": {
-            "layout": {
+            "columnAdjustment": {
               "expr": {
                 "Literal": {
-                  "Value": "'Outline'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "rowHeaders": [
-        {
-          "properties": {
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                  "Value": "'growToFit'"
                 }
               }
             },
-            "bold": {
+            "alignment": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "values": [
-        {
-          "properties": {
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "visualContainerObjects": {
-      "border": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "'Right'"
                 }
               }
             },
-            "radius": {
+            "titleAlignment": {
               "expr": {
                 "Literal": {
-                  "Value": "4D"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
-                    }
-                  }
+                  "Value": "'Left'"
                 }
               }
             }

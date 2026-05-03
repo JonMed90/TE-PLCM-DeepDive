@@ -1,0 +1,287 @@
+/// PLCM phaseout tracking records including batch, status, ECR, MDM request, and submission dates per catalog number.
+table 'Exit Tracker'
+	lineageTag: 68208094-5a34-4fb5-ac03-13fb93f946c2
+
+	/// Phaseout batch grouping identifier.
+	column 'PLCM Phaseout Batch'
+		dataType: string
+		displayFolder: PLCM
+		lineageTag: c655d1fd-5056-4d76-bd8e-dee3a906ba6d
+		summarizeBy: none
+		sourceColumn: PLCM Phaseout Batch
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Current PLCM status of the phaseout record.
+	column 'PLCM Status'
+		dataType: string
+		displayFolder: PLCM
+		lineageTag: 78f870f6-aa23-4807-aca3-298d87479a2f
+		summarizeBy: none
+		sourceColumn: PLCM Status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// MDM (Master Data Management) request tracking number.
+	column 'MDM Request Number'
+		dataType: string
+		displayFolder: Tracking
+		lineageTag: 9f714201-3cd4-40e5-b683-2272f8dd05b4
+		summarizeBy: none
+		sourceColumn: MDM Request #
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Free-text notes and comments on the phaseout record.
+	column Comments
+		dataType: string
+		displayFolder: Tracking
+		lineageTag: 4184ef2a-bdb2-484a-9276-1b071a38d462
+		summarizeBy: none
+		sourceColumn: Comments
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Engineering Change Request number.
+	column 'ECR Number'
+		dataType: string
+		displayFolder: Tracking
+		lineageTag: a4e36e57-e23c-4887-9447-d7bbf8a2ae57
+		summarizeBy: none
+		sourceColumn: ECR #
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Last Transfer Sale date — the cutoff date for the final sale of the item.
+	column 'Last Transfer Sale Date'
+		dataType: dateTime
+		formatString: mm/dd/yy
+		displayFolder: Dates
+		lineageTag: e171d7e8-b41d-4136-a642-1186b59565d4
+		summarizeBy: none
+		sourceColumn: LTS Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Date the phaseout request was submitted.
+	column 'Date Submitted'
+		dataType: dateTime
+		formatString: mm/dd/yy
+		displayFolder: Dates
+		lineageTag: 2b069c6a-0aa3-4411-8b58-7781b494d193
+		summarizeBy: none
+		sourceColumn: Date Submitted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Business unit owning the item being phased out.
+	column 'Business Unit'
+		dataType: string
+		displayFolder: Product
+		lineageTag: bcaa5319-8397-4669-9864-77e49750b06a
+		summarizeBy: none
+		sourceColumn: Business Unit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Brand of the item being phased out.
+	column Brand
+		dataType: string
+		displayFolder: Product
+		lineageTag: 38a9f6f5-b089-4b70-bad6-d82ea8634526
+		summarizeBy: none
+		sourceColumn: Brand
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Sub-brand of the item being phased out.
+	column SubBrand
+		dataType: string
+		displayFolder: Product
+		lineageTag: 79934792-ec16-41d7-a155-2bd44e0ca51f
+		summarizeBy: none
+		sourceColumn: SubBrand
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Catalog number of the item being phased out.
+	column 'Catalog Number'
+		dataType: string
+		displayFolder: Product
+		lineageTag: 2b03bc03-f3a6-47e5-812a-b96ab267acee
+		summarizeBy: none
+		sourceColumn: Catalog Number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Full product description of the item being phased out.
+	column 'Long Description'
+		dataType: string
+		displayFolder: Product
+		lineageTag: 6ebd0e81-63aa-44fe-837f-13b9bc8ba457
+		summarizeBy: none
+		sourceColumn: Long Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Item owner for the product being phased out.
+	column 'Item Owner'
+		dataType: string
+		displayFolder: Product
+		lineageTag: 2abdd213-bd3b-4bfb-a2aa-4299b54f16fa
+		summarizeBy: none
+		sourceColumn: Item Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Life Cycle Code at time of phaseout submission.
+	column 'Life Cycle Code'
+		dataType: string
+		displayFolder: Product
+		lineageTag: 1b523a5e-6580-482e-9df5-b31192018fce
+		summarizeBy: none
+		sourceColumn: LCC
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Foreign key to Product table (hidden — legacy column with naming artifact).
+	column 'GIM_ID (Hide)'
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: bdb9f301-5fa5-4068-8b18-c6aac3dc56c0
+		summarizeBy: none
+		sourceColumn: GIM_ID (Hide)
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Foreign key to Product table.
+	column 'GIM ID'
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: e5e4c2db-8164-4d65-a95b-2436282f5578
+		summarizeBy: none
+		sourceColumn: GIM ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Foreign key to Phase table.
+	column 'Phase ID'
+		dataType: string
+		isHidden
+		displayFolder: Tracking
+		lineageTag: 16fcd866-31a9-4d2c-8fa0-0bcbe166b6e0
+		summarizeBy: none
+		sourceColumn: Phase ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Product Hierarchy'
+		lineageTag: af543f7f-b855-4d33-8b33-6188cdd26bad
+
+		level 'Business Unit'
+			lineageTag: 0f47514f-4180-4ea4-9b59-de680c7ed62b
+			column: 'Business Unit'
+
+		level Brand
+			lineageTag: 370ba3b1-e441-4687-aa18-bc18bf9c2b76
+			column: Brand
+
+		level SubBrand
+			lineageTag: 44d504d1-8368-4ab0-992c-b7a5ff3c63ab
+			column: SubBrand
+
+		level 'Catalog Number'
+			lineageTag: 35f0ece9-4970-4f08-b6b4-7aa32d8fd4e7
+			column: 'Catalog Number'
+
+	partition Dim_ExitTracker = m
+		mode: import
+		queryGroup: Products
+		source =
+				// Exit Tracker — PLCM phaseout tracking records.
+				// Source: Power BI Dataflow > Fact_ConsolidatedList entity
+				// Casts LCC to text and dates to date type, adds a cleaned GIM ID column
+				// (nulls out invalid zero values), renames the legacy column, and drops RowNum.
+				let
+				    // ── Connect to dataflow ──
+				    Source = PowerPlatform.Dataflows( null ),
+				    Workspaces = Source{[Id = "Workspaces"]}[Data],
+				    Workspace = Workspaces{[workspaceId = "7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
+				    Dataflow = Workspace{[dataflowId = "0da45554-39c0-4713-9400-fd465c822e18"]}[Data],
+				    RawConsolidated = Dataflow{[entity = "Fact_ConsolidatedList", version = ""]}[Data],
+				
+				    // ── Cast column types ──
+				    TypeCast = Table.TransformColumnTypes(
+				        RawConsolidated,
+				        {
+				            {"LCC",            type text},
+				            {"LTS Date",       type date},
+				            {"Date Submitted", type date}
+				        }
+				    ),
+				
+				    // ── Add cleaned GIM ID (null when source value is 0 or negative) ──
+				    AddedGIMID = Table.AddColumn(
+				        TypeCast,
+				        "GIM ID",
+				        each if [GIM_ID] > 0 then [GIM_ID] else null,
+				        Int64.Type
+				    ),
+				
+				    // ── Rename the legacy column to preserve it as hidden ──
+				    RenamedLegacy = Table.RenameColumns(
+				        AddedGIMID,
+				        {{"GIM_ID", "GIM_ID (Hide)"}}
+				    ),
+				
+				    // ── Drop row number column from source ──
+				    Cleaned = Table.RemoveColumns( RenamedLegacy, {"RowNum"} )
+				in
+				    Cleaned
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

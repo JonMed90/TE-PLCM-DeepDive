@@ -1,16 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "6028a27062a28bd3a3cd",
   "position": {
     "x": 902.66836086404066,
     "y": 55.298602287166453,
-    "z": 3000,
+    "z": 5500,
     "height": 361.06734434561628,
     "width": 361.06734434561628,
     "tabOrder": 4000
   },
   "visual": {
-    "visualType": "donutChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,13 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Regions"
+                      "Entity": "Region"
                     }
                   },
                   "Property": "Region"
                 }
               },
-              "queryRef": "Regions.Region",
+              "queryRef": "Region.Region",
+              "nativeQueryRef": "Region",
               "active": true
             }
           ]
@@ -41,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Inventory QoH"
+                  "Property": "Inventory Qty on Hand"
                 }
               },
-              "queryRef": "_Measures.Inventory QoH",
-              "nativeQueryRef": "Inventory QoH"
+              "queryRef": "_Measures.Inventory Qty on Hand",
+              "nativeQueryRef": "Inventory Qty on Hand"
             }
           ]
         }
@@ -60,7 +61,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Inventory QoH"
+                "Property": "Inventory Qty on Hand"
               }
             },
             "direction": "Descending"
@@ -84,6 +85,20 @@
                   "Value": "'Top'"
                 }
               }
+            },
+            "showGradientLegend": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -96,7 +111,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 7,
+                      "ColorId": 2,
                       "Percent": 0
                     }
                   }
@@ -214,6 +229,31 @@
               }
             ]
           }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -239,9 +279,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                    "Literal": {
+                      "Value": "'#b3b3b3'"
                     }
                   }
                 }
@@ -256,76 +295,32 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "Filter30355f3d60424539624c",
+        "name": "c2f2ff59cd292c3ce104",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Dim_Regions"
+                "Entity": "Region"
               }
             },
             "Property": "Region"
           }
         },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "r",
-              "Entity": "Dim_Regions",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Not": {
-                  "Expression": {
-                    "In": {
-                      "Expressions": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "r"
-                              }
-                            },
-                            "Property": "Region"
-                          }
-                        }
-                      ],
-                      "Values": [
-                        [
-                          {
-                            "Literal": {
-                              "Value": "null"
-                            }
-                          }
-                        ]
-                      ]
-                    }
-                  }
-                }
+        "type": "Categorical"
+      },
+      {
+        "name": "ea9b6b82b47251263db6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
               }
-            }
-          ]
+            },
+            "Property": "Inventory Qty on Hand"
+          }
         },
-        "objects": {
-          "general": [
-            {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
+        "type": "Advanced"
       }
     ]
   }

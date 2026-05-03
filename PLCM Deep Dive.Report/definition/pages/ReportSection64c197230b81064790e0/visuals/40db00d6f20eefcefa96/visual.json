@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "40db00d6f20eefcefa96",
   "position": {
-    "x": 287.7003121748179,
-    "y": 72.59105098855359,
-    "z": 2000,
-    "height": 139.18834547346515,
-    "width": 182.47658688865766,
+    "x": 266.85837526959023,
+    "y": 72.69590222861251,
+    "z": 5500,
+    "height": 138.95039539899355,
+    "width": 182.19985621854781,
     "tabOrder": 0
   },
   "visual": {
@@ -23,12 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "# ConsolidatedList SKUs"
+                  "Property": "# Exit Tracker SKUs"
                 }
               },
-              "queryRef": "Consolidated List.Measure",
-              "nativeQueryRef": "# SKUs",
-              "displayName": "# SKUs"
+              "queryRef": "_Measures.# Exit Tracker SKUs",
+              "nativeQueryRef": "# Exit Tracker SKUs"
             }
           ]
         }
@@ -43,7 +42,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "# GIM SKUs"
+                "Property": "# Exit Tracker SKUs"
               }
             },
             "direction": "Descending"
@@ -80,8 +79,39 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# Exit Tracker SKUs Card'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5e210659d6c08b2a5428",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "# Exit Tracker SKUs"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "73f0601d591f92fc22ea",
   "position": {
-    "x": 256.16688396349412,
-    "y": 397.18383311603651,
+    "x": 256.37702503681885,
+    "y": 406.2444771723122,
     "z": 1000,
-    "height": 306.23207301173403,
-    "width": 1008.8135593220338,
+    "height": 296.90721649484533,
+    "width": 1008.541973490427,
     "tabOrder": 2000
   },
   "visual": {
@@ -17,62 +17,102 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Business Unit"
+                  "Level": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.Business Unit",
-              "nativeQueryRef": "Business Unit",
+              "queryRef": "Product.Franchise Hierarchy.Business Unit",
+              "nativeQueryRef": "Franchise Hierarchy Business Unit",
               "active": true
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_Regions"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Region"
+                  "Level": "Product Line"
                 }
               },
-              "queryRef": "Dim_Regions.Region",
-              "nativeQueryRef": "Region",
+              "queryRef": "Product.Franchise Hierarchy.Product Line",
+              "nativeQueryRef": "Franchise Hierarchy Product Line",
               "active": false
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Brand"
+                  "Level": "Brand"
                 }
               },
-              "queryRef": "Dim_GIM.Brand",
-              "nativeQueryRef": "Brand",
+              "queryRef": "Product.Franchise Hierarchy.Brand",
+              "nativeQueryRef": "Franchise Hierarchy Brand",
               "active": false
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "SubBrand"
+                  "Level": "SubBrand"
                 }
               },
-              "queryRef": "Dim_GIM.SubBrand",
-              "nativeQueryRef": "SubBrand",
+              "queryRef": "Product.Franchise Hierarchy.SubBrand",
+              "nativeQueryRef": "Franchise Hierarchy SubBrand",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "Catalog Number"
+                }
+              },
+              "queryRef": "Product.Franchise Hierarchy.Catalog Number",
+              "nativeQueryRef": "Franchise Hierarchy Catalog Number",
               "active": false
             }
           ]
@@ -87,11 +127,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Revenue"
+                  "Property": "Actual Revenue"
                 }
               },
-              "queryRef": "_Measures.Revenue",
-              "nativeQueryRef": "Revenue"
+              "queryRef": "_Measures.Actual Revenue",
+              "nativeQueryRef": "Revenue",
+              "displayName": "Revenue"
             },
             {
               "field": {
@@ -101,11 +142,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "COGS"
+                  "Property": "Actual COGS"
                 }
               },
-              "queryRef": "_Measures.COGS",
-              "nativeQueryRef": "COGS"
+              "queryRef": "_Measures.Actual COGS",
+              "nativeQueryRef": "COGS",
+              "displayName": "COGS"
             },
             {
               "field": {
@@ -115,11 +157,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Gross Profit"
+                  "Property": "Actual Gross Profit"
                 }
               },
               "queryRef": "_Measures.Gross Profit",
-              "nativeQueryRef": "Gross Profit"
+              "nativeQueryRef": "Profit Margin",
+              "displayName": "Profit Margin"
             },
             {
               "field": {
@@ -129,11 +172,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Profit Margin"
+                  "Property": "Actual Gross Margin %"
                 }
               },
-              "queryRef": "_Measures.Profit Margin",
-              "nativeQueryRef": "Profit Margin"
+              "queryRef": "_Measures.Gross Margin %",
+              "nativeQueryRef": "Profit Margin %",
+              "displayName": "Profit Margin %"
             },
             {
               "field": {
@@ -143,11 +187,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Budget Growth Margin %"
+                  "Property": "Budget Gross Margin %"
                 }
               },
-              "queryRef": "Budget.Budget Growth Margin %",
-              "nativeQueryRef": "Budget Growth Margin %"
+              "queryRef": "_Measures.Budget Gross Margin %",
+              "nativeQueryRef": "BUD Profit Margin %",
+              "displayName": "BUD Profit Margin %"
             },
             {
               "field": {
@@ -157,12 +202,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
+                  "Property": "Margin Delta %"
                 }
               },
-              "queryRef": "_Measures.Profit Margin minus Sum of Budgeted Growth Margin",
-              "nativeQueryRef": "Margin",
-              "displayName": "Margin"
+              "queryRef": "_Measures.Margin Delta %",
+              "nativeQueryRef": "Margin Delta",
+              "displayName": "Margin Delta"
             },
             {
               "field": {
@@ -172,11 +217,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "E&O (Reserves)"
+                  "Property": "Excess and Obsolete Inventory"
                 }
               },
-              "queryRef": "_Measures.E&O (Reserves)",
-              "nativeQueryRef": "E&O (Reserves)"
+              "queryRef": "_Measures.Excess and Obsolete Inventory",
+              "nativeQueryRef": "E&O Inventory",
+              "displayName": "E&O Inventory"
             },
             {
               "field": {
@@ -186,11 +232,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "E&O (Inventory)"
+                  "Property": "Excess and Obsolete Reserves"
                 }
               },
-              "queryRef": "_Measures.E&O (Inventory)",
-              "nativeQueryRef": "E&O (Inventory)"
+              "queryRef": "_Measures.Excess and Obsolete Reserves",
+              "nativeQueryRef": "E&O Reserves",
+              "displayName": "E&O Reserves"
             },
             {
               "field": {
@@ -200,31 +247,15 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "E&O (Reserve Rate %)"
+                  "Property": "Excess and Obsolete Reserve Rate %"
                 }
               },
-              "queryRef": "_Measures.E&O (Reserve Rate %)",
-              "nativeQueryRef": "E&O (Reserve Rate %)"
+              "queryRef": "_Measures.Excess and Obsolete Reserve Rate %",
+              "nativeQueryRef": "E&O Reserve Rate %",
+              "displayName": "E&O Reserve Rate %"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
-                  }
-                },
-                "Property": "Revenue"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "expansionStates": [
@@ -235,7 +266,7 @@
         "levels": [
           {
             "queryRefs": [
-              "Dim_GIM.Business Unit"
+              "Product.Franchise Hierarchy.Business Unit"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -243,7 +274,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Business Unit"
@@ -254,7 +285,7 @@
           },
           {
             "queryRefs": [
-              "Dim_Regions.Region"
+              "Product.Franchise Hierarchy.Product Line"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -262,10 +293,10 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Regions"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "Region"
+                  "Property": "Product Line"
                 }
               }
             ],
@@ -273,43 +304,38 @@
           },
           {
             "queryRefs": [
-              "Dim_GIM.Brand"
+              "Product.Franchise Hierarchy.Brand"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "Brand"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Product.Franchise Hierarchy.SubBrand"
             ],
             "isCollapsed": true,
             "isPinned": true
           },
           {
             "queryRefs": [
-              "Dim_GIM.SubBrand"
+              "Product.Franchise Hierarchy.Catalog Number"
             ],
             "isCollapsed": true
           }
         ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Trauma'"
-                  }
-                }
-              ],
-              "children": [
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'EMEA'"
-                      }
-                    }
-                  ],
-                  "isToggled": true
-                }
-              ]
-            }
-          ]
-        }
+        "root": {}
       }
     ],
     "objects": {
@@ -930,6 +956,27 @@
                   "Value": "'Left'"
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -944,149 +991,6 @@
                 }
               }
             }
-          }
-        }
-      ],
-      "values": [
-        {
-          "properties": {
-            "icon": {
-              "kind": "Icon",
-              "layout": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'IconOnly'"
-                  }
-                }
-              },
-              "verticalAlignment": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'Top'"
-                  }
-                }
-              },
-              "value": {
-                "expr": {
-                  "Conditional": {
-                    "Cases": [
-                      {
-                        "Condition": {
-                          "And": {
-                            "Left": {
-                              "Comparison": {
-                                "ComparisonKind": 2,
-                                "Left": {
-                                  "Measure": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "_Measures"
-                                      }
-                                    },
-                                    "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
-                                  }
-                                },
-                                "Right": {
-                                  "Literal": {
-                                    "Value": "0D"
-                                  }
-                                }
-                              }
-                            },
-                            "Right": {
-                              "Comparison": {
-                                "ComparisonKind": 4,
-                                "Left": {
-                                  "Measure": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "_Measures"
-                                      }
-                                    },
-                                    "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
-                                  }
-                                },
-                                "Right": {
-                                  "Literal": {
-                                    "Value": "100D"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "Value": {
-                          "Literal": {
-                            "Value": "'SymbolHigh'"
-                          }
-                        }
-                      },
-                      {
-                        "Condition": {
-                          "And": {
-                            "Left": {
-                              "Comparison": {
-                                "ComparisonKind": 2,
-                                "Left": {
-                                  "Measure": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "_Measures"
-                                      }
-                                    },
-                                    "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
-                                  }
-                                },
-                                "Right": {
-                                  "Literal": {
-                                    "Value": "-100000D"
-                                  }
-                                }
-                              }
-                            },
-                            "Right": {
-                              "Comparison": {
-                                "ComparisonKind": 3,
-                                "Left": {
-                                  "Measure": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "_Measures"
-                                      }
-                                    },
-                                    "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
-                                  }
-                                },
-                                "Right": {
-                                  "Literal": {
-                                    "Value": "0D"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "Value": {
-                          "Literal": {
-                            "Value": "'SignLow'"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "metadata": "_Measures.Profit Margin minus Sum of Budgeted Growth Margin"
           }
         }
       ],
@@ -1126,7 +1030,7 @@
                   "color": {
                     "expr": {
                       "Literal": {
-                        "Value": "'#b7cbca'"
+                        "Value": "'#94b1af'"
                       }
                     }
                   }
@@ -1137,7 +1041,7 @@
                   "color": {
                     "expr": {
                       "Literal": {
-                        "Value": "'#F37171'"
+                        "Value": "'#709795'"
                       }
                     }
                   }
@@ -1148,7 +1052,7 @@
                   "color": {
                     "expr": {
                       "Literal": {
-                        "Value": "'foreground'"
+                        "Value": "'#709795'"
                       }
                     }
                   }
@@ -1178,11 +1082,25 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Profit Margin"
+            "metadata": "_Measures.Gross Margin %"
           }
         },
         {
           "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
             "alignment": {
               "expr": {
                 "Literal": {
@@ -1190,16 +1108,195 @@
                 }
               }
             },
-            "styleHeader": {
+            "styleValues": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
             }
           },
           "selector": {
-            "metadata": "_Measures.Profit Margin minus Sum of Budgeted Growth Margin"
+            "metadata": "_Measures.Margin Delta %"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "icon": {
+              "kind": "Icon",
+              "layout": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'IconOnly'"
+                  }
+                }
+              },
+              "verticalAlignment": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Middle'"
+                  }
+                }
+              },
+              "value": {
+                "expr": {
+                  "Conditional": {
+                    "Cases": [
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "_Measures"
+                                      }
+                                    },
+                                    "Property": "Margin Delta %"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "0D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 4,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "_Measures"
+                                      }
+                                    },
+                                    "Property": "Margin Delta %"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "100D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'SymbolHigh'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "_Measures"
+                                      }
+                                    },
+                                    "Property": "Margin Delta %"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "-100D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 3,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "_Measures"
+                                      }
+                                    },
+                                    "Property": "Margin Delta %"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "0D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleSymbolLow'"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "_Measures.Margin Delta %"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "_Measures.Margin Delta %"
           }
         }
       ]
@@ -1226,9 +1323,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                    "Literal": {
+                      "Value": "'#b3b3b3'"
                     }
                   }
                 }

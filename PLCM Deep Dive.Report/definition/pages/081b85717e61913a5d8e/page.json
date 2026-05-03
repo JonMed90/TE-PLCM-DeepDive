@@ -8,12 +8,12 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "62084c0233e5e9996d0c",
+        "name": "60e3d60544c74e5155bb",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Dim_Phase"
+                "Entity": "Phase"
               }
             },
             "Property": "Phase"
@@ -24,8 +24,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "d",
-              "Entity": "Dim_Phase",
+              "Name": "p",
+              "Entity": "Phase",
               "Type": 0
             }
           ],
@@ -38,7 +38,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "d"
+                            "Source": "p"
                           }
                         },
                         "Property": "Phase"
@@ -49,7 +49,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'Post Approval Planning'"
+                          "Value": "'Stop Selling (moving from stop manufacturing to no sales)'"
                         }
                       }
                     ]
@@ -64,17 +64,19 @@
     ]
   },
   "pageBinding": {
-    "name": "05db9170230599d35c00",
+    "name": "6f90911a2464c1698987",
     "type": "Drillthrough",
     "parameters": [
       {
-        "name": "6848fd07a5a4d064d5b8",
-        "boundFilter": "62084c0233e5e9996d0c",
+        "name": "b17b5909eabaca01e08a",
+        "boundFilter": "60e3d60544c74e5155bb",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
         "fieldExpr": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Dim_Phase"
+                "Entity": "Phase"
               }
             },
             "Property": "Phase"

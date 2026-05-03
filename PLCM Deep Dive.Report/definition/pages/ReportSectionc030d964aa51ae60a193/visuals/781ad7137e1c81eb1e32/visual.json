@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "781ad7137e1c81eb1e32",
   "position": {
     "x": 0,
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_GIM"
-                        }
-                      },
-                      "Hierarchy": "Franchise Hierarchy"
+                    "SourceRef": {
+                      "Entity": "Product"
                     }
                   },
-                  "Level": "Business Unit"
+                  "Property": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.Franchise Hierarchy.Business Unit",
-              "nativeQueryRef": "Franchise Hierarchy Business Unit",
+              "queryRef": "Product.Business Unit",
+              "nativeQueryRef": "Business Unit",
               "active": true
             }
           ]
@@ -60,7 +55,15 @@
       ],
       "data": [
         {
-          "properties": {}
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
         }
       ]
     },

@@ -1,0 +1,29 @@
+EVALUATE
+
+	SELECTCOLUMNS(
+		SUMMARIZECOLUMNS(
+			'Exit Tracker'[Business Unit],
+			'Exit Tracker'[Catalog Number],
+			'Exit Tracker'[GIM ID],
+			'Exit Tracker'[Life Cycle Code],
+			'Exit Tracker'[MDM Request Number],
+			'Exit Tracker'[PLCM Phaseout Batch],
+			'Exit Tracker'[PLCM Status],
+			'Exit Tracker'[Item Owner],
+			'Exit Tracker'[Last Transfer Sale Date],
+			'Exit Tracker'[ECR Number],
+			'Exit Tracker'[Date Submitted],
+			"CountRowsExit Tracker", COUNTROWS('Exit Tracker')
+		),
+		"Business Unit", 'Exit Tracker'[Business Unit],
+		"Catalog Number", 'Exit Tracker'[Catalog Number],
+		"GIM ID", 'Exit Tracker'[GIM ID],
+		"LCC", 'Exit Tracker'[Life Cycle Code],
+		"MDM Request #", 'Exit Tracker'[MDM Request Number],
+		"PLCM Phaseout Batch", 'Exit Tracker'[PLCM Phaseout Batch],
+		"PLCM Status", 'Exit Tracker'[PLCM Status],
+		"Item Owner", 'Exit Tracker'[Item Owner],
+		"LTS Date", 'Exit Tracker'[Last Transfer Sale Date],
+		"ECR #", 'Exit Tracker'[ECR Number],
+		"Date Submitted", 'Exit Tracker'[Date Submitted]
+	)

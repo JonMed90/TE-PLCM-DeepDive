@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "fc58d2398af72c6766d7",
   "position": {
     "x": 239.94828700711057,
     "y": 0,
-    "z": 5000,
+    "z": 6500,
     "height": 47.989657401422107,
     "width": 454.24692954104722,
     "tabOrder": 4000
@@ -27,7 +27,7 @@
                     }
                   },
                   {
-                    "value": "PLCM",
+                    "value": "PLCM ",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Arial Black",
@@ -35,17 +35,9 @@
                     }
                   },
                   {
-                    "value": " ",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Segoe (Bold)",
-                      "fontSize": "20pt"
-                    }
-                  },
-                  {
                     "value": "Exit Tracker",
                     "textStyle": {
-                      "fontFamily": "Times New Roman",
+                      "fontFamily": "Arial Black",
                       "fontSize": "20pt",
                       "color": "#ffb500"
                     }
@@ -65,6 +57,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Title Text box'"
                 }
               }
             }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "c71fa79350daefe42c10",
   "position": {
     "x": 881.98174706649274,
@@ -20,13 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "LCC Description"
                 }
               },
-              "queryRef": "GIM.LCC Description",
+              "queryRef": "Product.LCC Description",
+              "nativeQueryRef": "LCC Description",
               "active": true
             }
           ]
@@ -41,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "# GIM SKUs"
+                  "Property": "# Product SKUs"
                 }
               },
-              "queryRef": "Measures Table.# SKUs",
-              "nativeQueryRef": "# SKUs"
+              "queryRef": "_Measures.# Product SKUs",
+              "nativeQueryRef": "# Product SKUs"
             }
           ]
         }
@@ -144,9 +145,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                    "Literal": {
+                      "Value": "'#b3b3b3'"
                     }
                   }
                 }

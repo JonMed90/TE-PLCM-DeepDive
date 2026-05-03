@@ -4,7 +4,7 @@
   "position": {
     "x": 240.167714884696,
     "y": 0,
-    "z": 0,
+    "z": 8000,
     "height": 48.301886792452827,
     "width": 239.49685534591194,
     "tabOrder": 0
@@ -45,7 +45,7 @@
                   {
                     "value": "Home",
                     "textStyle": {
-                      "fontFamily": "Times New Roman",
+                      "fontFamily": "Arial Black",
                       "fontSize": "20pt",
                       "color": "#ffb500"
                     }
@@ -65,6 +65,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Title Text Box'"
                 }
               }
             }

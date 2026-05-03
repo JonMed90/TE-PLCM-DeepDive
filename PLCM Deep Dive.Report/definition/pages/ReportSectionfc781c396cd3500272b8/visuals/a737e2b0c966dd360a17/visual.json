@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "a737e2b0c966dd360a17",
   "position": {
-    "x": 694.09523809523807,
+    "x": 1005.1533742331288,
     "y": 0,
-    "z": 4000,
-    "height": 48.761904761904759,
-    "width": 274.28571428571428,
+    "z": 6000,
+    "height": 49.079754601226995,
+    "width": 274.84662576687117,
     "tabOrder": 3000
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Source: ",
                     "textStyle": {
                       "fontFamily": "Times New Roman",
-                      "fontStyle": "italic"
+                      "color": "#545857"
                     }
                   }
                 ]
@@ -33,7 +33,7 @@
                     "value": "Envision database (GIMItems) refreshed daily",
                     "textStyle": {
                       "fontFamily": "Times New Roman",
-                      "fontStyle": "italic"
+                      "color": "#545857"
                     }
                   }
                 ]
@@ -51,6 +51,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Notes Text box'"
                 }
               }
             }

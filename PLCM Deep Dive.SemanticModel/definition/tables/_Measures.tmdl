@@ -1,70 +1,38 @@
+/// Dedicated measures table. All DAX measures in the model are stored here.
 table _Measures
 	lineageTag: 70681fca-55e8-49f7-82d4-ee08b62e19e9
 
-	/// SUM ( Fact_Sales[COGS] )
+	/// Total cost of goods sold. Sums the COGS column from the Sales table.
 	measure COGS =
 			
-			SUM ( Fact_Sales[COGS] )
+			SUM ( Sales[COGS] )
 		formatString: \$#,0;(\$#,0);\$#,0
 		displayFolder: Sales
 		lineageTag: b8cac9ab-2b7f-4c0c-bab8-e107d89f6eaf
 
 		changedProperty = FormatString
 
-	/// COUNTROWS ( 'Fact_ConsolidatedList' )
-	measure '# ConsolidatedList SKUs' =
-			
-			COUNTROWS ( 'Fact_ConsolidatedList' )
-		formatString: #,0
-		displayFolder: PLCM
-		lineageTag: 720b927f-c470-414e-a6a5-5a16eeec0df0
-
-		changedProperty = IsHidden
-
-	/// VAR TTMCogs = [TTM COGS]
-	/// RETURN
-	/// IF ( TTMCogs = 0, BLANK (), DIVIDE ( [Ext Statutory Cost], TTMCogs ) * 365 )
-	measure 'DSI (COGS)' =
+	/// Days Sales of Inventory (DSI). Divides current inventory statutory cost by trailing 12-month COGS, multiplied by 365. Higher values indicate slower-moving inventory. Returns BLANK if TTM COGS is zero.
+	measure 'Days Sales of Inventory' =
 			
 			VAR TTMCogs = [TTM COGS]
 			RETURN
-			    IF ( TTMCogs = 0, BLANK (), DIVIDE ( [Ext Statutory Cost], TTMCogs ) * 365 )
+			    IF (
+			        TTMCogs = 0,
+			        BLANK (),
+			        DIVIDE ( [Ext Statutory Cost], TTMCogs ) * 365
+			    )
 		formatString: #,0.0
 		displayFolder: Inventory
 		lineageTag: bf3ab89d-9135-4648-966a-647678351a20
 
 		changedProperty = FormatString
 
-	/// VAR Brand =
-	/// SELECTEDVALUE ( Dim_GIM[Global PLCM Decision (Brand)] )
-	/// VAR SubBrand =
-	/// SELECTEDVALUE ( Dim_GIM[Global PLCM Decision (SubBrand)] )
-	/// RETURN
-	/// IF ( ISINSCOPE ( Dim_GIM[SubBrand] ), SubBrand, Brand )
-	measure 'Dynamic Global PLCM Decision' =
-			
-			VAR Brand =
-			    SELECTEDVALUE ( Dim_GIM[Global PLCM Decision (Brand)] )
-			VAR SubBrand =
-			    SELECTEDVALUE ( Dim_GIM[Global PLCM Decision (SubBrand)] )
-			RETURN
-			    IF ( ISINSCOPE ( Dim_GIM[SubBrand] ), SubBrand, Brand )
-		displayFolder: PLCM
-		lineageTag: 33d54d86-362f-4716-bfe1-d81d5dddb9c9
-
-	/// VAR SelectedKPI =
-	/// SELECTEDVALUE ( 'Dim_KPI'[KPI] )
-	/// RETURN
-	/// SWITCH (
-	/// TRUE (),
-	/// SelectedKPI = "Revenue", [Revenue],
-	/// SelectedKPI = "Units", [Units Sold],
-	/// SelectedKPI = "COGS", [COGS]
-	/// )
+	/// Returns the selected KPI value (Revenue, Units, or COGS) based on the _KPI slicer selection. Powers the dynamic KPI toggle visual.
 	measure 'Dynamic Sales KPI' =
 			
 			VAR SelectedKPI =
-			    SELECTEDVALUE ( 'Dim_KPI'[KPI] )
+			    SELECTEDVALUE ( '_KPI'[KPI] )
 			RETURN
 			    SWITCH (
 			        TRUE (),
@@ -80,20 +48,20 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
-	/// SUM ( Fact_Inventory[QuantityOnHand] )
-	measure 'Inventory QoH' =
+	/// Total units currently on hand across all inventory locations.
+	measure 'Inventory Qty on Hand' =
 			
-			SUM ( Fact_Inventory[QuantityOnHand] )
+			SUM ( Inventory[Quantity On Hand] )
 		formatString: #,0
 		displayFolder: Inventory
 		lineageTag: 8ca778fb-6cd8-4952-8305-a855c6053d81
 
 		changedProperty = FormatString
 
-	/// SUM ( Fact_Inventory[ERP_Extended_Statutory_Cost_USD] )
+	/// Total extended statutory cost (USD) of current inventory. Used as the numerator in Days Sales of Inventory.
 	measure 'Ext Statutory Cost' =
 			
-			SUM ( Fact_Inventory[ERP_Extended_Statutory_Cost_USD] )
+			SUM ( Inventory[Ext Statutory Cost USD] )
 		formatString: \$#,0;(\$#,0);\$#,0
 		displayFolder: Inventory
 		lineageTag: aec56f89-743d-4d6d-b158-9f62429a16d6
@@ -102,10 +70,10 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// SUM ( Fact_Sales[Revenue] )
+	/// Total revenue from all sales transactions. Sums the Revenue column from the Sales table.
 	measure Revenue =
 			
-			SUM ( Fact_Sales[Revenue] )
+			SUM ( Sales[Revenue] )
 		formatString: \$#,0;(\$#,0);\$#,0
 		displayFolder: Sales
 		lineageTag: e6205c9f-7019-47f1-a963-2b2c9761fd04
@@ -114,204 +82,182 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// VAR EndDate =
-	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
-	/// VAR StartDate =
-	/// EDATE ( EndDate, -12 ) + 1
-	/// RETURN
-	/// CALCULATE ( [COGS], DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate ) )
+	/// Trailing 12-month COGS. Filters the Sales table to the 12-month window ending at the latest actual date.
 	measure 'TTM COGS' =
 			
-			VAR EndDate =
-			    CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
-			VAR StartDate =
-			    EDATE ( EndDate, -12 ) + 1
+			VAR EndDate = [TTM End Date]
+			VAR StartDate = [TTM Start Date] + 1
 			RETURN
-			    CALCULATE ( [COGS], DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate ) )
+			    CALCULATE (
+			        [COGS],
+			        DATESBETWEEN ( 'Calendar'[Date], StartDate, EndDate )
+			    )
 		formatString: \$#,0;(\$#,0);\$#,0
-		displayFolder: Trailing 12M
+		displayFolder: Sales\Trailing 12M
 		lineageTag: a413169c-b97e-4a48-90fd-5e8b2841c584
 
 		changedProperty = FormatString
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// VAR EndDate =
-	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" ) --retrieves last date of actual sales
-	/// VAR StartDate =
-	/// EDATE ( EndDate, -12 ) + 1 -- Shifts EndDate to date beginning
-	/// RETURN
-	/// CALCULATE (
-	/// [Revenue],
-	/// DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
-	/// )
+	/// Trailing 12-month revenue. Filters the Sales table to the 12-month window ending at the latest actual date.
 	measure 'TTM Revenue' =
 			
-			VAR EndDate =
-			    CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" ) --retrieves last date of actual sales
-			VAR StartDate =
-			    EDATE ( EndDate, -12 ) + 1 -- Shifts EndDate to date beginning
+			VAR EndDate = [TTM End Date]
+			VAR StartDate = [TTM Start Date] + 1
 			RETURN
 			    CALCULATE (
 			        [Revenue],
-			        DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
+			        DATESBETWEEN ( 'Calendar'[Date], StartDate, EndDate )
 			    )
 		formatString: \$#,0;(\$#,0);\$#,0
-		displayFolder: Trailing 12M
+		displayFolder: Sales\Trailing 12M
 		lineageTag: b9edf60d-9d37-4940-aedc-8078ac5fddfd
 
 		changedProperty = FormatString
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// VAR EndDate =
-	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" ) --retrieves last date of actual sales
-	/// VAR StartDate =
-	/// EDATE ( EndDate, -12 ) + 1 -- Shifts EndDate to date beginning
-	/// RETURN
-	/// CALCULATE (
-	/// [Units Sold],
-	/// DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
-	/// )
+	/// Trailing 12-month units sold. Filters the Sales table to the 12-month window ending at the latest actual date.
 	measure 'TTM Units' =
 			
-			VAR EndDate =
-			    CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" ) --retrieves last date of actual sales
-			VAR StartDate =
-			    EDATE ( EndDate, -12 ) + 1 -- Shifts EndDate to date beginning
+			VAR EndDate = [TTM End Date]
+			VAR StartDate = [TTM Start Date] + 1
 			RETURN
 			    CALCULATE (
 			        [Units Sold],
-			        DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
+			        DATESBETWEEN ( 'Calendar'[Date], StartDate, EndDate )
 			    )
 		formatString: #,0
-		displayFolder: Trailing 12M
+		displayFolder: Sales\Trailing 12M
 		lineageTag: 81c65ac1-0ecc-4233-8109-25f176195073
 
 		changedProperty = FormatString
 
-	/// SUM ( Fact_Sales[Quantity] )
+	/// Total units sold across all transactions. Sums the Quantity column from the Sales table.
 	measure 'Units Sold' =
 			
-			SUM ( Fact_Sales[Quantity] )
+			SUM ( Sales[Quantity] )
 		formatString: #,0
 		displayFolder: Sales
 		lineageTag: 5caa14ff-a22d-4c0c-8087-ec4bf483eb72
 
 		changedProperty = FormatString
 
-	/// VAR EndDate =
-	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
-	/// RETURN
-	/// EDATE ( EndDate, -12 ) + 1
+	/// Start of the trailing 12-month window. Shifts 12 months back from TTM End Date.
 	measure 'TTM Start Date' =
 			
-			VAR EndDate =
-			    CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
+			VAR EndDate = [TTM End Date]
 			RETURN
 			    EDATE ( EndDate, -12 ) + 1
-		formatString: General Date
-		displayFolder: Trailing 12M
+		formatString: mm/dd/yy
+		displayFolder: Sales\Trailing 12M
 		lineageTag: 5b07bd4f-5e65-4864-802e-30c386966ace
 
-	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Latest date with actual (AC) sales data. Used as the anchor for all trailing 12-month calculations.
 	measure 'TTM End Date' =
 			
-			CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
-		formatString: General Date
-		displayFolder: Trailing 12M
+			CALCULATE (
+			    MAX ( Sales[Date] ),
+			    REMOVEFILTERS ( Sales ),
+			    Sales[Scenario] = "AC"
+			)
+		formatString: mm/dd/yy
+		displayFolder: Sales\Trailing 12M
 		lineageTag: 2a5ecab0-cefb-49c7-8d79-10e31195084a
 
-	/// DISTINCTCOUNT ( Dim_GIM[ItemId] )
-	measure '# GIM SKUs' =
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Count of distinct product SKUs (by Item ID) in the current filter context.
+	measure '# Product SKUs' =
 			
-			DISTINCTCOUNT ( Dim_GIM[ItemId] )
+			DISTINCTCOUNT ( Product[Item ID] )
 		formatString: #,0
-		displayFolder: PLCM
+		displayFolder: GIM
 		lineageTag: dac12fbc-ab6a-485b-945e-212130a9f9e3
 
-	/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" )
-	measure 'Forecast Sales - End Date' =
+	/// Latest date with forecast (FC) data.
+	measure 'FC - End Date' =
 			
-			CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" )
-		formatString: General Date
+			CALCULATE (
+			    MAX ( Sales[Date] ),
+			    Sales[Scenario] = "FC"
+			)
+		formatString: mm/dd/yy
 		displayFolder: Demand
 		lineageTag: 983b29ad-3c4d-4462-a2b8-795a7643402d
 
-	/// VAR StartingMonth =
-	/// CALCULATE ( MIN ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" )
-	/// RETURN
-	/// DATE ( YEAR ( StartingMonth ), MONTH ( StartingMonth ), 1 )
-	measure 'Forecast Sales - Start Date' =
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// First day of the earliest forecast month. Truncates to month start for clean date filtering.
+	measure 'FC - Start Date' =
 			
 			VAR StartingMonth =
-			    CALCULATE ( MIN ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" )
+			    CALCULATE (
+			        MIN ( Sales[Date] ),
+			        Sales[Scenario] = "FC"
+			    )
 			RETURN
 			    DATE ( YEAR ( StartingMonth ), MONTH ( StartingMonth ), 1 )
-		formatString: General Date
+		formatString: mm/dd/yy
 		displayFolder: Demand
 		lineageTag: 311a5902-7d89-4d86-b12d-d714ebca39ae
 
-	/// SELECTEDVALUE ( 'Dim_KPI'[KPI] )
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Returns the name of the currently selected KPI from the _KPI slicer. Used for dynamic titles and labels.
 	measure 'Dynamic Sales KPI Selection' =
 			
-			SELECTEDVALUE ( 'Dim_KPI'[KPI] )
+			SELECTEDVALUE ( '_KPI'[KPI] )
 		displayFolder: KPI Toggle
 		lineageTag: 622f9b9a-2ca3-41fd-bfcb-3a84418e476f
 
-	/// [Revenue] - [COGS]
-	measure 'Gross Profit' =
+	/// Gross profit calculated as Revenue minus COGS.
+	measure 'Actual Gross Profit' =
 			
-			[Revenue] - [COGS]
+			[Actual Revenue] - [Actual COGS]
 		formatString: \$#,0;(\$#,0);\$#,0
 		displayFolder: Profitability
 		lineageTag: 49aa30ea-bd26-4e58-ab20-e56c161b1e4e
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// DIVIDE ( [Gross Profit], [Revenue] )
-	measure 'Profit Margin' =
+	/// Actual gross margin as a percentage. Divides gross profit by revenue, returns BLANK if revenue is zero.
+	measure 'Actual Gross Margin %' =
 			
-			DIVIDE ( [Gross Profit], [Revenue] )
+			DIVIDE ( [Actual Gross Profit], [Actual Revenue] )
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Profitability
 		lineageTag: 738d0342-3dca-46b0-848d-42306c5fb5a8
 
-	/// IF (
-	/// ISBLANK ( [Revenue] ) || [Revenue] = 0,
-	/// BLANK (),
-	/// [Profit Margin] - [Budget Growth Margin %]
-	/// )
-	measure 'Profit Margin minus Sum of Budgeted Growth Margin' =
+	/// Difference between actual and budgeted gross margin. Positive values indicate outperformance vs budget. Returns BLANK when revenue is zero or missing.
+	measure 'Margin Delta %' =
 			
 			IF (
-			    ISBLANK ( [Revenue] ) || [Revenue] = 0,
+			    ISBLANK ( [Actual Revenue] ) || [Actual Revenue] = 0,
 			    BLANK (),
-			    [Profit Margin] - [Budget Growth Margin %]
+			    [Actual Gross Margin %] - [Budget Gross Margin %]
 			)
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Profitability
 		lineageTag: 99608302-db59-4f39-b772-e391f1fc7d42
 
-	/// VAR StartDate =
-	/// CALCULATE ( MIN ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" ) --retrieves last date of actual sales
-	/// VAR EndDate =
-	/// EDATE ( StartDate, 12 ) - 1 -- Shifts EndDate to date beginning
-	/// RETURN
-	/// CALCULATE (
-	/// [Units Sold],
-	/// DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
-	/// )
+	/// Forecasted unit demand for the next 12 months. Filters the Sales table to forecast scenario within a 12-month window starting from the first forecast date.
 	measure 'Next 12M Demand Units' =
 			
 			VAR StartDate =
-			    CALCULATE ( MIN ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "FC" ) --retrieves last date of actual sales
-			VAR EndDate =
-			    EDATE ( StartDate, 12 ) - 1 -- Shifts EndDate to date beginning
+			    CALCULATE (
+			        MIN ( Sales[Date] ),
+			        ALL (),
+			        Sales[Scenario] = "FC"
+			    )
+			VAR EndDate = EDATE ( StartDate, 12 ) - 1
 			RETURN
 			    CALCULATE (
 			        [Units Sold],
-			        DATESBETWEEN ( 'Dim_Calendar'[Date], StartDate, EndDate )
+			        DATESBETWEEN ( 'Calendar'[Date], StartDate, EndDate )
 			    )
 		formatString: #,0
 		displayFolder: Demand
@@ -319,102 +265,122 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
-	/// SUM ( Fact_Inventory[ERP_Extended_Management_Cost_USD] )
+	/// Total extended management cost (USD) of current inventory.
 	measure 'Ext Management Cost' =
 			
-			SUM ( Fact_Inventory[ERP_Extended_Management_Cost_USD] )
+			SUM ( Inventory[Ext Management Cost USD] )
 		formatString: \$#,0;(\$#,0);\$#,0
 		displayFolder: Inventory
 		lineageTag: c326d1b4-ae0c-4365-b9bb-d8a66a0fd42b
 
-	/// IF (
-	/// ISBLANK ( [Revenue] ) || [Revenue] = 0,
-	/// BLANK (),
-	/// CALCULATE (
-	/// SELECTEDVALUE ( Budget[Budgeted %] ),
-	/// TREATAS ( VALUES ( Dim_GIM[Business Unit] ), Budget[BU] )
-	/// )
-	/// )
-	measure 'Budget Growth Margin %' =
+	/// Budgeted gross margin percentage for the current business unit context. Uses TREATAS to map the Product table's Business Unit to the _Budget lookup table. Returns BLANK when revenue is zero or missing.
+	measure 'Budget Gross Margin %' =
 			
 			IF (
-			    ISBLANK ( [Revenue] ) || [Revenue] = 0,
+			    ISBLANK ( [Actual Revenue] ) || [Actual Revenue] = 0,
 			    BLANK (),
 			    CALCULATE (
-			        SELECTEDVALUE ( Budget[Budgeted %] ),
-			        TREATAS ( VALUES ( Dim_GIM[Business Unit] ), Budget[BU] )
+			        SELECTEDVALUE ( _Budget[Budgeted %] ),
+			        TREATAS ( VALUES ( Product[Business Unit] ), _Budget[Business Unit] )
 			    )
 			)
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Profitability
 		lineageTag: 606018e5-989b-46a8-baba-07118ff8ab02
 
-	/// SUM ( 'Fact_E&O'[Amount] )
-	measure 'E&O Total' =
+	/// Total excess and obsolete amount across all account types (Inventory + Reserves).
+	measure 'Excess and Obsolete Total' =
 			
-			SUM ( 'Fact_E&O'[Amount] )
+			SUM ( 'Excess and Obsolete'[Amount] )
 		formatString: \$#,0;(\$#,0);\$#,0
-		displayFolder: E&O
+		isHidden
+		displayFolder: Excess and Obsolete
 		lineageTag: dfae5048-e225-47b3-9fbf-879e5da28ada
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// CALCULATE ( [E&O Total], 'Fact_E&O'[Account] = "Reserves" )
-	measure 'E&O (Reserves)' =
+	/// Reserve provisions for excess and obsolete inventory. Filters to Account = Reserves.
+	measure 'Excess and Obsolete Reserves' =
 			
-			CALCULATE ( [E&O Total], 'Fact_E&O'[Account] = "Reserves" )
+			CALCULATE (
+			    [Excess and Obsolete Total],
+			    'Excess and Obsolete'[Account] = "Reserves"
+			)
 		formatString: \$#,0;(\$#,0);\$#,0
-		displayFolder: E&O
+		displayFolder: Excess and Obsolete
 		lineageTag: 90e1a07b-4064-4caf-b49f-e28d74185b75
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// CALCULATE ( [E&O Total], 'Fact_E&O'[Account] = "Inventory" )
-	measure 'E&O (Inventory)' =
+	/// On-hand value of excess and obsolete inventory. Filters to Account = Inventory.
+	measure 'Excess and Obsolete Inventory' =
 			
-			CALCULATE ( [E&O Total], 'Fact_E&O'[Account] = "Inventory" )
+			CALCULATE (
+			    [Excess and Obsolete Total],
+			    'Excess and Obsolete'[Account] = "Inventory"
+			)
 		formatString: \$#,0;(\$#,0);\$#,0
-		displayFolder: E&O
+		displayFolder: Excess and Obsolete
 		lineageTag: 14791f93-cce9-45d9-a0bb-f7c9ddee0f47
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// DIVIDE ( [E&O (Reserves)], [E&O (Inventory)] )
-	measure 'E&O (Reserve Rate %)' =
+	/// Reserve rate as a percentage. Divides total reserves by total inventory value. Higher rates indicate greater write-down exposure.
+	measure 'Excess and Obsolete Reserve Rate %' =
 			
-			DIVIDE ( [E&O (Reserves)], [E&O (Inventory)] )
+			DIVIDE (
+			    [Excess and Obsolete Reserves],
+			    [Excess and Obsolete Inventory]
+			)
 		formatString: 0.0%;-0.0%;0.0%
-		displayFolder: E&O
+		displayFolder: Excess and Obsolete
 		lineageTag: d3b47386-1394-4694-beec-7bbb83177c86
 
-	measure 'Actual Sales - Start Date' = CALCULATE(Min(Fact_Sales[Date]), ALL(), Fact_Sales[Scenario] = "AC")
-		formatString: General Date
-		displayFolder: Trailing 12M
+	/// Earliest date with actual (AC) sales data.
+	measure 'AC - Start Date' =
+			
+			CALCULATE (
+			    MIN ( Sales[Date] ),
+			    Sales[Scenario] = "AC"
+			)
+		formatString: mm/dd/yy
+		displayFolder: Sales\Trailing 12M
 		lineageTag: db81256b-d0e9-43d9-ba85-ca30c3a058c9
 
-	measure 'Actual Sales - End Date' = CALCULATE(Max(Fact_Sales[Date]), ALL(), Fact_Sales[Scenario] = "AC")
-		formatString: General Date
-		displayFolder: Trailing 12M
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Latest date with actual (AC) sales data. Equivalent to TTM End Date but without REMOVEFILTERS.
+	measure 'AC - End Date' =
+			
+			CALCULATE (
+			    MAX ( Sales[Date] ),
+			    Sales[Scenario] = "AC"
+			)
+		formatString: mm/dd/yy
+		displayFolder: Sales\Trailing 12M
 		lineageTag: 4645dd7d-43a4-4e90-bdb4-338c9db62afd
 
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Generates an HTML chevron progress tracker for the PLCM phaseout lifecycle. Renders a header bar with item context (BU, Brand, Catalog Number, ECR, dates), a 7-step chevron showing completed, active, and upcoming phases with color-coded backgrounds, an orange indicator bar under the active phase, and the current phase objective. Used in an HTML Content visual.
 	measure 'Phase Tracker HTML' =
 			
-			VAR _ActivePhase  = SELECTEDVALUE(Dim_Phase[Phase ID], 0)
-			VAR _ActiveName   = SELECTEDVALUE(Dim_Phase[Phase], "—")
-			VAR _ActiveBG     = LOOKUPVALUE(Dim_Phase[Phase BG Color],   Dim_Phase[Phase ID], _ActivePhase)
-			VAR _ActiveFont   = LOOKUPVALUE(Dim_Phase[Phase Font Color], Dim_Phase[Phase ID], _ActivePhase)
-			VAR _Objective    = LOOKUPVALUE(Dim_Phase[Objective],        Dim_Phase[Phase ID], _ActivePhase)
+			VAR _ActivePhase  = SELECTEDVALUE(Phase[Phase ID], 0)
+			VAR _ActiveName   = SELECTEDVALUE(Phase[Phase], "—")
+			VAR _ActiveBG     = LOOKUPVALUE(Phase[Phase BG Color],   Phase[Phase ID], _ActivePhase)
+			VAR _ActiveFont   = LOOKUPVALUE(Phase[Phase Font Color], Phase[Phase ID], _ActivePhase)
+			VAR _Objective    = LOOKUPVALUE(Phase[Objective],        Phase[Phase ID], _ActivePhase)
 			
-			VAR _BU       = SELECTEDVALUE(Fact_ConsolidatedList[Business Unit], "—")
-			VAR _Brand    = SELECTEDVALUE(Fact_ConsolidatedList[Brand], "—")
-			VAR _SubBrand = SELECTEDVALUE(Fact_ConsolidatedList[SubBrand], "—")
-			VAR _Catalog  = SELECTEDVALUE(Fact_ConsolidatedList[Catalog Number], "—")
-			VAR _Batch    = SELECTEDVALUE(Fact_ConsolidatedList[PLCM Phaseout Batch], "—")
-			VAR _LCC      = SELECTEDVALUE(Fact_ConsolidatedList[LCC], "—")
-			VAR _ECR = SELECTEDVALUE(Fact_ConsolidatedList[ECR #], "N/A")
-			VAR _MdmRequest = SELECTEDVALUE(Fact_ConsolidatedList[MDM Request #], "—")
-			VAR _LtsDate = SELECTEDVALUE(Fact_ConsolidatedList[LTS Date], "—")
-			VAR _DateSubmitted = SELECTEDVALUE(Fact_ConsolidatedList[Date Submitted], "—")
+			VAR _BU       = SELECTEDVALUE('Exit Tracker'[Business Unit], "—")
+			VAR _Brand    = SELECTEDVALUE('Exit Tracker'[Brand], "—")
+			VAR _SubBrand = SELECTEDVALUE('Exit Tracker'[SubBrand], "—")
+			VAR _Catalog  = SELECTEDVALUE('Exit Tracker'[Catalog Number], "—")
+			VAR _Batch    = SELECTEDVALUE('Exit Tracker'[PLCM Phaseout Batch], "—")
+			VAR _LCC      = SELECTEDVALUE('Exit Tracker'[Life Cycle Code], "—")
+			VAR _ECR = SELECTEDVALUE('Exit Tracker'[ECR Number], "N/A")
+			VAR _MdmRequest = SELECTEDVALUE('Exit Tracker'[MDM Request Number], "—")
+			VAR _LtsDate = SELECTEDVALUE('Exit Tracker'[Last Transfer Sale Date], "—")
+			VAR _DateSubmitted = SELECTEDVALUE('Exit Tracker'[Date Submitted], "—")
 			
 			
 			-- Chevron background per step
@@ -521,29 +487,25 @@ table _Measures
 			</div>"
 			
 			RETURN _Style & _HTML
+		displayFolder: PLCM Stage Phase
 		lineageTag: 5e4399b4-0823-421c-959a-509aa657618a
 
-	/// COUNTROWS ( Dim_GIM ) - DISTINCTCOUNT ( Dim_GIM[ItemId] )
+	/// Data quality check: counts duplicate Item IDs in the Product table. A non-zero result means the Product table has rows sharing the same Item ID, which breaks one-to-many relationships.
 	measure '[_DQ_] Dim_GIM Duplicate ItemIds' =
 			
-			COUNTROWS ( Dim_GIM ) - DISTINCTCOUNT ( Dim_GIM[ItemId] )
+			COUNTROWS ( Product ) - DISTINCTCOUNT ( Product[Item ID] )
 		formatString: #,0
 		isHidden
 		displayFolder: _DQ_
 		lineageTag: a1b2c3d4-e5f6-4789-a012-b34c5d6e7f80
 
-	/// COUNTROWS (
-	/// EXCEPT (
-	/// DISTINCT ( ALL ( Fact_Sales[ItemId] ) ),
-	/// DISTINCT ( ALL ( Dim_GIM[ItemId] ) )
-	/// )
-	/// )
+	/// Data quality check: counts Item IDs in Sales that have no matching record in the Product table. Non-zero means orphaned sales rows.
 	measure '[_DQ_] Fact_Sales Unmatched ItemIds' =
 			
 			COUNTROWS (
 			    EXCEPT (
-			        DISTINCT ( ALL ( Fact_Sales[ItemId] ) ),
-			        DISTINCT ( ALL ( Dim_GIM[ItemId] ) )
+			        DISTINCT ( ALL ( Sales[Item ID] ) ),
+			        DISTINCT ( ALL ( Product[Item ID] ) )
 			    )
 			)
 		formatString: #,0
@@ -551,18 +513,13 @@ table _Measures
 		displayFolder: _DQ_
 		lineageTag: b1c2d3e4-f5a6-4789-b012-c34d5e6f7a80
 
-	/// COUNTROWS (
-	/// EXCEPT (
-	/// DISTINCT ( ALL ( Fact_Inventory[ItemId] ) ),
-	/// DISTINCT ( ALL ( Dim_GIM[ItemId] ) )
-	/// )
-	/// )
+	/// Data quality check: counts Item IDs in Inventory that have no matching record in the Product table. Non-zero means orphaned inventory rows.
 	measure '[_DQ_] Fact_Inventory Unmatched ItemIds' =
 			
 			COUNTROWS (
 			    EXCEPT (
-			        DISTINCT ( ALL ( Fact_Inventory[ItemId] ) ),
-			        DISTINCT ( ALL ( Dim_GIM[ItemId] ) )
+			        DISTINCT ( ALL ( Inventory[Item ID] ) ),
+			        DISTINCT ( ALL ( Product[Item ID] ) )
 			    )
 			)
 		formatString: #,0
@@ -570,56 +527,49 @@ table _Measures
 		displayFolder: _DQ_
 		lineageTag: c1d2e3f4-a5b6-4789-c012-d34e5f6a7b80
 
-	/// VAR UnmatchedRegions =
-	/// EXCEPT (
-	/// DISTINCT ( ALL ( Fact_Inventory[Region] ) ),
-	/// DISTINCT ( ALL ( Dim_Regions[Region] ) )
-	/// )
-	/// RETURN
-	/// COUNTROWS ( FILTER ( ALL ( Fact_Inventory ), Fact_Inventory[Region] IN UnmatchedRegions ) )
+	/// Data quality check: counts Inventory rows whose Region Index has no match in the Region table. Non-zero means orphaned inventory rows by region.
 	measure '[_DQ_] Fact_Inventory Unmatched Region Rows' =
 			
 			VAR UnmatchedRegions =
 			    EXCEPT (
-			        DISTINCT ( ALL ( Fact_Inventory[Region] ) ),
-			        DISTINCT ( ALL ( Dim_Regions[Region] ) )
+			        DISTINCT ( ALL ( Inventory[Region Index] ) ),
+			        DISTINCT ( ALL ( Region[Index] ) )
 			    )
 			RETURN
-			    COUNTROWS ( FILTER ( ALL ( Fact_Inventory ), Fact_Inventory[Region] IN UnmatchedRegions ) )
+			    COUNTROWS (
+			        FILTER (
+			            ALL ( Inventory ),
+			            Inventory[Region Index] IN UnmatchedRegions
+			        )
+			    )
 		formatString: #,0
 		isHidden
 		displayFolder: _DQ_
 		lineageTag: d1e2f3a4-b5c6-4789-d012-e34f5a6b7c80
 
-	/// CALCULATE (
-	/// COUNTROWS ( Fact_Sales ),
-	/// NOT ( Fact_Sales[Scenario] IN { "AC", "FC" } ),
-	/// ALL ( Fact_Sales )
-	/// )
+	/// Data quality check: counts Sales rows with a Scenario value other than AC or FC. Non-zero means unexpected scenario codes in the data.
 	measure '[_DQ_] Fact_Sales Invalid Scenario Rows' =
 			
 			CALCULATE (
-			    COUNTROWS ( Fact_Sales ),
-			    NOT ( Fact_Sales[Scenario] IN { "AC", "FC" } ),
-			    ALL ( Fact_Sales )
+			    COUNTROWS ( Sales ),
+			    NOT ( Sales[Scenario] IN { "AC", "FC" } ),
+			    ALL ( Sales )
 			)
 		formatString: #,0
 		isHidden
 		displayFolder: _DQ_
 		lineageTag: e1f2a3b4-c5d6-4789-e012-f34a5b6c7d80
 
-	/// VAR TotalRows = COUNTROWS ( ALL ( Fact_Sales ) )
-	/// VAR NullRows =
-	/// COUNTROWS (
-	/// FILTER ( ALL ( Fact_Sales ), ISBLANK ( Fact_Sales[Dim_Regions.Index] ) )
-	/// )
-	/// RETURN DIVIDE ( NullRows, TotalRows )
+	/// Percentage of Sales rows with a blank Region Index. Used to monitor region mapping completeness.
 	measure '[_Metrics_] % Fact_Sales Null Region' =
 			
-			VAR TotalRows = COUNTROWS ( ALL ( Fact_Sales ) )
+			VAR TotalRows = COUNTROWS ( ALL ( Sales ) )
 			VAR NullRows =
 			    COUNTROWS (
-			        FILTER ( ALL ( Fact_Sales ), ISBLANK ( Fact_Sales[Dim_Regions.Index] ) )
+			        FILTER (
+			            ALL ( Sales ),
+			            ISBLANK ( Sales[Region Index] )
+			        )
 			    )
 			RETURN
 			    DIVIDE ( NullRows, TotalRows )
@@ -628,18 +578,16 @@ table _Measures
 		displayFolder: _Metrics_
 		lineageTag: f1a2b3c4-d5e6-4789-f012-a34b5c6d7e80
 
-	/// VAR TotalRows = COUNTROWS ( ALL ( Fact_Inventory ) )
-	/// VAR NullRows =
-	/// COUNTROWS (
-	/// FILTER ( ALL ( Fact_Inventory ), ISBLANK ( Fact_Inventory[Region] ) )
-	/// )
-	/// RETURN DIVIDE ( NullRows, TotalRows )
+	/// Percentage of Inventory rows with a blank Region Index. Used to monitor region mapping completeness.
 	measure '[_Metrics_] % Fact_Inventory Null Region' =
 			
-			VAR TotalRows = COUNTROWS ( ALL ( Fact_Inventory ) )
+			VAR TotalRows = COUNTROWS ( ALL ( Inventory ) )
 			VAR NullRows =
 			    COUNTROWS (
-			        FILTER ( ALL ( Fact_Inventory ), ISBLANK ( Fact_Inventory[Region] ) )
+			        FILTER (
+			            ALL ( Inventory ),
+			            ISBLANK ( Inventory[Region Index] )
+			        )
 			    )
 			RETURN
 			    DIVIDE ( NullRows, TotalRows )
@@ -648,6 +596,241 @@ table _Measures
 		displayFolder: _Metrics_
 		lineageTag: a2b3c4d5-e6f7-4789-a123-b45c6d7e8f90
 
+	/// Comma-separated list of all department role names assigned to the current task context. Sorted alphabetically. Used as the base for Responsible and Accountable filtered variants.
+	measure 'Departments (by Code)' =
+			
+			CONCATENATEX (
+			    VALUES ( 'Task Assignment'[Role Name] ),
+			    'Task Assignment'[Role Name],
+			    ", ",
+			    'Task Assignment'[Role Name],
+			    ASC
+			)
+		displayFolder: PLCM Stage Phase
+		lineageTag: 9d101b4e-de9e-4e7d-b7ad-043319de7845
+
+	/// Department(s) with Responsible assignment for the current task. Filters Departments (by Code) to Assignment Type = Responsible.
+	measure 'Department (Responsible)' =
+			
+			CALCULATE (
+			    [Departments (by Code)],
+			    'Task Assignment'[Assignment Type] = "Responsible"
+			)
+		displayFolder: PLCM Stage Phase
+		lineageTag: 573beb4a-0eed-468c-be24-15b1d2b224e5
+
+	/// Department(s) with Accountable assignment for the current task. Filters Departments (by Code) to Assignment Type = Accountable.
+	measure 'Department (Accountable)' =
+			
+			CALCULATE (
+			    [Departments (by Code)],
+			    'Task Assignment'[Assignment Type] = "Accountable"
+			)
+		displayFolder: PLCM Stage Phase
+		lineageTag: eb9de7fc-1ff5-436b-a659-debcb3e5b074
+
+	measure '# Exit Tracker SKUs' =
+			
+			DISTINCTCOUNT ( 'Exit Tracker'[GIM_ID (Hide)] )
+		formatString: #,0
+		displayFolder: PLCM
+		lineageTag: 893308d6-770d-4b1c-a000-0577174fb97a
+
+	measure 'Actual Units Sold' =
+			
+			CALCULATE( SUM ( Sales[Quantity] ), Sales[Scenario] = "AC")
+		formatString: #,0
+		displayFolder: Sales
+		lineageTag: 33eabeb8-c042-440d-87de-fdf56cd8d1ab
+
+	measure 'Actual COGS' =
+			
+			CALCULATE( SUM ( Sales[COGS] ), Sales[Scenario] = "AC")
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Sales
+		lineageTag: 97c59bf7-82b0-4212-aaf1-1055301e96eb
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Actual Revenue' =
+			
+			CALCULATE( SUM ( Sales[Revenue] ), Sales[Scenario] = "AC")
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Sales
+		lineageTag: 3d48a50d-6013-434c-ab8b-89fc5689bc1c
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	/// Trailing 12-month revenue for items in the current Exit Tracker context. Uses TREATAS to map Exit Tracker[GIM ID] directly to Sales[Item ID], bypassing the Product table relationship for better performance.
+	measure 'Exit TTM Revenue' =
+			
+			VAR ExitItems =
+			    VALUES ( 'Exit Tracker'[GIM ID] )
+			VAR EndDate = [TTM End Date]
+			VAR StartDate = [TTM Start Date] + 1
+			RETURN
+			    CALCULATE (
+			        [Revenue],
+			        DATESBETWEEN ( 'Calendar'[Date], StartDate, EndDate ),
+			        TREATAS ( ExitItems, Sales[Item ID] )
+			    )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: PLCM\Exit Tracker Sales
+		lineageTag: 91481cbe-d13f-495c-8f34-532c1720b743
+
+	/// Trailing 12-month COGS for items in the current Exit Tracker context. Uses TREATAS to map Exit Tracker[GIM ID] directly to Sales[Item ID].
+	measure 'Exit TTM COGS' =
+			
+			VAR ExitItems =
+			    VALUES ( 'Exit Tracker'[GIM ID] )
+			VAR EndDate = [TTM End Date]
+			VAR StartDate = [TTM Start Date] + 1
+			RETURN
+			    CALCULATE (
+			        [COGS],
+			        DATESBETWEEN ( 'Calendar'[Date], StartDate, EndDate ),
+			        TREATAS ( ExitItems, Sales[Item ID] )
+			    )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: PLCM\Exit Tracker Sales
+		lineageTag: bc15eecf-11e3-4d18-99ba-61a8decd1ddb
+
+	/// Trailing 12-month units sold for items in the current Exit Tracker context. Uses TREATAS to map Exit Tracker[GIM ID] directly to Sales[Item ID].
+	measure 'Exit TTM Units' =
+			
+			VAR ExitItems =
+			    VALUES ( 'Exit Tracker'[GIM ID] )
+			VAR EndDate = [TTM End Date]
+			VAR StartDate = [TTM Start Date] + 1
+			RETURN
+			    CALCULATE (
+			        [Units Sold],
+			        DATESBETWEEN ( 'Calendar'[Date], StartDate, EndDate ),
+			        TREATAS ( ExitItems, Sales[Item ID] )
+			    )
+		formatString: #,0
+		displayFolder: PLCM\Exit Tracker Sales
+		lineageTag: 278f3979-2f1b-4d41-bbf5-9500cd350fb5
+
+	/// Total units on hand for items in the current Exit Tracker context. Uses TREATAS to map Exit Tracker[GIM ID] directly to Inventory[Item ID].
+	measure 'Exit Inventory Qty on Hand' =
+			
+			CALCULATE (
+			    [Inventory Qty on Hand],
+			    TREATAS (
+			        VALUES ( 'Exit Tracker'[GIM ID] ),
+			        Inventory[Item ID]
+			    )
+			)
+		formatString: #,0
+		displayFolder: PLCM\Exit Tracker Inventory
+		lineageTag: 256c64da-1970-4648-bb14-750a72f7648a
+
+	/// Total extended statutory cost (USD) for items in the current Exit Tracker context. Uses TREATAS to map Exit Tracker[GIM ID] directly to Inventory[Item ID].
+	measure 'Exit Ext Statutory Cost' =
+			
+			CALCULATE (
+			    [Ext Statutory Cost],
+			    TREATAS (
+			        VALUES ( 'Exit Tracker'[GIM ID] ),
+			        Inventory[Item ID]
+			    )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: PLCM\Exit Tracker Inventory
+		lineageTag: bacb936c-5b57-4de9-93e1-725424b7e8f5
+
+	/// Days Sales of Inventory for items in the current Exit Tracker context. Divides Exit Tracker inventory statutory cost by Exit Tracker TTM COGS x 365. Uses TREATAS for both Sales and Inventory lookups.
+	measure 'Exit Days Sales of Inventory' =
+			
+			VAR ExitCOGS = [Exit TTM COGS]
+			RETURN
+			    IF (
+			        ExitCOGS = 0,
+			        BLANK (),
+			        DIVIDE ( [Exit Ext Statutory Cost], ExitCOGS ) * 365
+			    )
+		formatString: #,0.0
+		displayFolder: PLCM\Exit Tracker Inventory
+		lineageTag: 78fb2a84-3cf5-4a72-8cd2-116fc727e32b
+
+	/// Gross profit (Revenue minus COGS) for items in the current Exit Tracker context over the trailing 12-month window.
+	measure 'Exit Gross Profit' =
+			
+			[Exit TTM Revenue] - [Exit TTM COGS]
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: PLCM\Exit Tracker Sales
+		lineageTag: a310f34a-e6f0-44a3-aa64-42af6a27a64f
+
+	/// Gross margin percentage for items in the current Exit Tracker context. Divides Exit gross profit by Exit TTM revenue.
+	measure 'Exit Gross Margin %' =
+			
+			DIVIDE (
+			    [Exit Gross Profit],
+			    [Exit TTM Revenue]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: PLCM\Exit Tracker Sales
+		lineageTag: 2e046a10-49f8-472b-bd08-a5075ca46f95
+
+	/// Total excess and obsolete amount for items in the current Exit Tracker context. Uses TREATAS to map Exit Tracker[GIM ID] directly to Excess and Obsolete[Item ID].
+	measure 'Exit Excess and Obsolete Total' =
+			
+			CALCULATE (
+			    [Excess and Obsolete Total],
+			    TREATAS (
+			        VALUES ( 'Exit Tracker'[GIM ID] ),
+			        'Excess and Obsolete'[Item ID]
+			    )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: PLCM\Exit Tracker Inventory
+		lineageTag: f4f4126f-c811-4ffe-8750-0bf7d4714115
+
+	/// Excess and obsolete reserve rate for items in the current Exit Tracker context.
+	measure 'Exit Excess and Obsolete Reserve Rate %' =
+			
+			VAR ExitItems =
+			    VALUES ( 'Exit Tracker'[GIM ID] )
+			VAR ExitReserves =
+			    CALCULATE (
+			        [Excess and Obsolete Reserves],
+			        TREATAS ( ExitItems, 'Excess and Obsolete'[Item ID] )
+			    )
+			VAR ExitInventory =
+			    CALCULATE (
+			        [Excess and Obsolete Inventory],
+			        TREATAS ( ExitItems, 'Excess and Obsolete'[Item ID] )
+			    )
+			RETURN
+			    DIVIDE ( ExitReserves, ExitInventory )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: PLCM\Exit Tracker Inventory
+		lineageTag: c574f51b-6927-4750-9688-840557e7df40
+
+	/// Forecasted unit demand for the next 12 months for items in the current Exit Tracker context. Uses TREATAS to map Exit Tracker[GIM ID] directly to Sales[Item ID].
+	measure 'Exit Next 12M Demand Units' =
+			
+			VAR ExitItems =
+			    VALUES ( 'Exit Tracker'[GIM ID] )
+			VAR StartDate =
+			    CALCULATE (
+			        MIN ( Sales[Date] ),
+			        ALL (),
+			        Sales[Scenario] = "FC"
+			    )
+			VAR EndDate = EDATE ( StartDate, 12 ) - 1
+			RETURN
+			    CALCULATE (
+			        [Units Sold],
+			        DATESBETWEEN ( 'Calendar'[Date], StartDate, EndDate ),
+			        TREATAS ( ExitItems, Sales[Item ID] )
+			    )
+		formatString: #,0
+		displayFolder: PLCM\Exit Tracker Sales
+		lineageTag: 2eb7562b-afe4-4c56-aed9-adb5111b0287
+
+	/// Placeholder column required by Power BI for measure-only tables.
 	column Column
 		isHidden
 		formatString: 0

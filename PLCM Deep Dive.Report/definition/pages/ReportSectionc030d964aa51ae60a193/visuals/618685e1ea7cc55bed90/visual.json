@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "618685e1ea7cc55bed90",
   "position": {
     "x": 0,
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_GIM"
-                        }
-                      },
-                      "Hierarchy": "Franchise Hierarchy"
+                    "SourceRef": {
+                      "Entity": "Product"
                     }
                   },
-                  "Level": "Catalog Number"
+                  "Property": "Catalog Number"
                 }
               },
-              "queryRef": "Dim_GIM.Franchise Hierarchy.Catalog Number",
-              "nativeQueryRef": "Franchise Hierarchy Catalog Number"
+              "queryRef": "Product.Catalog Number",
+              "nativeQueryRef": "Catalog Number"
             }
           ]
         }

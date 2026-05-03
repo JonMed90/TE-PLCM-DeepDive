@@ -7,7 +7,7 @@
     "z": 1000,
     "height": 271.21248499399763,
     "width": 1005.7142857142858,
-    "tabOrder": 2000
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -20,13 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Regions"
+                      "Entity": "Region"
                     }
                   },
                   "Property": "Region"
                 }
               },
-              "queryRef": "Regions.Region",
+              "queryRef": "Region.Region",
+              "nativeQueryRef": "Region",
               "active": true
             },
             {
@@ -34,13 +35,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_Sales"
+                      "Entity": "Sales"
                     }
                   },
                   "Property": "Country"
                 }
               },
               "queryRef": "Sales.Country",
+              "nativeQueryRef": "Country",
               "active": false
             }
           ]
@@ -52,7 +54,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Calendar"
+                      "Entity": "Calendar"
                     }
                   },
                   "Property": "Year"
@@ -64,77 +66,102 @@
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Business Unit"
+                  "Level": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.Business Unit",
-              "nativeQueryRef": "Business Unit",
-              "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "Brand"
-                }
-              },
-              "queryRef": "Dim_GIM.Brand",
-              "nativeQueryRef": "Brand",
+              "queryRef": "Product.Franchise Hierarchy.Business Unit",
+              "nativeQueryRef": "Franchise Hierarchy Business Unit",
               "active": false
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "SubBrand"
+                  "Level": "Product Line"
                 }
               },
-              "queryRef": "Dim_GIM.SubBrand",
-              "nativeQueryRef": "SubBrand",
+              "queryRef": "Product.Franchise Hierarchy.Product Line",
+              "nativeQueryRef": "Franchise Hierarchy Product Line",
               "active": false
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Catalog Number"
+                  "Level": "Brand"
                 }
               },
-              "queryRef": "Dim_GIM.Catalog Number",
-              "nativeQueryRef": "Catalog Number",
+              "queryRef": "Product.Franchise Hierarchy.Brand",
+              "nativeQueryRef": "Franchise Hierarchy Brand",
               "active": false
             },
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
                     }
                   },
-                  "Property": "Long Description"
+                  "Level": "SubBrand"
                 }
               },
-              "queryRef": "Dim_GIM.Long Description",
-              "nativeQueryRef": "Long Description",
+              "queryRef": "Product.Franchise Hierarchy.SubBrand",
+              "nativeQueryRef": "Franchise Hierarchy SubBrand",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Hierarchy": "Franchise Hierarchy"
+                    }
+                  },
+                  "Level": "Catalog Number"
+                }
+              },
+              "queryRef": "Product.Franchise Hierarchy.Catalog Number",
+              "nativeQueryRef": "Franchise Hierarchy Catalog Number",
               "active": false
             }
           ]
@@ -157,23 +184,6 @@
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_GIM"
-                  }
-                },
-                "Property": "Long Description"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ]
       }
     },
     "expansionStates": [
@@ -186,12 +196,13 @@
             "queryRefs": [
               "Calendar.Year"
             ],
+            "isCollapsed": true,
             "identityKeys": [
               {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Calendar"
+                      "Entity": "Calendar"
                     }
                   },
                   "Property": "Year"
@@ -202,7 +213,7 @@
           },
           {
             "queryRefs": [
-              "Dim_GIM.Business Unit"
+              "Product.Franchise Hierarchy.Business Unit"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -210,7 +221,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Business Unit"
@@ -221,17 +232,18 @@
           },
           {
             "queryRefs": [
-              "Dim_GIM.Brand"
+              "Product.Franchise Hierarchy.Product Line"
             ],
+            "isCollapsed": true,
             "identityKeys": [
               {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "Brand"
+                  "Property": "Product Line"
                 }
               }
             ],
@@ -239,46 +251,22 @@
           },
           {
             "queryRefs": [
-              "Dim_GIM.SubBrand"
-            ],
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "SubBrand"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "Dim_GIM.Catalog Number"
-            ],
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "Catalog Number"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "Dim_GIM.Long Description"
+              "Product.Franchise Hierarchy.Brand"
             ],
             "isCollapsed": true,
             "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Product.Franchise Hierarchy.SubBrand"
+            ],
+            "isCollapsed": true
+          },
+          {
+            "queryRefs": [
+              "Product.Franchise Hierarchy.Catalog Number"
+            ],
+            "isCollapsed": true
           }
         ],
         "root": {
@@ -287,51 +275,34 @@
               "identityValues": [
                 {
                   "Literal": {
-                    "Value": "2022L"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
                     "Value": "2023L"
                   }
                 }
               ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
+              "children": [
                 {
-                  "Literal": {
-                    "Value": "2024L"
-                  }
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Biologics'"
+                      }
+                    }
+                  ],
+                  "isToggled": true,
+                  "children": [
+                    {
+                      "identityValues": [
+                        {
+                          "Literal": {
+                            "Value": "'Biologics'"
+                          }
+                        }
+                      ],
+                      "isToggled": true
+                    }
+                  ]
                 }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "2025L"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "2026L"
-                  }
-                }
-              ],
-              "isToggled": true
+              ]
             }
           ]
         }
@@ -382,226 +353,17 @@
           }
         },
         {
-          "properties": {},
-          "selector": {
-            "metadata": "Sum(GIM.ManufacturingcostUSD)"
-          }
-        },
-        {
           "properties": {
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "85D"
+                  "Value": "174.92770412871278D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "PLCM Roadmap.Phase Out"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Historical Sales"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'ASIA PACIFIC'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Historical Sales"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'CANADA'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Historical Sales"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'EEMEA'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Historical Sales"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'EUROPE'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Historical Sales"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'LATIN AMERICA'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Historical Sales"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'UNITED STATES'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Historical Sales"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'UNKNOWN'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
+            "metadata": "GIM.LongDescription"
           }
         },
         {
@@ -609,28 +371,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "85.54326745693122D"
+                  "Value": "148.0415970557175D"
                 }
               }
             }
           },
           "selector": {
-            "data": [
-              {
-                "total": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Historical Sales"
-                        }
-                      },
-                      "Property": "Region"
-                    }
-                  }
-                ]
-              }
-            ]
+            "metadata": "Product.Franchise Hierarchy.Business Unit"
           }
         },
         {
@@ -638,318 +385,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "70.96881415499047D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Dim_Regions"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "null"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Dim_Regions"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'APAC'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "total": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_Regions"
-                        }
-                      },
-                      "Property": "Region"
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Dim_Regions"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'CANADA'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Dim_Regions"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'EEMEA'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Dim_Regions"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'EUROPE'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.Product Hierarchy.SubBrand"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Dim_Regions"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'US'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Dim_Regions"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'LATAM'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Dim_Regions"
-                          }
-                        },
-                        "Property": "Region"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'UNKNOWN'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.Product Hierarchy.Product Line"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.Product Hierarchy.Brand"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.Product Hierarchy.Standard Catalog Number"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "GIM.ManufacturingcostUSD"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "91.67081802582813D"
+                  "Value": "118.12002737007398D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "Calendar.Year"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "132.02883190923822D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Dim_GIM.Brand"
           }
         }
       ],
@@ -959,7 +401,21 @@
             "alignment": {
               "expr": {
                 "Literal": {
-                  "Value": "'Center'"
+                  "Value": "'Right'"
+                }
+              }
+            },
+            "titleAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            },
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
                 }
               }
             }
@@ -1024,10 +480,136 @@
                 }
               }
             },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
             "radius": {
               "expr": {
                 "Literal": {
                   "Value": "4D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Normal'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "'12'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "'8'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             },
@@ -1036,10 +618,44 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                      "ColorId": 1,
+                      "Percent": 0.2
                     }
                   }
+                }
+              }
+            },
+            "style": {
+              "expr": {
+                "Literal": {
+                  "Value": "'solid'"
+                }
+              }
+            },
+            "ignorePadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -1048,24 +664,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "9d9b84052d4b3ac72319",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ConsolidatedList"
-              }
-            },
-            "Property": "Item Owner"
-          }
-        },
-        "type": "Categorical",
-        "howCreated": "User"
-      }
-    ]
   }
 }

@@ -1,0 +1,12 @@
+createOrReplace
+
+	ref table _Measures
+
+		/// CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
+		measure 'TTM End Date' =
+				
+				CALCULATE ( MAX ( Fact_Sales[Date] ), ALL (), Fact_Sales[Scenario] = "AC" )
+			formatString: General Date
+			displayFolder: Trailing 12M
+			lineageTag: 2a5ecab0-cefb-49c7-8d79-10e31195084a
+

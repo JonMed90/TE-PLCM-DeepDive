@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "2aeea093b094413737a0",
   "position": {
     "x": 648,
     "y": 376,
-    "z": 3000,
+    "z": 250,
     "height": 40,
     "width": 312,
-    "tabOrder": 4000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,13 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_KPI"
+                      "Entity": "_KPI"
                     }
                   },
                   "Property": "KPI"
                 }
               },
-              "queryRef": "KPI Selection.KPI",
+              "queryRef": "_KPI.KPI",
+              "nativeQueryRef": "KPI",
               "active": true
             }
           ]
@@ -49,8 +50,8 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "d",
-                    "Entity": "Dim_KPI",
+                    "Name": "_",
+                    "Entity": "_KPI",
                     "Type": 0
                   }
                 ],
@@ -63,7 +64,7 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "d"
+                                  "Source": "_"
                                 }
                               },
                               "Property": "KPI"
@@ -74,7 +75,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'COGS'"
+                                "Value": "'Units'"
                               }
                             }
                           ]

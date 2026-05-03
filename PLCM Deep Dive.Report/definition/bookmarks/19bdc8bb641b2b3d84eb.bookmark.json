@@ -243,7 +243,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Fact_TaskAssignments"
+                          "Entity": "_Measures"
                         }
                       },
                       "Property": "Department (Accountable)"
@@ -258,7 +258,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Fact_TaskAssignments"
+                          "Entity": "_Measures"
                         }
                       },
                       "Property": "Department (Responsible)"
@@ -420,7 +420,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Fact_TaskAssignments"
+                          "Entity": "_Measures"
                         }
                       },
                       "Property": "Departments (by Code)"

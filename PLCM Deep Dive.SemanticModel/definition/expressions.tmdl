@@ -1,207 +1,92 @@
-expression 'Anaplan Products' = ```
+/// Actual sales transactions sourced from the Fact_Sales_Summary dataflow entity. Pass-through query combined with DemantraDemand in the Sales table.
+expression 'Historical Sales' =
+		// Historical Sales — Actual sales transactions (Scenario = AC).
+		// Source: Power BI Dataflow > Fact_Sales_Summary entity
+		// Pass-through query; no transformations needed.
+		// Combined with DemantraDemand in the Sales table query.
 		let
-		    // Source data from the specified Excel file on SharePoint
-		    Source = Excel.Workbook(
-		        Web.Contents("https://stryker.sharepoint.com/sites/TEPLCM/Shared%20Documents/General/PLCM%20Roadmap,%20Tracker,%20and%20PowerBI%20tools/PowerBI/v2%20Support/P-HP07%20Item%20%5BHUB%5D.xlsx"), 
-		        null, 
-		        true
-		    ),
-		
-		    // Extract the "Sheet 1" sheet
-		    Sheet1 = Source{[Item = "Sheet 1", Kind = "Sheet"]}[Data],
-		
-		    // Promote the first row as headers
-		    PromotedHeaders = Table.PromoteHeaders(Sheet1, [PromoteAllScalars = true]),
-		
-		    // Change column types for consistency and accuracy
-		    ChangedColumnTypes = Table.TransformColumnTypes(
-		        PromotedHeaders, {
-		            {"", type text}, 
-		            {"Item Number", type text}, 
-		            {"Item Description", type text}, 
-		            {"Line [Item Class (HPR01)]", type text}, 
-		            {"Sales Segment[Item Family Group (HPR02)]", type text}, 
-		            {"Sales Family [Item Line Family (HPR03)]", type text}, 
-		            {"Brand [Item Line (HPR04)]", type text}, 
-		            {"Imp Inst Kits", type text}, 
-		            {"Imp Inst Kits Desc", type text}, 
-		            {"Master Planning Family", type text}, 
-		            {"Stocking Type Code", type text}, 
-		            {"Item Grouping", type text}, 
-		            {"Inventory UOM", type text}, 
-		            {"GIM_ID", Int64.Type}
-		        }
-		    ),
-		
-		    // Rename columns for clarity
-		    RenamedColumns = Table.RenameColumns(
-		        ChangedColumnTypes, {
-		            {"Line [Item Class (HPR01)]", "Product Line"}, 
-		            {"Sales Segment[Item Family Group (HPR02)]", "Segment"}, 
-		            {"Sales Family [Item Line Family (HPR03)]", "Family"}, 
-		            {"Brand [Item Line (HPR04)]", "Brand"}, 
-		            {"Item Description", "Description"}, 
-		            {"Item Grouping", "Franchise"}
-		        }
-		    ),
-		
-		    // Add a custom column for normalized item numbers
-		    AddedNormalizedItemNumber = Table.AddColumn(
-		        RenamedColumns, 
-		        "Item_Number_Normalized", 
-		        each Text.Select([Item Number], {"0".."9", "A".."z"}), 
-		        type text
-		    ),
-		
-		    // Add an index column
-		    AddedIndexColumn = Table.AddIndexColumn(
-		        AddedNormalizedItemNumber, 
-		        "Index", 
-		        0, 
-		        1, 
-		        Int64.Type
-		    )
+		    // ── Connect to dataflow ──
+		    Source = PowerPlatform.Dataflows( null ),
+		    Workspaces = Source{[Id = "Workspaces"]}[Data],
+		    Workspace = Workspaces{[workspaceId = "f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+		    Dataflow = Workspace{[dataflowId = "19ac5c01-6afb-4ed0-8749-bf98aafc6f61"]}[Data],
+		    RawSales = Dataflow{[entity = "Fact_Sales_Summary", version = ""]}[Data]
 		in
-		    AddedIndexColumn
-		```
-	lineageTag: 41d9d867-af05-4504-91da-63ec42efb4fc
-	queryGroup: Products
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Table
-
-expression 'Historical Sales' = ```
-		let
-		    // Connect to Power BI Dataflows
-		    Source = PowerPlatform.Dataflows(null),
-		    Workspaces = Source{[Id="Workspaces"]}[Data],
-		    #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8" = Workspaces{[workspaceId="f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
-		    #"19ac5c01-6afb-4ed0-8749-bf98aafc6f61" = #"f4ac28b7-50fc-4635-87fe-7bd77e9652a8"{[dataflowId="19ac5c01-6afb-4ed0-8749-bf98aafc6f61"]}[Data],
-		    // Access the specific entity (table) within the dataflow
-		    #"Sales History_" = #"19ac5c01-6afb-4ed0-8749-bf98aafc6f61"{[entity="Sales History",version=""]}[Data],
-		    // Add a custom column for the scenario
-		    AddedScenarioColumn = Table.AddColumn(
-		        #"Sales History_", 
-		        "Scenario", 
-		        each "AC", 
-		        type text
-		    ),
-		    AddedCogsColumn = Table.AddColumn(AddedScenarioColumn, "COGS", each [Revenue] - [Margin], Currency.Type),
-		    #"Grouped Rows" = Table.Group(AddedCogsColumn, {"Date", "ItemId", "Catalog Number", "Country", "Region", "Scenario"}, {{"Quantity", each List.Sum([Quantity]), type nullable number}, {"Revenue", each List.Sum([Revenue]), type nullable number}, {"COGS", each List.Sum([COGS]), type number}}),
-		    // Remove rows where Quantity, Revenue, and COGS are all zero or null
-		    #"Filtered Rows" = Table.SelectRows(#"Grouped Rows", each 
-		        not (
-		            (Number.From([Quantity]) = 0 or [Quantity] = null) and
-		            (Number.From([Revenue])  = 0 or [Revenue]  = null) and
-		            (Number.From([COGS])     = 0 or [COGS]     = null)
-		        )
-		    )
-		in
-		    #"Filtered Rows"
-		```
+		    RawSales
 	lineageTag: 126a7597-9934-4d10-96e9-d9bdb9f09f34
 	queryGroup: Sales/Demand
 
 	annotation PBI_NavigationStepName = Navigation
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Table
 
-expression DemantraDemand = ```
+/// Forecast demand data sourced from the DemantraCloud dataflow. Renames to match Sales schema, adds Scenario = FC, calculates COGS, groups to monthly grain, and removes zero-value rows.
+expression DemantraDemand =
+		// DemantraDemand — Forecast demand data (Scenario = FC).
+		// Source: Power BI Dataflow > DemantraCloud Dataflow entity
+		// Renames source columns, adds Scenario = FC, calculates COGS from
+		// manufacturing cost * quantity, groups to monthly grain, and removes
+		// zero-value rows to reduce model size.
 		let
-		  Source = PowerPlatform.Dataflows(null),
-		  Workspaces = Source{[Id = "Workspaces"]}[Data],
-		  #"7370e662-04ab-4255-8e24-48b841511f42" = Workspaces
-		    {[workspaceId = "7370e662-04ab-4255-8e24-48b841511f42"]}
-		    [Data],
-		  #"30b852e0-f844-4ba2-8a8b-19381a50fc06" = #"7370e662-04ab-4255-8e24-48b841511f42"
-		    {[dataflowId = "30b852e0-f844-4ba2-8a8b-19381a50fc06"]}
-		    [Data],
-		  #"DemantraCloud Dataflow_" = #"30b852e0-f844-4ba2-8a8b-19381a50fc06"
-		    {[entity = "DemantraCloud Dataflow", version = ""]}
-		    [Data],
-		  #"Renamed Columns" = Table.RenameColumns(
-		    #"DemantraCloud Dataflow_",
-		    {
-		      {"sales_date", "Date"},
-		      {"sellingdivision", "Selling Division"},
-		      {"country", "Country"},
-		      {"region", "Region"},
-		      {"item_gim_id", "ItemId"},
-		      {"catalognumber", "Catalog Number"},
-		      {"fcst_df_final_rev", "Quantity"},
-		      {"fcst_df_final_rev_val", "Revenue"}
-		    }
-		  ),
-		  #"Added Scenario Column" = Table.AddColumn(#"Renamed Columns", "Scenario", each "FC", type text),
-		  #"Added COGS Column" = Table.AddColumn(
-		    #"Added Scenario Column",
-		    "COGS",
-		    each [manufacturingcostusd] * [Quantity],
-		    type number
-		  ),
-		  #"Grouped Rows" = Table.Group(
-		    #"Added COGS Column", 
-		    {"Date", "ItemId", "Catalog Number", "Country", "Region", "Scenario"}, 
-		    {
-		      {"Quantity", each List.Sum([Quantity]), type nullable number}, 
-		      {"Revenue",  each List.Sum([Revenue]),  type nullable number}, 
-		      {"COGS",     each List.Sum([COGS]),     type number}
-		    }
-		  ),
-		  // Remove rows where Quantity, Revenue, and COGS are all zero or null
-		  #"Filtered Rows" = Table.SelectRows(#"Grouped Rows", each
-		      not (
-		          (Number.From([Quantity]) = 0 or [Quantity] = null) and
-		          (Number.From([Revenue])  = 0 or [Revenue]  = null) and
-		          (Number.From([COGS])     = 0 or [COGS]     = null)
-		      )
-		  )
+		    // ── Connect to dataflow ──
+		    Source = PowerPlatform.Dataflows( null ),
+		    Workspaces = Source{[Id = "Workspaces"]}[Data],
+		    Workspace = Workspaces{[workspaceId = "7370e662-04ab-4255-8e24-48b841511f42"]}[Data],
+		    Dataflow = Workspace{[dataflowId = "30b852e0-f844-4ba2-8a8b-19381a50fc06"]}[Data],
+		    RawDemantra = Dataflow{[entity = "DemantraCloud Dataflow", version = ""]}[Data],
+		
+		    // ── Rename source columns to match the Sales schema ──
+		    Renamed = Table.RenameColumns(
+		        RawDemantra,
+		        {
+		            {"sales_date",           "Date"},
+		            {"sellingdivision",      "Selling Division"},
+		            {"country",              "Country"},
+		            {"region",               "Region"},
+		            {"item_gim_id",          "ItemId"},
+		            {"catalognumber",        "Catalog Number"},
+		            {"fcst_df_final_rev",    "Quantity"},
+		            {"fcst_df_final_rev_val","Revenue"}
+		        }
+		    ),
+		
+		    // ── Add Scenario = FC to identify forecast rows ──
+		    AddedScenario = Table.AddColumn(
+		        Renamed, "Scenario", each "FC", type text
+		    ),
+		
+		    // ── Calculate COGS from manufacturing cost * quantity ──
+		    AddedCOGS = Table.AddColumn(
+		        AddedScenario,
+		        "COGS",
+		        each [manufacturingcostusd] * [Quantity],
+		        type number
+		    ),
+		
+		    // ── Group to monthly grain by item, geography, and scenario ──
+		    Grouped = Table.Group(
+		        AddedCOGS,
+		        {"Date", "ItemId", "Catalog Number", "Country", "Region", "Scenario"},
+		        {
+		            {"Quantity", each List.Sum( [Quantity] ), type nullable number},
+		            {"Revenue",  each List.Sum( [Revenue] ),  type nullable number},
+		            {"COGS",     each List.Sum( [COGS] ),     type number}
+		        }
+		    ),
+		
+		    // ── Remove zero/null rows to reduce model size ──
+		    Filtered = Table.SelectRows(
+		        Grouped,
+		        each not (
+		            (Number.From( [Quantity] ) = 0 or [Quantity] = null) and
+		            (Number.From( [Revenue] )  = 0 or [Revenue]  = null) and
+		            (Number.From( [COGS] )     = 0 or [COGS]     = null)
+		        )
+		    )
 		in
-		  #"Filtered Rows"
-		```
+		    Filtered
 	lineageTag: cfb8c8bb-3e3d-4373-90de-1cb4bdc99ff1
 	queryGroup: Sales/Demand
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Exception
-
-expression 'PPR Tracker Status' =
-		let
-		    Source = PowerPlatform.Dataflows(null),
-		    Workspaces = Source{[Id="Workspaces"]}[Data],
-		    #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c" = Workspaces{[workspaceId="7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
-		    #"0da45554-39c0-4713-9400-fd465c822e18" = #"7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"{[dataflowId="0da45554-39c0-4713-9400-fd465c822e18"]}[Data],
-		    #"PPR Tracker Status_" = #"0da45554-39c0-4713-9400-fd465c822e18"{[entity="PPR Tracker Status",version=""]}[Data]
-		in
-		    #"PPR Tracker Status_"
-	lineageTag: 59b72e66-c6b2-42e1-8c52-8fb9d38fb8ef
-	queryGroup: Products
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Table
-
-expression LCC_Description =
-		let
-		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("VY49D4IwFEX/StNJE0hQwciMOmkgqRthqOUhTUpL+sHgr7e2Dji+c+69eW2Ld1mGE3yGBYSaJ5AWd4mnxZc2GtIbdZKNEZYnDyvBJWdUoIfmVJifKb25NCRc+zC5Kh6yuKZ6xyxXMsLQqZyxagogj6mRGkhrF//IQ+hOpRsos05z+ULEqjnIIhTqp1ECLERUrBHaXLV6g9wGd/yLo0GrCREqwCAqe0RAL5z5le4D", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Life Cycle Code" = _t, #"LCC Description" = _t])
-		in
-		    Source
-	lineageTag: 001eaf75-a15c-441d-ba1c-ffec8d0fb421
-	queryGroup: Products
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Table
-
-expression Dim_PLCM_Status =
-		let
-		  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("fcq9CsIwFEDhV7ncuQ7+z7UUdBAhGUuGGq8SSZNQbqqPb0xFRMTxHL6mwSkWKOOxM8x0QlWMZ+dA0GDo9j6CrqQ/ycHB1tuxZ6nLEHo/vMA8jfpOOrJxF5hAXYn8F19fsg+wb108t5pjn2Zmy19MkrXPLDNZ/SObTNaJVL4LlphQqQc=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Phase ID" = _t, #"PLCM Status" = _t])
-		in
-		  Source
-	lineageTag: 7a770c72-d507-4227-b21f-7209e1cf794a
-	queryGroup: Products
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -20,28 +20,28 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_PhaseActivity"
+                      "Entity": "Phase Activity"
                     }
                   },
                   "Property": "Phase Activity ID"
                 }
               },
-              "queryRef": "Dim_PhaseActivity.Phase Activity ID",
-              "nativeQueryRef": "Order",
-              "displayName": "Order"
+              "queryRef": "Phase Activity.Phase Activity ID",
+              "nativeQueryRef": "Activity ID",
+              "displayName": "Activity ID"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Phase"
+                      "Entity": "Phase"
                     }
                   },
                   "Property": "Phase"
                 }
               },
-              "queryRef": "Dim_Phase.Phase",
+              "queryRef": "Phase.Phase",
               "nativeQueryRef": "Phase"
             },
             {
@@ -49,21 +49,21 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_PhaseActivity"
+                      "Entity": "Phase Activity"
                     }
                   },
-                  "Property": "Process/Tasks"
+                  "Property": "Process and Tasks"
                 }
               },
-              "queryRef": "Dim_PhaseActivity.Process/Tasks",
-              "nativeQueryRef": "Process/Tasks"
+              "queryRef": "Phase Activity.Process and Tasks",
+              "nativeQueryRef": "Process and Tasks"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_TaskAssignments"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Department (Accountable)"
@@ -78,7 +78,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_TaskAssignments"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Department (Responsible)"
@@ -120,70 +120,10 @@
                 }
               }
             },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Left'"
-                }
-              }
-            },
-            "wordWrap": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "columnAdjustment": {
               "expr": {
                 "Literal": {
-                  "Value": "'fitToContent'"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "italic": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Cambria'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "general": [
-        {
-          "properties": {}
-        }
-      ],
-      "values": [
-        {
-          "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
+                  "Value": "'growToFit'"
                 }
               }
             },
@@ -193,30 +133,124 @@
                   "Value": "true"
                 }
               }
-            },
-            "bold": {
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "86.79148380974974D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(PPR Tracker Status.GIM Flag)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "271.6293045506662D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.Brand_SubBrand_Key"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "178.22010042304194D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.SubBrand"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "174.92770412871278D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "GIM.LongDescription"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.41423125794155D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_GIM.SubBrand"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "72.7315172931624D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Phase Activity.Phase Activity ID"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "152.32735821893286D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_TaskAssignments.Department (Responsible)"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
               "expr": {
                 "Literal": {
                   "Value": "false"
-                }
-              }
-            },
-            "urlIcon": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Cambria'"
                 }
               }
             }
           }
-        },
+        }
+      ],
+      "values": [
         {
           "properties": {
             "backColor": {
@@ -272,29 +306,48 @@
             ],
             "metadata": "Dim_Phase.Phase"
           }
-        }
-      ],
-      "columnWidth": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "427.39618891675724D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Dim_PhaseActivity.Process/Tasks"
-          }
         },
         {
           "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "152.30544627729307D"
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Phase"
+                            }
+                          },
+                          "Property": "Phase BG Color"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Phase"
+                            }
+                          },
+                          "Property": "Phase Font Color"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  }
                 }
               }
             }
@@ -302,204 +355,81 @@
           "selector": {
             "data": [
               {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Fact_TaskAssignments"
-                          }
-                        },
-                        "Property": "Assignment Type"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Accountable'"
-                      }
-                    }
-                  }
+                "dataViewWildcard": {
+                  "matchingOption": 1
                 }
               }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "248.01816118443952D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "Fact_TaskAssignments"
-                          }
-                        },
-                        "Property": "Assignment Type"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Responsible'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "371.335865981526D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Dim_Phase.Phase"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "152.20260255035714D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Fact_TaskAssignments.Department (Accountable)"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "175.0588376090368D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Fact_TaskAssignments.Department (Responsible)"
+            ],
+            "metadata": "Phase.Phase"
           }
         }
       ],
       "grid": [
         {
-          "properties": {}
-        }
-      ],
-      "total": [
-        {
           "properties": {
-            "totals": {
+            "rowPadding": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "5D"
                 }
               }
             }
           }
         }
-      ]
-    },
-    "visualContainerObjects": {
-      "visualTooltip": [
+      ],
+      "columnFormatting": [
         {
           "properties": {
-            "show": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_PhaseActivity.Phase Activity ID"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
             },
-            "bold": {
+            "styleTotal": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "Phase Activity.Phase Activity ID"
           }
         }
-      ],
-      "stylePreset": [
-        {
-          "properties": {
-            "name": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Minimal'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "visualHeader": [
-        {
-          "properties": {
-            "showDrillUpButton": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showDrillToggleButton": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showDrillDownLevelButton": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showDrillDownExpandButton": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showDrillRoleSelector": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
+      ]
+    },
+    "visualContainerObjects": {
       "border": [
         {
           "properties": {
@@ -514,9 +444,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.2
+                    "Literal": {
+                      "Value": "'#b3b3b3'"
                     }
                   }
                 }
@@ -528,11 +457,105 @@
                   "Value": "4D"
                 }
               }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           }
         }
       ],
-      "dropShadow": [
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Normal'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "'12'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "'8'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "divider": [
         {
           "properties": {
             "show": {
@@ -542,15 +565,56 @@
                 }
               }
             },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
             "color": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.2
+                      "ColorId": 1,
+                      "Percent": 0.2
                     }
                   }
+                }
+              }
+            },
+            "style": {
+              "expr": {
+                "Literal": {
+                  "Value": "'solid'"
+                }
+              }
+            },
+            "ignorePadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }

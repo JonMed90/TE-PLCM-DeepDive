@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "ea71a57ae051ac449be8",
   "position": {
     "x": 0,
     "y": 0,
-    "z": 9000,
+    "z": 10000,
     "height": 51.480886944557156,
     "width": 111.94533918984871,
     "tabOrder": 7000
@@ -46,6 +46,13 @@
                       "Value": "'Normal'"
                     }
                   }
+                }
+              }
+            },
+            "iconSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
                 }
               }
             }
@@ -92,6 +99,13 @@
                       "Percent": 0
                     }
                   }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
                 }
               }
             }
@@ -189,6 +203,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Clear Filter Button'"
                 }
               }
             }

@@ -1,0 +1,485 @@
+/// Product master data (GIM) containing catalog numbers, classifications, brands, costs, and lifecycle attributes for all SKUs.
+table Product
+	lineageTag: b471070f-9991-498f-917e-cbf78c036660
+
+	/// Stocking type code indicating how inventory is managed.
+	column 'Stocking Type Code'
+		dataType: string
+		displayFolder: Lifecycle
+		lineageTag: f5fbc771-ba69-4e08-b2e1-4082bd00bbbc
+		summarizeBy: none
+		sourceColumn: Stocking Type Code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Life Cycle Code description from GIM master.
+	column 'LCC Description'
+		dataType: string
+		displayFolder: Lifecycle
+		lineageTag: be69ab1f-99e7-44a4-a13c-846e2df18b45
+		summarizeBy: none
+		sourceColumn: LCC Description
+		sortByColumn: 'Life Cycle Code'
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Parent brand the product belongs to (e.g., Stryker, Howmedica).
+	column Brand
+		dataType: string
+		lineageTag: 53680b27-5578-4136-b30e-f28df63f531a
+		summarizeBy: none
+		sourceColumn: Brand
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Sub-brand within the parent brand.
+	column SubBrand
+		dataType: string
+		lineageTag: 8ba23758-72f9-40b7-b31c-bf5a1f113c2b
+		summarizeBy: none
+		sourceColumn: SubBrand
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Manufacturer catalog number used for ordering and identification.
+	column 'Catalog Number'
+		dataType: string
+		lineageTag: c0edef40-5f08-4259-9276-2c09f5a7a86b
+		summarizeBy: none
+		sourceColumn: Catalog Number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Date the item was originally created in GIM.
+	column 'Create Date'
+		dataType: dateTime
+		formatString: mm/dd/yy
+		displayFolder: Dates
+		lineageTag: f6caccf2-cdc7-4f11-82be-bab250d9fc92
+		summarizeBy: none
+		sourceColumn: GIM.CreateDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Date of the first recorded sale for this item.
+	column 'First Sale Date'
+		dataType: dateTime
+		formatString: mm/dd/yy
+		displayFolder: Dates
+		lineageTag: d377327d-8f06-4ea8-8aa6-065e403a5298
+		summarizeBy: none
+		sourceColumn: GIM.FirstSaleDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Date the item master record was last modified.
+	column 'Last Change Date'
+		dataType: dateTime
+		formatString: mm/dd/yy
+		displayFolder: Dates
+		lineageTag: 40fe20eb-5571-46dc-971b-8780dde8d50c
+		summarizeBy: none
+		sourceColumn: GIM.LastChangeDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Date of the most recent sale for this item.
+	column 'Last Sale Date'
+		dataType: dateTime
+		formatString: mm/dd/yy
+		displayFolder: Dates
+		lineageTag: 63b11a67-50e9-4ea2-9715-fb560f0935ea
+		summarizeBy: none
+		sourceColumn: GIM.LastSaleDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Date the item was last transferred between locations.
+	column 'Last Transferred Date'
+		dataType: dateTime
+		formatString: mm/dd/yy
+		displayFolder: Dates
+		lineageTag: 793ddfa3-ba16-41c1-a940-f5226c74679c
+		summarizeBy: none
+		sourceColumn: GIM.LastTransferredDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Numeric life cycle code indicating the product's lifecycle stage.
+	column 'Life Cycle Code'
+		dataType: int64
+		formatString: 0
+		displayFolder: Lifecycle
+		lineageTag: 1fae8396-7097-4c60-877b-2a83d41d06aa
+		summarizeBy: none
+		sourceColumn: Life Cycle Code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Number of units per pack or kit.
+	column 'Pack Content'
+		dataType: int64
+		formatString: 0
+		displayFolder: Lifecycle
+		lineageTag: 0155b09d-b9bd-4c58-b5be-cc6f376413d9
+		summarizeBy: none
+		sourceColumn: packcontent
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Person or team responsible for the item in the master data.
+	column 'Item Owner'
+		dataType: string
+		displayFolder: Ownership
+		lineageTag: f29fc5d7-3b24-4069-83b0-6cda012c0030
+		summarizeBy: none
+		sourceColumn: Item Owner
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Display name for the item owner.
+	column 'Item Owner Name'
+		dataType: string
+		displayFolder: Ownership
+		lineageTag: ead8bda6-c2c3-4d6a-9c39-b6652bf75421
+		summarizeBy: none
+		sourceColumn: Item Owner Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Standard manufacturing cost per unit.
+	column 'Manufacturing Cost'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Lifecycle
+		lineageTag: b49f01e5-f58c-4b28-a9c4-d93a270e141d
+		summarizeBy: none
+		sourceColumn: Manufacturing Cost
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Unit of measure type code (e.g., Each, Box, Case).
+	column 'UOM Type Code'
+		dataType: string
+		displayFolder: Lifecycle
+		lineageTag: c5ad98b6-9b52-4fb2-8817-0c3ed46545cf
+		summarizeBy: none
+		sourceColumn: uomtypecode
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// True if the item is flagged for deletion in the source system.
+	column 'Delete Flag'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Flags
+		lineageTag: ef8dda61-a5f0-41cd-b0fc-028e414565e2
+		summarizeBy: none
+		sourceColumn: DeleteFlag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// True if the item is currently active in the source system.
+	column 'Active Flag'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Flags
+		lineageTag: 867c22f2-dabc-4a89-a495-82a07cc9da1a
+		summarizeBy: none
+		sourceColumn: activeflag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Primary key. Unique numeric identifier for each product SKU.
+	column 'Item ID'
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: e75b5478-6c50-46e3-9a86-8f598fcb13a6
+		summarizeBy: none
+		sourceColumn: ItemId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Standardized version of Catalog Number used across systems.
+	column 'Standard Catalog Number'
+		dataType: string
+		lineageTag: bc1e8785-108d-495e-b5c0-d8c7d9ed70a7
+		summarizeBy: none
+		sourceColumn: Standard Catalog Number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Full product name and description.
+	column 'Long Description'
+		dataType: string
+		lineageTag: 6a1ab6d5-2172-4b6e-97fc-9f7aa4916017
+		summarizeBy: none
+		sourceColumn: Long Description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Product line code assigned to the item.
+	column 'Current Product Line Code'
+		dataType: string
+		displayFolder: Classification
+		lineageTag: fdd01776-0870-49a4-aa27-e39349d7cf40
+		summarizeBy: none
+		sourceColumn: currentproductlinecode
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Product line name.
+	column 'Product Line'
+		dataType: string
+		lineageTag: 40242a56-d528-4a8f-a92a-48bda6c9cac1
+		summarizeBy: none
+		sourceColumn: Product Line
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business unit that owns the product line.
+	column 'Business Unit'
+		dataType: string
+		lineageTag: ad3dafa1-27db-405a-91e6-c40681a65be4
+		summarizeBy: none
+		sourceColumn: Business Unit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Top-level product classification.
+	column 'Major Classification'
+		dataType: string
+		displayFolder: Classification
+		lineageTag: e3761225-b69c-416a-898f-54322a027771
+		summarizeBy: none
+		sourceColumn: majorclassification
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Mid-level product classification.
+	column 'Minor Classification'
+		dataType: string
+		displayFolder: Classification
+		lineageTag: 3d0c0e20-9192-4246-8f3b-e013297afa91
+		summarizeBy: none
+		sourceColumn: minorclassification
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Lowest-level product classification.
+	column 'Sub Classification'
+		dataType: string
+		displayFolder: Classification
+		lineageTag: b9dbc405-e32b-4909-badb-f26141dfa653
+		summarizeBy: none
+		sourceColumn: subclassification
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Product type description (e.g., Implant, Instrument).
+	column 'Item Type Description'
+		dataType: string
+		displayFolder: Classification
+		lineageTag: 49f8b8b5-d878-485d-be10-a3a8e45e4e1f
+		summarizeBy: none
+		sourceColumn: Item Type Description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// True if the item is flagged as a deferred charge.
+	column 'Deferred Charge Flag'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Flags
+		lineageTag: 0ccb417a-9d57-4f4c-a337-9b3efddcd0dd
+		summarizeBy: none
+		sourceColumn: deferredchargeflag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Franchise Hierarchy'
+		lineageTag: aeb79037-8b99-4310-a4c8-ad5888a036d9
+
+		level 'Business Unit'
+			lineageTag: 71da2afb-8ce5-4c5e-8e80-7ac5af1e98b6
+			column: 'Business Unit'
+
+		level 'Product Line'
+			lineageTag: 42fd5d88-b001-423d-a62c-4217b0dbd651
+			column: 'Product Line'
+
+		level Brand
+			lineageTag: 1a840456-03f9-4c0a-a416-b73de4c04e5d
+			column: Brand
+
+		level SubBrand
+			lineageTag: c0eb84e4-cd44-4d74-bc63-aabb7b18b0ae
+			column: SubBrand
+
+		level 'Catalog Number'
+			lineageTag: 0ae4a790-18b9-4b3a-a48d-c5cf8b08ba6c
+			column: 'Catalog Number'
+
+		changedProperty = IsHidden
+
+	partition Dim_GIM-f911bc3c-c25e-4d22-b83a-f42e4ec92347 = m
+		mode: import
+		queryGroup: Products
+		source =
+				// Product (GIM) — Product master data from the GIM dataflow.
+				// Source: Power BI Dataflow > Dim_GIMItem entity
+				// Deduplicates on ItemId, renames source columns to business-friendly names,
+				// casts date columns, and drops unused fields.
+				let
+				    // ── Connect to dataflow ──
+				    Source = PowerPlatform.Dataflows( null ),
+				    Workspaces = Source{[Id = "Workspaces"]}[Data],
+				    Workspace = Workspaces{[workspaceId = "f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+				    Dataflow = Workspace{[dataflowId = "3c4e0e8e-488e-4345-8703-b15f825bed96"]}[Data],
+				    RawGIM = Dataflow{[entity = "Dim_GIMItem", version = ""]}[Data],
+				
+				    // ── Deduplicate on primary key ──
+				    Deduplicated = Table.Distinct( RawGIM, {"itemid"} ),
+				
+				    // ── Rename source columns to display names ──
+				    Renamed = Table.RenameColumns(
+				        Deduplicated,
+				        {
+				            {"createdate",              "GIM.CreateDate"},
+				            {"firstsaledate",           "GIM.FirstSaleDate"},
+				            {"lastchangedate",          "GIM.LastChangeDate"},
+				            {"lastsaledate",            "GIM.LastSaleDate"},
+				            {"lasttransferreddate",      "GIM.LastTransferredDate"},
+				            {"cyproductgroup",          "Business Unit"},
+				            {"cyproductlinename",       "Product Line"},
+				            {"cydivision",              "Franchise"},
+				            {"subbrand",                "SubBrand"},
+				            {"catalognumber",           "Catalog Number"},
+				            {"brand",                   "Brand"},
+				            {"deletedflag",             "DeleteFlag"},
+				            {"lifecyclecode",           "Life Cycle Code"},
+				            {"standardcatalognumber",   "Standard Catalog Number"},
+				            {"itemownername",           "Item Owner Name"},
+				            {"itemowner",               "Item Owner"},
+				            {"itemid",                  "ItemId"},
+				            {"longdescription",         "Long Description"},
+				            {"itemtypedescription",     "Item Type Description"},
+				            {"manufacturingcostusd",    "Manufacturing Cost"}
+				        }
+				    ),
+				
+				    // ── Cast date columns ──
+				    TypedDates = Table.TransformColumnTypes(
+				        Renamed,
+				        {
+				            {"GIM.LastTransferredDate", type date},
+				            {"GIM.LastChangeDate",      type date},
+				            {"GIM.CreateDate",          type date},
+				            {"GIM.LastSaleDate",        type date},
+				            {"GIM.FirstSaleDate",       type date}
+				        }
+				    ),
+				
+				    // ── Drop unused source columns ──
+				    Cleaned = Table.RemoveColumns(
+				        TypedDates,
+				        {
+				            "cymedsurggroup", "Franchise", "cybusinesssector",
+				            "unitofmeasure", "uomdescription", "dimensionunitofmeasure",
+				            "item_skey", "segment", "subsegment",
+				            "replacementitem", "substituteitem", "eancode", "gtin",
+				            "catalogflag", "keyitemflag", "trueduplicateflag", "current",
+				            "investigationsite", "currentmarkupclass", "cemark", "ordermultiple",
+				            "cyfranchisedescription", "cyfranchisecode",
+				            "cymarketingproductgroupcode", "cymarketingproductgroupname",
+				            "cymarketingcode", "packagingunitofmeasure"
+				        }
+				    )
+				in
+				    Cleaned
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

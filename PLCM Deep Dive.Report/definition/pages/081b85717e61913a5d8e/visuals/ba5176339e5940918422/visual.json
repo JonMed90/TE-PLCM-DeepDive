@@ -109,23 +109,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "2063e4707a10a617c537",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Phase Tracker HTML"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

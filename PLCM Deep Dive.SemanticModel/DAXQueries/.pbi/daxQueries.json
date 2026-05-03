@@ -1,8 +1,7 @@
 {
   "version": "1.0.0",
   "tabOrder": [
-    "Query",
-    "Query 1"
+    "Query"
   ],
-  "defaultTab": "Query 1"
+  "defaultTab": "Query"
 }

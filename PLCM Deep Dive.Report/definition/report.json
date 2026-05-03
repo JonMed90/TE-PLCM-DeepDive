@@ -11,9 +11,9 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Stryker_Theme15914937753814185.json",
+      "name": "Stryker_Theme5412863212769097.json",
       "reportVersionAtImport": {
-        "visual": "2.7.0",
+        "visual": "2.8.0",
         "report": "3.2.0",
         "page": "2.3.1"
       },
@@ -23,13 +23,13 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "f9439439782296ce1ae6",
+        "name": "4d67bc6028c3678b42a2",
         "ordinal": 0,
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Dim_GIM"
+                "Entity": "Product"
               }
             },
             "Property": "Business Unit"
@@ -40,8 +40,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "d",
-              "Entity": "Dim_GIM",
+              "Name": "p",
+              "Entity": "Product",
               "Type": 0
             }
           ],
@@ -56,7 +56,7 @@
                           "Column": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "d"
+                                "Source": "p"
                               }
                             },
                             "Property": "Business Unit"
@@ -80,8 +80,6 @@
           ]
         },
         "howCreated": "User",
-        "isHiddenInViewMode": true,
-        "isLockedInViewMode": true,
         "objects": {
           "general": [
             {
@@ -99,16 +97,16 @@
         }
       },
       {
-        "name": "6cf00d88a225a5cdff64",
+        "name": "4ac1ca214909183ce12d",
         "ordinal": 1,
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Dim_GIM"
+                "Entity": "Product"
               }
             },
-            "Property": "DeleteFlag"
+            "Property": "Delete Flag"
           }
         },
         "type": "Categorical",
@@ -137,7 +135,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "false"
+                "Value": "true"
               }
             }
           }
@@ -187,6 +185,11 @@
           "type": "Image"
         },
         {
+          "name": "icons8-clear-filters-308651570123950757.png",
+          "path": "icons8-clear-filters-308651570123950757.png",
+          "type": "Image"
+        },
+        {
           "name": "PowerBI_CanvasBG18646711871792632.png",
           "path": "PowerBI_CanvasBG18646711871792632.png",
           "type": "Image"
@@ -222,8 +225,8 @@
           "type": "Image"
         },
         {
-          "name": "Stryker_Theme15914937753814185.json",
-          "path": "Stryker_Theme15914937753814185.json",
+          "name": "Stryker_Theme5412863212769097.json",
+          "path": "Stryker_Theme5412863212769097.json",
           "type": "CustomTheme"
         }
       ]

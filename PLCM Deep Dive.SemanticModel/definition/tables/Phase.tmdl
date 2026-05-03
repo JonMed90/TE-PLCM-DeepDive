@@ -1,0 +1,82 @@
+/// PLCM phaseout lifecycle phases (1-7) with objectives and conditional formatting colors.
+table Phase
+	lineageTag: 43990acc-bb7c-4b63-8573-96963b521726
+
+	/// Phase name label.
+	column Phase
+		dataType: string
+		lineageTag: 9f9884bd-ee11-400e-a2cd-9503555fe2a5
+		summarizeBy: none
+		sourceColumn: Phase
+		sortByColumn: 'Phase ID'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Primary key. Numeric identifier for the phase (1-7).
+	column 'Phase ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 956e2b07-04f7-4e7d-8a8d-5cde22f0919d
+		summarizeBy: none
+		sourceColumn: Phase ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Description of the phase's goal and expected outcomes.
+	column Objective
+		dataType: string
+		lineageTag: 811d8674-3c85-4726-bf27-621ccace5bb3
+		summarizeBy: none
+		sourceColumn: Objective
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Hex background color for conditional formatting of the phase chevron.
+	column 'Phase BG Color'
+		dataType: string
+		displayFolder: Formatting
+		lineageTag: 8710a570-d56d-4f54-b663-99634679203f
+		summarizeBy: none
+		sourceColumn: Phase BG Color
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Calculated hex font color for readability against the phase background.
+	column 'Phase Font Color' = Switch( Phase[Phase BG Color], "#FFB500", "#000000", "#B2B4AE", "#000000", "#FFFFFF")
+		displayFolder: Formatting
+		lineageTag: dcf1cc0f-cf08-4464-aa7a-bd646a4651cc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Phase = m
+		mode: import
+		queryGroup: 'PLCM RACI Playbook'
+		source =
+				// Phase — PLCM phaseout lifecycle phases (1–7).
+				// Source: Power BI Dataflow > dim_Phase entity
+				// Renames the color column to distinguish background from font color.
+				let
+				    // ── Connect to PLCM RACI dataflow ──
+				    Source = PowerPlatform.Dataflows( null ),
+				    Workspaces = Source{[Id = "Workspaces"]}[Data],
+				    Workspace = Workspaces{[workspaceId = "7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
+				    Dataflow = Workspace{[dataflowId = "1830a663-42fe-4d9a-bc4b-93a6ae5df183"]}[Data],
+				    RawPhase = Dataflow{[entity = "dim_Phase", version = ""]}[Data],
+				
+				    // ── Rename color column for clarity ──
+				    Renamed = Table.RenameColumns(
+				        RawPhase,
+				        {{"Phase Color", "Phase BG Color"}}
+				    )
+				in
+				    Renamed
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

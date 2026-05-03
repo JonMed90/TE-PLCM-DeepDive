@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "927db7d71ecc5a48aa1c",
   "position": {
-    "x": 904.31865828092236,
+    "x": 999.7452229299364,
     "y": 0,
-    "z": 6000,
-    "height": 47.631027253668762,
-    "width": 234.12997903563939,
-    "tabOrder": 3000
+    "z": 5000,
+    "height": 47.898089171974526,
+    "width": 280.25477707006371,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "Demantra forecast from ",
                     "textStyle": {
                       "fontFamily": "Times New Roman",
-                      "fontSize": "9pt"
+                      "color": "#545857"
                     }
                   },
                   {
@@ -38,14 +38,14 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Times New Roman",
-                      "fontSize": "9pt"
+                      "color": "#545857"
                     }
                   },
                   {
                     "value": " to ",
                     "textStyle": {
                       "fontFamily": "Times New Roman",
-                      "fontSize": "9pt"
+                      "color": "#545857"
                     }
                   },
                   {
@@ -61,7 +61,7 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Times New Roman",
-                      "fontSize": "9pt"
+                      "color": "#545857"
                     }
                   }
                 ]
@@ -72,7 +72,7 @@
                     "value": "*Source Envision Demantra Cloud",
                     "textStyle": {
                       "fontFamily": "Times New Roman",
-                      "fontSize": "9pt"
+                      "color": "#545857"
                     }
                   }
                 ]
@@ -108,7 +108,7 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "Forecast Sales - Start Date"
+                                  "Property": "FC - Start Date"
                                 },
                                 "Name": "Sales.Forecast Sales - Start Date"
                               }
@@ -171,7 +171,7 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "Forecast Sales - End Date"
+                                  "Property": "FC - End Date"
                                 },
                                 "Name": "Sales.Forecast Sales - End Date"
                               }
@@ -218,6 +218,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Notes Text box'"
                 }
               }
             }

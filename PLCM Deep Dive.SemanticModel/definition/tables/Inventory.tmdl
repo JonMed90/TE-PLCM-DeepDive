@@ -1,0 +1,215 @@
+/// Current inventory positions including quantity on hand, statutory and management costs by ERP site and subinventory.
+table Inventory
+	lineageTag: d060f7b4-47e4-43b2-b7da-ce3d56febf1a
+
+	/// Foreign key to Region table.
+	column 'Region Index'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: fa8c55ee-d968-491d-9114-f3b780a945e3
+		summarizeBy: none
+		sourceColumn: Dim_Regions.Index
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Type of ERP site (e.g., Plant, Distribution Center).
+	column 'ERP Site Type'
+		dataType: string
+		displayFolder: Location
+		lineageTag: f16e9320-4155-4dd2-8b7c-a4a59ada834f
+		summarizeBy: none
+		sourceColumn: Erp_Site_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	/// ERP source plant code.
+	column 'ERP Source Plant'
+		dataType: string
+		displayFolder: Location
+		lineageTag: 9ccf908e-09e8-48bd-9edd-cd08f020e1dc
+		summarizeBy: none
+		sourceColumn: Erp_Source_Plant
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Legal entity identifier.
+	column 'Entity ID'
+		dataType: string
+		displayFolder: Location
+		lineageTag: ed304d5c-ed48-4e2e-a92c-79842a3b9805
+		summarizeBy: none
+		sourceColumn: Entity_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Source of the inventory record in the ERP system.
+	column 'ERP Inventory Source'
+		dataType: string
+		displayFolder: Location
+		lineageTag: be0a9c6b-c127-4d9b-86b2-0a7e72b11398
+		summarizeBy: none
+		sourceColumn: Erp_Inventory_Source
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Current units on hand at the location.
+	column 'Quantity On Hand'
+		dataType: double
+		isHidden
+		lineageTag: d3182dc8-6283-48f3-bcd1-9ffb84e3181c
+		summarizeBy: sum
+		sourceColumn: QuantityOnHand
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Extended statutory cost in USD (quantity x statutory unit cost).
+	column 'Ext Statutory Cost USD'
+		dataType: double
+		isHidden
+		displayFolder: Cost
+		lineageTag: cff34c11-4212-4880-9d89-1200475d1dec
+		summarizeBy: sum
+		sourceColumn: ERP_Extended_Statutory_Cost_USD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Extended management cost in USD (quantity x management unit cost).
+	column 'Ext Management Cost USD'
+		dataType: double
+		isHidden
+		displayFolder: Cost
+		lineageTag: a42b9362-c7e0-40f3-a414-28998d277d9d
+		summarizeBy: sum
+		sourceColumn: ERP_Extended_Management_Cost_USD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Source ERP system name (e.g., JDE, SAP, Oracle).
+	column 'System Name'
+		dataType: string
+		displayFolder: Location
+		lineageTag: 70da1448-5b5f-4e8a-96ef-ff444e3c6afa
+		summarizeBy: none
+		sourceColumn: system_name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business partner or warehouse code.
+	column 'BP WH Code'
+		dataType: string
+		displayFolder: Location
+		lineageTag: 59d47280-d084-4481-b16c-2e2accf6257d
+		summarizeBy: none
+		sourceColumn: BP/WH Code
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business partner or warehouse description.
+	column 'BP WH Description'
+		dataType: string
+		displayFolder: Location
+		lineageTag: 827f84f6-04c3-4eb0-a7ca-c234e86790de
+		summarizeBy: none
+		sourceColumn: BP/WH Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Subinventory location code within the site.
+	column 'Subinventory Code'
+		dataType: string
+		displayFolder: Location
+		lineageTag: 7a856f45-d88f-44f6-a647-74d0fcc7e6a2
+		summarizeBy: none
+		sourceColumn: SUBINVENTORY_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Subinventory location description.
+	column 'Subinventory Description'
+		dataType: string
+		displayFolder: Location
+		lineageTag: fdd2da78-6447-4dd9-99b2-a8f1b93ded41
+		summarizeBy: none
+		sourceColumn: SUBINVENTORY_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Foreign key to Product table.
+	column 'Item ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: 6ad9c463-40d3-49b5-b275-77768fbfb3ad
+		summarizeBy: none
+		sourceColumn: ItemId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Country where inventory is held.
+	column Country
+		dataType: string
+		lineageTag: c9c2dd3a-a0f0-4273-b552-5cbe35e987a3
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Inventory-b128650f-cd9b-485e-a6c7-709f0d42cfbe = m
+		mode: import
+		queryGroup: Inventory
+		source =
+				// Inventory — Finished goods inventory positions.
+				// Source: Power BI Dataflow > fact_Inventory_FG_Summary entity
+				// Joins to Region lookup for the integer FK, then drops the text Region column.
+				let
+				    // ── Connect to dataflow ──
+				    Source = PowerPlatform.Dataflows( null ),
+				    Workspaces = Source{[Id = "Workspaces"]}[Data],
+				    Workspace = Workspaces{[workspaceId = "f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+				    Dataflow = Workspace{[dataflowId = "41f287c8-3350-4c8e-996a-5a6f9956999c"]}[Data],
+				    RawInventory = Dataflow{[entity = "fact_Inventory_FG_Summary", version = ""]}[Data],
+				
+				    // ── Join to Region lookup for integer FK ──
+				    JoinedRegion = Table.NestedJoin(
+				        RawInventory,
+				        {"Region"},
+				        Region,
+				        {"Region"},
+				        "Region.Lookup",
+				        JoinKind.LeftOuter
+				    ),
+				    ExpandedRegion = Table.ExpandTableColumn(
+				        JoinedRegion,
+				        "Region.Lookup",
+				        {"Index"},
+				        {"Dim_Regions.Index"}
+				    ),
+				
+				    // ── Drop text Region column (FK replaces it) ──
+				    Cleaned = Table.RemoveColumns( ExpandedRegion, {"Region"} )
+				in
+				    Cleaned
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

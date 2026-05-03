@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "84d9773c9041200dd37a",
   "position": {
     "x": 256.16688396349412,
     "y": 457.26205997392435,
-    "z": 0,
+    "z": 1000,
     "height": 249.4915254237288,
     "width": 1009.6479791395045,
     "tabOrder": 0
@@ -20,283 +20,227 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.Business Unit",
-              "nativeQueryRef": "Business Unit"
+              "queryRef": "Product.Business Unit",
+              "nativeQueryRef": "Business Unit1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Brand"
                 }
               },
-              "queryRef": "Dim_GIM.Brand",
-              "nativeQueryRef": "Brand"
+              "queryRef": "Product.Brand",
+              "nativeQueryRef": "Brand1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "SubBrand"
                 }
               },
-              "queryRef": "Dim_GIM.SubBrand",
-              "nativeQueryRef": "SubBrand"
+              "queryRef": "Product.SubBrand",
+              "nativeQueryRef": "SubBrand1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Life Cycle Code"
                 }
               },
-              "queryRef": "Dim_GIM.Life Cycle Code",
-              "nativeQueryRef": "Life Cycle Code"
+              "queryRef": "Product.Life Cycle Code",
+              "nativeQueryRef": "Life Cycle Code1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "Standard Catalog Number"
-                }
-              },
-              "queryRef": "Dim_GIM.standardcatalognumber",
-              "nativeQueryRef": "Standard Catalog Number"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Catalog Number"
                 }
               },
-              "queryRef": "Dim_GIM.Catalog Number",
-              "nativeQueryRef": "Catalog Number"
+              "queryRef": "Product.Catalog Number",
+              "nativeQueryRef": "Catalog Number1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Item Owner Name"
                 }
               },
-              "queryRef": "Dim_GIM.itemownername",
-              "nativeQueryRef": "Item Owner Name"
+              "queryRef": "Product.Item Owner Name",
+              "nativeQueryRef": "Item Owner Name1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "ItemId"
+                  "Property": "Item ID"
                 }
               },
-              "queryRef": "Dim_GIM.itemid",
-              "nativeQueryRef": "ItemId"
+              "queryRef": "Product.Item ID",
+              "nativeQueryRef": "Item ID"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Long Description"
                 }
               },
-              "queryRef": "Dim_GIM.longdescription",
-              "nativeQueryRef": "Long Description"
+              "queryRef": "Product.Long Description",
+              "nativeQueryRef": "Long Description1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Item Type Description"
                 }
               },
-              "queryRef": "Dim_GIM.Item Type Description",
-              "nativeQueryRef": "Item Type Description"
+              "queryRef": "Product.Item Type Description",
+              "nativeQueryRef": "Item Type Description1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Stocking Type Code"
                 }
               },
-              "queryRef": "GIM.Stocking Type Code"
+              "queryRef": "Product.Stocking Type Code",
+              "nativeQueryRef": "Stocking Type Code"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Manufacturing Cost"
                 }
               },
-              "queryRef": "Dim_GIM.Manufacturing Cost",
-              "nativeQueryRef": "Manufacturing Cost"
+              "queryRef": "Product.Manufacturing Cost",
+              "nativeQueryRef": "Manufacturing Cost1"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "PPR.Last Buy"
+                  "Property": "Last Transferred Date"
                 }
               },
-              "queryRef": "GIM.PPR.Last Buy"
+              "queryRef": "Product.Last Transferred Date",
+              "nativeQueryRef": "Last Transferred Date"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "PPR.Last Sell"
+                  "Property": "Last Sale Date"
                 }
               },
-              "queryRef": "GIM.PPR.Last Sell"
+              "queryRef": "Product.Last Sale Date",
+              "nativeQueryRef": "Last Sale Date"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "GIM.LastTransferredDate"
+                  "Property": "Last Change Date"
                 }
               },
-              "queryRef": "Dim_GIM.GIM.LastTransferredDate",
-              "nativeQueryRef": "GIM.LastTransferredDate"
+              "queryRef": "Product.Last Change Date",
+              "nativeQueryRef": "Last Change Date"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "GIM.LastSaleDate"
+                  "Property": "First Sale Date"
                 }
               },
-              "queryRef": "Dim_GIM.GIM.LastSaleDate",
-              "nativeQueryRef": "GIM.LastSaleDate"
+              "queryRef": "Product.First Sale Date",
+              "nativeQueryRef": "First Sale Date"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "GIM.LastChangeDate"
+                  "Property": "Create Date"
                 }
               },
-              "queryRef": "Dim_GIM.GIM.LastChangeDate",
-              "nativeQueryRef": "GIM.LastChangeDate"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "GIM.FirstSaleDate"
-                }
-              },
-              "queryRef": "Dim_GIM.GIM.FirstSaleDate",
-              "nativeQueryRef": "GIM.FirstSaleDate"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_GIM"
-                    }
-                  },
-                  "Property": "GIM.CreateDate"
-                }
-              },
-              "queryRef": "Dim_GIM.GIM.CreateDate",
-              "nativeQueryRef": "GIM.CreateDate"
+              "queryRef": "Product.Create Date",
+              "nativeQueryRef": "Create Date"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_GIM"
-                  }
-                },
-                "Property": "Brand"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -368,20 +312,6 @@
           "selector": {
             "metadata": "Sum(GIM.ManufacturingcostUSD)"
           }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "77.41423125794155D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Dim_GIM.SubBrand"
-          }
         }
       ]
     },
@@ -400,9 +330,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                    "Literal": {
+                      "Value": "'#b3b3b3'"
                     }
                   }
                 }

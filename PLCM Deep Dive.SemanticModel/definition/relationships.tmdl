@@ -1,54 +1,48 @@
 relationship d4742aae-9b1f-4988-8ec9-7c9a92b2955b
-	fromColumn: Fact_Sales.Date
-	toColumn: Dim_Calendar.Date
+	fromColumn: Sales.Date
+	toColumn: Calendar.Date
 
 relationship d3dfcb45-8f1f-7b03-6752-7eb68308e887
-	fromColumn: Fact_Sales.ItemId
-	toColumn: Dim_GIM.ItemId
+	fromColumn: Sales.'Item ID'
+	toColumn: Product.'Item ID'
 
 relationship AutoDetected_5afa0f18-ee24-4bdb-a415-7c690a7896df
-	fromColumn: Fact_Sales.'Dim_Regions.Index'
-	toColumn: Dim_Regions.Index
+	fromColumn: Sales.'Region Index'
+	toColumn: Region.Index
 
 relationship AutoDetected_9a4bb1e1-2cae-4473-b0ab-f4bf380348bf
-	fromColumn: Fact_Inventory.ItemId
-	toColumn: Dim_GIM.ItemId
-
-relationship fb135e58-61a5-37af-42fa-7847f31c7dce
-	fromColumn: Fact_Inventory.Region
-	toColumn: Dim_Regions.Region
+	fromColumn: Inventory.'Item ID'
+	toColumn: Product.'Item ID'
 
 relationship AutoDetected_6ac3b117-4362-4e7d-b4f1-7edc2e88ea54
-	fromColumn: Fact_TaskAssignments.'Role Name'
-	toColumn: Dim_Role.'Role Name'
+	fromColumn: 'Task Assignment'.'Role Name'
+	toColumn: Role.'Role Name'
 
 relationship 4eb8be6f-d8ee-4b8e-c318-d896204eb6cf
-	fromColumn: Fact_TaskAssignments.'Phase Activity ID'
-	toColumn: Dim_PhaseActivity.'Phase Activity ID'
+	fromColumn: 'Task Assignment'.'Phase Activity ID'
+	toColumn: 'Phase Activity'.'Phase Activity ID'
 
 relationship 69ea5d42-5b7a-9f2b-6702-1f14943dd0b2
-	fromColumn: Fact_TaskAssignments.'Phase ID'
-	toColumn: Dim_Phase.'Phase ID'
-
-relationship AutoDetected_b33bc2cc-3607-43cd-b90c-80b03e4c1489
-	fromColumn: Fact_E&O.Region
-	toColumn: Dim_Regions.Region
+	fromColumn: 'Task Assignment'.'Phase ID'
+	toColumn: Phase.'Phase ID'
 
 relationship 20241eab-53dd-5545-15e8-8272c32bcc65
-	fromColumn: Fact_E&O.ItemId
-	toColumn: Dim_GIM.ItemId
+	fromColumn: 'Excess and Obsolete'.'Item ID'
+	toColumn: Product.'Item ID'
 
 relationship 0b3a861e-782e-a366-a78c-43c3d14ee579
-	fromColumn: Fact_E&O.MonthEnding
-	toColumn: Dim_Calendar.Date
+	fromColumn: 'Excess and Obsolete'.MonthEnding
+	toColumn: Calendar.Date
 
 relationship 5db514eb-ac9a-a705-5a12-df2745d42a55
-	fromColumn: Fact_ConsolidatedList.'Phase ID'
-	toColumn: Dim_Phase.'Phase ID'
+	fromColumn: 'Exit Tracker'.'Phase ID'
+	toColumn: Phase.'Phase ID'
 
-relationship e2216a84-26e1-52f9-03e0-6cfb9fd3264b
-	crossFilteringBehavior: bothDirections
-	fromCardinality: one
-	fromColumn: Fact_ConsolidatedList.'GIM_ID (Hide)'
-	toColumn: Dim_GIM.ItemId
+relationship 13c8cf25-b0d8-0fe9-0645-737ab9c4c553
+	fromColumn: Inventory.'Region Index'
+	toColumn: Region.Index
+
+relationship bd9fbc6a-09c0-1542-d51a-c77aabdf18dd
+	fromColumn: 'Excess and Obsolete'.'Region Index'
+	toColumn: Region.Index
 

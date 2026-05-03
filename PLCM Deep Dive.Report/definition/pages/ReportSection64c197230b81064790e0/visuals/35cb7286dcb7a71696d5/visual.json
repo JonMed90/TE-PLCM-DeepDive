@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "35cb7286dcb7a71696d5",
   "position": {
     "x": 875.30638852672746,
@@ -20,38 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_ConsolidatedList"
+                      "Entity": "Exit Tracker"
                     }
                   },
-                  "Property": "LCC Description"
+                  "Property": "Life Cycle Code"
                 }
               },
-              "queryRef": "Fact_ConsolidatedList.LCC Description",
-              "nativeQueryRef": "LCC Description1",
+              "queryRef": "Exit Tracker.Life Cycle Code",
+              "nativeQueryRef": "Life Cycle Code",
               "active": true
-            }
-          ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_GIM"
-                        }
-                      },
-                      "Property": "Life Cycle Code"
-                    }
-                  },
-                  "Function": 3
-                }
-              },
-              "queryRef": "Min(Dim_GIM.Life Cycle Code)",
-              "nativeQueryRef": "Life Cycle Code"
             }
           ]
         },
@@ -65,12 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "# ConsolidatedList SKUs"
+                  "Property": "# Exit Tracker SKUs"
                 }
               },
-              "queryRef": "_Measures.ConsolidatedList Count",
-              "nativeQueryRef": "# SKUs",
-              "displayName": "# SKUs"
+              "queryRef": "_Measures.# Exit Tracker SKUs",
+              "nativeQueryRef": "# Exit Tracker SKUs"
             }
           ]
         }
@@ -101,6 +77,13 @@
               "expr": {
                 "Literal": {
                   "Value": "1D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -159,7 +142,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Fact_ConsolidatedList"
+                            "Entity": "Dim_ExitTracker"
                           }
                         },
                         "Property": "Business Unit"
@@ -201,7 +184,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Fact_ConsolidatedList"
+                            "Entity": "Dim_ExitTracker"
                           }
                         },
                         "Property": "Business Unit"
@@ -243,7 +226,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Fact_ConsolidatedList"
+                            "Entity": "Dim_ExitTracker"
                           }
                         },
                         "Property": "Business Unit"
@@ -285,7 +268,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Fact_ConsolidatedList"
+                            "Entity": "Dim_ExitTracker"
                           }
                         },
                         "Property": "Business Unit"
@@ -327,7 +310,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Fact_ConsolidatedList"
+                            "Entity": "Dim_ExitTracker"
                           }
                         },
                         "Property": "Business Unit"
@@ -369,7 +352,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Fact_ConsolidatedList"
+                            "Entity": "Dim_ExitTracker"
                           }
                         },
                         "Property": "Business Unit"
@@ -411,7 +394,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Fact_ConsolidatedList"
+                            "Entity": "Dim_ExitTracker"
                           }
                         },
                         "Property": "Business Unit"
@@ -445,9 +428,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.3
+                    "Literal": {
+                      "Value": "'#b3b3b3'"
                     }
                   }
                 }
@@ -526,6 +508,13 @@
                   "Value": "'Segoe UI'"
                 }
               }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# Exit Tracker SKUs by BU'"
+                }
+              }
             }
           }
         }
@@ -551,6 +540,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'Segoe UI'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# SKUs by Life Cycle Code'"
                 }
               }
             }

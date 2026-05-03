@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "f7c001e2963620b50ce9",
   "position": {
     "x": 0,
     "y": 0,
     "z": 10000,
-    "height": 51.049333040909552,
-    "width": 112.12160183609672,
-    "tabOrder": 8000
+    "height": 50.611071171818836,
+    "width": 106.74335010783609,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "actionButton",
@@ -46,6 +46,20 @@
                       "Value": "'Normal'"
                     }
                   }
+                }
+              }
+            },
+            "iconSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            },
+            "placement": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
                 }
               }
             }
@@ -94,6 +108,13 @@
                   }
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
             }
           },
           "selector": {
@@ -130,6 +151,35 @@
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "shape": [
+        {
+          "properties": {
+            "tileShape": {
+              "expr": {
+                "Literal": {
+                  "Value": "'rectangle'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ]

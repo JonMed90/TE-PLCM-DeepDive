@@ -4,10 +4,10 @@
   "position": {
     "x": 239.94828700711037,
     "y": 39.715578539107952,
-    "z": 10000,
+    "z": 3500,
     "height": 16.548157724628314,
     "width": 1040.0517129928896,
-    "tabOrder": 7000
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "shape",
@@ -162,6 +162,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Title Shape'"
                 }
               }
             }

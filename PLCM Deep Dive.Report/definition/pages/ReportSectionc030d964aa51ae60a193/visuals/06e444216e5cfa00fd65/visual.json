@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "06e444216e5cfa00fd65",
   "position": {
-    "x": 248.5279187817259,
-    "y": 55.228426395939088,
-    "z": 2000,
-    "height": 248.5279187817259,
-    "width": 294.010152284264,
+    "x": 248.34355828220859,
+    "y": 59.877300613496928,
+    "z": 7250,
+    "height": 266.01226993865032,
+    "width": 294.47852760736197,
     "tabOrder": 3000
   },
   "visual": {
@@ -19,17 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Purple (",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Calibri",
-                      "fontSize": "8pt",
-                      "textDecoration": "underline",
-                      "color": "#85458a"
-                    }
-                  },
-                  {
-                    "value": "QoH) Quantity OnHand + Inventory Value ",
+                    "value": "(QoH) Quantity OnHand + Inventory Value ",
                     "textStyle": {
                       "fontFamily": "Calibri",
                       "fontSize": "8pt",
@@ -74,16 +64,6 @@
               },
               {
                 "textRuns": [
-                  {
-                    "value": "Blue ",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Calibri",
-                      "fontSize": "8pt",
-                      "textDecoration": "underline",
-                      "color": "#1c5687"
-                    }
-                  },
                   {
                     "value": "TTM (Trailing twelve Months) ",
                     "textStyle": {
@@ -180,17 +160,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Green DSI (",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Calibri",
-                      "fontSize": "8pt",
-                      "textDecoration": "underline",
-                      "color": "#4c7d7a"
-                    }
-                  },
-                  {
-                    "value": "Days Sales of Inventory):",
+                    "value": "(Days Sales of Inventory):",
                     "textStyle": {
                       "fontFamily": "Calibri",
                       "fontSize": "8pt",
@@ -404,6 +374,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Notes Text box'"
                 }
               }
             }

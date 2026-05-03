@@ -119,7 +119,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Fact_TaskAssignments"
+                          "Entity": "_Measures"
                         }
                       },
                       "Property": "Departments (by Code)"
@@ -417,7 +417,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Fact_TaskAssignments"
+                          "Entity": "_Measures"
                         }
                       },
                       "Property": "Departments (by Code)"

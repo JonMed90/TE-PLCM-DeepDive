@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "7a4d5dc3466c5bea8952",
   "position": {
     "x": 0,
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_GIM"
-                        }
-                      },
-                      "Hierarchy": "Franchise Hierarchy"
+                    "SourceRef": {
+                      "Entity": "Product"
                     }
                   },
-                  "Level": "Brand"
+                  "Property": "Brand"
                 }
               },
-              "queryRef": "Dim_GIM.Franchise Hierarchy.Brand",
-              "nativeQueryRef": "Franchise Hierarchy Brand",
+              "queryRef": "Product.Brand",
+              "nativeQueryRef": "Brand",
               "active": true
             }
           ]
@@ -55,11 +50,16 @@
       ],
       "general": [
         {
+          "properties": {}
+        }
+      ],
+      "data": [
+        {
           "properties": {
-            "selfFilterEnabled": {
+            "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "'Dropdown'"
                 }
               }
             }

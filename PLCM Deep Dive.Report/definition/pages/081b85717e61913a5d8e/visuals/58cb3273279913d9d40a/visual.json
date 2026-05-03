@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "58cb3273279913d9d40a",
   "position": {
-    "x": 118.94949494949495,
-    "y": 13.791245791245791,
+    "x": 118.97753679318359,
+    "y": 9,
     "z": 2000,
-    "height": 34.478114478114477,
-    "width": 329.26599326599325,
+    "height": 36.6847405112316,
+    "width": 503.67157242447718,
     "tabOrder": 2000
   },
   "visual": {
@@ -21,38 +21,31 @@
                   {
                     "value": "PLCM",
                     "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "16pt"
+                      "fontFamily": "Arial Black",
+                      "fontSize": "20pt"
                     }
                   },
                   {
                     "value": " ",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "16pt"
+                      "fontFamily": "Arial Black",
+                      "fontSize": "20pt"
                     }
                   },
                   {
                     "value": "Exit Tracker ",
                     "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "16pt",
+                      "fontFamily": "Arial Black",
+                      "fontSize": "20pt",
                       "color": "#ffb500"
                     }
                   },
                   {
-                    "value": "- ",
+                    "value": "- Playbook",
                     "textStyle": {
-                      "fontFamily": "Segoe UI",
-                      "fontSize": "16pt"
-                    }
-                  },
-                  {
-                    "value": "Playbook",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "16pt"
+                      "fontFamily": "Arial Black",
+                      "fontSize": "20pt"
                     }
                   }
                 ]
@@ -117,6 +110,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Title Text box'"
                 }
               }
             }

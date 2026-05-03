@@ -1,0 +1,86 @@
+/// RACI matrix linking phase activities to department roles by assignment type (Responsible, Accountable).
+table 'Task Assignment'
+	lineageTag: 7544b646-840f-4bb1-8507-39857ca70dca
+
+	/// Foreign key linking to Phase Activity via Task ID.
+	column 'Task ID'
+		dataType: string
+		isHidden
+		displayFolder: Keys
+		lineageTag: 7268947a-5b74-4226-9e9e-df1183c73cd7
+		summarizeBy: none
+		sourceColumn: TaskId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Foreign key to Phase table.
+	column 'Phase ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: 3d9b96cb-d2ba-4058-a0fd-6a945cea194b
+		summarizeBy: none
+		sourceColumn: Phase ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Foreign key to Phase Activity table.
+	column 'Phase Activity ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: 9b15ea9a-cc19-431d-b0ac-561dac378fd9
+		summarizeBy: none
+		sourceColumn: Phase Activity ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// RACI assignment type: Responsible or Accountable.
+	column 'Assignment Type'
+		dataType: string
+		lineageTag: 00b24c59-1869-4530-b4d1-69a3296bab6e
+		summarizeBy: none
+		sourceColumn: Assignment Type
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Department role name assigned to the task.
+	column 'Role Name'
+		dataType: string
+		lineageTag: 068a68c1-8fae-428f-8fd9-1aa151c1ed56
+		summarizeBy: none
+		sourceColumn: Role Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_TaskAssignments = m
+		mode: import
+		queryGroup: 'PLCM RACI Playbook'
+		source =
+				// Task Assignment — RACI matrix linking phase activities to department roles.
+				// Source: Power BI Dataflow > fact_Assignments entity
+				// Pass-through query; no transformations needed.
+				let
+				    // ── Connect to PLCM RACI dataflow ──
+				    Source = PowerPlatform.Dataflows( null ),
+				    Workspaces = Source{[Id = "Workspaces"]}[Data],
+				    Workspace = Workspaces{[workspaceId = "7e9a6bda-7b19-48ec-ac34-1f7d14deda8c"]}[Data],
+				    Dataflow = Workspace{[dataflowId = "1830a663-42fe-4d9a-bc4b-93a6ae5df183"]}[Data],
+				    RawAssignments = Dataflow{[entity = "fact_Assignments", version = ""]}[Data]
+				in
+				    RawAssignments
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

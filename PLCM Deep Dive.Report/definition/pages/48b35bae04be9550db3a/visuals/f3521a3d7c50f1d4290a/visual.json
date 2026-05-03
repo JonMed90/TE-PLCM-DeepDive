@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_GIM"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "Business Unit"
                 }
               },
-              "queryRef": "Dim_GIM.Business Unit",
+              "queryRef": "Product.Business Unit",
               "nativeQueryRef": "Business Unit",
               "active": true
             }
@@ -42,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Profit Margin"
+                  "Property": "Actual Gross Margin %"
                 }
               },
-              "queryRef": "_Measures.Profit Margin",
-              "nativeQueryRef": "Profit Margin"
+              "queryRef": "_Measures.Gross Margin %",
+              "nativeQueryRef": "Actual Gross Margin %"
             },
             {
               "field": {
@@ -56,22 +56,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Profit Margin minus Sum of Budgeted Growth Margin"
+                  "Property": "Margin Delta %"
                 }
               },
-              "queryRef": "_Measures.Profit Margin minus Sum of Budgeted Growth Margin",
-              "nativeQueryRef": "Profit Margin minus Sum of Budgeted Growth Margin"
-            },
-            {
-              "field": {
-                "NativeVisualCalculation": {
-                  "Language": "dax",
-                  "Expression": "If(  [Profit Margin minus Sum of Budgeted Growth Margin] >0 , \"#B83C27\", \"#3A913F\")",
-                  "Name": "Calculation"
-                }
-              },
-              "queryRef": "select",
-              "nativeQueryRef": "Calculation"
+              "queryRef": "_Measures.Margin % Delta",
+              "nativeQueryRef": "Margin Delta %"
             }
           ]
         }
@@ -86,7 +75,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Profit Margin"
+                "Property": "Actual Gross Margin %"
               }
             },
             "direction": "Descending"
@@ -124,6 +113,13 @@
               "expr": {
                 "Literal": {
                   "Value": "20D"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }
@@ -225,9 +221,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                    "Literal": {
+                      "Value": "'#b3b3b3'"
                     }
                   }
                 }
@@ -256,6 +251,26 @@
               "expr": {
                 "Literal": {
                   "Value": "'By Business Unit'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
                 }
               }
             }

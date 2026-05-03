@@ -4,80 +4,10 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 54.16666666666665,
+        "x": 0,
         "y": 0
       },
       "nodes": [
-        {
-          "location": {
-            "x": 447.22222222222229,
-            "y": 0
-          },
-          "nodeIndex": "Dim_GIM",
-          "nodeLineageTag": "b471070f-9991-498f-917e-cbf78c036660",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 4,
-          "expandedHeight": 295.44598431254269
-        },
-        {
-          "location": {
-            "x": 1140.7428571428575,
-            "y": 63.541666666666572
-          },
-          "nodeIndex": "Dim_Calendar",
-          "nodeLineageTag": "9ee31ce7-fc82-47fe-8db7-be379824b531",
-          "size": {
-            "height": 104,
-            "width": 234
-          },
-          "zIndex": 12,
-          "expandedHeight": 212.5
-        },
-        {
-          "location": {
-            "x": 535.222222222222,
-            "y": 417.7083333333332
-          },
-          "nodeIndex": "Fact_Sales",
-          "nodeLineageTag": "53a2af17-f301-4423-9df8-852efa068649",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 11,
-          "expandedHeight": 296
-        },
-        {
-          "location": {
-            "x": 953.37035624186183,
-            "y": 433.115754869249
-          },
-          "nodeIndex": "Fact_Inventory",
-          "nodeLineageTag": "d060f7b4-47e4-43b2-b7da-ce3d56febf1a",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 3,
-          "expandedHeight": 248
-        },
-        {
-          "location": {
-            "x": 745.27936507936442,
-            "y": 854.85119047619094
-          },
-          "nodeIndex": "Dim_Regions",
-          "nodeLineageTag": "7161f6cf-6ca5-4fa9-9c79-eed9d2e89c11",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 5,
-          "expandedHeight": 124
-        },
         {
           "location": {
             "x": 0,
@@ -88,7 +18,21 @@
             "height": 72,
             "width": 234
           },
-          "zIndex": 2,
+          "zIndex": 13,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 656.94444444444423
+          },
+          "nodeIndex": "_Budget",
+          "nodeLineageTag": "6c13e33e-5299-415f-842d-e78a2f3e3bb0",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 11,
           "expandedHeight": 200
         },
         {
@@ -96,125 +40,182 @@
             "x": 0,
             "y": 780.00992063492083
           },
-          "nodeIndex": "Dim_KPI",
+          "nodeIndex": "_KPI",
           "nodeLineageTag": "fd4ec730-7f11-44b7-a7e5-068960672550",
           "size": {
             "height": 72,
             "width": 234
           },
-          "zIndex": 9,
+          "zIndex": 12,
           "expandedHeight": 104
         },
         {
           "location": {
-            "x": 1120.3111164093013,
-            "y": 1001.3888888888887
-          },
-          "nodeIndex": "Fact_ConsolidatedList",
-          "nodeLineageTag": "68208094-5a34-4fb5-ac03-13fb93f946c2",
-          "size": {
-            "height": 519.44444444444434,
-            "width": 234
-          },
-          "zIndex": 14
-        },
-        {
-          "location": {
             "x": 0,
-            "y": 656.94444444444423
+            "y": 561.47421164739717
           },
-          "nodeIndex": "Budget",
-          "nodeLineageTag": "6c13e33e-5299-415f-842d-e78a2f3e3bb0",
-          "size": {
-            "height": 72,
-            "width": 234
-          },
-          "zIndex": 15,
-          "expandedHeight": 200
-        },
-        {
-          "location": {
-            "x": 1590.0406120119319,
-            "y": 783.62381674609082
-          },
-          "nodeIndex": "Dim_Phase",
-          "nodeLineageTag": "43990acc-bb7c-4b63-8573-96963b521726",
-          "size": {
-            "height": 104,
-            "width": 234
-          },
-          "zIndex": 6,
-          "expandedHeight": 128
-        },
-        {
-          "location": {
-            "x": 1601.0964014036576,
-            "y": 391.61556769240133
-          },
-          "nodeIndex": "Fact_TaskAssignments",
-          "nodeLineageTag": "7544b646-840f-4bb1-8507-39857ca70dca",
-          "size": {
-            "height": 152,
-            "width": 234
-          },
-          "zIndex": 13,
-          "expandedHeight": 248
-        },
-        {
-          "location": {
-            "x": 2099.4895526970486,
-            "y": 378.662360359631
-          },
-          "nodeIndex": "Dim_Role",
-          "nodeLineageTag": "2ef32677-9173-411c-82da-8569d82727dd",
-          "size": {
-            "height": 104,
-            "width": 234
-          },
-          "zIndex": 7,
-          "expandedHeight": 128
-        },
-        {
-          "location": {
-            "x": 1630.70000529819,
-            "y": 6.9444444444444393
-          },
-          "nodeIndex": "Dim_PhaseActivity",
-          "nodeLineageTag": "2564db20-d197-4aca-a42b-91b44a417520",
-          "size": {
-            "height": 104,
-            "width": 234
-          },
-          "zIndex": 1,
-          "expandedHeight": 176
-        },
-        {
-          "location": {
-            "x": 257.10065850996921,
-            "y": 1182.3075396825398
-          },
-          "nodeIndex": "Playbook Navigation",
+          "nodeIndex": "_Playbook Navigation",
           "nodeLineageTag": "7c6cd9c1-9f58-417b-9e7d-7fc3becb6d41",
           "size": {
             "height": 72,
             "width": 234
           },
-          "zIndex": 8,
+          "zIndex": 10,
           "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 1140.7428571428575,
+            "y": 63.541666666666572
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "9ee31ce7-fc82-47fe-8db7-be379824b531",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1,
+          "expandedHeight": 212.5
         },
         {
           "location": {
             "x": 1304.3228807321921,
             "y": 425.75892857142884
           },
-          "nodeIndex": "Fact_E&O",
+          "nodeIndex": "Excess and Obsolete",
           "nodeLineageTag": "acff4fb9-31e4-4475-828f-cc24a8f83607",
           "size": {
             "height": 152,
             "width": 234
           },
-          "zIndex": 10,
+          "zIndex": 6,
           "expandedHeight": 248
+        },
+        {
+          "location": {
+            "x": 953.37035624186183,
+            "y": 433.115754869249
+          },
+          "nodeIndex": "Inventory",
+          "nodeLineageTag": "d060f7b4-47e4-43b2-b7da-ce3d56febf1a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5,
+          "expandedHeight": 248
+        },
+        {
+          "location": {
+            "x": 1952.5406120119319,
+            "y": 723.90159452386854
+          },
+          "nodeIndex": "Phase",
+          "nodeLineageTag": "43990acc-bb7c-4b63-8573-96963b521726",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 8,
+          "expandedHeight": 128
+        },
+        {
+          "location": {
+            "x": 1933.4777830759674,
+            "y": 8.333333333333325
+          },
+          "nodeIndex": "Phase Activity",
+          "nodeLineageTag": "2564db20-d197-4aca-a42b-91b44a417520",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 7,
+          "expandedHeight": 176
+        },
+        {
+          "location": {
+            "x": 447.22222222222229,
+            "y": 0
+          },
+          "nodeIndex": "Product",
+          "nodeLineageTag": "b471070f-9991-498f-917e-cbf78c036660",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 3,
+          "expandedHeight": 295.44598431254269
+        },
+        {
+          "location": {
+            "x": 745.27936507936442,
+            "y": 854.85119047619094
+          },
+          "nodeIndex": "Region",
+          "nodeLineageTag": "7161f6cf-6ca5-4fa9-9c79-eed9d2e89c11",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2,
+          "expandedHeight": 124
+        },
+        {
+          "location": {
+            "x": 2277.2673304748268,
+            "y": 384.21791591518655
+          },
+          "nodeIndex": "Role",
+          "nodeLineageTag": "2ef32677-9173-411c-82da-8569d82727dd",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 14,
+          "expandedHeight": 128
+        },
+        {
+          "location": {
+            "x": 535.222222222222,
+            "y": 417.7083333333332
+          },
+          "nodeIndex": "Sales",
+          "nodeLineageTag": "53a2af17-f301-4423-9df8-852efa068649",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4,
+          "expandedHeight": 296
+        },
+        {
+          "location": {
+            "x": 1941.3741791814352,
+            "y": 363.83778991462356
+          },
+          "nodeIndex": "Task Assignment",
+          "nodeLineageTag": "7544b646-840f-4bb1-8507-39857ca70dca",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 9,
+          "expandedHeight": 248
+        },
+        {
+          "location": {
+            "x": 1593.2117749192712,
+            "y": 367.2033730158733
+          },
+          "nodeIndex": "Exit Tracker",
+          "nodeLineageTag": "68208094-5a34-4fb5-ac03-13fb93f946c2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 15,
+          "expandedHeight": 300
         }
       ],
       "name": "All tables",

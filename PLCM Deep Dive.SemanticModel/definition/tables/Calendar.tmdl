@@ -1,0 +1,227 @@
+/// Date dimension for time intelligence with year, quarter, and month attributes.
+table Calendar
+	lineageTag: 9ee31ce7-fc82-47fe-8db7-be379824b531
+	dataCategory: Time
+
+	/// Full date value. Primary key for time intelligence.
+	column Date
+		dataType: dateTime
+		isHidden
+		isKey
+		formatString: mm/dd/yy
+		lineageTag: 61d64438-ce9d-4a7b-bdfc-a2406840448b
+		summarizeBy: none
+		sourceColumn: Date
+		sortByColumn: 'Date Integer'
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// First day of the month for the given date.
+	column 'Month Start'
+		dataType: dateTime
+		formatString: yy/mm/dd
+		lineageTag: 7948cb31-ba82-4181-a07c-3df6ed638019
+		summarizeBy: none
+		sourceColumn: MonthStart
+		sortByColumn: 'Month Year Number'
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Last day of the month for the given date.
+	column 'Month Ending'
+		dataType: dateTime
+		formatString: mm/dd/yy
+		lineageTag: 22459358-2e06-4df0-b16e-3a19a5cf9ce9
+		summarizeBy: none
+		sourceColumn: MonthEnding
+		sortByColumn: 'Month Year Number'
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Four-digit calendar year.
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: d459dd4d-ab53-4e6a-9a41-43873c96f35a
+		summarizeBy: none
+		sourceColumn: Year
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Quarter number within the year (1-4).
+	column QuarterOfYear
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Sort Keys
+		lineageTag: 75212ac0-bbc3-4a52-8c23-2893aacc1534
+		summarizeBy: none
+		sourceColumn: QuarterOfYear
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Display label combining quarter and year (e.g., Q1 2025).
+	column 'Quarter and Year'
+		dataType: string
+		lineageTag: e5960e20-4687-491a-93ce-f3ef697139c2
+		summarizeBy: none
+		sourceColumn: Quarter & Year
+		sortByColumn: QuarterOfYear
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Month number within the year (1-12).
+	column 'Month of Year'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Sort Keys
+		lineageTag: 6bb9c6a7-f1f4-421e-ace4-6755cda136ad
+		summarizeBy: none
+		sourceColumn: MonthOfYear
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Abbreviated month name (e.g., Jan, Feb, Mar).
+	column 'Month Short Name'
+		dataType: string
+		lineageTag: f5d32e00-4d55-48fd-aee7-683ff52d0842
+		summarizeBy: none
+		sourceColumn: MonthShortName
+		sortByColumn: 'Month of Year'
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Numeric sort key combining year and month for chronological ordering.
+	column 'Month Year Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Sort Keys
+		lineageTag: c90dec3f-ccf7-440c-b69b-1edc4ee74e50
+		summarizeBy: none
+		sourceColumn: MonthnYear
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Display label combining month and year (e.g., Jan-2025).
+	column 'Month Year'
+		dataType: string
+		lineageTag: e8eed248-9318-4b67-8b5e-580ced136dda
+		summarizeBy: none
+		sourceColumn: Month-Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Integer representation of the date (YYYYMMDD) for sorting and comparison.
+	column 'Date Integer'
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Sort Keys
+		lineageTag: a1b13853-f85f-4a47-bb29-cdcb22eefed6
+		summarizeBy: none
+		sourceColumn: DateInt
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Calendar-c84a13df-4f81-406c-b43a-7b1629587a08 = m
+		mode: import
+		queryGroup: Calendar
+		source =
+				// Calendar — Date dimension sourced from the shared Calendar dataflow.
+				// Filters to the date range present in the Sales table to avoid
+				// orphaned calendar rows outside the data window.
+				let
+				    // ── Connect to dataflow ──
+				    Source = PowerPlatform.Dataflows( null ),
+				    Workspaces = Source{[Id = "Workspaces"]}[Data],
+				    Workspace = Workspaces{[workspaceId = "f4ac28b7-50fc-4635-87fe-7bd77e9652a8"]}[Data],
+				    Dataflow = Workspace{[dataflowId = "e3ccdbb4-94be-4464-adfe-5e78894f0eba"]}[Data],
+				    RawCalendar = Dataflow{[entity = "Calendar", version = ""]}[Data],
+				
+				    // ── Keep only the columns used in the model ──
+				    SelectedColumns = Table.SelectColumns(
+				        RawCalendar,
+				        {
+				            "Date", "Year", "QuarterOfYear", "Quarter & Year",
+				            "MonthOfYear", "MonthShortName", "Month-Year",
+				            "MonthnYear", "MonthEnding", "MonthStart", "DateInt"
+				        }
+				    ),
+				
+				    // ── Reorder for logical grouping (date > month > quarter > year) ──
+				    Reordered = Table.ReorderColumns(
+				        SelectedColumns,
+				        {
+				            "Date", "MonthStart", "MonthEnding", "Year",
+				            "QuarterOfYear", "Quarter & Year", "MonthOfYear",
+				            "MonthShortName", "MonthnYear", "Month-Year", "DateInt"
+				        }
+				    ),
+				
+				    // ── Filter calendar to the Sales date range ──
+				    // Avoids blank rows in time-intelligence calculations
+				    MinDate = List.Min( List.Combine( {Sales[Date]} ) ),
+				    MaxDate = List.Max( List.Combine( {Sales[Date]} ) ),
+				    Filtered = Table.SelectRows(
+				        Reordered,
+				        each [Date] >= MinDate and [Date] <= MaxDate
+				    )
+				in
+				    Filtered
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

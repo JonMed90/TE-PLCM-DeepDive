@@ -1,0 +1,42 @@
+/// Hidden utility table mapping business units to budgeted gross margin percentages.
+table _Budget
+	isHidden
+	lineageTag: 6c13e33e-5299-415f-842d-e78a2f3e3bb0
+
+	/// Business unit code matching the Product table's Business Unit column.
+	column 'Business Unit'
+		isHidden
+		lineageTag: c018ffb0-f32e-4c5c-9fd9-519701edad95
+		summarizeBy: none
+		sourceColumn: [BU]
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Target gross margin percentage for the business unit.
+	column 'Budgeted %'
+		isHidden
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a8d49683-8b4a-4a38-8685-9a13c784445a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Budgeted %]
+
+		annotation SummarizationSetBy = User
+
+	partition Budget = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "BU", STRING,
+				    "Budgeted %", DOUBLE,
+				    {
+				        {"Biologics", 0.802},
+				        {"Trauma", 0.876},
+				        {"Foot and Ankle", 0.865},
+				        {"Upper Extremities", 0.875}
+				    }
+				)
+
+	annotation PBI_Id = 75669fcb731942ce9bcb33568d81e4bf
+

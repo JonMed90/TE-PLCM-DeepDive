@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "0dce7a8fb1e894d0ab5b",
   "position": {
     "x": 247.87090057261844,
     "y": 63.966684018740239,
-    "z": 5000,
+    "z": 4000,
     "height": 87.954190525767828,
     "width": 215.88755856324832,
     "tabOrder": 4000
@@ -23,15 +23,31 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "# GIM SKUs"
+                  "Property": "# Product SKUs"
                 }
               },
-              "queryRef": "GIM.# SKUs"
+              "queryRef": "_Measures.# Product SKUs",
+              "nativeQueryRef": "# Product SKUs"
             }
           ]
         }
       },
       "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "# Product SKUs"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
         "isDefaultSort": true
       }
     },

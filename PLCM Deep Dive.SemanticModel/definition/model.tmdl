@@ -27,29 +27,29 @@ queryGroup Products
 
 	annotation PBI_QueryGroupOrder = 4
 
-annotation PBI_QueryOrder = ["Historical Sales","LCC_Description","PPR Tracker Status","Anaplan Products","Dim_GIM","Dim_Regions","Dim_Calendar","Dim_KPI","DemantraDemand","Fact_Sales","Fact_ConsolidatedList","Fact_Inventory","Dim_Role","Dim_Phase","Dim_PhaseActivity","Fact_TaskAssignments","Fact_E&O","Dim_PLCM_Status"]
+annotation PBI_QueryOrder = ["Historical Sales","Dim_GIM","Dim_Regions","Dim_Calendar","Dim_KPI","DemantraDemand","Fact_Sales","Dim_ExitTracker","Fact_Inventory","Dim_Role","Dim_Phase","Dim_PhaseActivity","Fact_TaskAssignments","Fact_E&O"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation __TEdtr = 1
 
-annotation PBI_ProTooling = ["WebModelingEdit","TMDLView_Desktop","DaxQueryView_Desktop","DevMode","TMDL-Extension"]
+annotation PBI_ProTooling = ["WebModelingEdit","TMDLView_Desktop","DaxQueryView_Desktop","DevMode","TMDL-Extension","MCP-PBIModeling"]
 
-ref table Dim_KPI
-ref table Dim_GIM
-ref table Dim_Calendar
-ref table Dim_Regions
+ref table _KPI
+ref table Product
+ref table Calendar
+ref table Region
 ref table _Measures
-ref table Fact_Sales
-ref table Fact_Inventory
-ref table Fact_ConsolidatedList
-ref table Budget
-ref table Dim_Role
-ref table Dim_Phase
-ref table Dim_PhaseActivity
-ref table Fact_TaskAssignments
-ref table 'Playbook Navigation'
-ref table Fact_E&O
+ref table Sales
+ref table Inventory
+ref table 'Exit Tracker'
+ref table _Budget
+ref table Role
+ref table Phase
+ref table 'Phase Activity'
+ref table 'Task Assignment'
+ref table '_Playbook Navigation'
+ref table 'Excess and Obsolete'
 
 ref cultureInfo en-US
 
