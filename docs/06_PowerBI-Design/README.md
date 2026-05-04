@@ -6,7 +6,7 @@
 - **Base Theme**: CY24SU10
 - **Custom Visuals**: HTML Content (`htmlContent443BE3AD55E043BF878BED274D3A6855`)
 - **Bookmarks**: 17 bookmarks for navigation and view toggling
-- **Report Filters**: DeleteFlag (Dim_GIM), Business Unit (Dim_GIM — inverted selection)
+- **Report Filters**: DeleteFlag (Product), Business Unit (Product — inverted selection)
 
 ## Pages
 
@@ -26,16 +26,36 @@
 
 ## Custom Visual: HTML Content
 
-Used in the PLCM Playbook tooltip page to render styled HTML cards showing:
+Used in the PLCM Playbook tooltip page to render a **7-step chevron progress tracker** showing:
 
-- Activity name and detail
-- Role and responsibility type badge
-- Styled with Segoe UI font and PLM Blue accent (`#0078D4`)
+- Header bar with Business Unit, Brand, Catalog Number, ECR, and key dates
+- Color-coded phase indicators with orange marker under active phase
+- Phase objective text for contextual detail
+- Styled with Segoe UI font and Stryker brand colors
 
 ## Dynamic KPI Pattern
 
-The `Dynamic Sales KPI` measure uses a slicer on `Dim_KPI[KPI]` to switch between:
+The `Dynamic Sales KPI` measure uses a slicer on `_KPI[KPI]` to switch between:
 
 - **Revenue** → `[Revenue]`
 - **Units** → `[Units Sold]`
 - **COGS** → `[COGS]`
+
+## Measure Organization (Display Folders)
+
+| Display Folder              | Purpose                                   |
+| --------------------------- | ----------------------------------------- |
+| Sales                       | Base revenue, COGS, units aggregations    |
+| Sales\Trailing 12M          | TTM calculations and date anchors         |
+| Inventory                   | On-hand, cost, and DSI measures           |
+| KPI Toggle                  | Dynamic KPI switch measures               |
+| GIM                         | Product count measure                     |
+| Demand                      | Forecast date ranges and 12M demand       |
+| Profitability               | Gross profit, margin %, budget comparison |
+| Excess and Obsolete         | E&O reserves, inventory, reserve rate     |
+| PLCM                        | Exit tracker SKU count                    |
+| PLCM\Exit Tracker Sales     | TTM sales metrics for exit items          |
+| PLCM\Exit Tracker Inventory | Inventory/DSI/E&O for exit items          |
+| PLCM Stage Phase            | HTML tracker and RACI department measures |
+| _DQ_ (hidden)               | Data quality validation measures          |
+| _Metrics_ (hidden)          | Monitoring/null percentage measures       |

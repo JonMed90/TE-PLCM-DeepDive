@@ -6,12 +6,13 @@ The **Product Life Cycle Management (PLCM)** Inventory Deep Dive report serves t
 
 ## Business Problem
 
-The T&E division manages thousands of SKUs across global regions. Without centralized visibility into inventory levels, sales trends, demand forecasts, and PLCM phaseout status, decision-makers lack the data needed to:
+The T&E division manages thousands of SKUs across global regions. Without centralized visibility into inventory levels, sales trends, demand forecasts, excess & obsolescence exposure, and PLCM phaseout status, decision-makers lack the data needed to:
 
 - Identify low-performing or obsolete SKUs for exit
-- Monitor inventory exposure (extended statutory cost) on phaseout candidates
-- Track the execution of PLCM playbook activities across functional roles
-- Compare profit margins against budgeted growth targets
+- Monitor inventory exposure (extended statutory cost) and E&O reserves on phaseout candidates
+- Track the execution of PLCM playbook activities across functional roles (7 phases)
+- Compare profit margins against budgeted growth targets by Business Unit
+- Quantify trailing 12-month financial impact of exit decisions
 
 ## Stakeholders
 
@@ -20,8 +21,8 @@ The T&E division manages thousands of SKUs across global regions. Without centra
 | T&E PLCM Team Leads     | SKU exit/maintain decisions, playbook progress tracking |
 | Business Unit Directors | Revenue impact, margin analysis, inventory exposure     |
 | Supply Chain / Planning | Demand forecasts, DSI, inventory on-hand visibility     |
-| Finance                 | Profit margin vs. budget, COGS, trailing 12M revenue    |
-| Regulatory / Quality    | Last Buy / Last Sell dates, MDR remediation status      |
+| Finance                 | Profit margin vs. budget, COGS, TTM revenue, E&O rates  |
+| Regulatory / Quality    | Last Transfer Sale dates, ECR/MDM tracking              |
 
 ## Business Units
 

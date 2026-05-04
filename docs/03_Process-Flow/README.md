@@ -3,26 +3,33 @@
 ## Data Refresh Flow
 
 ```text
-┌─────────────────────────┐
-│   Azure Synapse         │
-│   (GIM, Sales, Demand)  │
-└──────────┬──────────────┘
-           │
-           ▼
-┌─────────────────────────┐     ┌───────────────────────────┐
-│   SharePoint Online     │     │  Power BI Dataflows       │
-│   (PLCM Tracker_LIVE)   │     │  (Inventory Snapshot)     │
-└──────────┬──────────────┘     └──────────┬────────────────┘
-           │                               │
-           ▼                               ▼
+┌─────────────────────────────────┐     ┌─────────────────────────────────┐
+│  Power Platform Dataflows       │     │  Power BI Dataflows             │
+│  (Playbook, E&O, Exit Tracker)  │     │  (Calendar, Inventory, Sales)   │
+│                                 │     │                                 │
+│  • dim_Phase / PhaseActivity    │     │  • Calendar                     │
+│  • dim_Role / fact_Assignments  │     │  • fact_Inventory_FG_Summary    │
+│  • Fact_ConsolidatedList        │     │  • Fact_Sales_Summary           │
+│  • Fact_EO                      │     │  • Dim_GIMItem                  │
+└──────────────┬──────────────────┘     └──────────────┬──────────────────┘
+               │                                       │
+               │     ┌───────────────────────────┐     │
+               │     │ Power Platform Dataflows   │     │
+               │     │ (Demantra Demand Forecast) │     │
+               │     │ • DemantraCloud Dataflow   │     │
+               │     └──────────────┬────────────┘     │
+               │                    │                   │
+               └────────────┬───────┴───────────┬──────┘
+                            │                   │
+                            ▼                   ▼
 ┌──────────────────────────────────────────────────────────┐
-│              Power BI Semantic Model                     │
+│              Power BI Semantic Model                      │
 │  (Import Mode — scheduled refresh)                       │
 │                                                          │
 │  ┌──────────┐ ┌──────────────┐ ┌──────────────────────┐ │
-│  │ Dim_GIM  │ │ Fact_Sales   │ │ Fact_Inventory       │ │
-│  │ Dim_Cal  │ │ Fact_CList   │ │ Fact_TaskAssignments │ │
-│  │ Dim_Reg  │ │ Budget       │ │ Dim_Phase/Activity   │ │
+│  │ Product  │ │ Sales        │ │ Inventory            │ │
+│  │ Calendar │ │ Exit Tracker │ │ Task Assignment      │ │
+│  │ Region   │ │ _Budget      │ │ Excess and Obsolete  │ │
 │  └──────────┘ └──────────────┘ └──────────────────────┘ │
 └──────────────────────┬───────────────────────────────────┘
                        │
@@ -37,7 +44,8 @@
 ## PLCM Decision Flow
 
 1. PLCM team reviews SKU data (GIM, sales, inventory, demand)
-2. SubBrand-level decisions are set in the PLCM Tracker (SharePoint)
-3. Brand-level decisions are rolled up automatically via DAX logic
-4. Exit candidates move through playbook phases with RACI assignments
-5. Phaseout SKUs are tracked in the Consolidated List with MDM/ECR/LTS milestones
+2. SubBrand-level decisions are tracked in the Consolidated List (Exit Tracker)
+3. Brand-level decisions are rolled up via hierarchy in Exit Tracker
+4. Exit candidates move through playbook phases (1-7) with RACI assignments
+5. Phaseout SKUs are tracked with MDM/ECR/LTS milestones and batch status
+6. E&O reserves and inventory exposure monitored through phaseout lifecycle
